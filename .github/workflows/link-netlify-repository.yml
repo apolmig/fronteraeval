@@ -1,0 +1,58 @@
+name: Link Netlify repository
+
+on:
+  push:
+    branches: [ops/link-netlify-git]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  link:
+    if: github.head_ref == 'ops/link-netlify-git' || github.ref == 'refs/heads/ops/link-netlify-git'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Link Netlify project to GitHub repository
+        env:
+          NETLIFY_PROXY: https://netlify-mcp.netlify.app/proxy/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..ZIpGy1uvk19tM8nr.xAPP8qcGnWTZXXlkKeFZhDkji5nrxtVpG0HG9BYqyhc8tiE8Xcj-gz_rul83TBu3_7Uo9yVegS5V6zaA0ZxmyxhVaZ2yRf_xWa4Sk8JEAYA7v5qk-Z27KxuKf3ggGBtimPBGo4SeGA5CACVBDM91-SLBT7hPoc2lI6ysE1DkT-HdWRYTDGpFpZuocTU1g7QII81G1Cm98inEk-NeaWKbrmtpqO5KMajUokwIcVQ_QvKMUGz1wfh1sgiM4fnXQl3ChAthYQ6LiNpJyfUZU_GVV0Od6a9R__A4nxgA2ojkS7SmN-OFH853x3fOMoYQ2qsd4K11-gVfkzQuIdsnaE4Lc_YT3CZHVyZDF_BbaB_UhpYV8eI_NqTsHxhijPXQ5dXz3MU5tkG-.NVgLPXpT6rVYSG4LMZ-AkQ
+          SITE_ID: 3aef8c2b-afef-416f-a436-446eb4f81f3d
+        run: |
+          set -euo pipefail
+          cat > payload.json <<'JSON'
+          {
+            "repo": {
+              "id": 1342714755,
+              "provider": "github",
+              "repo_path": "apolmig/fronteraeval",
+              "repo_branch": "main",
+              "allowed_branches": ["main"],
+              "base": "",
+              "cmd": "npm run build",
+              "dir": "site",
+              "functions_dir": "netlify/functions"
+            }
+          }
+          JSON
+          curl --fail-with-body --silent --show-error \
+            --request PATCH \
+            --header 'content-type: application/json' \
+            --data @payload.json \
+            "$NETLIFY_PROXY/api/v1/sites/$SITE_ID" > response.json
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const site = JSON.parse(fs.readFileSync('response.json', 'utf8'));
+          const repo = site.build_settings || site.repo || {};
+          console.log(JSON.stringify({
+            id: site.id,
+            name: site.name,
+            repo_path: repo.repo_path,
+            repo_branch: repo.repo_branch,
+            provider: repo.provider,
+            deploy_hook_present: Boolean(site.deploy_hook)
+          }, null, 2));
+          if (site.id !== process.env.SITE_ID) throw new Error('Unexpected Netlify site response');
+          if ((repo.repo_path || '') !== 'apolmig/fronteraeval') throw new Error('Repository link was not persisted');
+          NODE
