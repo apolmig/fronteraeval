@@ -29,11 +29,11 @@ jobs:
           CHUNK_SHAS: >-
             1eeca30c27d52a35a836c243089e7897d618936f
             cdc7444c43daf1fc8df6c4a43af52bc8b2fec8b3
-            b34c4e85871f6b8135ddfffca5a6c500b2ffff0c
+            7529e69ca9cf3e2b7821ea95091310db0761a209
             d4cb4bf6f80cad13fffb527f32aff27049da88bf
             9ad1b215c752163bb3942002b869858083ff45e2
             e09cca1cf79f66576d8ac3fe7cd01a7c1605c4e7
-            1d5689a4d14f2723bb493acfc6315124c1046701
+            ecb4f74c8a2e6a789b47a7e7c14c11d4e1f6abf6
         run: |
           set -euo pipefail
           : > design.b64
