@@ -26,3 +26,18 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Generate catalogue and validate
         run: npm run build && npm run check
+      - name: Publish verified deploy source
+        uses: actions/upload-artifact@v4
+        with:
+          name: fronteraeval-deploy-${{ github.sha }}
+          retention-days: 3
+          if-no-files-found: error
+          path: |
+            .gitignore
+            README.md
+            REDESIGN.md
+            netlify.toml
+            package.json
+            scripts
+            netlify
+            site
