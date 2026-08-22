@@ -1,10 +1,10 @@
-# Editorial redesign
+# Interface doctrine
 
-The redesign preserves the live catalogue and weekly source sweep while reducing the public interface to four jobs:
+FronteraEval should feel like a careful research editor, not a benchmark marketplace.
 
-1. find an evaluation;
-2. understand the claim it supports;
-3. see the claim it cannot support;
-4. follow the primary source.
+1. Find the evaluation quickly.
+2. Read the inference boundary before the score.
+3. Distinguish reviewed interpretation from imported metadata.
+4. Follow the primary source.
 
-Visual direction: warm paper, black type, restrained red accent, generous whitespace, serif editorial hierarchy and plain-language progressive disclosure. No universal score, decorative dashboard, card wall or faux precision.
+Visual language: warm paper, black type, one restrained red accent, thin rules, compact editorial typography, and progressive disclosure. No card wall, universal score, oversized display type, or decorative dashboard.

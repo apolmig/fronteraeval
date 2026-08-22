@@ -19,9 +19,9 @@
     "canonical-source": "Canonical source"
   })[id] || id;
   const statusLabel = (id) => ({
-    reviewed: "Editorially reviewed",
-    catalogued: "Source catalogued",
-    imported: "Metadata imported"
+    reviewed: "Reviewed",
+    catalogued: "Catalogued",
+    imported: "Imported"
   })[id] || id;
   const formatDate = (value) => {
     if (!value) return "Not reviewed";
@@ -135,21 +135,25 @@
 
     main.innerHTML = `
       <section class="hero">
-        <div class="wide">
-          <div class="eyebrow">Frontier AI evaluation</div>
-          <h1>The evidence is growing. The map is not.</h1>
-          <p class="lede">FronteraEval helps you find the right evaluation—and understand the claim it supports, the claim it cannot support, and the evidence still missing.</p>
-          <form class="search-form" id="home-search">
-            <input id="home-query" type="search" autocomplete="off" aria-label="Search evaluations" placeholder="What are you trying to evaluate?">
-            <button type="submit">Search</button>
-          </form>
-          <div class="example-links" aria-label="Example searches">
-            <span>Try</span>
-            <button type="button" data-query="harmful manipulation">harmful manipulation</button>
-            <button type="button" data-query="autonomous AI R&D">autonomous AI R&amp;D</button>
-            <button type="button" data-query="jailbreak robustness">jailbreak robustness</button>
+        <div class="wide hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">A map of frontier AI evaluations</div>
+            <h1>Find the evaluation. Read its limits.</h1>
+            <p class="lede">Search by risk, construct, or method. Reviewed records state what the evidence supports—and where it stops.</p>
           </div>
-          <div class="catalogue-note">${freshnessText()} · ${state.records.length} records · ${reviewed} independently interpreted</div>
+          <div class="hero-tools">
+            <form class="search-form" id="home-search">
+              <input id="home-query" type="search" autocomplete="off" aria-label="Search evaluations" placeholder="Risk, construct, method, or evaluation">
+              <button type="submit">Search</button>
+            </form>
+            <div class="example-links" aria-label="Example searches">
+              <span>Try</span>
+              <button type="button" data-query="harmful manipulation">harmful manipulation</button>
+              <button type="button" data-query="autonomous AI R&D">autonomous AI R&amp;D</button>
+              <button type="button" data-query="jailbreak robustness">jailbreak robustness</button>
+            </div>
+            <div class="catalogue-note">${freshnessText()} · ${state.records.length} records · ${reviewed} reviewed</div>
+          </div>
         </div>
       </section>
 
@@ -157,18 +161,18 @@
         <div class="wide section-intro">
           <div>
             <div class="eyebrow">The central distinction</div>
-            <h2>A result is not a conclusion.</h2>
+            <h2>Evidence has an edge.</h2>
           </div>
-          <p>Evaluations are useful only when their inference boundary is visible. FronteraEval separates what a protocol directly tests from the larger claims people are tempted to make from it.</p>
+          <p>FronteraEval separates what a protocol directly tests from the larger claim it is often used to imply.</p>
         </div>
         <div class="wide claim-pair">
           <div class="claim">
-            <small>The claim you may be able to make</small>
+            <small>Directly supported</small>
             <strong>Under this protocol, this model system produced this behaviour.</strong>
           </div>
           <div class="claim negative">
-            <small>The claim you usually cannot make</small>
-            <strong>The system will cause the corresponding harm in real deployment.</strong>
+            <small>Not established</small>
+            <strong>The system will cause the corresponding harm in deployment.</strong>
           </div>
         </div>
       </section>
@@ -177,7 +181,7 @@
         <div class="wide section-intro">
           <div>
             <div class="eyebrow">Start with a question</div>
-            <h2>Browse by the decision you face.</h2>
+            <h2>Start with the question.</h2>
           </div>
           <div class="question-list">
             ${questions.map(([topic, question, subtitle]) => `
@@ -193,7 +197,7 @@
           <div>
             <div class="eyebrow">Flagship collection</div>
             <h2>Agency Transfer</h2>
-            <p>Persuasion, manipulation and deception evaluations cover fragments of a longer causal chain. None, by itself, establishes population-scale political consequence.</p>
+            <p>Persuasion, manipulation, and deception evaluations cover fragments of a longer causal chain. None establishes political consequence by itself.</p>
             <a class="text-link" href="#/collection/agency-transfer">Read the collection</a>
           </div>
           <div class="chain" aria-label="Agency Transfer inference chain">
@@ -219,12 +223,12 @@
     main.innerHTML = `
       <header class="page-head"><div class="wide">
         <div class="eyebrow">Catalogue</div>
-        <h1>Browse evaluations</h1>
-        <p class="lede">Search widely. Interpret narrowly.</p>
+        <h1>Evaluations</h1>
+        <p class="lede">Find the protocol. Check the claim. Follow the source.</p>
       </div></header>
       <section class="browse"><div class="wide">
         <div class="search-toolbar" id="search-toolbar"></div>
-        <div class="results-summary"><strong id="result-count"></strong><span>Review status is part of the evidence.</span></div>
+        <div class="results-summary"><strong id="result-count"></strong><span>Reviewed means interpreted. Imported means discovery only.</span></div>
         <div id="results"></div>
       </div></section>`;
     renderToolbar();
@@ -270,7 +274,11 @@
   }
 
   function renderResults() {
-    const records = filteredRecords();
+    const order = { reviewed: 0, catalogued: 1, imported: 2 };
+    const records = filteredRecords().sort((a, b) =>
+      (order[a.review_status] ?? 3) - (order[b.review_status] ?? 3)
+      || a.name.localeCompare(b.name)
+    );
     document.querySelector("#result-count").textContent = `${records.length} record${records.length === 1 ? "" : "s"}`;
     document.querySelector("#results").innerHTML = records.length
       ? `<div class="eval-list">${records.map(renderRow).join("")}</div>`
@@ -310,11 +318,16 @@
       </div></header>
       <div class="wide detail-layout">
         <article class="detail-main">
-          ${record.review_status !== "reviewed" ? `<div class="notice"><strong>Discovery record, not an independent assessment.</strong> FronteraEval has not yet reviewed the construct, protocol or inference boundary.</div>` : ""}
-          <section class="claims" aria-label="Inference boundary">
-            <article><h2>What this can tell you</h2><p>${esc(record.measures)}</p></article>
-            <article><h2>What it cannot tell you</h2><p>${esc(record.does_not_measure)}</p></article>
-          </section>
+          ${record.review_status === "reviewed" ? `
+            <section class="claims" aria-label="Inference boundary">
+              <article><h2>What this can tell you</h2><p>${esc(record.measures)}</p></article>
+              <article><h2>What it cannot tell you</h2><p>${esc(record.does_not_measure)}</p></article>
+            </section>` : `
+            <section class="unreviewed-panel">
+              <div class="eyebrow">Interpretation pending</div>
+              <h2>Discovery record only.</h2>
+              <p>The source is indexed, but FronteraEval has not yet reviewed the construct, protocol, or inference boundary. Read the primary source before using this evaluation as evidence.</p>
+            </section>`}
           <section class="detail-section">
             <h2>Decision use</h2>
             <div class="use-pair">
@@ -322,13 +335,14 @@
               <div><span class="label">Not enough for</span><p>${esc(record.not_sufficient_for)}</p></div>
             </div>
           </section>
-          <section class="detail-section">
-            <h2>How far the evidence reaches</h2>
-            <p class="small-note">Direct coverage is an inference boundary, not a quality grade.</p>
-            <div class="evidence-chain">
-              ${evidenceSteps.map(([id, name], index) => `${index ? `<span class="evidence-arrow">→</span>` : ""}<span class="evidence-step ${record.evidence_reach.includes(id) ? "direct" : ""}">${esc(name)}</span>`).join("")}
-            </div>
-          </section>
+          ${record.review_status === "reviewed" ? `
+            <section class="detail-section">
+              <h2>Evidence reach</h2>
+              <p class="small-note">An inference boundary, not a quality grade.</p>
+              <div class="evidence-chain">
+                ${evidenceSteps.map(([id, name], index) => `${index ? `<span class="evidence-arrow">→</span>` : ""}<span class="evidence-step ${record.evidence_reach.includes(id) ? "direct" : ""}">${esc(name)}</span>`).join("")}
+              </div>
+            </section>` : ""}
           <section class="detail-section">
             <h2>Interpretation rule</h2>
             <p>Attribute any result to the exact protocol, model system, access route, elicitation method and evaluation date. A shared topic does not establish a shared construct.</p>
@@ -496,6 +510,13 @@
   }
 
   window.addEventListener("hashchange", route);
+  window.addEventListener("keydown", (event) => {
+    if (event.key !== "/" || event.metaKey || event.ctrlKey || event.altKey) return;
+    const target = event.target;
+    if (target && ["INPUT", "SELECT", "TEXTAREA"].includes(target.tagName)) return;
+    const input = document.querySelector('input[type="search"]');
+    if (input) { event.preventDefault(); input.focus(); }
+  });
   load().catch((error) => {
     main.innerHTML = `<article class="measure prose"><h1>Catalogue unavailable.</h1><p>${esc(error.message)}</p><p><a href="/data/catalog.json">Open raw data</a></p></article>`;
   });
