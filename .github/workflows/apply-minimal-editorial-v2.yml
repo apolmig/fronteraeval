@@ -3,12 +3,16 @@ name: Stage minimal editorial interface
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
 
 permissions:
   contents: write
 
 jobs:
   stage:
+    if: github.event_name == 'push' || github.head_ref == 'design/minimal-editorial-v2'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
