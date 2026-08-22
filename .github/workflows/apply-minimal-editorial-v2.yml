@@ -26,20 +26,33 @@ jobs:
       - name: Restore reviewed design bundle
         env:
           GH_TOKEN: ${{ github.token }}
-          BLOB_SHA: 1a0254f380be2524f9b10f2a8742c38b24346f2b
+          CHUNK_SHAS: >-
+            1eeca30c27d52a35a836c243089e7897d618936f
+            cdc7444c43daf1fc8df6c4a43af52bc8b2fec8b3
+            b34c4e85871f6b8135ddfffca5a6c500b2ffff0c
+            d4cb4bf6f80cad13fffb527f32aff27049da88bf
+            9ad1b215c752163bb3942002b869858083ff45e2
+            e09cca1cf79f66576d8ac3fe7cd01a7c1605c4e7
+            1d5689a4d14f2723bb493acfc6315124c1046701
         run: |
           set -euo pipefail
-          curl --fail-with-body --silent --show-error \
-            --header "authorization: Bearer $GH_TOKEN" \
-            --header "accept: application/vnd.github+json" \
-            "https://api.github.com/repos/$GITHUB_REPOSITORY/git/blobs/$BLOB_SHA" > blob.json
-          python - <<'PY'
+          : > design.b64
+          for sha in $CHUNK_SHAS; do
+            curl --fail-with-body --silent --show-error \
+              --header "authorization: Bearer $GH_TOKEN" \
+              --header "accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$GITHUB_REPOSITORY/git/blobs/$sha" > blob.json
+            python - <<'PY'
           import base64, json
           data=json.load(open('blob.json'))
-          open('design.tar.gz','wb').write(base64.b64decode(data['content']))
+          with open('design.b64','ab') as out:
+              out.write(base64.b64decode(data['content']))
           PY
+          done
+          base64 --decode design.b64 > design.tar.gz
+          echo "cbb767f8077ef41e55b6da2a4ad34dbefa8e9fcc65951573039ca48437c03bd8  design.tar.gz" | sha256sum --check
           tar -xzf design.tar.gz
-          rm -f blob.json design.tar.gz
+          rm -f blob.json design.b64 design.tar.gz
       - name: Validate application and generated catalogue
         run: |
           npm install --no-audit --no-fund
