@@ -46,6 +46,23 @@ const canonical = [
   ["tau-bench","τ-bench","Sierra Research","https://github.com/sierra-research/tau-bench",["autonomy-agents"],"Evaluates tool-using agents in realistic user-facing service domains."]
 ];
 
+const additionalLinks = {
+  "canonical:metr-time-horizons": [{ type:"organisation", label:"METR evaluations", url:"https://metr.org/evaluations/" }],
+  "canonical:re-bench": [{ type:"organisation", label:"METR evaluations", url:"https://metr.org/evaluations/" }],
+  "canonical:arc-agi-2": [{ type:"code", label:"ARC Prize GitHub", url:"https://github.com/arcprize" }],
+  "canonical:frontiermath": [{ type:"organisation", label:"Epoch AI", url:"https://epoch.ai/" }],
+  "canonical:ailuminate": [{ type:"organisation", label:"MLCommons AI Safety", url:"https://mlcommons.org/working-groups/ai-safety/" }],
+  "canonical:harmbench": [{ type:"code", label:"HarmBench repository", url:"https://github.com/centerforaisafety/HarmBench" }],
+  "canonical:jailbreakbench": [{ type:"code", label:"JailbreakBench repository", url:"https://github.com/JailbreakBench/jailbreakbench" }],
+  "canonical:helm-safety": [{ type:"code", label:"HELM repository", url:"https://github.com/stanford-crfm/helm" }],
+  "canonical:webarena": [{ type:"code", label:"WebArena repository", url:"https://github.com/web-arena-x/webarena" }],
+  "canonical:visualwebarena": [{ type:"code", label:"VisualWebArena repository", url:"https://github.com/web-arena-x/visualwebarena" }],
+  "canonical:inspect-ai": [{ type:"code", label:"Inspect AI repository", url:"https://github.com/UKGovernmentBEIS/inspect_ai" }],
+  "canonical:wmdp": [{ type:"code", label:"WMDP repository", url:"https://github.com/centerforaisafety/wmdp" }],
+  "canonical:agentdojo": [{ type:"code", label:"AgentDojo repository", url:"https://github.com/ethz-spylab/agentdojo" }],
+  "canonical:agentharm": [{ type:"implementation", label:"Inspect AgentHarm implementation", url:"https://github.com/UKGovernmentBEIS/inspect_evals/tree/main/src/inspect_evals/agentharm" }]
+};
+
 const reviewed = {
   "inspect:ape_eval": ["APE","Relative persuasive performance under the study protocol and target population.","Covert deployment, durable behavioural change, campaign-scale targeting or electoral outcomes.","Comparing model-generated persuasive content under a fixed protocol.","Claims that a model can independently manipulate an electorate or cause political outcomes.",["artifact-production","controlled-human-effect"]],
   "inspect:mask": ["MASK","Behaviour related to honesty, belief expression and motivated reasoning in controlled scenarios.","Persuasion of external audiences or downstream behavioural effects.","Studying belief-reporting and honesty-related model behaviour.","Estimating manipulation effectiveness in deployment.",["controlled-model-behaviour"]],
@@ -69,11 +86,11 @@ const agencyTransfer = new Set(["inspect:ape_eval","inspect:mask","inspect:makem
 function prettify(value) {
   const fixed = { ape_eval:"APE", mask:"MASK", hle:"Humanity's Last Exam", gpqa_diamond:"GPQA Diamond", wmdp_bio:"WMDP Bio", wmdp_chem:"WMDP Chem", wmdp_cyber:"WMDP Cyber", osworld:"OSWorld", xstest:"XSTest", bfcl:"BFCL" };
   if (fixed[value]) return fixed[value];
-  return value.split(/[-_]/).map(w => ["ai","gdm","cti","cve","qa","vqa","mmlu","arc","agi","mcp","ctf"].includes(w) ? w.toUpperCase() : w.slice(0,1).toUpperCase()+w.slice(1)).join(" ");
+  return value.split(/[-_]/).map((word) => ["ai","gdm","cti","cve","qa","vqa","mmlu","arc","agi","mcp","ctf"].includes(word) ? word.toUpperCase() : word.slice(0,1).toUpperCase()+word.slice(1)).join(" ");
 }
 
 function classify(name) {
-  const s=name.toLowerCase(), out=[];
+  const text=name.toLowerCase(), topicsFound=[];
   const rules=[
     ["human-influence",["ape","mask","makemesay","make_me_pay","sycoph","influence","persu","coercion","machiavelli","deceptionbench"]],
     ["deception-misalignment",["misalignment","stealth","self_reasoning","alignment_faking","deception","sandbag","instrumental","cover_your_tracks","strategic_rule","oversight_pattern"]],
@@ -85,8 +102,8 @@ function classify(name) {
     ["evaluation-integrity",["pre_flight","judge","livebench","zerobench","arxivroll","monitorbench","abstention","truthfulqa"]],
     ["multimodal",["visual","mmmu","mathvista","docvqa","vqa","image","multimodal"]]
   ];
-  for (const [topic, needles] of rules) if (needles.some(n=>s.includes(n))) out.push(topic);
-  return out.length ? [...new Set(out)] : ["general-capability"];
+  for (const [topic, needles] of rules) if (needles.some((needle) => text.includes(needle))) topicsFound.push(topic);
+  return topicsFound.length ? [...new Set(topicsFound)] : ["general-capability"];
 }
 
 function parseRegistry(text, sha) {
@@ -96,38 +113,74 @@ function parseRegistry(text, sha) {
     const multi=line.match(/^from inspect_evals\.([A-Za-z0-9_]+) import \($/);
     const single=line.match(/^from inspect_evals\.([A-Za-z0-9_]+) import (.+)$/);
     if (multi) { module=multi[1]; collecting=true; continue; }
-    if (single) { for (const task of single[2].split(",").map(x=>x.trim()).filter(Boolean)) entries.push([task,single[1]]); continue; }
+    if (single) { for (const task of single[2].split(",").map((item)=>item.trim()).filter(Boolean)) entries.push([task,single[1]]); continue; }
     if (collecting && line===")") { collecting=false; module=""; continue; }
     if (collecting && /^[A-Za-z0-9_]+,?$/.test(line)) entries.push([line.replace(/,$/,""),module]);
   }
-  return entries.map(([task,module])=>record(`inspect:${task}`,prettify(task),"UK AI Security Institute / upstream authors","inspect-internal",`https://github.com/${REPO}/tree/${sha}/src/inspect_evals/${module}`,classify(task),`Inspect task imported from the ${module} implementation package.`,"imported",sha));
+  return entries.map(([task,moduleName])=>record(`inspect:${task}`,prettify(task),"UK AI Security Institute / upstream authors","inspect-internal",`https://github.com/${REPO}/tree/${sha}/src/inspect_evals/${moduleName}`,classify(task),`Inspect task imported from the ${moduleName} implementation package.`,"imported",sha));
+}
+
+function sourceLabelFor(sourceType) {
+  if (sourceType === "inspect-internal") return "Inspect implementation";
+  if (sourceType === "inspect-register") return "Registry record";
+  return "Primary source";
+}
+
+function linksFor(id, sourceType, sourceUrl) {
+  const links=[{type:sourceType === "inspect-internal" ? "implementation" : sourceType === "inspect-register" ? "registry" : "primary",label:sourceLabelFor(sourceType),url:sourceUrl}];
+  if (sourceType.startsWith("inspect-")) {
+    links.push({type:"documentation",label:"Inspect documentation",url:"https://inspect.aisi.org.uk/"});
+    links.push({type:"repository",label:"Inspect Evals repository",url:`https://github.com/${REPO}`});
+  }
+  if (additionalLinks[id]) links.push(...additionalLinks[id]);
+  return links.filter((link,index,list)=>list.findIndex((item)=>item.url===link.url)===index);
 }
 
 function record(id,name,organisation,source_type,source_url,topicList,description,review_status,sha=null) {
-  const r={id,name,slug:id.replace(":","--").replaceAll("_","-"),organisation,source_type,source_url,topics:topicList,description,review_status,code_available:source_type!=="canonical-source",inspect_compatible:source_type.startsWith("inspect-"),last_source_check:checkedAt.slice(0,10),editorial_reviewed_at:null,measures:"Not independently assessed by FronteraEval yet.",does_not_measure:"No inference beyond the upstream source should be made until the protocol is reviewed.",best_for:"Discovery and source navigation.",not_sufficient_for:"Substantive capability, safety or policy claims without reading the underlying protocol.",evidence_reach:[],collections:agencyTransfer.has(id)?["agency-transfer"]:[],provenance:{source_sha:sha,method:"official-source import"}};
-  const ed=reviewed[id];
-  if (ed) { r.name=ed[0]; r.measures=ed[1]; r.does_not_measure=ed[2]; r.best_for=ed[3]; r.not_sufficient_for=ed[4]; r.evidence_reach=ed[5]; r.review_status="reviewed"; r.editorial_reviewed_at=checkedAt.slice(0,10); }
-  return r;
+  const value={
+    id,name,slug:id.replace(":","--").replaceAll("_","-"),organisation,source_type,source_url,source_label:sourceLabelFor(source_type),
+    links:linksFor(id,source_type,source_url),topics:topicList,description,review_status,code_available:source_type!=="canonical-source",
+    inspect_compatible:source_type.startsWith("inspect-"),last_source_check:checkedAt.slice(0,10),editorial_reviewed_at:null,
+    measures:"Not independently assessed by FronteraEval yet.",
+    does_not_measure:"No inference beyond the upstream source should be made until the protocol is reviewed.",
+    best_for:"Discovery and source navigation.",
+    not_sufficient_for:"Substantive capability, safety, or policy claims without reading the underlying protocol.",
+    evidence_reach:[],collections:agencyTransfer.has(id)?["agency-transfer"]:[],provenance:{source_sha:sha,method:"official-source import"}
+  };
+  const editorial=reviewed[id];
+  if (editorial) {
+    value.name=editorial[0]; value.measures=editorial[1]; value.does_not_measure=editorial[2]; value.best_for=editorial[3];
+    value.not_sufficient_for=editorial[4]; value.evidence_reach=editorial[5]; value.review_status="reviewed"; value.editorial_reviewed_at=checkedAt.slice(0,10);
+  }
+  return value;
 }
 
-async function fetchText(url) { const r=await fetch(url,{headers:{"user-agent":"FronteraEval/0.1"}}); if(!r.ok) throw new Error(`${r.status} ${url}`); return r.text(); }
-async function fetchJSON(url) { const r=await fetch(url,{headers:{accept:"application/vnd.github+json","user-agent":"FronteraEval/0.1"}}); if(!r.ok) throw new Error(`${r.status} ${url}`); return r.json(); }
+async function fetchText(url) { const response=await fetch(url,{headers:{"user-agent":"FronteraEval/0.2"}}); if(!response.ok) throw new Error(`${response.status} ${url}`); return response.text(); }
+async function fetchJSON(url) { const response=await fetch(url,{headers:{accept:"application/vnd.github+json","user-agent":"FronteraEval/0.2"}}); if(!response.ok) throw new Error(`${response.status} ${url}`); return response.json(); }
 
 const [registryText, tree] = await Promise.all([fetchText(registryURL), fetchJSON(treeURL)]);
 const sha=String(tree.sha);
 const internal=parseRegistry(registryText,sha);
-const registerNames=(tree.tree||[]).map(x=>String(x.path||"").match(/^register\/([^/]+)\/eval\.yaml$/)?.[1]).filter(Boolean).filter(x=>x!=="example_eval").sort();
-const registerRecords=registerNames.map(name=>record(`register:${name}`,prettify(name),"Upstream authors / Inspect Evals Register","inspect-register",`https://github.com/${REPO}/blob/${sha}/register/${name}/eval.yaml`,classify(name),"Externally maintained evaluation registered for discovery and execution through Inspect.","catalogued",sha));
-const canonicalRecords=canonical.map(([slug,name,org,url,t,description])=>record(`canonical:${slug}`,name,org,"canonical-source",url,t,description,"catalogued"));
+const registerNames=(tree.tree||[]).map((entry)=>String(entry.path||"").match(/^register\/([^/]+)\/eval\.yaml$/)?.[1]).filter(Boolean).filter((name)=>name!=="example_eval").sort();
+const registerRecords=registerNames.map((name)=>record(`register:${name}`,prettify(name),"Upstream authors / Inspect Evals Register","inspect-register",`https://github.com/${REPO}/blob/${sha}/register/${name}/eval.yaml`,classify(name),"Externally maintained evaluation registered for discovery and execution through Inspect.","catalogued",sha));
+const canonicalRecords=canonical.map(([slug,name,org,url,topicList,description])=>record(`canonical:${slug}`,name,org,"canonical-source",url,topicList,description,"catalogued"));
 const records=[...internal,...registerRecords,...canonicalRecords].sort((a,b)=>a.name.localeCompare(b.name)||a.id.localeCompare(b.id));
-if (new Set(records.map(r=>r.id)).size!==records.length) throw new Error("Duplicate stable IDs");
-const sourceCounts={}, statusCounts={}; for(const r of records){sourceCounts[r.source_type]=(sourceCounts[r.source_type]||0)+1;statusCounts[r.review_status]=(statusCounts[r.review_status]||0)+1;}
-const catalog={schema_version:"0.1.0",generated_at:checkedAt,inspect_source_sha:sha,title:"FronteraEval evaluation catalogue",scope_note:"Discovery metadata is not independent validation. Only records marked reviewed contain a bounded FronteraEval assessment.",topics,collections:{"agency-transfer":{title:"Agency Transfer & Harmful Manipulation",subtitle:"Evaluations relevant to persuasion, manipulation, deception, social influence and transfer of consequential agency.",thesis:"Capability evidence is not deployment evidence; deployment is not individual effect; individual effect is not aggregate political consequence.",limitations:"The included evaluations target adjacent but non-identical constructs. FronteraEval does not aggregate them into a universal manipulation score."}},stats:{records:records.length,sources:sourceCounts,review_status:statusCounts},records};
+if (new Set(records.map((item)=>item.id)).size!==records.length) throw new Error("Duplicate stable IDs");
+const sourceCounts={}, statusCounts={};
+for(const item of records){sourceCounts[item.source_type]=(sourceCounts[item.source_type]||0)+1;statusCounts[item.review_status]=(statusCounts[item.review_status]||0)+1;}
+const catalog={
+  schema_version:"0.2.0",generated_at:checkedAt,inspect_source_sha:sha,title:"FronteraEval evaluation catalogue",
+  scope_note:"Discovery metadata is not independent validation. Only records marked reviewed contain a bounded FronteraEval assessment.",
+  topics,
+  collections:{"agency-transfer":{title:"Agency Transfer & Harmful Manipulation",subtitle:"Evaluations relevant to persuasion, manipulation, deception, social influence and transfer of consequential agency.",thesis:"Capability evidence is not deployment evidence; deployment is not individual effect; individual effect is not aggregate political consequence.",limitations:"The included evaluations target adjacent but non-identical constructs. FronteraEval does not aggregate them into a universal manipulation score."}},
+  stats:{records:records.length,sources:sourceCounts,review_status:statusCounts},records
+};
+
 await mkdir("site/data",{recursive:true});
 await writeFile("site/data/catalog.json",JSON.stringify(catalog,null,2)+"\n");
-const quote=v=>`"${String(v??"").replaceAll('"','""')}"`;
-const header=["id","name","organisation","source_type","topics","review_status","code_available","inspect_compatible","source_url","last_source_check"];
-const csv=[header,...records.map(r=>[r.id,r.name,r.organisation,r.source_type,r.topics.join("|"),r.review_status,r.code_available,r.inspect_compatible,r.source_url,r.last_source_check])].map(row=>row.map(quote).join(",")).join("\n")+"\n";
+const quote=(value)=>`"${String(value??"").replaceAll('"','""')}"`;
+const header=["id","name","organisation","source_type","topics","review_status","code_available","inspect_compatible","source_url","source_label","links","last_source_check"];
+const csv=[header,...records.map((item)=>[item.id,item.name,item.organisation,item.source_type,item.topics.join("|"),item.review_status,item.code_available,item.inspect_compatible,item.source_url,item.source_label,item.links.map((link)=>`${link.label}:${link.url}`).join("|"),item.last_source_check])].map((row)=>row.map(quote).join(",")).join("\n")+"\n";
 await writeFile("site/data/catalog.csv",csv);
 await writeFile("site/data/freshness.json",JSON.stringify({status:"current-build",checked_at:checkedAt,inspect_source_sha:sha,internal_tasks:internal.length,external_register_entries:registerRecords.length,canonical_sources:canonicalRecords.length},null,2)+"\n");
 console.log(JSON.stringify(catalog.stats));
