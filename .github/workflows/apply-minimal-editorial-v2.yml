@@ -1,0 +1,51 @@
+name: Stage minimal editorial interface
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: design/minimal-editorial-v2
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Restore reviewed design bundle
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BLOB_SHA: 1a0254f380be2524f9b10f2a8742c38b24346f2b
+        run: |
+          set -euo pipefail
+          curl --fail-with-body --silent --show-error \
+            --header "authorization: Bearer $GH_TOKEN" \
+            --header "accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/git/blobs/$BLOB_SHA" > blob.json
+          python - <<'PY'
+          import base64, json
+          data=json.load(open('blob.json'))
+          open('design.tar.gz','wb').write(base64.b64decode(data['content']))
+          PY
+          tar -xzf design.tar.gz
+          rm -f blob.json design.tar.gz
+      - name: Validate application and generated catalogue
+        run: |
+          npm install --no-audit --no-fund
+          npm run build
+          npm run check
+      - name: Commit reviewed redesign to its branch
+        run: |
+          git config user.name "FronteraEval automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add README.md REDESIGN.md site/app.js site/index.html site/styles.css
+          git diff --cached --quiet && exit 0
+          git commit -m "Design: compact conceptual editorial interface"
+          git push origin HEAD:design/minimal-editorial-v2
