@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://fronteraeval.netlify.app/sitemap.xml
