@@ -3,9 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Find frontier AI evaluations and understand what each one does—and does not—establish.">
-  <meta name="theme-color" content="#f4f0e7">
-  <title>FronteraEval — Find the evaluation. Read its limits.</title>
+  <meta name="description" content="Find frontier AI evaluations, follow their primary sources, and understand what each one does—and does not—establish.">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta property="og:title" content="FronteraEval">
+  <meta property="og:description" content="A source-first map of frontier AI evaluations and their evidence limits.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fronteraeval.netlify.app/">
+  <title>FronteraEval — Frontier AI evaluations, mapped</title>
   <link rel="stylesheet" href="/styles.css">
   <script defer src="/app.js"></script>
 </head>
@@ -14,19 +18,26 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="wordmark" href="#/" aria-label="FronteraEval home">Frontera<span>Eval</span></a>
-      <nav aria-label="Primary navigation">
-        <a href="#/evals">Evaluations</a>
-        <a href="#/topics">Topics</a>
-        <a href="#/collection/agency-transfer">Agency Transfer</a>
-        <a href="#/methodology">Method</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      <nav id="primary-nav" aria-label="Primary navigation">
+        <a data-nav="evals" href="#/evals">Explore</a>
+        <a data-nav="topics" href="#/topics">Topics</a>
+        <a data-nav="agency-transfer" href="#/collection/agency-transfer">Agency Transfer</a>
+        <a data-nav="methodology" href="#/methodology">Method</a>
+        <a data-nav="data" class="nav-data" href="#/data">Data</a>
       </nav>
     </div>
   </header>
   <main id="main" tabindex="-1"><div class="loading">Loading the catalogue…</div></main>
+  <div id="announcer" class="sr-only" aria-live="polite"></div>
   <footer class="site-footer">
     <div class="footer-inner">
-      <div><strong>FronteraEval</strong><span>Find the evaluation. Read its limits.</span></div>
-      <div><a href="#/updates">Freshness</a><a href="#/data">Open data</a><a href="https://github.com/apolmig/fronteraeval">Source</a></div>
+      <div class="footer-brand"><strong>FronteraEval</strong><span>Source-first evaluation intelligence.</span></div>
+      <div class="footer-links">
+        <a href="#/updates">Freshness</a>
+        <a href="#/data">Open data</a>
+        <a href="https://github.com/apolmig/fronteraeval" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
     </div>
   </footer>
   <noscript><p class="noscript">JavaScript is required for search. Raw data: <a href="/data/catalog.json">catalog.json</a>.</p></noscript>
