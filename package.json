@@ -1,0 +1,15 @@
+{
+  "name": "fronteraeval",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Decision-support catalogue for frontier AI evaluations",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node --check scripts/build.mjs && node --check site/app.js && node scripts/validate.mjs"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^10.7.9",
+    "@netlify/functions": "^5.3.0"
+  }
+}

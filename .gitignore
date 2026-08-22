@@ -1,0 +1,8 @@
+node_modules/
+.netlify/
+.env
+*.zip
+.DS_Store
+site/data/catalog.json
+site/data/catalog.csv
+site/data/freshness.json
