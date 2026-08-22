@@ -1,12 +1,12 @@
 # FronteraEval
 
-**Find the evaluation. Read its limits.**
+**Find the right evaluation. Follow the source. Read its limits.**
 
 FronteraEval is a public decision-support catalogue for frontier AI evaluation. It is designed for researchers, policy analysts, assurance teams, and technically informed general analysts.
 
 It is not a universal leaderboard or a benchmark card wall. It separates source discovery, protocol interpretation, evidence reach, model-system results, deployment claims, and downstream-effect claims.
 
-**Application:** [fronteraeval.netlify.app](https://fronteraeval.netlify.app/)
+**Application:** [fronteraeval.org](https://fronteraeval.org/)
 
 ## What it does
 
@@ -14,6 +14,7 @@ It is not a universal leaderboard or a benchmark card wall. It separates source 
 - Adds a curated set of canonical evaluation suites from other primary sources.
 - Distinguishes imported metadata, catalogued sources, and independently reviewed records.
 - Makes explicit what an evaluation can support and what it cannot establish.
+- Links every catalogue record directly to its upstream source.
 - Publishes machine-readable JSON and CSV exports.
 - Runs a weekly source sweep through Netlify Functions and Netlify Blobs.
 
@@ -67,11 +68,11 @@ Stable IDs use source prefixes such as `inspect:`, `register:`, and `canonical:`
 
 The first release is strongest as a discovery and interpretation layer. It does not yet normalise every protocol version, implementation, model-system configuration, run, and result. Imported records must not be represented as independently validated by FronteraEval.
 
-
 ## Interface principles
 
 - Search is the primary action.
 - Reviewed evidence appears before imported metadata.
+- Every catalogue row exposes its upstream source.
 - Every reviewed record leads with what the evidence supports and what it does not establish.
 - Typography remains editorial but tool-sized; the interface avoids dashboard density and poster-scale headings.
 - Agency Transfer is one research collection inside a broader evaluation map.
