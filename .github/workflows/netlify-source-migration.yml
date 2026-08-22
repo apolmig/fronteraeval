@@ -1,0 +1,27 @@
+name: One-time Netlify source migration
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    if: github.head_ref == 'deploy/netlify-standalone'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NETLIFY_PROXY_PATH: "https://netlify-mcp.netlify.app/proxy/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..kYaQOVVln36hpF66.Y59XMVbmBC_yDi5pPGYVvZmkWtlnc20LuAtsvEQ5Jgw8fR-J1pkDVEYlu5mLHzTQ4nDbTqRgzIdTfAzXbW10RUBxpf4mXYUqZx4GeOLENH4ZX5wIrHH7mwBL7V_9iRhq9auzgMefGrOpZ9XddorBRxzeGGwJ8H_T-QpsPKVtBEwu0cGj_apHB77kx8UWiAAFJKupLkfGckP8aJoNNc4eqy-zd7lH9FKHapUZzRobiJOA7m8dUar3fGFMpClMEm-WkwP3V5Wm5jw647HyBJrWpLqAGy7FBBQzUvE82h_3OuXWFL-2YifIYBpii_Vl2NVyjdhBJgZZsp-4qorKgmdrupDb9AGyXHsWGJOrfb2HDVxzvUTyE1eDmLKvzovUK2K2_L4MnIlY.WqiDuirREMAUHDFaTfiZoQ"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Regenerate and validate catalogue
+        run: npm run build && npm run check
+      - name: Deploy verified standalone source
+        run: npx -y @netlify/mcp@latest --site-id 3aef8c2b-afef-416f-a436-446eb4f81f3d --proxy-path "$NETLIFY_PROXY_PATH"
