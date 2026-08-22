@@ -3,12 +3,15 @@ name: Link Netlify repository
 on:
   push:
     branches: [ops/link-netlify-git]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: read
 
 jobs:
   link:
+    if: github.head_ref == 'ops/link-netlify-git' || github.ref == 'refs/heads/ops/link-netlify-git'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
