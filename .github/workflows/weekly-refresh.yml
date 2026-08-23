@@ -1,0 +1,59 @@
+name: Weekly catalogue refresh
+
+on:
+  schedule:
+    - cron: "23 2 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-catalogue-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Regenerate and validate catalogue
+        run: npm run build && npm run check
+
+      - name: Write refresh marker
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFile, mkdir, writeFile } from "node:fs/promises";
+          const catalog = JSON.parse(await readFile("site/data/catalog.json", "utf8"));
+          await mkdir("refresh", { recursive: true });
+          await writeFile("refresh/last-run.json", `${JSON.stringify({
+            status: "completed",
+            refreshed_at: new Date().toISOString(),
+            inspect_source_commit: catalog.inspect_source_commit,
+            records: catalog.stats.records,
+            register_entries_enriched: catalog.stats.enrichment?.register_entries_enriched ?? 0,
+            entries_with_reported_results: catalog.stats.enrichment?.entries_with_reported_results ?? 0,
+            linked_resources: catalog.stats.enrichment?.linked_resources ?? 0
+          }, null, 2)}\n`);
+          NODE
+
+      - name: Commit refresh marker
+        run: |
+          git config user.name "fronteraeval-bot"
+          git config user.email "fronteraeval-bot@users.noreply.github.com"
+          git add refresh/last-run.json
+          git commit -m "chore: weekly catalogue refresh" || exit 0
+          git pull --rebase origin main
+          git push origin HEAD:main
