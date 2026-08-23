@@ -38,6 +38,7 @@ jobs:
           import { readFile, mkdir, writeFile } from "node:fs/promises";
           const catalog = JSON.parse(await readFile("site/data/catalog.json", "utf8"));
           const enrichment = catalog.stats.enrichment || {};
+          const attribution = catalog.stats.attribution || {};
           await mkdir("refresh", { recursive: true });
           await writeFile("refresh/last-run.json", `${JSON.stringify({
             status: "completed",
@@ -50,7 +51,12 @@ jobs:
             entries_with_version: enrichment.entries_with_version ?? 0,
             entries_with_reported_results: enrichment.entries_with_reported_results ?? 0,
             linked_resources: enrichment.linked_resources ?? 0,
-            parse_failures: (enrichment.internal_metadata_failures ?? 0) + (enrichment.register_parse_failures ?? 0)
+            parse_failures: (enrichment.internal_metadata_failures ?? 0) + (enrichment.register_parse_failures ?? 0),
+            attribution_verified: attribution.status?.verified ?? 0,
+            attribution_source_derived: attribution.status?.["source-derived"] ?? 0,
+            attribution_host_only: attribution.status?.["host-only"] ?? 0,
+            attribution_unresolved: attribution.status?.unresolved ?? 0,
+            reviewed_attribution_problems: attribution.reviewed_attribution_problems ?? 0
           }, null, 2)}\n`);
           NODE
 
