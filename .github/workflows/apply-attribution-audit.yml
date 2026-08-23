@@ -3,6 +3,8 @@ name: Apply attribution and provenance audit
 on:
   push:
     branches: [audit/attribution-and-resource-model]
+  pull_request:
+    branches: [main]
 
 permissions:
   contents: write
@@ -13,7 +15,7 @@ concurrency:
 
 jobs:
   apply:
-    if: github.actor != 'github-actions[bot]'
+    if: github.head_ref == 'audit/attribution-and-resource-model' && github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
