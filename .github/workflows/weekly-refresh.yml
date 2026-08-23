@@ -37,15 +37,20 @@ jobs:
           node --input-type=module <<'NODE'
           import { readFile, mkdir, writeFile } from "node:fs/promises";
           const catalog = JSON.parse(await readFile("site/data/catalog.json", "utf8"));
+          const enrichment = catalog.stats.enrichment || {};
           await mkdir("refresh", { recursive: true });
           await writeFile("refresh/last-run.json", `${JSON.stringify({
             status: "completed",
             refreshed_at: new Date().toISOString(),
             inspect_source_commit: catalog.inspect_source_commit,
             records: catalog.stats.records,
-            register_entries_enriched: catalog.stats.enrichment?.register_entries_enriched ?? 0,
-            entries_with_reported_results: catalog.stats.enrichment?.entries_with_reported_results ?? 0,
-            linked_resources: catalog.stats.enrichment?.linked_resources ?? 0
+            internal_entries_enriched: enrichment.internal_entries_enriched ?? 0,
+            register_entries_enriched: enrichment.register_entries_enriched ?? 0,
+            entries_with_paper: enrichment.entries_with_paper ?? 0,
+            entries_with_version: enrichment.entries_with_version ?? 0,
+            entries_with_reported_results: enrichment.entries_with_reported_results ?? 0,
+            linked_resources: enrichment.linked_resources ?? 0,
+            parse_failures: (enrichment.internal_metadata_failures ?? 0) + (enrichment.register_parse_failures ?? 0)
           }, null, 2)}\n`);
           NODE
 

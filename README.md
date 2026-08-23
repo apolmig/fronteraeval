@@ -11,7 +11,8 @@ It is not a universal leaderboard or a benchmark card wall. It separates source 
 ## What it does
 
 - Imports the current internal task registry and distributed register from the official `UKGovernmentBEIS/inspect_evals` repository.
-- Parses versioned Inspect register metadata for titles, descriptions, papers, code, tasks, protocol commits, run commands, notes, and reported results.
+- Parses versioned metadata for both Inspect internal evaluation families and distributed-register entries.
+- Adds titles, descriptions, papers, implementation and metadata links, groups, versions, sample counts, dependencies, protocol commits, run commands, notes, and reported results where available.
 - Adds a curated set of canonical evaluation suites from other primary sources.
 - Distinguishes imported metadata, catalogued sources, upstream-reported results, and independently reviewed records.
 - Makes explicit what an evaluation can support and what it cannot establish.
@@ -33,7 +34,7 @@ Agency Transfer is the first editorial collection. It maps evaluations relevant 
 
 `capability → deployment → individual effect → aggregate consequence`
 
-Adjacent evaluations are not treated as interchangeable and are not aggregated into a universal manipulation score.
+Adjacent evaluations are not treated as interchangeable and are not aggregated into a universal manipulation score. The catalogue follows upstream construct definitions: for example, APE measures whether a model **attempts** persuasion under its protocol, not whether it successfully changes a human belief or behaviour.
 
 ## Build
 
@@ -43,10 +44,11 @@ npm run build
 npm run check
 ```
 
-The build has two stages:
+The build has three stages:
 
 1. generate the base catalogue from Inspect and curated canonical sources;
-2. enrich distributed-register entries from their versioned `eval.yaml` metadata.
+2. enrich distributed-register entries from versioned `register/*/eval.yaml` metadata;
+3. enrich internal tasks from versioned `src/inspect_evals/*/eval.yaml` metadata.
 
 Netlify publishes `site/` and deploys functions from `netlify/functions/`.
 
@@ -78,7 +80,7 @@ The first release is strongest as a discovery and interpretation layer. It does 
 - Search is the primary action.
 - Reviewed evidence appears before imported metadata.
 - Every catalogue row exposes its upstream source.
-- Evaluation pages expose papers, code, registry metadata, protocol information, and reported results where available.
+- Evaluation pages expose papers, code, metadata, protocol information, and reported results where available.
 - Every reviewed record leads with what the evidence supports and what it does not establish.
 - Typography remains editorial but tool-sized; the interface avoids dashboard density and poster-scale headings.
 - Agency Transfer is one research collection inside a broader evaluation map.

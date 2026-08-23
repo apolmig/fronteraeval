@@ -9,6 +9,7 @@ const errors = [];
 const ids = new Set();
 let sourceLinks = 0;
 let enrichedRegisterEntries = 0;
+let enrichedInternalEntries = 0;
 
 function isHTTPS(value) {
   try {
@@ -46,15 +47,29 @@ for (const [index, record] of catalog.records.entries()) {
     if (record.metadata_enriched) enrichedRegisterEntries += 1;
   }
 
+  if (record.source_type === "inspect-internal" && record.metadata_source === "Inspect internal eval.yaml") {
+    if (!record.metadata_url || !isHTTPS(record.metadata_url)) errors.push(`missing internal metadata provenance ${record.id}`);
+    enrichedInternalEntries += 1;
+  }
+
   if (record.reported_results && !Array.isArray(record.reported_results)) {
     errors.push(`reported_results must be an array in ${record.id}`);
   }
+}
+
+const ape = catalog.records.find((record) => record.id === "inspect:ape_eval");
+if (!ape || /effectiveness|human effect/i.test(ape.measures)) {
+  errors.push("APE assessment must distinguish persuasion attempts from persuasion effectiveness");
+}
+if (ape?.evidence_reach?.includes("controlled-human-effect")) {
+  errors.push("APE must not claim controlled human-effect evidence");
 }
 
 if (catalog.stats.records !== catalog.records.length) errors.push("stats mismatch");
 if (catalog.records.length < 250) errors.push(`catalog too small: ${catalog.records.length}`);
 if (!catalog.inspect_source_commit) errors.push("missing Inspect source commit");
 if (enrichedRegisterEntries < 30) errors.push(`too few enriched register entries: ${enrichedRegisterEntries}`);
+if (enrichedInternalEntries < 150) errors.push(`too few enriched internal entries: ${enrichedInternalEntries}`);
 if (sourceLinks < catalog.records.length) errors.push("not every record has a source link");
 
 if (errors.length) {
@@ -65,6 +80,7 @@ if (errors.length) {
 console.log(
   `Validated ${catalog.records.length} records; ` +
   `${enrichedRegisterEntries} enriched register entries; ` +
+  `${enrichedInternalEntries} enriched internal entries; ` +
   `${sourceLinks} source links; ` +
   `${catalog.stats.review_status.reviewed || 0} editorially reviewed.`
 );
