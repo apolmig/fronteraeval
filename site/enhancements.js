@@ -21,8 +21,8 @@
     if (link?.label) return link.label;
     return ({
       paper: "Paper", code: "Implementation", registry: "Registry entry",
-      documentation: "Documentation", dataset: "Dataset", framework: "Framework",
-      repository: "Repository", official: "Official source"
+      metadata: "Evaluation metadata", documentation: "Documentation", dataset: "Dataset",
+      framework: "Framework", repository: "Repository", official: "Official source"
     })[link?.kind] || "Source";
   }
 
@@ -35,20 +35,50 @@
     return raw.startsWith("/eval/") ? decodeURIComponent(raw.slice(6)) : null;
   }
 
+  function taskSummary(record) {
+    if (!record.tasks?.length) return null;
+    return record.tasks.map((task) => {
+      const count = task.dataset_samples ?? null;
+      return `${task.name}${count != null ? ` (${count} samples)` : ""}`;
+    }).join(", ");
+  }
+
   function protocolItems(record) {
     const items = [];
     if (record.paper_title) items.push(["Paper", record.paper_title]);
-    if (record.tasks?.length) items.push(["Tasks", record.tasks.map((task) => task.name).join(", ")]);
+    if (record.family_title && record.family_title !== record.name) items.push(["Evaluation family", record.family_title]);
+    if (record.group) items.push(["Inspect group", record.group]);
+    if (record.version || record.protocol?.version) items.push(["Version", record.version || record.protocol.version]);
+    if (record.task?.dataset_samples != null) items.push(["Task samples", String(record.task.dataset_samples)]);
+    const tasks = taskSummary(record);
+    if (tasks) items.push(["Tasks", tasks]);
     if (record.protocol?.implementation_commit) items.push(["Implementation commit", record.protocol.implementation_commit]);
     if (record.protocol?.report_timestamp) items.push(["Results reported", record.protocol.report_timestamp]);
     if (record.models_reported?.length) items.push(["Models reported", String(record.models_reported.length)]);
-    if (record.contributors?.length) items.push(["Register contributors", record.contributors.join(", ")]);
+    if (record.contributors?.length) items.push(["Contributors", record.contributors.join(", ")]);
     return items;
   }
 
   function renderMetrics(metrics) {
     if (!Array.isArray(metrics) || metrics.length === 0) return "—";
     return metrics.map((metric) => `<span><strong>${esc(metric.key)}</strong> ${esc(formatValue(metric.value))}</span>`).join("");
+  }
+
+  function metadataDescription(record) {
+    if (record.metadata_source === "Inspect internal eval.yaml") {
+      return "Metadata extracted from versioned Inspect evaluation metadata. Editorial interpretation remains separate.";
+    }
+    if (record.metadata_enriched) {
+      return "Metadata extracted from the versioned Inspect register entry. Editorial interpretation remains separate.";
+    }
+    return "Discovery metadata only. Read the upstream source before relying on this record.";
+  }
+
+  function metadataLink(record) {
+    const url = record.registry_url || record.metadata_url;
+    if (!url) return "";
+    const label = record.registry_url ? "Inspect register metadata" : "Inspect evaluation metadata";
+    return `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(label)} ↗</a>`;
   }
 
   async function enhanceDetail() {
@@ -78,15 +108,13 @@
     if (!sourcePanel.querySelector(".source-assurance")) {
       const assurance = document.createElement("p");
       assurance.className = "source-assurance";
-      assurance.innerHTML = record.metadata_enriched
-        ? "Metadata extracted from the versioned Inspect register entry. Editorial interpretation remains separate."
-        : "Discovery metadata only. Read the upstream source before relying on this record.";
+      assurance.textContent = metadataDescription(record);
       sourcePanel.querySelector(".copy-link")?.before(assurance);
     }
 
     const items = protocolItems(record);
     const results = Array.isArray(record.reported_results) ? record.reported_results : [];
-    const hasProtocol = items.length || record.protocol?.command || record.protocol?.source_comment || record.tasks?.length;
+    const hasProtocol = items.length || record.protocol?.command || record.protocol?.source_comment || record.external_assets?.length;
     const hasResults = results.length > 0;
     if (!hasProtocol && !hasResults && links.length <= 1) return;
 
@@ -96,8 +124,8 @@
     section.dataset.enrichment = "upstream";
     section.innerHTML = `
       <div class="section-heading compact">
-        <div><h2>Upstream evidence</h2><p>Versioned metadata from the evaluation’s own registry, paper, code, or report.</p></div>
-        ${record.registry_url ? `<a href="${esc(record.registry_url)}" target="_blank" rel="noopener">Inspect metadata ↗</a>` : ""}
+        <div><h2>Upstream evidence</h2><p>Versioned metadata from the evaluation’s own registry, paper, implementation, or report.</p></div>
+        ${metadataLink(record)}
       </div>
       ${items.length ? `<dl class="protocol-grid">${items.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join("")}</dl>` : ""}
       ${record.protocol?.command ? `<div class="run-command"><span>Published run command</span><code>${esc(record.protocol.command)}</code></div>` : ""}
@@ -133,7 +161,9 @@
 
     const enrichment = catalog.stats?.enrichment || {};
     definitionList.insertAdjacentHTML("beforeend", `
+      <dt>Internal metadata</dt><dd>${esc(enrichment.internal_entries_enriched ?? 0)} tasks enriched</dd>
       <dt>Register metadata</dt><dd>${esc(enrichment.register_entries_enriched ?? 0)} entries enriched</dd>
+      <dt>Paper links</dt><dd>${esc(enrichment.entries_with_paper ?? 0)} records</dd>
       <dt>Source links</dt><dd>${esc(enrichment.linked_resources ?? 0)} versioned resources</dd>
       <dt>Reported results</dt><dd>${esc(enrichment.entries_with_reported_results ?? 0)} entries with upstream result tables</dd>
     `);
@@ -149,12 +179,12 @@
     article.insertAdjacentHTML("beforeend", `
       <h2>Build-time source enrichment</h2>
       <div class="metric-list enrichment-metrics">
+        <div><strong>${esc(enrichment.internal_entries_enriched ?? 0)}</strong><span>Internal tasks enriched</span></div>
         <div><strong>${esc(enrichment.register_entries_enriched ?? 0)}</strong><span>Register entries enriched</span></div>
         <div><strong>${esc(enrichment.entries_with_reported_results ?? 0)}</strong><span>Entries with results</span></div>
         <div><strong>${esc(enrichment.linked_resources ?? 0)}</strong><span>Versioned resources</span></div>
-        <div><strong>${esc(enrichment.register_parse_failures ?? 0)}</strong><span>Parse failures</span></div>
       </div>
-      <p class="results-caveat">A scheduled GitHub refresh rebuilds the catalogue weekly. Netlify then deploys the validated source from <code>main</code>.</p>
+      <p class="results-caveat">A scheduled GitHub refresh rebuilds the catalogue weekly. Netlify then deploys the validated source from <code>main</code>. Parse failures: ${esc((enrichment.internal_metadata_failures ?? 0) + (enrichment.register_parse_failures ?? 0))}.</p>
     `);
   }
 
