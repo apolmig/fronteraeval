@@ -1,6 +1,6 @@
 {
-  "status": "validated-bootstrap",
-  "refreshed_at": "2026-08-23T19:15:55Z",
+  "status": "completed",
+  "refreshed_at": "2026-08-23T19:21:58.309Z",
   "inspect_source_commit": "32b79a244f17ecf54fa1186d30f33dc10143c10f",
   "records": 314,
   "internal_entries_enriched": 247,
