@@ -8,7 +8,8 @@
     records: [],
     live: null,
     filters: { q: "", topic: "", status: "", source: "", sort: "review" },
-    page: 1
+    page: 1,
+    searchMeta: { interpretation: null, reasons: new Map() }
   };
 
   const main = document.querySelector("#main");
@@ -61,6 +62,7 @@
         organisation: "UK AI Security Institute / upstream authors",
         source_type: entry.source_type,
         source_url: entry.source_url,
+        links: [{ label: "Inspect source", kind: "implementation", url: entry.source_url }],
         topics: inferTopics(entry.name),
         description: "New Inspect entry detected by the weekly source sweep.",
         review_status: "imported",
@@ -167,6 +169,10 @@
     return counts;
   }
 
+  function topicLabels() {
+    return Object.fromEntries(Object.entries(state.catalog?.topics || {}).map(([id, topic]) => [id, topic.label]));
+  }
+
   function sortedRecords(records) {
     const copy = [...records];
     if (state.filters.sort === "az") return copy.sort((a, b) => a.name.localeCompare(b.name));
@@ -177,28 +183,70 @@
     );
   }
 
-  function filteredRecords() {
+  function fallbackSearch() {
     const { q, topic, status, source } = state.filters;
     const tokens = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
-    return state.records.filter((record) => {
+    const records = state.records.filter((record) => {
       const searchable = [
         record.name, record.description, record.organisation, record.id,
+        record.paper_title, record.group, ...(record.tags || []),
         record.measures, record.does_not_measure, ...record.topics.map(topicLabel)
       ].join(" ").toLowerCase();
-      return tokens.every((token) => searchable.includes(token))
+      return (!tokens.length || tokens.some((token) => searchable.includes(token)))
         && (!topic || record.topics.includes(topic))
         && (!status || record.review_status === status)
         && (!source || record.source_type === source);
     });
+    state.searchMeta = { interpretation: null, reasons: new Map() };
+    return sortedRecords(records);
+  }
+
+  function searchRecords() {
+    const engine = globalThis.FronteraSearch;
+    if (!engine?.search) return fallbackSearch();
+
+    const result = engine.search(state.records, state.filters.q, {
+      topicLabels: topicLabels(),
+      filters: {
+        topic: state.filters.topic,
+        status: state.filters.status,
+        source: state.filters.source
+      }
+    });
+
+    state.searchMeta = {
+      interpretation: result.interpretation,
+      reasons: new Map(result.results.map((entry) => [entry.record.id, entry.reasons || []]))
+    };
+
+    const records = result.results.map((entry) => entry.record);
+    if (!state.filters.q) return sortedRecords(records);
+    if (state.filters.sort === "az" || state.filters.sort === "source") return sortedRecords(records);
+    return records;
   }
 
   function sourceLink(record, className = "source-link") {
-    if (!record.source_url) return "";
-    return `<a class="${className}" href="${esc(record.source_url)}" target="_blank" rel="noopener" aria-label="Open source for ${esc(record.name)}">Source ↗</a>`;
+    const url = record.links?.[0]?.url || record.source_url;
+    if (!url) return "";
+    return `<a class="${className}" href="${esc(url)}" target="_blank" rel="noopener" aria-label="Open source for ${esc(record.name)}">Source ↗</a>`;
+  }
+
+  function resourceLabel(link) {
+    return link?.label || ({
+      paper: "Paper",
+      code: "Implementation",
+      implementation: "Implementation",
+      registry: "Registry entry",
+      documentation: "Documentation",
+      dataset: "Dataset",
+      framework: "Framework",
+      official: "Official source"
+    })[link?.kind] || "Source";
   }
 
   function recordLinks(record) {
-    const links = [{ label: sourceActionLabel(record), url: record.source_url }];
+    const links = (record.links || []).map((link) => ({ label: resourceLabel(link), url: link.url }));
+    if (!links.length && record.source_url) links.push({ label: sourceActionLabel(record), url: record.source_url });
     if (record.inspect_compatible) {
       links.push({ label: "Inspect documentation", url: "https://inspect.aisi.org.uk/" });
       links.push({ label: "Inspect Evals repository", url: "https://github.com/UKGovernmentBEIS/inspect_evals" });
@@ -225,10 +273,10 @@
         <div class="wide hero-content">
           <div class="eyebrow">Frontier AI evaluation index</div>
           <h1>Find the right evaluation.</h1>
-          <p class="lede">Search frontier-AI evaluations by risk, capability, construct, or method. Every record leads back to its source; reviewed records also state what the evidence cannot establish.</p>
+          <p class="lede">Search by the concept you care about, not the benchmark’s exact wording. Results are ranked across titles, topics, methods, papers, tasks, and adjacent risk concepts.</p>
           <form class="global-search" id="home-search">
             <span aria-hidden="true">⌕</span>
-            <input id="home-query" type="search" autocomplete="off" aria-label="Search evaluations" placeholder="Search autonomy, persuasion, cyber, scheming, safeguards…">
+            <input id="home-query" type="search" autocomplete="off" aria-label="Search evaluations" placeholder="Try harmful manipulation, autonomous R&amp;D, scheming…">
             <button type="submit">Search</button>
           </form>
           <div class="quick-links" aria-label="Example searches">
@@ -302,10 +350,11 @@
     main.innerHTML = `
       <header class="page-head"><div class="wide page-head-inner">
         <div><div class="eyebrow">Catalogue</div><h1>Evaluations</h1></div>
-        <p>Search the full catalogue. Reviewed records include an independent inference boundary; imported records are discovery metadata.</p>
+        <p>Domain-aware search expands common risk concepts while keeping the result list transparent and source-linked.</p>
       </div></header>
       <section class="browse"><div class="wide">
         <div class="filter-shell" id="filter-shell"></div>
+        <div id="search-context"></div>
         <div class="results-summary"><strong id="result-count" aria-live="polite"></strong><button id="clear-filters" type="button">Clear filters</button></div>
         <div id="results"></div>
         <div id="pagination"></div>
@@ -318,12 +367,13 @@
     const topicOptions = Object.entries(state.catalog.topics)
       .map(([id, topic]) => `<option value="${esc(id)}" ${state.filters.topic === id ? "selected" : ""}>${esc(topic.label)}</option>`)
       .join("");
+    const defaultSortLabel = state.filters.q ? "Relevance" : "Reviewed first";
     document.querySelector("#filter-shell").innerHTML = `
-      <div class="filter-search"><span aria-hidden="true">⌕</span><input id="filter-q" type="search" value="${esc(state.filters.q)}" placeholder="Search evaluations" aria-label="Search evaluations"></div>
+      <div class="filter-search"><span aria-hidden="true">⌕</span><input id="filter-q" type="search" value="${esc(state.filters.q)}" placeholder="Search by concept or evaluation" aria-label="Search evaluations"></div>
       <label><span>Topic</span><select id="filter-topic"><option value="">All topics</option>${topicOptions}</select></label>
       <label><span>Evidence state</span><select id="filter-status"><option value="">All states</option><option value="reviewed" ${state.filters.status === "reviewed" ? "selected" : ""}>Reviewed</option><option value="catalogued" ${state.filters.status === "catalogued" ? "selected" : ""}>Catalogued</option><option value="imported" ${state.filters.status === "imported" ? "selected" : ""}>Imported</option></select></label>
       <label><span>Source</span><select id="filter-source"><option value="">All sources</option><option value="inspect-internal" ${state.filters.source === "inspect-internal" ? "selected" : ""}>Inspect implementation</option><option value="inspect-register" ${state.filters.source === "inspect-register" ? "selected" : ""}>Inspect register</option><option value="canonical-source" ${state.filters.source === "canonical-source" ? "selected" : ""}>Other canonical</option></select></label>
-      <label><span>Sort</span><select id="filter-sort"><option value="review" ${state.filters.sort === "review" ? "selected" : ""}>Reviewed first</option><option value="az" ${state.filters.sort === "az" ? "selected" : ""}>A–Z</option><option value="source" ${state.filters.sort === "source" ? "selected" : ""}>Organisation</option></select></label>`;
+      <label><span>Sort</span><select id="filter-sort"><option value="review" ${state.filters.sort === "review" ? "selected" : ""}>${defaultSortLabel}</option><option value="az" ${state.filters.sort === "az" ? "selected" : ""}>A–Z</option><option value="source" ${state.filters.sort === "source" ? "selected" : ""}>Organisation</option></select></label>`;
 
     const bindings = [
       ["#filter-q", "q", "input"], ["#filter-topic", "topic", "change"],
@@ -346,16 +396,47 @@
     });
   }
 
+  function renderSearchContext(count) {
+    const node = document.querySelector("#search-context");
+    if (!node) return;
+    const query = state.filters.q.trim();
+    if (!query) {
+      node.innerHTML = "";
+      return;
+    }
+
+    const interpretation = state.searchMeta.interpretation;
+    if (interpretation) {
+      node.innerHTML = `<div class="semantic-summary">
+        <div><strong>Interpreted as ${esc(interpretation.labels.join(" + "))}</strong><span>${esc(interpretation.notes.join(" "))}</span></div>
+        <small>${count} related evaluation${count === 1 ? "" : "s"} · domain-aware ranking</small>
+      </div>`;
+      return;
+    }
+
+    node.innerHTML = `<div class="semantic-summary">
+      <div><strong>Ranked matches for “${esc(query)}”</strong><span>Search covers titles, topics, descriptions, papers, tasks, methods, and editorial fields; partial and close-word matches are allowed.</span></div>
+      <small>${count} evaluation${count === 1 ? "" : "s"}</small>
+    </div>`;
+  }
+
   function renderResults() {
-    const records = sortedRecords(filteredRecords());
+    const records = searchRecords();
     const pages = Math.max(1, Math.ceil(records.length / PAGE_SIZE));
     if (state.page > pages) state.page = pages;
     const start = (state.page - 1) * PAGE_SIZE;
     const visible = records.slice(start, start + PAGE_SIZE);
     document.querySelector("#result-count").textContent = `${records.length} evaluation${records.length === 1 ? "" : "s"}`;
+    renderSearchContext(records.length);
     document.querySelector("#results").innerHTML = records.length
       ? `<div class="eval-list catalogue-list">${visible.map(renderRow).join("")}</div>`
-      : `<div class="empty"><h2>No matching evaluation</h2><p>Try a broader construct or clear a filter.</p></div>`;
+      : `<div class="empty"><h2>No confident match</h2><p>Try a broader concept or one of the domain searches below.</p><div class="empty-suggestions"><button data-suggest="harmful manipulation">Harmful manipulation</button><button data-suggest="autonomous AI R&D">Autonomous AI R&amp;D</button><button data-suggest="scheming">Scheming</button><button data-suggest="jailbreak robustness">Jailbreak robustness</button></div></div>`;
+    document.querySelectorAll("[data-suggest]").forEach((button) => button.addEventListener("click", () => {
+      state.filters.q = button.dataset.suggest;
+      state.page = 1;
+      writeFilters();
+      renderBrowse();
+    }));
     renderPagination(pages, records.length);
   }
 
@@ -376,10 +457,13 @@
   }
 
   function renderRow(record) {
+    const inSearch = parseHash().path === "/evals" && state.filters.q.trim();
+    const reasons = inSearch ? state.searchMeta.reasons.get(record.id) || [] : [];
     return `<article class="eval-row">
       <a class="eval-main" href="#/eval/${encodeURIComponent(record.id)}">
         <span class="eval-title">${esc(record.name)}</span>
         <span class="eval-description">${esc(record.description)}</span>
+        ${reasons.length ? `<span class="search-match">${esc(reasons.slice(0, 2).join(" · "))}</span>` : ""}
       </a>
       <div class="eval-context">
         <span>${esc(record.organisation)}</span>
@@ -416,7 +500,7 @@
             <h1>${esc(record.name)}</h1>
             <p>${esc(record.description)}</p>
           </div>
-          <div class="record-actions">${links.map((link, index) => `<a class="${index === 0 ? "button primary" : "button"}" href="${esc(link.url)}" target="_blank" rel="noopener">${esc(link.label)} ↗</a>`).join("")}</div>
+          <div class="record-actions">${links.slice(0, 4).map((link, index) => `<a class="${index === 0 ? "button primary" : "button"}" href="${esc(link.url)}" target="_blank" rel="noopener">${esc(link.label)} ↗</a>`).join("")}</div>
         </div>
         <div class="record-meta"><span>${esc(record.organisation)}</span><span>${esc(sourceLabel(record.source_type))}</span><span>Checked ${esc(formatDate(record.last_source_check))}</span></div>
       </div></header>
@@ -450,7 +534,7 @@
         </article>
 
         <aside class="source-panel">
-          <h2>Source and record</h2>
+          <h2>Sources and record</h2>
           <div class="source-links">${links.map((link) => `<a href="${esc(link.url)}" target="_blank" rel="noopener"><span>${esc(link.label)}</span><strong>↗</strong></a>`).join("")}</div>
           <dl>
             <dt>Organisation</dt><dd>${esc(record.organisation)}</dd>
@@ -513,6 +597,7 @@
       <article class="prose">
         <h2>Three evidence states</h2>
         <div class="state-list"><div><strong>Reviewed</strong><p>A bounded FronteraEval interpretation with an explicit inference ceiling.</p></div><div><strong>Catalogued</strong><p>A primary source or registered implementation has been identified.</p></div><div><strong>Imported</strong><p>Official metadata for discovery only; no independent interpretation.</p></div></div>
+        <h2>Search semantics</h2><p>Search combines weighted lexical matching with a small, transparent domain ontology. It expands common concepts such as harmful manipulation, autonomous AI R&amp;D, scheming, cyber capability, and jailbreak robustness into adjacent terms and topics. It does not use a hidden universal similarity score, and a search match does not imply construct equivalence.</p>
         <h2>Units are not interchangeable</h2><p>An evaluation family is not an implementation. An implementation is not a run. A run is not a result. A familiar model name is not a fully specified model system.</p>
         <h2>Evidence reach</h2><p>A controlled result may support a claim about model behaviour while leaving deployment, human effect, and aggregate outcome unmeasured. Evidence reach is an inference boundary, not a grade.</p>
         <h2>Comparability</h2><p>Scores should only be compared when construct, protocol, model-system configuration, elicitation, and outcome metric align. Topic proximity is not statistical comparability.</p>
@@ -533,7 +618,7 @@
     document.title = "Open data — FronteraEval";
     main.innerHTML = `
       <header class="page-head"><div class="wide page-head-inner"><div><div class="eyebrow">Open metadata</div><h1>Data</h1></div><p>Reuse the catalogue, but preserve record state, provenance, and inference limits.</p></div></header>
-      <article class="prose"><div class="download-list"><a href="/data/catalog.json" download><strong>JSON catalogue</strong><span>Complete structured records ↓</span></a><a href="/data/catalog.csv" download><strong>CSV catalogue</strong><span>Tabular metadata ↓</span></a><a href="/data/freshness.json"><strong>Build freshness</strong><span>Source snapshot ↗</span></a></div><h2>Snapshot</h2><dl class="data-dl"><dt>Records</dt><dd>${state.catalog.stats.records}</dd><dt>Inspect commit</dt><dd><code>${esc(state.catalog.inspect_source_sha)}</code></dd><dt>Generated</dt><dd>${esc(formatDate(state.catalog.generated_at))}</dd><dt>Schema</dt><dd>${esc(state.catalog.schema_version)}</dd></dl></article>`;
+      <article class="prose"><div class="download-list"><a href="/data/catalog.json" download><strong>JSON catalogue</strong><span>Complete structured records ↓</span></a><a href="/data/catalog.csv" download><strong>CSV catalogue</strong><span>Tabular metadata ↓</span></a><a href="/data/freshness.json"><strong>Build freshness</strong><span>Source snapshot ↗</span></a></div><h2>Snapshot</h2><dl class="data-dl"><dt>Records</dt><dd>${state.catalog.stats.records}</dd><dt>Inspect commit</dt><dd><code>${esc(state.catalog.inspect_source_commit || state.catalog.inspect_source_sha)}</code></dd><dt>Generated</dt><dd>${esc(formatDate(state.catalog.generated_at))}</dd><dt>Schema</dt><dd>${esc(state.catalog.schema_version)}</dd></dl></article>`;
   }
 
   function renderNotFound() {
