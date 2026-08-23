@@ -26,8 +26,12 @@
     })[link?.kind] || "Source";
   }
 
+  function currentPath() {
+    return (location.hash || "#/").slice(1).split("?")[0];
+  }
+
   function currentRecordID() {
-    const raw = (location.hash || "").slice(1).split("?")[0];
+    const raw = currentPath();
     return raw.startsWith("/eval/") ? decodeURIComponent(raw.slice(6)) : null;
   }
 
@@ -114,9 +118,57 @@
     else content.append(section);
   }
 
+  async function enhanceDataPage() {
+    if (currentPath() !== "/data") return;
+    const catalog = await catalogPromise;
+    const definitionList = document.querySelector(".data-dl");
+    if (!catalog || !definitionList || definitionList.dataset.enriched === "true") return;
+    definitionList.dataset.enriched = "true";
+
+    const terms = [...definitionList.querySelectorAll("dt")];
+    const inspectTerm = terms.find((term) => term.textContent.trim() === "Inspect commit");
+    if (inspectTerm?.nextElementSibling && catalog.inspect_source_commit) {
+      inspectTerm.nextElementSibling.innerHTML = `<code>${esc(catalog.inspect_source_commit)}</code>`;
+    }
+
+    const enrichment = catalog.stats?.enrichment || {};
+    definitionList.insertAdjacentHTML("beforeend", `
+      <dt>Register metadata</dt><dd>${esc(enrichment.register_entries_enriched ?? 0)} entries enriched</dd>
+      <dt>Source links</dt><dd>${esc(enrichment.linked_resources ?? 0)} versioned resources</dd>
+      <dt>Reported results</dt><dd>${esc(enrichment.entries_with_reported_results ?? 0)} entries with upstream result tables</dd>
+    `);
+  }
+
+  async function enhanceUpdatesPage() {
+    if (currentPath() !== "/updates") return;
+    const catalog = await catalogPromise;
+    const article = document.querySelector("article.prose");
+    if (!catalog || !article || article.dataset.enriched === "true") return;
+    article.dataset.enriched = "true";
+    const enrichment = catalog.stats?.enrichment || {};
+    article.insertAdjacentHTML("beforeend", `
+      <h2>Build-time source enrichment</h2>
+      <div class="metric-list enrichment-metrics">
+        <div><strong>${esc(enrichment.register_entries_enriched ?? 0)}</strong><span>Register entries enriched</span></div>
+        <div><strong>${esc(enrichment.entries_with_reported_results ?? 0)}</strong><span>Entries with results</span></div>
+        <div><strong>${esc(enrichment.linked_resources ?? 0)}</strong><span>Versioned resources</span></div>
+        <div><strong>${esc(enrichment.register_parse_failures ?? 0)}</strong><span>Parse failures</span></div>
+      </div>
+      <p class="results-caveat">A scheduled GitHub refresh rebuilds the catalogue weekly. Netlify then deploys the validated source from <code>main</code>.</p>
+    `);
+  }
+
   function scheduleEnhancement() {
-    window.setTimeout(enhanceDetail, 0);
-    window.setTimeout(enhanceDetail, 120);
+    window.setTimeout(() => {
+      enhanceDetail();
+      enhanceDataPage();
+      enhanceUpdatesPage();
+    }, 0);
+    window.setTimeout(() => {
+      enhanceDetail();
+      enhanceDataPage();
+      enhanceUpdatesPage();
+    }, 120);
   }
 
   window.addEventListener("hashchange", scheduleEnhancement);
