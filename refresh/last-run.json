@@ -1,7 +1,13 @@
 {
-  "status": "bootstrap",
-  "refreshed_at": null,
-  "inspect_source_commit": null,
-  "records": null,
-  "register_entries_enriched": null
+  "status": "validated-bootstrap",
+  "refreshed_at": "2026-08-23T19:15:55Z",
+  "inspect_source_commit": "32b79a244f17ecf54fa1186d30f33dc10143c10f",
+  "records": 314,
+  "internal_entries_enriched": 247,
+  "register_entries_enriched": 42,
+  "entries_with_paper": 276,
+  "entries_with_version": 289,
+  "entries_with_reported_results": 9,
+  "linked_resources": 1415,
+  "parse_failures": 0
 }
