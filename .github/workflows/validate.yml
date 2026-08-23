@@ -35,7 +35,9 @@ jobs:
           path: |
             .gitignore
             README.md
+            ATTRIBUTION.md
             REDESIGN.md
+            data
             netlify.toml
             package.json
             scripts

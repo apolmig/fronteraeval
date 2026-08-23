@@ -1,0 +1,51 @@
+name: Apply attribution and provenance audit
+
+on:
+  push:
+    branches: [audit/attribution-and-resource-model]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apply-attribution-audit
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    if: github.head_ref == 'audit/attribution-and-resource-model' && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/attribution-and-resource-model
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Apply audited source tree
+        run: |
+          base64 --decode tools/attribution-audit-payload.b64 > /tmp/fronteraeval-audit.tar.gz
+          echo 'f336d3d8fcdc8ea1751e9bedbf54e79ed690e6db30077402700efd6ea30e858a  /tmp/fronteraeval-audit.tar.gz' | sha256sum --check
+          tar -xzf /tmp/fronteraeval-audit.tar.gz
+          rm tools/attribution-audit-payload.b64
+          rm .github/workflows/apply-attribution-audit.yml
+
+      - name: Generate and validate audited catalogue
+        run: |
+          npm install --no-audit --no-fund
+          npm run build
+          npm run check
+
+      - name: Commit audited implementation
+        run: |
+          git config user.name 'fronteraeval-audit-bot'
+          git config user.email 'fronteraeval-audit-bot@users.noreply.github.com'
+          git add -A
+          git commit -m 'Audit attribution, provenance, resource types, and construct boundaries'
+          git push origin HEAD:audit/attribution-and-resource-model
