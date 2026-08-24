@@ -1,13 +1,13 @@
 {
-  "status": "completed",
-  "refreshed_at": "2026-08-23T19:21:58.309Z",
-  "inspect_source_commit": "32b79a244f17ecf54fa1186d30f33dc10143c10f",
-  "records": 314,
-  "internal_entries_enriched": 247,
-  "register_entries_enriched": 42,
-  "entries_with_paper": 276,
-  "entries_with_version": 289,
-  "entries_with_reported_results": 9,
-  "linked_resources": 1415,
-  "parse_failures": 0
+  "status": "pending-source-registry-v2",
+  "refreshed_at": null,
+  "inspect_source_commit": null,
+  "records": null,
+  "source_groups": null,
+  "source_status": null,
+  "paper_status": null,
+  "unresolved_records": null,
+  "host_only_records": null,
+  "reviewed_source_problems": null,
+  "parse_failures": null
 }
