@@ -2,50 +2,58 @@
 
 **Find the right evaluation. Follow the source. Read its limits.**
 
-FronteraEval is a public decision-support catalogue for frontier AI evaluation. It is designed for researchers, policy analysts, assurance teams, and technically informed general analysts.
+FronteraEval is a public decision-support catalogue for frontier AI evaluation, designed for researchers, policy analysts, assurance teams, and technically informed general analysts.
 
-It is not a universal leaderboard or a benchmark card wall. It separates source discovery, evaluation origin, implementation provenance, protocol interpretation, evidence reach, model-system results, deployment claims, and downstream-effect claims.
+It is not a universal leaderboard. It separates evaluation origin, paper authorship, reference implementation, Inspect provenance, protocol interpretation, evidence reach, model-system results, deployment claims, and downstream-effect claims.
 
 **Application:** [fronteraeval.org](https://fronteraeval.org/)
 
 ## What it does
 
-- Imports the current internal task registry and distributed register from the official `UKGovernmentBEIS/inspect_evals` repository.
-- Parses versioned Inspect metadata for titles, descriptions, papers, code, tasks, protocol commits, run commands, notes, and reported results.
-- Adds a curated set of canonical evaluation suites from other primary sources.
+- Imports versioned internal tasks and distributed-register entries from Inspect Evals.
+- Adds a curated set of canonical evaluation resources.
+- Resolves papers, paper authors, upstream implementations, developer organisations, datasets, and Inspect hosting as separate roles.
+- Retains an explicit `paper-only`, `host-only`, or `unresolved` state rather than guessing an institution.
 - Distinguishes imported metadata, catalogued sources, upstream-reported results, and independently reviewed records.
-- Separates the evaluation developer, original paper, reference implementation, Inspect implementation, registry host, and dataset provider.
-- Makes explicit what an evaluation can support and what it cannot establish.
-- Links every catalogue record directly to one or more upstream resources.
-- Publishes machine-readable JSON and CSV exports.
-- Rebuilds and validates the catalogue weekly through GitHub and deploys the result from `main` through Netlify.
+- Makes explicit what a reviewed evaluation can support and what it cannot establish.
+- Publishes JSON and CSV exports and a machine-readable source audit.
+- Rebuilds and validates the catalogue weekly and deploys from `main` through Netlify.
 
-## Attribution is role-based
+## Source resolution is role-based
 
-A registry host is not automatically an evaluation author. An implementation maintainer is not automatically the paper author. FronteraEval therefore records explicit roles rather than assigning every Inspect-hosted evaluation to the UK AI Security Institute.
+A registry host is not automatically an author. A maintained implementation is not automatically the original benchmark. A dataset namespace is not automatically the institution behind a paper.
 
-For example, APE is attributed to **FAR AI** as the evaluation developer; its paper and FAR AI reference implementation are separate resources; Inspect Evals is shown only as the maintained Inspect implementation and catalogue host.
+For example, APE is attributed to **FAR AI** as evaluation developer; the APE paper and FAR AI reference implementation are separate resources; Inspect Evals appears only as maintained implementation provenance.
 
-See [ATTRIBUTION.md](ATTRIBUTION.md) for the schema, confidence states, and correction policy.
+See [ATTRIBUTION.md](ATTRIBUTION.md).
 
-## Record states
+## Evidence states
 
-- `imported`: official metadata; discovery only.
-- `catalogued`: a primary source or registered implementation has been identified.
-- `reviewed`: FronteraEval has added a bounded interpretation with an explicit inference ceiling.
+Catalogue review state:
 
-Attribution has a separate state:
+- `imported` — source metadata for discovery only;
+- `catalogued` — a primary source or implementation has been identified;
+- `reviewed` — FronteraEval has added a bounded interpretation and inference ceiling.
 
-- `verified`: supported by an official source or reviewed override;
-- `source-derived`: derived from an upstream paper, repository, or dataset with a narrow role;
-- `host-only`: only the implementation or registry host is verified;
-- `unresolved`: no defensible attribution source was found.
+Source-resolution state:
 
-Upstream-reported result tables are labelled as such. They are not represented as independently reproduced by FronteraEval.
+- `verified`
+- `source-derived`
+- `paper-only`
+- `host-only`
+- `unresolved`
+
+Paper state:
+
+- `present`
+- `not-found`
+- `not-applicable`
+
+Upstream-reported result tables are labelled as such and are not represented as independently reproduced.
 
 ## Agency Transfer
 
-Agency Transfer is the first editorial collection. It maps evaluations relevant to persuasion, manipulation, deception, social influence, and human agency against the chain:
+Agency Transfer is the first editorial collection. It maps persuasion, manipulation, deception, social influence, and human-agency evaluations against:
 
 `capability → deployment → individual effect → aggregate consequence`
 
@@ -54,53 +62,51 @@ Adjacent evaluations are not treated as interchangeable and are not aggregated i
 ## Build
 
 ```bash
-npm install
+npm ci
 npm run build
 npm run check
 ```
 
-The build has five stages:
+Normal builds use the Inspect commit pinned in `data/source-registry.json`, so CI and Netlify remain reproducible.
 
-1. generate the base catalogue from Inspect and curated canonical sources;
-2. enrich distributed-register entries from their versioned `eval.yaml` metadata;
-3. enrich internal Inspect tasks from versioned evaluation metadata;
-4. assign explicit attribution and provenance roles;
-5. validate attribution, construct boundaries, semantic-search regressions, and source integrity.
+A full source refresh uses:
 
-Netlify publishes `site/` and deploys functions from `netlify/functions/`.
+```bash
+REFRESH_INSPECT=1 GITHUB_TOKEN=... npm run refresh:sources
+```
 
-## Weekly freshness
+The pipeline:
 
-Two complementary jobs run each Sunday:
+1. generates the base catalogue from a pinned Inspect commit;
+2. enriches distributed-register metadata;
+3. enriches internal Inspect-family metadata;
+4. applies the committed source registry;
+5. validates provenance, paper metadata, source roles, construct boundaries, and semantic-search regressions.
 
-- **02:17 UTC — Netlify source sweep:** detects new, missing, or renamed Inspect entries and writes live freshness status to Netlify Blobs.
-- **02:23 UTC — GitHub catalogue refresh:** regenerates and validates the complete catalogue, commits a refresh marker, and triggers a Git-linked Netlify production build.
+## Weekly workflows
 
-Automation does not author substantive editorial fields such as `measures`, `does_not_measure`, evidence reach, comparability, policy relevance, or evaluation authorship.
+Two jobs run each Sunday:
 
-Editorial-review dates are fixed. Weekly builds update source-check dates, not the date of the last human review.
+- **02:17 UTC — Netlify source sweep:** detects new, removed, or renamed Inspect entries and writes live freshness status.
+- **02:23 UTC — GitHub source refresh:** updates the pinned Inspect commit, papers, source organisations, and reference implementations; runs all quality gates; commits the source registry and refresh marker; and triggers a Git-linked Netlify production deployment.
+
+Automation does not author substantive FronteraEval judgments such as `measures`, `does_not_measure`, evidence reach, comparability, or policy relevance.
 
 ## Data
 
-Generated outputs:
+Generated public outputs:
 
 - `/data/catalog.json`
 - `/data/catalog.csv`
 - `/data/freshness.json`
-- `/data/attribution-audit.json`
+- `/data/source-audit.json`
 
-Stable IDs use source prefixes such as `inspect:`, `register:`, and `canonical:`. Versioned upstream links and the exact Inspect commit are retained in record provenance.
+Committed source inputs:
+
+- `data/source-registry.json`
+- `data/source-overrides.json`
+- `data/entity-aliases.json`
 
 ## Current limitation
 
-The catalogue is strongest as a discovery and interpretation layer. It does not yet normalise every evaluation family, protocol version, implementation, model-system configuration, run, and result into separate first-class entities. Imported, source-derived, and upstream-reported records must not be represented as independently validated by FronteraEval.
-
-## Interface principles
-
-- Search is the primary action.
-- Reviewed evidence appears before imported metadata.
-- Every catalogue row exposes a preferred upstream source.
-- Evaluation pages expose evaluation origin, papers, reference code, Inspect implementation, registry metadata, protocol information, and reported results where available.
-- Every reviewed record leads with what the evidence supports and what it does not establish.
-- Typography remains editorial but tool-sized; the interface avoids dashboard density and poster-scale headings.
-- Agency Transfer is one research collection inside a broader evaluation map.
+Source resolution can identify a paper without identifying a single institution behind it. In those cases FronteraEval reports the original paper authors and leaves the organisation unset. That is intentional. The catalogue remains strongest as a discovery and interpretation layer; it does not yet model every protocol version, implementation, model-system configuration, run, and result as separate first-class entities.
