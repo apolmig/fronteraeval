@@ -9,6 +9,11 @@ const [catalog, registry, audit] = await Promise.all([
 
 const byID = new Map(catalog.records.map(record => [record.id, record]));
 const allowedInspectOrigins = new Set(["inspect:agentharm"]);
+const pendingArxivGroups = new Set();
+
+function paperResolved(paper) {
+  return Boolean(paper?.title && Array.isArray(paper?.authors) && paper.authors.length > 0);
+}
 
 for (const record of catalog.records) {
   assert.ok(record.source_key, `${record.id}: missing source key`);
@@ -16,7 +21,8 @@ for (const record of catalog.records) {
   assert.ok(record.record_type, `${record.id}: missing record type`);
   assert.ok(record.source_resolution?.status, `${record.id}: missing source resolution`);
   assert.ok(record.origin?.name, `${record.id}: missing origin display`);
-  assert.ok(record.origin?.role_label, `${record.id}: missing origin role`);
+  assert.ok(record.origin?.role, `${record.id}: missing origin role type`);
+  assert.ok(record.origin?.role_label, `${record.id}: missing origin role label`);
   assert.ok(["verified", "source-derived", "paper-only", "host-only", "unresolved"].includes(record.attribution_status), `${record.id}: invalid source status`);
   assert.ok(["present", "not-found", "not-applicable"].includes(record.paper_status), `${record.id}: invalid paper status`);
   assert.ok(record.preferred_source?.url?.startsWith("https://"), `${record.id}: missing preferred source`);
@@ -25,10 +31,7 @@ for (const record of catalog.records) {
 
   if (record.paper_status === "present") {
     assert.ok(record.paper?.url?.startsWith("https://"), `${record.id}: paper URL missing`);
-    if (record.paper?.arxiv_id) {
-      assert.ok(record.paper.title, `${record.id}: arXiv title missing`);
-      assert.ok(Array.isArray(record.paper.authors) && record.paper.authors.length > 0, `${record.id}: arXiv authors missing`);
-    }
+    if (record.paper?.arxiv_id && !paperResolved(record.paper)) pendingArxivGroups.add(record.source_key);
   }
 
   if (record.source_type === "inspect-internal" && !allowedInspectOrigins.has(record.id)) {
@@ -39,6 +42,7 @@ for (const record of catalog.records) {
   if (record.review_status === "reviewed") {
     assert.ok(!["host-only", "unresolved"].includes(record.attribution_status), `${record.id}: reviewed record has unresolved origin`);
     assert.equal(record.editorial_reviewed_at, "2026-08-24", `${record.id}: editorial review date is not fixed`);
+    if (record.paper?.arxiv_id) assert.ok(paperResolved(record.paper), `${record.id}: reviewed paper metadata unresolved`);
   }
 }
 
@@ -47,6 +51,8 @@ assert.equal(ape.origin.organization, "FAR AI");
 assert.equal(ape.origin.role, "evaluation_developer");
 assert.equal(ape.attribution_status, "verified");
 assert.ok(ape.paper.url.includes("2506.02873"));
+assert.ok(ape.paper.title);
+assert.ok(ape.paper.authors.length >= 2);
 assert.ok(ape.reference_implementation.url.includes("AlignmentResearch/AttemptPersuadeEval"));
 assert.equal(ape.inspect_provenance.role, "maintained_implementation");
 assert.deepEqual(ape.evidence_reach, ["controlled-model-behaviour"]);
@@ -63,11 +69,26 @@ assert.match(makeMePay.measures, /model-to-model/i);
 const sad = byID.get("inspect:sad_influence");
 assert.match(sad.measures, /situational-awareness/i);
 
+for (const id of [
+  "canonical:metr-time-horizons",
+  "canonical:re-bench",
+  "canonical:ailuminate",
+  "canonical:wmdp",
+  "canonical:frontiermath"
+]) {
+  const record = byID.get(id);
+  assert.equal(record.attribution_status, "verified", `${id}: canonical source must be verified`);
+  assert.ok(record.origin.organization, `${id}: canonical source must identify its organisation`);
+}
+
 assert.equal(audit.reviewed_source_problems.length, 0, "reviewed source problems remain");
 assert.equal(audit.inspect_as_origin_problems.length, 0, "Inspect host is still used as origin");
 assert.equal(audit.duplicate_resource_problems.length, 0, "duplicate resources remain");
+assert.equal(audit.unresolved_records.length, 0, "unresolved source records remain");
 assert.equal(audit.records, catalog.records.length);
 assert.ok(registry.stats.source_groups >= 190, `too few source groups: ${registry.stats.source_groups}`);
+assert.ok((registry.stats.arxiv_metadata_pending || 0) <= Math.max(3, Math.ceil((registry.stats.arxiv_papers || 0) * 0.03)), `too many pending arXiv papers: ${registry.stats.arxiv_metadata_pending}`);
+assert.equal(pendingArxivGroups.size, registry.stats.arxiv_metadata_pending || 0, "pending paper count is inconsistent across registry and catalogue");
 
 try {
   await access(".github/workflows/apply-attribution-audit.yml");
@@ -87,5 +108,5 @@ console.log(
   `Validated source resolution for ${catalog.records.length} records across ${registry.stats.source_groups} source groups: ` +
   `${audit.status.verified || 0} verified, ${audit.status["source-derived"] || 0} source-derived, ` +
   `${audit.status["paper-only"] || 0} paper-only, ${audit.status["host-only"] || 0} host-only, ` +
-  `${audit.status.unresolved || 0} unresolved.`
+  `${audit.status.unresolved || 0} unresolved; ${pendingArxivGroups.size} arXiv groups pending metadata.`
 );
