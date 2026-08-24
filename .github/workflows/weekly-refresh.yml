@@ -1,4 +1,4 @@
-name: Weekly catalogue refresh
+name: Weekly catalogue and source refresh
 
 on:
   schedule:
@@ -15,7 +15,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
         with:
@@ -25,46 +25,53 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+          cache: npm
 
-      - name: Install dependencies
-        run: npm install --no-audit --no-fund
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
 
-      - name: Regenerate and validate catalogue
-        run: npm run build && npm run check
+      - name: Refresh upstream catalogue, papers, and source organisations
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REFRESH_INSPECT: "1"
+        run: npm run refresh:sources
+
+      - name: Run structural, attribution, and search quality gates
+        run: npm run check
 
       - name: Write refresh marker
         run: |
           node --input-type=module <<'NODE'
           import { readFile, mkdir, writeFile } from "node:fs/promises";
           const catalog = JSON.parse(await readFile("site/data/catalog.json", "utf8"));
+          const audit = JSON.parse(await readFile("site/data/source-audit.json", "utf8"));
+          const registry = JSON.parse(await readFile("data/source-registry.json", "utf8"));
           const enrichment = catalog.stats.enrichment || {};
-          const attribution = catalog.stats.attribution || {};
           await mkdir("refresh", { recursive: true });
           await writeFile("refresh/last-run.json", `${JSON.stringify({
             status: "completed",
             refreshed_at: new Date().toISOString(),
             inspect_source_commit: catalog.inspect_source_commit,
             records: catalog.stats.records,
-            internal_entries_enriched: enrichment.internal_entries_enriched ?? 0,
-            register_entries_enriched: enrichment.register_entries_enriched ?? 0,
-            entries_with_paper: enrichment.entries_with_paper ?? 0,
-            entries_with_version: enrichment.entries_with_version ?? 0,
-            entries_with_reported_results: enrichment.entries_with_reported_results ?? 0,
-            linked_resources: enrichment.linked_resources ?? 0,
-            parse_failures: (enrichment.internal_metadata_failures ?? 0) + (enrichment.register_parse_failures ?? 0),
-            attribution_verified: attribution.status?.verified ?? 0,
-            attribution_source_derived: attribution.status?.["source-derived"] ?? 0,
-            attribution_host_only: attribution.status?.["host-only"] ?? 0,
-            attribution_unresolved: attribution.status?.unresolved ?? 0,
-            reviewed_attribution_problems: attribution.reviewed_attribution_problems ?? 0
+            source_groups: registry.stats.source_groups,
+            verified_origins: audit.status.verified || 0,
+            source_derived_origins: audit.status["source-derived"] || 0,
+            paper_only_origins: audit.status["paper-only"] || 0,
+            host_only_origins: audit.status["host-only"] || 0,
+            unresolved_origins: audit.status.unresolved || 0,
+            records_with_paper: audit.paper_status.present || 0,
+            internal_entries_enriched: enrichment.internal_entries_enriched || 0,
+            register_entries_enriched: enrichment.register_entries_enriched || 0,
+            linked_resources: enrichment.linked_resources || 0,
+            source_resolution_problems: (audit.reviewed_source_problems?.length || 0) + (audit.inspect_as_origin_problems?.length || 0) + (audit.duplicate_resource_problems?.length || 0)
           }, null, 2)}\n`);
           NODE
 
-      - name: Commit refresh marker
+      - name: Commit updated registry and refresh marker
         run: |
           git config user.name "fronteraeval-bot"
           git config user.email "fronteraeval-bot@users.noreply.github.com"
-          git add refresh/last-run.json
-          git commit -m "chore: weekly catalogue refresh" || exit 0
+          git add data/source-registry.json refresh/last-run.json
+          git commit -m "chore: weekly catalogue and source refresh" || exit 0
           git pull --rebase origin main
           git push origin HEAD:main
