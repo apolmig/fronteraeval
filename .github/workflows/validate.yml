@@ -16,7 +16,7 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,8 +25,13 @@ jobs:
           cache: npm
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
-      - name: Generate catalogue and run quality gates
-        run: npm run build && npm run check
+      - name: Regenerate upstream catalogue and source registry
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REFRESH_INSPECT: "1"
+        run: npm run refresh:sources
+      - name: Run structural, source-resolution, construct and search quality gates
+        run: npm run check
       - name: Publish verified deploy source
         uses: actions/upload-artifact@v4
         with:
