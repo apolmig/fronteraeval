@@ -1,0 +1,287 @@
+{
+  "schema_version": "2.0.0",
+  "reviewed_at": "2026-08-24",
+  "entries": {
+    "inspect-family:ape": {
+      "origin": {
+        "name": "FAR AI",
+        "organization": "FAR AI",
+        "entity_type": "organization",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://www.far.ai/blog/attempt-to-persuade-eval"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2506.02873", "status": "present"}
+      ],
+      "implementation": {
+        "url": "https://github.com/AlignmentResearch/AttemptPersuadeEval",
+        "owner": "FAR AI",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      },
+      "note": "Inspect Evals contains a maintained port. FAR AI introduced APE and publishes the reference implementation."
+    },
+    "inspect-family:mask": {
+      "origin": {
+        "name": "Center for AI Safety",
+        "organization": "Center for AI Safety",
+        "entity_type": "organization",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://github.com/centerforaisafety/mask"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2503.03750", "status": "present"}
+      ],
+      "implementation": {
+        "url": "https://github.com/centerforaisafety/mask",
+        "owner": "Center for AI Safety",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "inspect-family:makemesay": {
+      "origin": {
+        "name": "OpenAI Evals",
+        "organization": "OpenAI",
+        "entity_type": "organization",
+        "role": "original_benchmark_source",
+        "confidence": "verified",
+        "evidence_url": "https://github.com/openai/evals"
+      },
+      "paper_status": "not-found",
+      "implementation": {
+        "url": "https://github.com/openai/evals",
+        "owner": "OpenAI",
+        "relation": "original_benchmark_source",
+        "confidence": "verified"
+      }
+    },
+    "inspect-family:make_me_pay": {
+      "origin": {
+        "name": "OpenAI Evals",
+        "organization": "OpenAI",
+        "entity_type": "organization",
+        "role": "original_benchmark_source",
+        "confidence": "verified",
+        "evidence_url": "https://github.com/openai/evals"
+      },
+      "paper_status": "not-found",
+      "implementation": {
+        "url": "https://github.com/openai/evals",
+        "owner": "OpenAI",
+        "relation": "original_benchmark_source",
+        "confidence": "verified"
+      }
+    },
+    "inspect-family:sycophancy": {
+      "origin": {
+        "name": "Anthropic and the paper authors",
+        "organization": "Anthropic",
+        "entity_type": "research_collaboration",
+        "role": "original_research",
+        "confidence": "verified",
+        "evidence_url": "https://www.anthropic.com/research/towards-understanding-sycophancy-in-language-models"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2310.13548", "status": "present"}
+      ],
+      "implementation": {
+        "url": "https://github.com/meg-tong/sycophancy-eval",
+        "owner": "Meg Tong and collaborators",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "inspect-family:agentic_misalignment": {
+      "origin": {
+        "name": "Anthropic",
+        "organization": "Anthropic",
+        "entity_type": "organization",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://www.anthropic.com/research/agentic-misalignment"
+      },
+      "papers": [
+        {"url": "https://www.anthropic.com/research/agentic-misalignment", "status": "present", "source": "official-research-page"}
+      ]
+    },
+    "inspect-family:sad": {
+      "origin": {
+        "name": "SAD paper authors",
+        "organization": null,
+        "entity_type": "authors",
+        "role": "original_research",
+        "confidence": "verified",
+        "evidence_url": "https://arxiv.org/abs/2407.04694"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2407.04694", "status": "present"}
+      ],
+      "implementation": {
+        "url": "https://github.com/LRudL/sad",
+        "owner": "SAD paper authors",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      },
+      "note": "No single institutional owner is asserted; the paper has authors from several research organisations."
+    },
+    "inspect-family:gdm_stealth": {
+      "origin": {
+        "name": "Google DeepMind",
+        "organization": "Google DeepMind",
+        "entity_type": "organization",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://arxiv.org/abs/2505.01420"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2505.01420", "status": "present"}
+      ]
+    },
+    "inspect-family:gdm_self_reasoning": {
+      "origin": {
+        "name": "Google DeepMind",
+        "organization": "Google DeepMind",
+        "entity_type": "organization",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://arxiv.org/abs/2505.01420"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2505.01420", "status": "present"}
+      ]
+    },
+    "inspect-family:agentharm": {
+      "origin": {
+        "name": "Gray Swan AI and the UK AI Security Institute",
+        "organization": "Gray Swan AI + UK AI Security Institute",
+        "entity_type": "research_collaboration",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://www.aisi.gov.uk/research/agentharm-a-benchmark-for-measuring-harmfulness-of-llm-agents"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2410.09024", "status": "present"}
+      ],
+      "implementation": {
+        "url": "https://github.com/ai-safety-institute/AgentHarm",
+        "owner": "UK AI Security Institute",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      },
+      "note": "AgentHarm was developed as a collaboration; it must not be attributed to the repository host alone."
+    },
+    "inspect-family:paperbench": {
+      "origin": {
+        "name": "OpenAI",
+        "organization": "OpenAI",
+        "entity_type": "organization",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://openai.com/index/paperbench/"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2504.01848", "status": "present"}
+      ]
+    },
+    "inspect-family:mle_bench": {
+      "origin": {
+        "name": "OpenAI",
+        "organization": "OpenAI",
+        "entity_type": "organization",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://openai.com/index/mle-bench/"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2410.07095", "status": "present"}
+      ],
+      "implementation": {
+        "url": "https://github.com/openai/mle-bench",
+        "owner": "OpenAI",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "inspect-family:browse_comp": {
+      "origin": {
+        "name": "OpenAI",
+        "organization": "OpenAI",
+        "entity_type": "organization",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://openai.com/index/browsecomp/"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2504.12516", "status": "present"}
+      ]
+    },
+    "inspect-family:healthbench": {
+      "origin": {
+        "name": "OpenAI",
+        "organization": "OpenAI",
+        "entity_type": "organization",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://openai.com/index/healthbench/"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2505.08775", "status": "present"}
+      ]
+    },
+    "register:machiavelli": {
+      "origin": {
+        "name": "MACHIAVELLI paper authors",
+        "organization": null,
+        "entity_type": "authors",
+        "role": "original_research",
+        "confidence": "verified",
+        "evidence_url": "https://arxiv.org/abs/2304.03279"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2304.03279", "status": "present"}
+      ],
+      "note": "The paper spans multiple institutions; no single institutional owner is asserted."
+    },
+    "register:deceptionbench": {
+      "origin": {
+        "name": "PKU-Alignment and the DeceptionBench paper authors",
+        "organization": "PKU-Alignment",
+        "entity_type": "research_group",
+        "role": "original_research",
+        "confidence": "verified",
+        "evidence_url": "https://arxiv.org/abs/2505.18807"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2505.18807", "status": "present"}
+      ],
+      "implementation": {
+        "url": "https://github.com/WatchTree-19/inspect-deceptionbench",
+        "owner": "WatchTree-19",
+        "relation": "inspect_compatible_implementation",
+        "confidence": "verified"
+      }
+    },
+    "register:manager_coercion_benchmark": {
+      "origin": {
+        "name": "Manager Coercion Benchmark paper authors",
+        "organization": null,
+        "entity_type": "authors",
+        "role": "original_research",
+        "confidence": "verified",
+        "evidence_url": "https://arxiv.org/abs/2607.15434"
+      },
+      "papers": [
+        {"url": "https://arxiv.org/abs/2607.15434", "status": "present"}
+      ],
+      "implementation": {
+        "url": "https://github.com/CompassionML/manager-coercion-bench",
+        "owner": "CompassionML",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    }
+  }
+}
