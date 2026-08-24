@@ -11,18 +11,21 @@
   })[character]);
 
   const SHORT_LABELS = {
-    evaluation_developer: "Official page",
-    original_research: "Paper",
-    original_authors: "Paper",
+    evaluation_developer: "Official source",
+    original_research: "Research source",
     original_benchmark_source: "Original source",
-    reference_implementation: "Reference code",
+    paper_authors: "Paper",
     implementation_maintainer: "Implementation",
-    inspect_implementation: "Inspect implementation",
-    inspect_registry: "Registry entry",
+    framework_developer: "Framework",
+    suite_developer: "Suite",
+    environment_developer: "Environment",
+    methodology_developer: "Methodology",
+    implementation: "Reference code",
+    "inspect-implementation": "Inspect implementation",
+    "inspect-registry": "Inspect registry",
     paper: "Paper",
     dataset: "Dataset",
-    dataset_provider: "Dataset",
-    official_source: "Official source"
+    official: "Official page"
   };
 
   function currentRecordID() {
@@ -34,78 +37,69 @@
     const href = row.querySelector(".eval-main")?.getAttribute("href") || "";
     const marker = "#/eval/";
     const index = href.indexOf(marker);
-    if (index < 0) return null;
-    return decodeURIComponent(href.slice(index + marker.length));
+    return index < 0 ? null : decodeURIComponent(href.slice(index + marker.length));
   }
 
-  function attributionText(record) {
-    const primary = record.attribution?.primary;
-    if (!primary) return record.organisation || "Attribution pending";
-    return `${primary.role_label}: ${primary.name}`;
+  function addCandidate(list, seen, label, url, kind) {
+    if (!url || seen.has(url)) return;
+    seen.add(url);
+    list.push({ label: SHORT_LABELS[kind] || label || "Source", url, kind });
   }
 
   function candidateSources(record) {
     const candidates = [];
     const seen = new Set();
-
-    function add(label, url, kind) {
-      if (!url || seen.has(url)) return;
-      seen.add(url);
-      candidates.push({ label, url, kind });
-    }
-
-    if (record.preferred_source) {
-      add(
-        SHORT_LABELS[record.preferred_source.kind] || record.preferred_source.label || "Source",
-        record.preferred_source.url,
-        record.preferred_source.kind
-      );
-    }
-
-    for (const item of record.attribution?.roles || []) {
-      if (!item.url || ["implementation_contributors"].includes(item.role)) continue;
-      add(SHORT_LABELS[item.role] || item.role_label, item.url, item.role);
-    }
-
-    for (const link of record.links || []) {
-      add(link.label || "Source", link.url, link.kind);
-    }
-
+    addCandidate(candidates, seen, record.preferred_source?.label, record.preferred_source?.url, record.preferred_source?.kind);
+    addCandidate(candidates, seen, "Paper", record.paper?.url, "paper");
+    addCandidate(candidates, seen, "Reference code", record.reference_implementation?.url, "implementation");
+    addCandidate(
+      candidates,
+      seen,
+      record.inspect_provenance?.role_label,
+      record.inspect_provenance?.url,
+      record.inspect_provenance?.role === "registry_entry" ? "inspect-registry" : "inspect-implementation"
+    );
+    for (const link of record.links || []) addCandidate(candidates, seen, link.label, link.url, link.kind);
     return candidates;
   }
 
   function enhanceRows(catalog) {
     const records = new Map(catalog.records.map(record => [record.id, record]));
     document.querySelectorAll(".eval-row").forEach(row => {
-      const id = rowRecordID(row);
-      const record = records.get(id);
+      const record = records.get(rowRecordID(row));
       if (!record) return;
-
       const context = row.querySelector(".eval-context");
       const first = context?.querySelector("span:first-child");
       if (first) {
         first.classList.add("attribution-context");
-        first.innerHTML = `<small>${esc(record.organisation_role || "Attribution")}</small>${esc(record.organisation)}`;
+        first.innerHTML = `<small>${esc(record.organisation_role || "Source")}</small>${esc(record.organisation || "Origin not verified")}`;
       }
-
-      const preferred = record.preferred_source;
       const source = row.querySelector(".source-link");
-      if (source && preferred?.url) {
-        source.href = preferred.url;
-        source.textContent = `${SHORT_LABELS[preferred.kind] || "Source"} ↗`;
-        source.setAttribute("aria-label", `${SHORT_LABELS[preferred.kind] || "Open source"} for ${record.name}`);
+      if (source && record.preferred_source?.url) {
+        const label = SHORT_LABELS[record.preferred_source.kind] || record.preferred_source.label || "Source";
+        source.href = record.preferred_source.url;
+        source.textContent = `${label} ↗`;
+        source.setAttribute("aria-label", `${label} for ${record.name}`);
       }
     });
   }
 
-  function renderRole(item, isPrimary) {
-    const steward = item.steward ? `<small>Steward: ${esc(item.steward)}</small>` : "";
-    const note = item.note ? `<small>${esc(item.note)}</small>` : "";
-    const body = `<span>${esc(item.role_label)}</span><strong>${esc(item.name)}</strong>${steward}${note}`;
-    if (item.url) {
-      return `<a class="attribution-role${isPrimary ? " primary" : ""}" href="${esc(item.url)}" target="_blank" rel="noopener">${body}<b aria-hidden="true">↗</b></a>`;
-    }
-    return `<div class="attribution-role${isPrimary ? " primary" : ""}">${body}</div>`;
+  function resourceCard({ label, name, detail, url, status, primary = false }) {
+    const body = `
+      <span>${esc(label)}</span>
+      <strong>${esc(name || "Not verified")}</strong>
+      ${detail ? `<small>${esc(detail)}</small>` : ""}
+      ${status ? `<em>${esc(status)}</em>` : ""}`;
+    return url
+      ? `<a class="source-role${primary ? " primary" : ""}" href="${esc(url)}" target="_blank" rel="noopener">${body}<b aria-hidden="true">↗</b></a>`
+      : `<div class="source-role${primary ? " primary" : ""}">${body}</div>`;
+  }
+
+  function paperDetail(paper) {
+    const details = [];
+    if (paper?.authors?.length) details.push(paper.authors.slice(0, 6).join(", ") + (paper.authors.length > 6 ? " et al." : ""));
+    if (paper?.organizations?.length) details.push(`Affiliations: ${paper.organizations.slice(0, 5).join("; ")}`);
+    return details.join(" · ");
   }
 
   function enhanceDetail(catalog) {
@@ -114,65 +108,87 @@
     const record = catalog.records.find(item => item.id === id);
     if (!record) return;
 
-    const primary = record.attribution?.primary;
     const recordMeta = document.querySelector(".record-meta");
     const firstMeta = recordMeta?.querySelector("span:first-child");
-    if (firstMeta && primary) {
-      firstMeta.textContent = `${primary.role_label}: ${primary.name}`;
-    }
+    if (firstMeta) firstMeta.textContent = `${record.organisation_role || "Source"}: ${record.organisation || "Origin not verified"}`;
 
     const actionPanel = document.querySelector(".record-actions");
-    if (actionPanel && actionPanel.dataset.attributionFor !== id) {
-      actionPanel.dataset.attributionFor = id;
-      const sources = candidateSources(record).slice(0, 3);
+    if (actionPanel && actionPanel.dataset.sourceResolutionFor !== id) {
+      actionPanel.dataset.sourceResolutionFor = id;
+      const sources = candidateSources(record).slice(0, 4);
       if (sources.length) {
         actionPanel.innerHTML = sources.map((source, index) => `
-          <a class="button${index === 0 ? " primary" : ""}" href="${esc(source.url)}" target="_blank" rel="noopener">
-            ${esc(source.label)} ↗
-          </a>`).join("");
+          <a class="button${index === 0 ? " primary" : ""}" href="${esc(source.url)}" target="_blank" rel="noopener">${esc(source.label)} ↗</a>
+        `).join("");
       }
     }
 
     const sourcePanel = document.querySelector(".source-panel");
-    if (!sourcePanel) return;
+    if (!sourcePanel || sourcePanel.dataset.sourceResolutionFor === id) return;
+    sourcePanel.dataset.sourceResolutionFor = id;
 
     const heading = sourcePanel.querySelector("h2");
-    if (heading) heading.textContent = "Sources, roles, and record";
+    if (heading) heading.textContent = "Origin, paper, and implementation";
 
-    const terms = [...sourcePanel.querySelectorAll("dt")];
-    const organisationTerm = terms.find(term => term.textContent.trim() === "Organisation");
-    if (organisationTerm && primary) {
-      organisationTerm.textContent = "Primary attribution";
+    const organisationTerm = [...sourcePanel.querySelectorAll("dt")]
+      .find(term => term.textContent.trim() === "Organisation");
+    if (organisationTerm) {
+      organisationTerm.textContent = "Primary source attribution";
       const definition = organisationTerm.nextElementSibling;
-      if (definition) definition.innerHTML = `<strong>${esc(primary.name)}</strong><br><small>${esc(primary.role_label)}</small>`;
+      if (definition) definition.innerHTML = `<strong>${esc(record.organisation || "Origin not verified")}</strong><br><small>${esc(record.organisation_role || "Unresolved")}</small>`;
     }
 
-    const contributorTerms = [...document.querySelectorAll(".protocol-grid dt")];
-    for (const term of contributorTerms) {
-      if (term.textContent.trim() !== "Register contributors") continue;
-      term.textContent = record.source_type === "inspect-internal"
-        ? "Inspect implementation contributors"
-        : "Register contributors";
-    }
-
-    let rolesBlock = sourcePanel.querySelector(".attribution-block");
-    if (!rolesBlock) {
-      rolesBlock = document.createElement("section");
-      rolesBlock.className = "attribution-block";
-      const roles = (record.attribution?.roles || [])
-        .filter(item => item.role !== "implementation_contributors")
-        .slice(0, 7);
-      rolesBlock.innerHTML = `
-        <h3>Attribution roles</h3>
-        <p class="attribution-status ${esc(record.attribution_status)}">${esc(record.attribution_status || "unresolved").replaceAll("-", " ")}</p>
-        <div class="attribution-role-list">
-          ${roles.map(item => renderRole(item, item.role === primary?.role && item.name === primary?.name)).join("")}
-        </div>
-        ${record.attribution?.note ? `<p class="attribution-note">${esc(record.attribution.note)}</p>` : ""}
-      `;
-      const sourceLinks = sourcePanel.querySelector(".source-links");
-      sourceLinks?.after(rolesBlock);
-    }
+    const roleBlock = document.createElement("section");
+    roleBlock.className = "source-resolution-block";
+    const origin = record.origin || {};
+    const paper = record.paper || {};
+    const implementation = record.reference_implementation || {};
+    const inspect = record.inspect_provenance || {};
+    roleBlock.innerHTML = `
+      <div class="source-resolution-heading">
+        <h3>Source resolution</h3>
+        <span class="source-resolution-status ${esc(record.attribution_status || "unresolved")}">${esc(record.attribution_status || "unresolved").replaceAll("-", " ")}</span>
+      </div>
+      <div class="source-role-list">
+        ${resourceCard({
+          label: origin.role_label || "Origin",
+          name: origin.name || "Origin not verified",
+          detail: origin.organization || (origin.organizations || []).join("; "),
+          url: origin.evidence_url,
+          status: origin.confidence,
+          primary: true
+        })}
+        ${record.paper_status === "present" ? resourceCard({
+          label: "Associated paper",
+          name: paper.title || record.paper_title || "Paper metadata pending",
+          detail: paperDetail(paper),
+          url: paper.url,
+          status: paper.metadata_status
+        }) : resourceCard({
+          label: "Associated paper",
+          name: record.paper_status === "not-applicable" ? "Not applicable to this resource type" : "No paper identified",
+          detail: "Absence is recorded explicitly; a blog post is not relabelled as a paper.",
+          status: record.paper_status
+        })}
+        ${implementation.url ? resourceCard({
+          label: "Reference implementation",
+          name: implementation.owner || "Upstream implementation",
+          detail: implementation.relation,
+          url: implementation.url,
+          status: implementation.confidence
+        }) : ""}
+        ${inspect.url ? resourceCard({
+          label: inspect.role_label || "Inspect provenance",
+          name: inspect.steward || "Inspect Evals",
+          detail: "Implementation or registry provenance; not automatically the evaluation origin.",
+          url: inspect.url,
+          status: inspect.role
+        }) : ""}
+      </div>
+      ${record.source_resolution?.note ? `<p class="source-resolution-note">${esc(record.source_resolution.note)}</p>` : ""}
+      <p class="source-resolution-policy">Hosting, implementation maintenance, paper authorship, and evaluation development are reported as distinct roles.</p>
+    `;
+    sourcePanel.querySelector(".source-links")?.after(roleBlock);
   }
 
   async function enhance() {
@@ -184,7 +200,7 @@
 
   function schedule() {
     window.setTimeout(enhance, 0);
-    window.setTimeout(enhance, 160);
+    window.setTimeout(enhance, 180);
   }
 
   window.addEventListener("hashchange", schedule);
