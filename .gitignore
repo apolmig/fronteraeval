@@ -6,3 +6,4 @@ node_modules/
 site/data/catalog.json
 site/data/catalog.csv
 site/data/freshness.json
+site/data/source-audit.json
