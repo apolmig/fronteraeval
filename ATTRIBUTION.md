@@ -1,66 +1,95 @@
-# Attribution and provenance
+# Attribution and source resolution
 
-FronteraEval separates roles that conventional benchmark lists often collapse into a single organisation field.
+FronteraEval separates roles that benchmark directories commonly collapse into one organisation field.
 
 ## Roles
 
 - **Evaluation developer** — organisation or research group that created the evaluation.
 - **Original research** — paper authors or research project that introduced the construct or protocol.
+- **Original paper authors** — authors named by the associated publication when an institutional developer cannot be established.
 - **Original benchmark source** — source registry in which a benchmark first appeared when no separate paper or developer is established.
 - **Reference implementation** — upstream codebase implementing the evaluation.
-- **Inspect implementation** — implementation maintained or hosted in Inspect Evals.
+- **Implementation maintainer** — organisation or maintainers responsible for that codebase.
+- **Inspect implementation** — maintained implementation hosted in Inspect Evals.
 - **Inspect Evals Register** — distributed catalogue entry pointing to an upstream repository.
-- **Paper** — publication describing the evaluation or its methodology.
-- **Dataset provider** — provider of an external dataset used by the implementation.
-- **Implementation contributors** — contributors recorded by implementation metadata. They are not automatically treated as paper authors.
+- **Dataset provider** — provider of an external dataset used by the protocol.
+- **Framework, suite, environment, or methodology developer** — used when the record is not a single evaluation task.
 
-These roles are not interchangeable. Hosting an implementation does not establish authorship. Maintaining a registry entry does not make the registry owner the evaluation developer.
+These roles are not interchangeable. Hosting an implementation does not establish authorship. Maintaining a register entry does not make the register steward the evaluation developer. Contributors listed by implementation metadata are not automatically paper authors.
 
-## Attribution states
+## Resolution states
 
-- **Verified** — supported by an official project page, publication, canonical source, or a manually reviewed override.
-- **Source-derived** — derived from an upstream repository owner, paper, dataset, or implementation metadata. The role is explicit and narrower than authorship.
-- **Host-only** — FronteraEval can verify the Inspect implementation or registry role, but has not verified the original developer.
-- **Unresolved** — no defensible attribution source was found. FronteraEval displays this rather than guessing.
+- **Verified** — supported by an official project page, associated paper, or canonical primary repository.
+- **Source-derived** — narrowly derived from upstream metadata; the specific role is stated.
+- **Paper-only** — the paper and authors are identified, but FronteraEval does not assert an institutional developer.
+- **Host-only** — the implementation or registry host is verified, but the original developer is not.
+- **Unresolved** — no defensible original source was found.
+
+`unresolved`, `host-only`, and `paper-only` are valid outcomes. They are preferable to plausible but unsupported institutional attribution.
+
+## Papers
+
+Each source group has one explicit paper status:
+
+- `present` — an associated paper or technical report was identified;
+- `not-found` — no publication was found in the reviewed primary sources;
+- `not-applicable` — the record is a framework, environment, suite, or other resource for which a single associated paper is not required.
+
+A missing paper is never replaced with a blog post and a project page is never silently relabelled as a paper.
 
 ## APE example
 
-The Attempt to Persuade Eval is attributed to **FAR AI** as the evaluation developer. Its associated paper is linked separately, and the FAR AI / `AlignmentResearch` repository is listed as the reference implementation. Inspect Evals is shown only as the maintained Inspect implementation and catalogue host.
+The Attempt to Persuade Eval is attributed to **FAR AI** as the evaluation developer. Its publication and reference implementation are separate resources. Inspect Evals is shown only as implementation provenance.
 
 - FAR AI project page: <https://www.far.ai/news/attempt-to-persuade-eval>
 - Paper: <https://arxiv.org/abs/2506.02873>
 - Reference implementation: <https://github.com/AlignmentResearch/AttemptPersuadeEval>
 - Inspect implementation metadata: <https://github.com/UKGovernmentBEIS/inspect_evals/tree/main/src/inspect_evals/ape>
 
-## Editorial dates
+## Machine-readable model
 
-`editorial_reviewed_at` is a fixed review date. It must not be replaced with the current build date during weekly refreshes. Source-check dates and editorial-review dates are separate fields.
-
-## Machine-readable fields
-
-Each catalogue record includes:
+Each record includes fields such as:
 
 ```json
 {
-  "organisation": "FAR AI",
-  "organisation_role": "Evaluation developed by",
-  "attribution_status": "verified",
-  "preferred_source": {
-    "label": "Evaluation developed by",
-    "kind": "evaluation_developer",
-    "url": "https://www.far.ai/news/attempt-to-persuade-eval"
+  "origin": {
+    "name": "FAR AI",
+    "role": "evaluation_developer",
+    "role_label": "Evaluation developed by",
+    "evidence_url": "https://www.far.ai/news/attempt-to-persuade-eval"
   },
-  "attribution": {
-    "schema_version": "1.0.0",
+  "paper": {
+    "status": "present",
+    "url": "https://arxiv.org/abs/2506.02873",
+    "title": "Attempt to Persuade Eval",
+    "authors": []
+  },
+  "reference_implementation": {
+    "url": "https://github.com/AlignmentResearch/AttemptPersuadeEval"
+  },
+  "inspect_provenance": {
+    "role": "maintained_implementation"
+  },
+  "source_resolution": {
     "status": "verified",
-    "primary": {},
-    "roles": []
+    "method": "curated-primary-sources"
   }
 }
 ```
 
-The legacy `organisation` field is retained for compatibility, but must always be read together with `organisation_role`.
+The legacy `organisation` field remains for compatibility, but must always be read together with `organisation_role` and `source_resolution.status`.
+
+## Dates
+
+`editorial_reviewed_at` is a fixed review date. Weekly source refreshes update source-check and resolution dates; they do not rewrite the date of the last substantive review.
 
 ## Corrections
 
-Corrections should identify the record, disputed role, preferred source, and evidence. FronteraEval prefers an explicit unknown over a plausible but unsupported institutional attribution.
+A correction should identify:
+
+1. the catalogue record or source family;
+2. the disputed role;
+3. the preferred primary source;
+4. the evidence supporting the change.
+
+Source-resolution changes are versioned and must pass automated coverage and regression tests before publication.

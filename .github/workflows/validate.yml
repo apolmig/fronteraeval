@@ -16,15 +16,16 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Install dependencies
-        run: npm install --no-audit --no-fund
-      - name: Generate catalogue and validate
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Generate catalogue and run quality gates
         run: npm run build && npm run check
       - name: Publish verified deploy source
         uses: actions/upload-artifact@v4
@@ -36,10 +37,10 @@ jobs:
             .gitignore
             README.md
             ATTRIBUTION.md
-            REDESIGN.md
-            data
             netlify.toml
             package.json
+            package-lock.json
+            data
             scripts
             netlify
             site

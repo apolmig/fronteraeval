@@ -1,12 +1,15 @@
 {
   "name": "fronteraeval",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "type": "module",
   "description": "Decision-support catalogue for frontier AI evaluations",
   "scripts": {
-    "build": "node scripts/build.mjs && node scripts/enrich-register.mjs && node scripts/enrich-internal.mjs && node scripts/enrich-attribution.mjs && node scripts/finalize-attribution.mjs",
-    "check": "node --check scripts/build.mjs && node --check scripts/enrich-register.mjs && node --check scripts/enrich-internal.mjs && node --check scripts/enrich-attribution.mjs && node --check scripts/finalize-attribution.mjs && node --check site/search-engine.js && node --check site/app.js && node --check site/enhancements.js && node --check site/attribution.js && node scripts/validate.mjs && node scripts/test-attribution.mjs && node scripts/test-search.mjs"
+    "build:base": "node scripts/build.mjs && node scripts/enrich-register.mjs && node scripts/enrich-internal.mjs",
+    "refresh:sources": "npm run build:base && node scripts/resolve-sources.mjs && node scripts/apply-source-registry.mjs",
+    "build": "npm run build:base && node scripts/apply-source-registry.mjs",
+    "check:syntax": "node --check scripts/build.mjs && node --check scripts/enrich-register.mjs && node --check scripts/enrich-internal.mjs && node --check scripts/resolve-sources.mjs && node --check scripts/apply-source-registry.mjs && node --check scripts/test-source-resolution.mjs && node --check scripts/validate.mjs && node --check site/search-engine.js && node --check site/app.js && node --check site/enhancements.js",
+    "check": "npm run check:syntax && node scripts/validate.mjs && node scripts/test-source-resolution.mjs && node scripts/test-search.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",
