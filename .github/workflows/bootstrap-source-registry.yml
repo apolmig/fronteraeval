@@ -3,18 +3,20 @@ name: Bootstrap source registry v2
 on:
   push:
     branches: [audit/source-resolution-v2]
+    paths:
+      - "tools/source-parts/READY"
 
 permissions:
   contents: write
 
 concurrency:
   group: bootstrap-source-registry-v2
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   bootstrap:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,6 +26,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+
+      - name: Assemble audited source files
+        run: |
+          set -euo pipefail
+          cat tools/source-parts/scripts__refresh-source-registry_mjs.part-* | base64 --decode > scripts/refresh-source-registry.mjs
+          cat tools/source-parts/scripts__build_mjs.part-* | base64 --decode > scripts/build.mjs
+          cat tools/source-parts/scripts__enrich-register_mjs.part-* | base64 --decode > scripts/enrich-register.mjs
+          cat tools/source-parts/site__search-engine_js.part-* | base64 --decode > site/search-engine.js
+          cat tools/source-parts/site__attribution_js.part-* | base64 --decode > site/attribution.js
+          echo "036bdcc6e4fe274ee262b2c88e50001a92dd872a7ce9705792dbce83948514a2  scripts/refresh-source-registry.mjs" | sha256sum --check
+          echo "5eb6fff2a27a87b37760aa02d497dafe005b7b47990f8a5836bda40e7453b85c  scripts/build.mjs" | sha256sum --check
+          echo "f7faec55052b5bf74391f3a892408100588e9a0c58abc5cd8fe709bafa3f514c  scripts/enrich-register.mjs" | sha256sum --check
+          echo "04f80f9f526f684b2bd075fc7814025772d9aefa8cd545430d28b2907b9d7d10  site/search-engine.js" | sha256sum --check
+          echo "b899e7d731c6c96313ff549548adfef393062c5ee3415d7244f596fbcf08ceb8  site/attribution.js" | sha256sum --check
 
       - name: Install dependencies and create lockfile
         run: npm install --no-audit --no-fund
@@ -37,13 +53,15 @@ jobs:
       - name: Run all quality gates
         run: npm run check
 
-      - name: Remove one-time bootstrap workflow
-        run: rm .github/workflows/bootstrap-source-registry.yml
+      - name: Remove one-time bootstrap material
+        run: |
+          rm -rf tools/source-parts
+          rm .github/workflows/bootstrap-source-registry.yml
 
-      - name: Commit generated registry and lockfile
+      - name: Commit resolved registry and audited implementation
         run: |
           git config user.name "fronteraeval-bot"
           git config user.email "fronteraeval-bot@users.noreply.github.com"
-          git add package-lock.json data/source-registry.json .github/workflows/bootstrap-source-registry.yml
-          git commit -m "data: resolve source papers and organisations"
+          git add -A
+          git commit -m "data: resolve papers, organisations, and source provenance"
           git push origin HEAD:audit/source-resolution-v2
