@@ -2,7 +2,13 @@
   "use strict";
 
   const STORAGE_KEY = "fronteraeval-theme";
-  const saved = localStorage.getItem(STORAGE_KEY);
+  let saved = null;
+  try {
+    saved = localStorage.getItem(STORAGE_KEY);
+  } catch {
+    saved = null;
+  }
+
   const prefersDark = globalThis.matchMedia?.("(prefers-color-scheme: dark)").matches;
   const theme = saved === "dark" || saved === "light"
     ? saved
