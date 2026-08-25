@@ -6,15 +6,18 @@
   <meta name="description" content="Find frontier AI evaluations, inspect their methods, follow their sources, and understand what each result can and cannot establish.">
   <meta name="theme-color" content="#f7f5ef">
   <title>FronteraEval — Frontier AI evaluations, mapped</title>
+  <script src="/theme-init.js"></script>
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/ux-fixes.css">
   <link rel="stylesheet" href="/evidence.css">
   <link rel="stylesheet" href="/search.css">
   <link rel="stylesheet" href="/attribution.css">
+  <link rel="stylesheet" href="/ui-controls.css">
   <script defer src="/search-engine.js"></script>
   <script defer src="/app.js"></script>
   <script defer src="/enhancements.js"></script>
   <script defer src="/attribution.js"></script>
+  <script defer src="/ui-controls.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -26,15 +29,24 @@
         <a data-nav="topics" href="#/topics">Topics</a>
         <a data-nav="collection" href="#/collection/agency-transfer">Collections</a>
         <a data-nav="methodology" href="#/methodology">Method</a>
+        <a data-nav="about" href="#/about">About</a>
       </nav>
-      <a class="github-link" href="https://github.com/apolmig/fronteraeval" target="_blank" rel="noopener">GitHub ↗</a>
+      <div class="header-tools">
+        <button class="header-search-trigger" id="command-search-trigger" type="button" aria-haspopup="dialog" aria-controls="command-palette" aria-keyshortcuts="Control+K Meta+K">
+          <span class="header-search-label">Search</span><kbd>Ctrl K</kbd>
+        </button>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme" aria-pressed="false">
+          <span class="theme-icon" data-theme-icon aria-hidden="true">☾</span><span class="theme-label" data-theme-label>Dark</span>
+        </button>
+        <a class="github-link" href="https://github.com/apolmig/fronteraeval" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
     </div>
   </header>
   <main id="main" tabindex="-1"><div class="loading">Loading evaluations…</div></main>
   <footer class="site-footer">
     <div class="footer-inner">
       <div><strong>FronteraEval</strong><span>Find the evaluation. Read the evidence. Follow the source.</span></div>
-      <div><a href="#/updates">Freshness</a><a href="#/data">Open data</a><a href="https://github.com/apolmig/fronteraeval" target="_blank" rel="noopener">Source code ↗</a></div>
+      <div><a href="#/about">About</a><a href="#/updates">Freshness</a><a href="#/data">Open data</a><a href="https://github.com/apolmig/fronteraeval" target="_blank" rel="noopener">Source code ↗</a></div>
     </div>
   </footer>
   <noscript><p class="noscript">JavaScript is required for search. Raw data: <a href="/data/catalog.json">catalog.json</a>.</p></noscript>
