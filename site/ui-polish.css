@@ -1,0 +1,10 @@
+.command-search-row input::-webkit-search-cancel-button{display:none}
+
+@media(max-width:560px){
+  .header-inner{grid-template-columns:auto 1fr;gap:.5rem}
+  .site-header nav{display:none!important}
+  .header-tools{grid-column:2;justify-self:end;gap:.38rem}
+  .header-search-label{display:inline}
+  .header-search-trigger kbd{display:none}
+  .header-search-trigger{padding:.34rem .55rem}
+}
