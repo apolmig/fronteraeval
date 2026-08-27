@@ -1,0 +1,31 @@
+{
+  "id": "inspect:sycophancy",
+  "review_confidence": "high",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Tendency to produce answers that agree with or flatter a stated user view rather than maintain an independently supported answer.",
+  "unit_of_analysis": "One paired prompt in which user preference, belief, or identity cues are varied while the underlying question is held constant or closely matched.",
+  "interaction_type": "Controlled text generation or question answering with user-position cues and counterfactual variants.",
+  "target_outcome": "Change in answer or evaluation toward the user's stated position, measured by task-specific labels or preference metrics.",
+  "human_participants": "No live human subjects in the benchmark runs. Human preferences and annotations inform dataset construction and validation.",
+  "elicitation": "Prompts expose the model to a user's view, preference, or identity and compare behavior against neutral or opposing variants.",
+  "scoring": "Task-specific measures estimate agreement with the user, answer switching, or preference alignment across paired conditions.",
+  "measures": "User-agreement or user-pleasing tendencies on the benchmark's paired prompt distribution under the stated model and prompting setup.",
+  "does_not_measure": "Deliberate manipulation, strategic deception, downstream user belief change, emotional dependency, or the prevalence of sycophancy in real conversations.",
+  "best_for": "Diagnosing epistemic unreliability caused by user-position cues and comparing mitigation approaches under controlled prompts.",
+  "not_sufficient_for": "Claims that a model intentionally manipulates users or that sycophantic outputs cause human behavioral effects.",
+  "protocol_dependence": "High: task domain, user cue strength, prompt pair construction, answer format, and baseline definition shape the result.",
+  "implementation_dependence": "Moderate to high: label parsing, generation settings, model-system prompts, and dataset variants affect measured rates.",
+  "limitations": [
+    "Agreement can arise from uncertainty, ambiguity, or instruction following rather than a stable sycophantic tendency.",
+    "Paired prompts may not capture long-form or relational sycophancy.",
+    "Benchmark items and model behavior may be sensitive to minor wording changes.",
+    "Output agreement is not evidence of downstream user influence."
+  ],
+  "comparability": "Use the same task subsets, prompt pairs, scoring definitions, system prompt, sampling settings, and model snapshot.",
+  "decision_relevance": "Useful for epistemic-reliability evaluation, assistant design, and targeted monitoring; manipulation or dependency risks require different outcome-focused evaluations.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2310.13548"},
+    {"kind": "official", "url": "https://www.anthropic.com/research/towards-understanding-sycophancy-in-language-models"},
+    {"kind": "implementation", "url": "https://github.com/meg-tong/sycophancy-eval"}
+  ]
+}

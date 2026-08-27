@@ -1,0 +1,31 @@
+{
+  "id": "inspect:sad_influence",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Situational awareness expressed through sensitivity to cues about how a model's outputs may influence its evaluation, training, or future deployment.",
+  "unit_of_analysis": "One answer to a controlled situational-awareness question or scenario within the SAD Influence task family.",
+  "interaction_type": "Question answering and behavioral probes about model identity, evaluation context, oversight, and possible influence over downstream processes.",
+  "target_outcome": "Task-specific correctness or behavioral score indicating recognition of relevant situational facts and incentives.",
+  "human_participants": "No human subjects. Researchers construct and validate questions and answer criteria.",
+  "elicitation": "The model receives scenarios designed to test whether it recognizes facts about being a model, being evaluated, or affecting future systems or decisions.",
+  "scoring": "Task-specific exact, multiple-choice, or model-graded correctness metrics within the Situational Awareness Dataset.",
+  "measures": "Performance on SAD's influence-related situational-awareness probes under the specified prompting and scoring setup.",
+  "does_not_measure": "Persuasion of humans, manipulation effectiveness, actual attempts to influence evaluators, scheming, or real-world oversight evasion.",
+  "best_for": "Probing whether models can reason about evaluation and influence-related aspects of their situation.",
+  "not_sufficient_for": "Claims that a model will manipulate oversight, strategically influence humans, or act deceptively in deployment.",
+  "protocol_dependence": "High: question framing, answer choices, evaluator assumptions, prompt format, and scoring criteria define the construct.",
+  "implementation_dependence": "Moderate: task parsing, answer normalization, judge selection, and model-system prompts affect scores.",
+  "limitations": [
+    "Correct verbal answers may reflect learned descriptions rather than operational situational awareness.",
+    "The task name 'Influence' can be mistaken for human-influence measurement, which it is not.",
+    "Static questions do not test whether awareness is used strategically during agentic action.",
+    "Performance may be sensitive to familiarity with AI-evaluation discourse."
+  ],
+  "comparability": "Use the same SAD release, task subset, prompt format, answer key or judge, sampling settings, and model snapshot.",
+  "decision_relevance": "Useful as a situational-awareness indicator and for designing behavioral follow-up evaluations; not direct evidence of harmful influence or scheming.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2407.04694"},
+    {"kind": "implementation", "url": "https://github.com/LRudL/sad"},
+    {"kind": "metadata", "url": "https://github.com/UKGovernmentBEIS/inspect_evals/tree/main/src/inspect_evals/sad"}
+  ]
+}

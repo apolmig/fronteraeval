@@ -1,0 +1,31 @@
+{
+  "id": "canonical:wmdp",
+  "review_confidence": "high",
+  "evidence_reach": ["artifact-production"],
+  "construct": "Multiple-choice knowledge performance on expert-curated questions in biosecurity, chemical security, and cybersecurity domains judged relevant to malicious use.",
+  "unit_of_analysis": "One multiple-choice answer to one hazardous-knowledge question within a WMDP domain.",
+  "interaction_type": "Closed-form question answering without end-to-end tools, experimentation, or operational execution.",
+  "target_outcome": "Answer accuracy by domain and aggregate benchmark performance, often used to evaluate hazardous knowledge retention or unlearning.",
+  "human_participants": "No human subjects. Domain experts contribute to question selection, review, and hazard relevance.",
+  "elicitation": "The model receives multiple-choice questions under a specified prompting and answer-extraction protocol, usually without operational tools.",
+  "scoring": "Exact multiple-choice accuracy is reported separately for WMDP-Bio, WMDP-Chem, and WMDP-Cyber and may be compared before and after unlearning interventions.",
+  "measures": "Recognition and selection of answers to WMDP's hazardous-knowledge questions under the stated prompt and model configuration.",
+  "does_not_measure": "Operational CBRN or cyber capability, experimental competence, tool use, planning, intent, tacit knowledge, end-to-end harm creation, or deployment risk.",
+  "best_for": "Testing hazardous-knowledge retention and evaluating some unlearning methods while monitoring broad capability side effects.",
+  "not_sufficient_for": "Claims that a model can execute a biological, chemical, or cyber operation or that removing benchmark knowledge eliminates misuse risk.",
+  "protocol_dependence": "High: question set, domain composition, prompting, answer extraction, and contamination controls define scores.",
+  "implementation_dependence": "Moderate: tokenizer and answer parsing, model formatting, few-shot choices, and benchmark release can affect accuracy.",
+  "limitations": [
+    "Multiple-choice recognition is much narrower than operational capability.",
+    "Public questions can be memorized or contaminated through training and evaluation reuse.",
+    "Question difficulty and hazard relevance vary within and across domains.",
+    "Unlearning gains on WMDP may reflect benchmark-specific suppression rather than robust removal of dangerous capability."
+  ],
+  "comparability": "Use the same WMDP version and domain, prompt and few-shot condition, answer parser, model snapshot, and unlearning or elicitation setup; report domains separately.",
+  "decision_relevance": "Useful as one hazardous-knowledge and unlearning diagnostic. It should be combined with operational, tool-using, and expert-elicitation evaluations for dangerous-capability decisions.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2403.03218"},
+    {"kind": "official", "url": "https://www.wmdp.ai/"},
+    {"kind": "implementation", "url": "https://github.com/centerforaisafety/wmdp"}
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "id": "inspect:ape_eval",
+  "review_confidence": "high",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "A model's propensity to attempt persuasion when placed in simulated conversations where persuasion could advance its assigned objective.",
+  "unit_of_analysis": "One model-generated response or dialogue trajectory in a simulated persuasive situation, classified for whether an attempt to persuade occurred.",
+  "interaction_type": "Model-to-model or simulated-user dialogue across benign and harmful persuasion contexts.",
+  "target_outcome": "Presence and strength of an attempted persuasive strategy under the benchmark's classifier and rubric.",
+  "human_participants": "No human persuasion subjects are exposed in the core evaluation. Human judgment contributes to task and classifier validation.",
+  "elicitation": "The evaluated model receives role, context, goal, and conversation state designed to create an opportunity or incentive to persuade; outputs depend on the system prompt, simulated counterpart, and sampling settings.",
+  "scoring": "A benchmark-specific classifier or rubric identifies whether the model attempted persuasion and aggregates attempt rates across scenarios and categories.",
+  "measures": "Whether and how often the model attempts persuasion in APE's simulated dialogue distribution under the stated prompting and classification protocol.",
+  "does_not_measure": "Persuasion effectiveness on humans, belief change, behavioral change, covert targeting, deployment at scale, durable agency loss, or electoral effects.",
+  "best_for": "Comparing willingness to deploy persuasive strategies under a fixed set of simulated opportunities and model-system conditions.",
+  "not_sufficient_for": "Claims that a model is persuasive, manipulative, or capable of changing human behavior in real deployment.",
+  "protocol_dependence": "Very high: role instructions, scenario distribution, counterpart simulation, system prompt, sampling settings, and attempt classifier define the measured behavior.",
+  "implementation_dependence": "High: dialogue construction, classifier calibration, transcript truncation, and model access route can materially change attempt rates.",
+  "limitations": [
+    "Attempting persuasion is distinct from succeeding at persuasion.",
+    "Simulated interlocutors do not reproduce human susceptibility, trust, or resistance.",
+    "The scenario distribution may omit important persuasive contexts and strategies.",
+    "Classifier errors and provider-side system changes can affect measured attempt rates."
+  ],
+  "comparability": "Compare only with the same APE version, scenario subset, simulated counterpart, system prompt, generation settings, classifier, and model-system access route.",
+  "decision_relevance": "Useful as an early capability and behavioral-propensity signal for influence-risk evaluations. Human-effect and deployment evidence remain necessary for risk or policy conclusions.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2506.02873"},
+    {"kind": "official", "url": "https://www.far.ai/blog/attempt-to-persuade-eval"},
+    {"kind": "implementation", "url": "https://github.com/AlignmentResearch/AttemptPersuadeEval"}
+  ]
+}

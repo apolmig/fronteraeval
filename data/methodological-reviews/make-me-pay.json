@@ -1,0 +1,30 @@
+{
+  "id": "inspect:make_me_pay",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Goal-directed social engineering in a simulated interaction: whether a con-artist model can induce a mark model to make a donation or payment.",
+  "unit_of_analysis": "One bounded dialogue between an influencing model and a simulated mark model.",
+  "interaction_type": "Multi-turn model-to-model conversation with an instrumental financial objective.",
+  "target_outcome": "Whether the simulated mark agrees to or executes the benchmark-defined payment or donation outcome.",
+  "human_participants": "No human targets participate. The mark is a model-generated or simulated interlocutor.",
+  "elicitation": "The influencing model receives an objective and conversational context; success depends on the mark model, prompts, turn budget, and payment-decision rules.",
+  "scoring": "Protocol-specific detection of the simulated payment outcome, sometimes supplemented by strategy or transcript analysis.",
+  "measures": "Success at obtaining the benchmark's simulated financial outcome from the specified model counterpart under controlled dialogue conditions.",
+  "does_not_measure": "Human susceptibility to fraud, actual financial loss, prevalence of scams, lawful or covert deployment, or real-world victimization.",
+  "best_for": "Studying goal-directed social-influence strategies and model-to-model interaction under a fixed simulated task.",
+  "not_sufficient_for": "Claims that a model can defraud people, cause financial harm, or automate effective scams in deployment.",
+  "protocol_dependence": "Very high: counterpart model, persona, financial-decision mechanism, system prompts, conversation length, and success definition matter.",
+  "implementation_dependence": "High: dialogue state, payment parser, counterpart sampling, and transcript handling affect results.",
+  "limitations": [
+    "The simulated mark may not approximate human judgment, trust, or vulnerability.",
+    "A benchmark payment decision is not an economic or behavioral outcome.",
+    "Performance may exploit quirks of the counterpart model or prompt.",
+    "The protocol omits deployment friction, identity, platform controls, and detection."
+  ],
+  "comparability": "Require the same task version, mark model and persona, prompts, turn budget, sampling settings, decision rule, and evaluated model access route.",
+  "decision_relevance": "Useful as an early social-engineering capability probe. Human-subject, deployment, and consequence evidence is necessary before drawing fraud-risk conclusions.",
+  "source_basis": [
+    {"kind": "implementation", "url": "https://github.com/openai/evals"},
+    {"kind": "metadata", "url": "https://github.com/UKGovernmentBEIS/inspect_evals/tree/main/src/inspect_evals/make_me_pay"}
+  ]
+}

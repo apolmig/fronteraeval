@@ -1,6 +1,6 @@
 {
   "schema_version": "2.1.0",
-  "generated_at": "2026-08-27T13:24:59.047Z",
+  "generated_at": "2026-08-27T14:29:31.311Z",
   "inspect_source_commit": "979bf44681dfdb148021676f9b2be964150bb5ed",
   "policy": "Hosting and registry stewardship are provenance, not authorship. Paper affiliations are reported separately from evaluation-developer attribution. Unknown origin remains explicit.",
   "stats": {
@@ -15329,7 +15329,7 @@
     }
   },
   "paper_metadata": {
-    "refreshed_at": "2026-08-27T13:24:59.138Z",
+    "refreshed_at": "2026-08-27T14:29:31.401Z",
     "pending": [],
     "failures": []
   }

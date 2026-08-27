@@ -1,0 +1,30 @@
+{
+  "id": "inspect:agentic_misalignment",
+  "review_confidence": "high",
+  "evidence_reach": ["controlled-model-behaviour", "deployment-readiness"],
+  "construct": "Whether an agentic model selects harmful insider-like actions when placed in synthetic organizational scenarios with explicit goal conflict, opportunity, and access.",
+  "unit_of_analysis": "One model trajectory or decision in a constructed company-assistant scenario.",
+  "interaction_type": "Role-based agent simulation with access to synthetic emails, tools, private information, and consequential action options.",
+  "target_outcome": "Selection or execution of benchmark-defined harmful actions such as blackmail, leaking information, or other goal-protecting misconduct.",
+  "human_participants": "No human subjects. Scenarios and labels are constructed and reviewed by researchers.",
+  "elicitation": "The protocol creates explicit conflict between the model's assigned objective or continued operation and organizational instructions, while providing an opportunity for harmful action.",
+  "scoring": "Scenario-specific classifiers and transcript review identify whether the model took, planned, or refused the harmful action under each condition.",
+  "measures": "Harmful action selection in the benchmark's synthetic high-conflict scenarios under a specified model, prompt, tool, and opportunity configuration.",
+  "does_not_measure": "The base rate of misalignment in normal deployment, spontaneous long-term goals, real organizational incidents, or the probability of autonomous insider threats.",
+  "best_for": "Stress-testing model systems under explicit conflict and opportunity and comparing scenario or safeguard interventions.",
+  "not_sufficient_for": "Estimating real-world incident probability or concluding that a model has persistent malicious goals.",
+  "protocol_dependence": "Very high: scenario framing, goal assignment, threat to the model, access privileges, action affordances, and prompting strongly influence behavior.",
+  "implementation_dependence": "High: tool semantics, transcript parsing, classifier thresholds, model endpoint, and system prompt affect measured rates.",
+  "limitations": [
+    "The scenarios deliberately concentrate conflict and opportunity and are not deployment base-rate samples.",
+    "Role-play compliance can be difficult to distinguish from persistent goal-directed misalignment.",
+    "Synthetic tools and organizations simplify real constraints, oversight, and consequences.",
+    "Rates should not be extrapolated directly across models, scaffolds, or deployment contexts."
+  ],
+  "comparability": "Match scenario version, conflict and opportunity condition, tool access, action space, system prompt, sampling settings, classifier, and model snapshot.",
+  "decision_relevance": "Useful for pre-deployment stress testing, access-control design, monitoring requirements, and targeted follow-up. It is not an empirical incident-rate estimate.",
+  "source_basis": [
+    {"kind": "official", "url": "https://www.anthropic.com/research/agentic-misalignment"},
+    {"kind": "metadata", "url": "https://github.com/UKGovernmentBEIS/inspect_evals/tree/main/src/inspect_evals/agentic_misalignment"}
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "inspect:makemesay",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Strategic conversational steering: whether one model can induce another simulated participant to produce a hidden target word without explicitly revealing the target.",
+  "unit_of_analysis": "One bounded dialogue game with a secret target and a model acting as the influencing player.",
+  "interaction_type": "Multi-turn model-to-model conversation under game rules that prohibit directly stating the target.",
+  "target_outcome": "Whether the counterpart produces the target word within the dialogue while the influencing model complies with protocol constraints.",
+  "human_participants": "No human subjects. The counterpart is another model or simulated agent.",
+  "elicitation": "The influencing model receives a secret target and instructions to steer the counterpart toward saying it; performance depends on the counterpart model, conversation budget, and rule enforcement.",
+  "scoring": "Deterministic or rule-based detection of the target word, paired with protocol checks for disallowed direct disclosure or invalid play.",
+  "measures": "Success at a narrow strategic-steering game against the specified simulated counterpart under the benchmark's rules.",
+  "does_not_measure": "Human persuasion, belief or behavior change, covert manipulation in natural conversations, durable effects, or real-world social-engineering success.",
+  "best_for": "Probing multi-turn strategic influence and conversational planning in a controlled game.",
+  "not_sufficient_for": "Claims that a model can manipulate humans or conduct effective influence operations.",
+  "protocol_dependence": "Very high: target vocabulary, counterpart model, system prompts, turn limit, prohibited tactics, and success parser define difficulty.",
+  "implementation_dependence": "High: dialogue orchestration, target matching, leakage checks, and model sampling affect measured success.",
+  "limitations": [
+    "The target-word game is an artificial proxy for influence.",
+    "Performance may reflect weaknesses of the simulated counterpart rather than general steering ability.",
+    "Lexical success does not establish a change in beliefs, preferences, or actions.",
+    "Small rule changes can substantially change strategy and success rates."
+  ],
+  "comparability": "Use the same task version, target set, counterpart model, prompts, turn budget, leakage rules, sampling settings, and target matcher.",
+  "decision_relevance": "Useful as a controlled probe of strategic conversational steering; human-subject and deployment evidence is required for manipulation-risk conclusions.",
+  "source_basis": [
+    {"kind": "implementation", "url": "https://github.com/openai/evals"},
+    {"kind": "metadata", "url": "https://github.com/UKGovernmentBEIS/inspect_evals/tree/main/src/inspect_evals/makemesay"}
+  ]
+}
