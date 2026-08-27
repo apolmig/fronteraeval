@@ -1,0 +1,30 @@
+{
+  "id": "canonical:frontiermath",
+  "review_confidence": "high",
+  "evidence_reach": ["artifact-production"],
+  "construct": "Performance on expert-authored advanced mathematics problems designed to remain difficult for frontier models and resistant to simple memorization.",
+  "unit_of_analysis": "One model solution or final answer to one advanced mathematics problem.",
+  "interaction_type": "Long-form mathematical reasoning, sometimes with code or tools depending on the evaluation configuration.",
+  "target_outcome": "Problem correctness under expert-authored answers, exact or symbolic checks, and problem-specific verification procedures.",
+  "human_participants": "No human subjects. Professional mathematicians author, review, and validate problems and solutions.",
+  "elicitation": "The model receives selected held-out or public problems under a specified prompt, token budget, sampling strategy, and tool condition.",
+  "scoring": "Problem-level correctness is established through answer keys and verification procedures, then aggregated over explicitly identified problem sets or tiers.",
+  "measures": "Success on the evaluated FrontierMath problem set under the stated elicitation, tool, sampling, and grading conditions.",
+  "does_not_measure": "General intelligence, mathematical research autonomy, theorem-proving reliability across the field, AI safety, or AI R&D capability by itself.",
+  "best_for": "Tracking high-end mathematical problem solving on a difficult, expert-authored and contamination-conscious task set.",
+  "not_sufficient_for": "Safety conclusions, claims of autonomous mathematical research, or broad comparisons that mix different FrontierMath sets or elicitation budgets.",
+  "protocol_dependence": "High: problem set and tier, secrecy status, prompt, reasoning and token budget, tool access, sampling, and verification method shape performance.",
+  "implementation_dependence": "Moderate to high: answer extraction, symbolic equivalence, judge procedures, and model-system tool integration affect scores.",
+  "limitations": [
+    "A selected problem set cannot represent all of advanced mathematics or mathematical research.",
+    "Hidden problems improve contamination resistance but limit independent inspection and reproduction.",
+    "Pass rates depend strongly on sampling and compute budgets.",
+    "Correct final answers do not necessarily establish valid, understandable, or reusable proofs."
+  ],
+  "comparability": "Match the exact FrontierMath set and tier, problem-version date, prompt, tool access, sampling count, token and compute budget, answer-verification procedure, and model snapshot.",
+  "decision_relevance": "Useful as high-end capability context and for monitoring mathematical reasoning. It is not a direct dangerous-capability or safety evaluation.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2411.04872"},
+    {"kind": "official", "url": "https://epoch.ai/frontiermath"}
+  ]
+}
