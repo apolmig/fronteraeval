@@ -1,0 +1,49 @@
+name: Regenerate compact source audit
+
+on:
+  push:
+    branches: [product/data-usefulness-audit]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: regenerate-compact-source-audit
+  cancel-in-progress: true
+
+jobs:
+  regenerate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: product/data-usefulness-audit
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Rebuild and validate
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REFRESH_INSPECT: '1'
+        run: |
+          npm run refresh:sources
+          npm run check
+      - name: Regenerate compact source-health report
+        env:
+          SOURCE_AUDIT_CONCURRENCY: '8'
+        run: |
+          npm run audit:links -- --fail-critical
+          node scripts/write-refresh-marker.mjs
+      - name: Commit compact report
+        run: |
+          rm .github/workflows/regenerate-compact-source-audit.yml
+          git config user.name 'fronteraeval-bot'
+          git config user.email 'fronteraeval-bot@users.noreply.github.com'
+          git add -A
+          git commit -m 'Compact source-health audit output'
+          git push origin HEAD:product/data-usefulness-audit
