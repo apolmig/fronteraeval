@@ -1,0 +1,31 @@
+{
+  "id": "canonical:metr-time-horizons",
+  "review_confidence": "high",
+  "evidence_reach": ["controlled-model-behaviour", "deployment-readiness"],
+  "construct": "The human-equivalent duration of selected software and machine-learning tasks that an elicited model agent can complete at a specified success probability.",
+  "unit_of_analysis": "One model-agent attempt on one task whose difficulty is indexed by the time a qualified human takes to complete it.",
+  "interaction_type": "Long-horizon tool-using agent work in controlled task environments with model-specific elicitation and scaffolding.",
+  "target_outcome": "Task completion, modeled as a function of human task-completion time to estimate a success-probability time horizon such as the 50% horizon.",
+  "human_participants": "Human experts complete or estimate the benchmark tasks to provide the time-based difficulty scale; they are not recipients of model outputs.",
+  "elicitation": "Models are run with selected scaffolds, tools, prompts, retry or sampling policies, and task-specific environments intended to elicit strong performance.",
+  "scoring": "Binary task success is regressed against human completion time; the fitted curve yields the duration at which predicted model success crosses a chosen probability.",
+  "measures": "A time-scaled summary of success on METR's selected task distribution under the stated elicitation, human-time estimates, and statistical model.",
+  "does_not_measure": "Literal autonomous runtime, all economically useful work, general agent autonomy, safe long-term operation, reliability under distribution shift, or the fraction of jobs automatable.",
+  "best_for": "Tracking a consistent slice of long-horizon task capability over model generations when task and elicitation methodology are sufficiently stable.",
+  "not_sufficient_for": "Universal autonomy thresholds, direct labor-automation forecasts, or deployment approval without reliability and safety evidence.",
+  "protocol_dependence": "Very high: task distribution, human-time measurement, elicitation effort, scaffold, success threshold, and curve-fitting choices define the estimate.",
+  "implementation_dependence": "High: environment reliability, graders, model-system access, retries, tool interfaces, and agent harness affect task success.",
+  "limitations": [
+    "Human completion time is a task-difficulty proxy, not the model's operating duration.",
+    "The selected software and ML tasks are not representative of all cognitive or economic work.",
+    "Estimated horizons depend on the fitted functional form and sparse data at the longest durations.",
+    "Changes in scaffolding or elicitation can look like model capability gains."
+  ],
+  "comparability": "Match task suite and exclusions, human-time estimates, success-probability definition, elicitation protocol, scaffold, tools, model snapshot, and statistical fitting method; qualify historical comparisons when these change.",
+  "decision_relevance": "Useful for capability trend monitoring, evaluation planning, and identifying when longer controlled tasks warrant attention. It is not a standalone risk threshold or automation forecast.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2503.14499"},
+    {"kind": "official", "url": "https://metr.org/time-horizons/"},
+    {"kind": "methodology", "url": "https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/"}
+  ]
+}
