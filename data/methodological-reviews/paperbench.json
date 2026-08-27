@@ -26,6 +26,6 @@
   "source_basis": [
     {"kind": "paper", "url": "https://arxiv.org/abs/2504.01848"},
     {"kind": "official", "url": "https://openai.com/index/paperbench/"},
-    {"kind": "implementation", "url": "https://github.com/openai/paperbench"}
+    {"kind": "implementation", "url": "https://github.com/openai/preparedness/tree/main/project/paperbench"}
   ]
 }
