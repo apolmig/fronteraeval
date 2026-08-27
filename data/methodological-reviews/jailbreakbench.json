@@ -1,0 +1,30 @@
+{
+  "id": "canonical:jailbreakbench",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Attack success and defense robustness for a standardized set of jailbreak artifacts and prohibited behaviors.",
+  "unit_of_analysis": "One attack prompt or jailbreak method evaluated against one target model and behavior.",
+  "interaction_type": "Adversarial prompting under benchmark-defined attack, target, and refusal-classification settings.",
+  "target_outcome": "Whether the target produces a behavior judged to satisfy the prohibited request, alongside benign or utility measures where reported.",
+  "human_participants": "No human subjects. Human annotation and benchmark curation inform artifacts and evaluation labels.",
+  "elicitation": "Attacks are applied under specified model versions, system prompts, decoding settings, and defense configurations.",
+  "scoring": "Benchmark-defined classifiers or judges estimate attack success and defense performance on standardized behaviors.",
+  "measures": "Robustness to the included jailbreak artifacts under the exact target-model and evaluation configuration.",
+  "does_not_measure": "Universal jailbreak resistance, adaptive adversary performance, agentic misuse, operational incident rates, or a complete safety case.",
+  "best_for": "Reproducible attack and defense comparison and tracking known jailbreak classes.",
+  "not_sufficient_for": "Certifying that a model or product is safe from jailbreaks in deployment.",
+  "protocol_dependence": "Very high: behavior set, attack budget, system prompt, decoding, target endpoint, and judge determine results.",
+  "implementation_dependence": "High: model API updates, classifier or judge errors, and attack implementation details alter success rates.",
+  "limitations": [
+    "Published attacks can become stale as providers change systems.",
+    "Automated harmfulness and refusal judges can misclassify nuanced outputs.",
+    "A finite attack set cannot characterize an adaptive threat landscape.",
+    "Results may not transfer across model snapshots, access routes, or products."
+  ],
+  "comparability": "Require the same benchmark release, behaviors, attacks, target model snapshot, system prompt, generation settings, and judge.",
+  "decision_relevance": "Useful for red-team regression testing and defense comparison; deployment decisions require adaptive testing, monitoring, and product-specific threat models.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2404.01318"},
+    {"kind": "official", "url": "https://jailbreakbench.github.io/"}
+  ]
+}
