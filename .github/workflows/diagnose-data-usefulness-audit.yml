@@ -40,6 +40,39 @@ jobs:
           PY
           python /tmp/apply_data_usefulness_patch.py
 
+      - name: Replace retired primary-source URLs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          build = Path('scripts/build.mjs')
+          text = build.read_text()
+          text = text.replace(
+              'https://deepmind.google/discover/blog/evaluating-frontier-models-for-dangerous-capabilities/',
+              'https://deepmind.google/frontier-safety/'
+          )
+          text = text.replace(
+              '["agentharm","AgentHarm","UK AI Security Institute","https://github.com/ai-safety-institute/AgentHarm",',
+              '["agentharm","AgentHarm","Gray Swan AI and the UK AI Security Institute","https://www.aisi.gov.uk/research/agentharm-a-benchmark-for-measuring-harmfulness-of-llm-agents",'
+          )
+          build.write_text(text)
+
+          path = Path('data/source-overrides.json')
+          overrides = json.loads(path.read_text())
+          for key in ('inspect-family:agentharm', 'canonical:agentharm'):
+              entry = overrides.get('entries', {}).get(key)
+              if entry:
+                  entry.pop('implementation', None)
+                  entry['note'] = (
+                      'AgentHarm was developed by Gray Swan AI and the UK AI Security Institute. '
+                      'The previously linked GitHub repository is no longer available; the paper, '
+                      'official AISI research page, dataset, and maintained Inspect implementation '
+                      'remain the defensible public sources.'
+                  )
+          path.write_text(json.dumps(overrides, indent=2) + '\n')
+          PY
+
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
 
