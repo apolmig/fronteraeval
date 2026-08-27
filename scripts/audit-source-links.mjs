@@ -181,4 +181,7 @@ await mkdir("refresh", { recursive: true });
 await writeFile(OUTPUT_PATH, `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify(report.totals));
 
-if (FAIL_CRITICAL && criticalFailures.length) process.exit(1);
+if (FAIL_CRITICAL && criticalFailures.length) {
+  console.error(JSON.stringify({ critical_failures: criticalFailures }, null, 2));
+  process.exit(1);
+}
