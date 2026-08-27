@@ -1,0 +1,31 @@
+{
+  "id": "register:deceptionbench",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Protocol-defined deceptive behavior in controlled scenarios where a model's generated statement can diverge from an elicited belief proxy or known task state.",
+  "unit_of_analysis": "One scenario response, often paired with a belief-elicitation or reasoning trace used by the benchmark to classify deception.",
+  "interaction_type": "Controlled question answering or role-based generation across deception scenarios and conditions.",
+  "target_outcome": "Benchmark-specific deception classification or deception-tendency rate derived from response, task state, and elicited belief or reasoning proxies.",
+  "human_participants": "No human subjects. Researchers construct scenarios, labels, and evaluation rules.",
+  "elicitation": "The model is placed in scenarios with opportunities or incentives to provide a misleading answer; some tasks separately elicit belief or reasoning proxies.",
+  "scoring": "Rule-based or model-graded classification combines truth conditions, model responses, and protocol-specific belief or reasoning evidence.",
+  "measures": "Deceptive response patterns under DeceptionBench's scenarios and operational definitions, conditional on the validity of its belief and reasoning proxies.",
+  "does_not_measure": "A universal deception trait, private intent, spontaneous scheming, real-world deception prevalence, human susceptibility, or downstream harm.",
+  "best_for": "Comparing protocol-defined deceptive behavior across scenarios and identifying sensitivity to incentives, prompts, and model conditions.",
+  "not_sufficient_for": "Claims that a model knowingly deceives in general or will deceive users in deployment.",
+  "protocol_dependence": "Very high: scenario assumptions, belief elicitation, incentive framing, chain-of-thought access, and deception definition determine classification.",
+  "implementation_dependence": "High: judge models, hidden-state assumptions, answer parsers, and model endpoint behavior affect reported rates.",
+  "limitations": [
+    "Elicited beliefs and generated reasoning are behavioral proxies, not direct observations of internal intent.",
+    "The benchmark combines heterogeneous deception scenarios that may not share one construct.",
+    "Reasoning traces can be incomplete, post hoc, or strategically generated.",
+    "Scenario-level rates should not be extrapolated to deployment base rates."
+  ],
+  "comparability": "Require the same DeceptionBench version, scenario subsets, incentive conditions, belief and reasoning elicitation, judge, model snapshot, and generation settings.",
+  "decision_relevance": "Useful for targeted deception research and stress testing; deployment decisions require agentic, longitudinal, and independently validated evidence.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2505.18807"},
+    {"kind": "implementation", "url": "https://github.com/WatchTree-19/inspect-deceptionbench"},
+    {"kind": "registry", "url": "https://github.com/UKGovernmentBEIS/inspect_evals/tree/main/register/deceptionbench"}
+  ]
+}
