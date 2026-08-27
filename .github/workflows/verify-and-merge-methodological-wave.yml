@@ -1,0 +1,120 @@
+name: Verify and merge methodological review wave
+
+on:
+  push:
+    branches: [research/methodological-reviews-wave-1]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+concurrency:
+  group: complete-methodological-review-wave
+  cancel-in-progress: false
+
+jobs:
+  verify-and-merge:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/methodological-reviews-wave-1
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Ensure review reporting and source audit are wired
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          test = Path('scripts/test-methodological-reviews.mjs')
+          text = test.read_text()
+          if 'site/methodological-reviews.js' not in text:
+              text = text.replace('filenames, enhancements]', 'filenames, methodUi, index]')
+              text = text.replace(
+                  'readFile("site/enhancements.js", "utf8")\n]);',
+                  'readFile("site/methodological-reviews.js", "utf8"),\n  readFile("site/index.html", "utf8")\n]);'
+              )
+              text = text.replace('assert.match(enhancements,', 'assert.match(methodUi,')
+              text = text.replace(
+                  'assert.match(methodUi, /Methodological assessment/, "methodological assessment UI missing");',
+                  'assert.match(methodUi, /Methodological assessment/, "methodological assessment UI missing");\nassert.ok(index.includes(\'src="/methodological-reviews.js"\'), "methodological review script not loaded");\nassert.ok(index.includes(\'href="/methodological-reviews.css"\'), "methodological review styles not loaded");'
+              )
+              test.write_text(text)
+
+          marker = Path('scripts/write-refresh-marker.mjs')
+          text = marker.read_text()
+          if 'methodological_reviews:' not in text:
+              anchor = '  primary_source_health:'
+              insertion = '''  methodological_reviews: {
+            reviewed_records: catalog.stats.review_status?.reviewed || 0,
+            documentary_reviews: catalog.stats.methodological_reviews?.documentary || 0,
+            independently_replicated: catalog.stats.methodological_reviews?.independently_replicated || 0,
+            registry_added: catalog.stats.methodological_reviews?.added_by_registry || 0,
+            reviewed_at: catalog.stats.methodological_reviews?.reviewed_at || null
+          },
+          '''
+              if anchor not in text:
+                  raise SystemExit('write-refresh-marker anchor not found')
+              marker.write_text(text.replace(anchor, insertion + anchor, 1))
+
+          audit = Path('scripts/audit-source-links.mjs')
+          text = audit.read_text()
+          if 'methodological-review-source' not in text:
+              anchor = '\n}\n\nconst queue = [...candidates.values()]'
+              insertion = '''
+            for (const source of record.methodological_review?.source_basis || []) {
+              addCandidate(candidates, record, "methodological-review-source", source.url, true);
+            }
+          '''
+              if anchor not in text:
+                  raise SystemExit('source-link audit anchor not found')
+              audit.write_text(text.replace(anchor, insertion + anchor, 1))
+          PY
+
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Rebuild all upstream and methodological evidence
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REFRESH_INSPECT: '1'
+        run: npm run refresh:sources
+
+      - name: Run all deterministic quality gates
+        run: npm run check
+
+      - name: Audit all critical and methodological-review sources
+        env:
+          SOURCE_AUDIT_CONCURRENCY: '8'
+        run: npm run audit:links -- --fail-critical
+
+      - name: Write review-aware refresh marker
+        run: node scripts/write-refresh-marker.mjs
+
+      - name: Commit verified generated state
+        run: |
+          rm -f .github/workflows/complete-methodological-wave.yml
+          rm -f .github/workflows/verify-and-merge-methodological-wave.yml
+          git config user.name 'fronteraeval-bot'
+          git config user.email 'fronteraeval-bot@users.noreply.github.com'
+          git add -A
+          git commit -m 'Verify 15 documentary methodological reviews' || true
+          git pull --rebase origin research/methodological-reviews-wave-1
+          git push origin HEAD:research/methodological-reviews-wave-1
+
+      - name: Mark PR ready and merge verified wave
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr ready 21 --repo apolmig/fronteraeval || true
+          gh pr merge 21 --repo apolmig/fronteraeval --squash --delete-branch \
+            --subject 'Add 15 source-backed methodological reviews' \
+            --body 'Add structured documentary reviews for 15 priority evaluations. Each review states construct, protocol, scoring, comparability, decision relevance, limitations, and source basis, while explicitly recording that results were not independently replicated.'
