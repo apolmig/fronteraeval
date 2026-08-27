@@ -1,0 +1,22 @@
+name: Verify weekly refresh dispatch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/verify-weekly-dispatch.yml"
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Dispatch the production weekly workflow
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run weekly-refresh.yml --repo "$GITHUB_REPOSITORY" --ref main
