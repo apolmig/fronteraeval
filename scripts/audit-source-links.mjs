@@ -148,9 +148,10 @@ const counts = results.reduce((summary, result) => {
 }, {});
 const criticalFailures = results.filter((result) => result.critical && result.category === "missing");
 const reviewedFailures = results.filter((result) => result.category === "missing" && result.records.some((id) => catalog.records.find((record) => record.id === id)?.review_status === "reviewed"));
+const exceptions = results.filter((result) => result.category !== "reachable");
 
 const report = {
-  schema_version: "1.0.0",
+  schema_version: "1.1.0",
   generated_at: new Date().toISOString(),
   inspect_source_commit: catalog.inspect_source_commit || catalog.inspect_source_sha || null,
   policy: "Confirmed 404/410 responses are treated as missing. Access restrictions, rate limits, timeouts and server errors are reported separately and do not by themselves establish that a source is broken.",
@@ -164,7 +165,7 @@ const report = {
   },
   critical_failures: criticalFailures,
   reviewed_failures: reviewedFailures,
-  results
+  exceptions
 };
 
 await mkdir("refresh", { recursive: true });
