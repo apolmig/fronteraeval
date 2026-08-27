@@ -1,0 +1,176 @@
+name: Complete methodological review wave
+
+on:
+  push:
+    branches: [research/methodological-reviews-wave-1]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: complete-methodological-review-wave
+  cancel-in-progress: true
+
+jobs:
+  complete-and-verify:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/methodological-reviews-wave-1
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Correct methodological-review quality gates and refresh reporting
+        shell: bash
+        run: |
+          cat > scripts/test-methodological-reviews.mjs <<'EOF'
+          import assert from "node:assert/strict";
+          import { readdir, readFile } from "node:fs/promises";
+
+          const REVIEWS_DIR = "data/methodological-reviews";
+          const [catalog, policy, filenames, methodUi, index] = await Promise.all([
+            readFile("site/data/catalog.json", "utf8").then(JSON.parse),
+            readFile(`${REVIEWS_DIR}/_policy.json`, "utf8").then(JSON.parse),
+            readdir(REVIEWS_DIR),
+            readFile("site/methodological-reviews.js", "utf8"),
+            readFile("site/index.html", "utf8")
+          ]);
+
+          const reviewFiles = filenames.filter((name) => name.endsWith(".json") && !name.startsWith("_"));
+          const reviews = await Promise.all(reviewFiles.map((name) => readFile(`${REVIEWS_DIR}/${name}`, "utf8").then(JSON.parse)));
+          const records = new Map(catalog.records.map((record) => [record.id, record]));
+          const requiredIds = [
+            "inspect:paperbench", "inspect:mle_bench", "inspect:frontier_cs_research",
+            "canonical:terminal-bench", "inspect:swe_bench", "inspect:osworld",
+            "canonical:webarena", "canonical:workarena", "canonical:jailbreakbench",
+            "canonical:harmbench", "inspect:strong_reject", "canonical:agentdojo",
+            "inspect:agentharm", "inspect:cybench", "inspect:cve_bench"
+          ];
+
+          assert.equal(policy.review_type, "documentary");
+          assert.equal(policy.replication_status, "not-replicated");
+          assert.equal(reviews.length, requiredIds.length, "unexpected wave-1 review count");
+          assert.equal(new Set(reviews.map((review) => review.id)).size, reviews.length, "duplicate review ids");
+          assert.ok((catalog.stats.review_status?.reviewed || 0) >= 30, "catalogue should contain at least 30 reviewed records after wave 1");
+          assert.equal(catalog.stats.methodological_reviews?.added_by_registry, 15, "wave-1 registry count mismatch");
+          assert.equal(catalog.stats.methodological_reviews?.independently_replicated, 0, "documentary reviews must not be represented as replications");
+
+          const requiredFields = [
+            "construct", "unit_of_analysis", "interaction_type", "target_outcome", "elicitation",
+            "scoring", "protocol_dependence", "implementation_dependence", "limitations",
+            "comparability", "decision_relevance", "source_basis"
+          ];
+
+          for (const id of requiredIds) {
+            const record = records.get(id);
+            assert.ok(record, `${id}: record missing`);
+            assert.equal(record.review_status, "reviewed", `${id}: review status not applied`);
+            assert.equal(record.editorial_reviewed_at, "2026-08-27", `${id}: review date mismatch`);
+            const review = record.methodological_review;
+            assert.ok(review, `${id}: structured methodological review missing`);
+            assert.equal(review.review_type, "documentary", `${id}: review type must be documentary`);
+            assert.equal(review.replication_status, "not-replicated", `${id}: replication status must be explicit`);
+            for (const field of requiredFields) assert.ok(review[field] && (!Array.isArray(review[field]) || review[field].length), `${id}: missing ${field}`);
+            assert.ok(review.source_basis.every((source) => /^https:\/\//.test(source.url)), `${id}: invalid review source`);
+            assert.ok(record.evidence_reach.includes("controlled-model-behaviour"), `${id}: bounded evidence reach missing`);
+            assert.doesNotMatch(`${record.measures} ${record.best_for}`, /universal safety|complete safety|general autonomy|replace.*(engineer|researcher)/i, `${id}: overclaim in positive interpretation`);
+          }
+
+          assert.match(records.get("inspect:paperbench").does_not_measure, /original research|scientific autonomy/i);
+          assert.match(records.get("inspect:mle_bench").does_not_measure, /production|research/i);
+          assert.match(records.get("canonical:jailbreakbench").does_not_measure, /universal jailbreak/i);
+          assert.match(records.get("canonical:harmbench").does_not_measure, /real-world harm/i);
+          assert.match(records.get("inspect:agentharm").does_not_measure, /deployment|real-world misuse/i);
+          assert.match(records.get("inspect:cybench").does_not_measure, /real-world intrusion/i);
+          assert.match(records.get("inspect:cve_bench").does_not_measure, /real-world|arbitrary systems/i);
+          assert.match(methodUi, /Documentary review, not an independent replication/i, "UI must expose the review boundary");
+          assert.match(methodUi, /Methodological assessment/, "methodological assessment UI missing");
+          assert.ok(index.includes('src="/methodological-reviews.js"'), "methodological review script not loaded");
+          assert.ok(index.includes('href="/methodological-reviews.css"'), "methodological review styles not loaded");
+
+          console.log(`Validated ${requiredIds.length} documentary methodological reviews; ${catalog.stats.review_status.reviewed} reviewed records in total; 0 independent replications claimed.`);
+          EOF
+
+          python - <<'PY'
+          from pathlib import Path
+
+          marker = Path('scripts/write-refresh-marker.mjs')
+          text = marker.read_text()
+          if 'methodological_reviews:' not in text:
+              anchor = '  primary_source_health:'
+              insertion = '''  methodological_reviews: {
+            reviewed_records: catalog.stats.review_status?.reviewed || 0,
+            documentary_reviews: catalog.stats.methodological_reviews?.documentary || 0,
+            independently_replicated: catalog.stats.methodological_reviews?.independently_replicated || 0,
+            registry_added: catalog.stats.methodological_reviews?.added_by_registry || 0,
+            reviewed_at: catalog.stats.methodological_reviews?.reviewed_at || null
+          },
+          '''
+              if anchor not in text:
+                  raise SystemExit('write-refresh-marker anchor not found')
+              text = text.replace(anchor, insertion + anchor, 1)
+              marker.write_text(text)
+
+          audit = Path('scripts/audit-source-links.mjs')
+          text = audit.read_text()
+          if 'methodological-review-source' not in text:
+              anchor = '\n}\n\nconst queue = [...candidates.values()]'
+              insertion = '''
+            for (const source of record.methodological_review?.source_basis || []) {
+              addCandidate(candidates, record, "methodological-review-source", source.url, true);
+            }
+          '''
+              if anchor not in text:
+                  raise SystemExit('source-link audit anchor not found')
+              text = text.replace(anchor, insertion + anchor, 1)
+              audit.write_text(text)
+
+          readme = Path('README.md')
+          text = readme.read_text()
+          if '## Methodological reviews' not in text:
+              text += '''
+
+          ## Methodological reviews
+
+          FronteraEval includes versioned documentary reviews for a limited set of decision-relevant evaluations. These reviews identify the construct, protocol, scoring, comparability conditions, decision relevance, and principal limitations from public primary sources.
+
+          They are not independent experimental replications. The catalogue exposes `review_type` and `replication_status` explicitly, and a reviewed record should still be checked against the exact paper, implementation, task version, model system, scaffold, and run configuration.
+          '''
+              readme.write_text(text)
+          PY
+
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Rebuild source and methodological evidence
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REFRESH_INSPECT: '1'
+        run: npm run refresh:sources
+
+      - name: Run all quality gates
+        run: npm run check
+
+      - name: Audit methodological review sources
+        env:
+          SOURCE_AUDIT_CONCURRENCY: '8'
+        run: npm run audit:links -- --fail-critical
+
+      - name: Write reviewed refresh marker
+        run: node scripts/write-refresh-marker.mjs
+
+      - name: Remove one-time workflow and commit verified review wave
+        run: |
+          rm .github/workflows/complete-methodological-wave.yml
+          git config user.name 'fronteraeval-bot'
+          git config user.email 'fronteraeval-bot@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add 15 documentary methodological reviews'
+          git push origin HEAD:research/methodological-reviews-wave-1
