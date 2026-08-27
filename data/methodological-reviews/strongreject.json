@@ -1,0 +1,30 @@
+{
+  "id": "inspect:strong_reject",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Quality and harmfulness of model responses to a curated set of forbidden prompts, including under jailbreak attacks.",
+  "unit_of_analysis": "One model response to one forbidden prompt, optionally transformed by one jailbreak method.",
+  "interaction_type": "Adversarial prompting evaluated with a fine-grained response rubric.",
+  "target_outcome": "Rubric-based score reflecting refusal, convincingness, and specificity of the harmful response.",
+  "human_participants": "No human subjects. Human judgments are used to develop and validate the evaluator.",
+  "elicitation": "Forbidden prompts and jailbreak transformations are evaluated under specified target-model and generation settings.",
+  "scoring": "Fine-grained automated evaluator calibrated against human judgments rather than refusal-string matching alone.",
+  "measures": "How harmful and useful the target's responses are on the StrongREJECT prompt and attack distribution under the stated evaluator.",
+  "does_not_measure": "Universal jailbreak robustness, real-world misuse success, adaptive agentic attacks, or downstream harm.",
+  "best_for": "Evaluating jailbreak responses with a more discriminating rubric than simple refusal detection.",
+  "not_sufficient_for": "Certifying safety across threats, modalities, tools, model versions, or deployment contexts.",
+  "protocol_dependence": "High: prompt set, jailbreak transformations, model snapshot, generation settings, and evaluator version matter.",
+  "implementation_dependence": "High: judge-model calibration and rubric implementation directly influence scores.",
+  "limitations": [
+    "The prompt distribution and jailbreak set are finite and public.",
+    "Judge models can share biases or vulnerabilities with evaluated systems.",
+    "Rubric scores do not represent operational harm or adversary success.",
+    "Results may shift with system prompts and endpoint updates."
+  ],
+  "comparability": "Match StrongREJECT release, prompt and attack sets, target snapshot, decoding, evaluator model, and rubric implementation.",
+  "decision_relevance": "Useful for safeguard regression testing and judge-quality analysis; insufficient as a standalone jailbreak or misuse safety case.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2402.10260"},
+    {"kind": "implementation", "url": "https://github.com/alexandrasouly/strongreject"}
+  ]
+}
