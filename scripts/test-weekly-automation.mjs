@@ -14,7 +14,7 @@ const [workflow, packageJson, marker, audit, index, netlifySweep] = await Promis
 const parsedWorkflow = YAML.parse(workflow);
 const schedules = parsedWorkflow?.on?.schedule?.map((entry) => entry.cron) || [];
 assert.deepEqual(schedules, ["23 2 * * 0", "23 8 * * 0"], "primary and backup Sunday schedules are not structurally valid");
-assert.ok(parsedWorkflow?.on?.workflow_dispatch != null, "manual recovery trigger missing");
+assert.ok(Object.prototype.hasOwnProperty.call(parsedWorkflow?.on || {}, "workflow_dispatch"), "manual recovery trigger missing");
 assert.equal(parsedWorkflow?.permissions?.contents, "write", "catalogue refresh cannot write validated updates");
 assert.equal(parsedWorkflow?.permissions?.issues, "write", "failure alert cannot create or close an issue");
 assert.equal(parsedWorkflow?.concurrency?.["cancel-in-progress"], false, "overlapping refreshes must queue rather than cancel");
