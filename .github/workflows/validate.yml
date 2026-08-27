@@ -30,8 +30,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REFRESH_INSPECT: "1"
         run: npm run refresh:sources
-      - name: Run structural, source-resolution, construct and search quality gates
+      - name: Run structural, source-resolution, construct, search, and usefulness gates
         run: npm run check
+      - name: Audit primary-source links on pull requests
+        if: github.event_name == 'pull_request'
+        env:
+          SOURCE_AUDIT_CONCURRENCY: "8"
+        run: npm run audit:links -- --fail-critical
       - name: Publish verified deploy source
         uses: actions/upload-artifact@v4
         with:
@@ -48,4 +53,5 @@ jobs:
             data
             scripts
             netlify
+            refresh
             site
