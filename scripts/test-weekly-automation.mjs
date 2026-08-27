@@ -21,6 +21,7 @@ assert.equal(parsedWorkflow?.concurrency?.["cancel-in-progress"], false, "overla
 assert.match(workflow, /Install locked dependencies with retries/, "dependency retries missing");
 assert.match(workflow, /for attempt in 1 2 3/, "three-attempt retry loop missing");
 assert.match(workflow, /npm run audit:links -- --fail-critical/, "critical source audit is not fail-closed");
+assert.match(workflow, /git reset --hard HEAD[\s\S]*git clean -fd[\s\S]*git pull --rebase origin main/, "generated outputs are not cleaned before rebase");
 assert.match(workflow, /Verify the production deployment contains this refresh/, "production verification missing");
 assert.match(workflow, /Automated weekly refresh failed/, "failure issue alert missing");
 assert.match(workflow, /Production remains on the last validated deployment/, "failure message must state the fail-safe behaviour");
@@ -41,4 +42,4 @@ assert.ok(index.includes('href="/methodological-reviews.css"'), "methodological 
 assert.ok(index.includes('src="/methodological-reviews.js"'), "methodological review interface is not loaded");
 assert.match(netlifySweep, /schedule:"17 2 \* \* 0"/, "independent Netlify discovery sweep missing");
 
-console.log("Validated primary and backup schedules, retries, fail-closed gates, alerts, production verification, and last-known-good deployment behaviour.");
+console.log("Validated primary and backup schedules, retries, clean-tree rebasing, fail-closed gates, alerts, production verification, and last-known-good deployment behaviour.");
