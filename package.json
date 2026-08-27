@@ -1,15 +1,15 @@
 {
   "name": "fronteraeval",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "private": true,
   "type": "module",
   "description": "Decision-support catalogue for frontier AI evaluations",
   "scripts": {
     "build:base": "node scripts/build.mjs && node scripts/enrich-register.mjs && node scripts/enrich-internal.mjs",
-    "refresh:sources": "npm run build:base && node scripts/resolve-sources.mjs && node scripts/enrich-paper-metadata.mjs && node scripts/apply-source-registry.mjs && node scripts/publish-refresh-artifacts.mjs",
-    "build": "npm run build:base && node scripts/apply-source-registry.mjs && node scripts/publish-refresh-artifacts.mjs",
-    "check:syntax": "node --check scripts/build.mjs && node --check scripts/enrich-register.mjs && node --check scripts/enrich-internal.mjs && node --check scripts/resolve-sources.mjs && node --check scripts/enrich-paper-metadata.mjs && node --check scripts/apply-source-registry.mjs && node --check scripts/write-refresh-marker.mjs && node --check scripts/test-source-resolution.mjs && node --check scripts/test-ui-controls.mjs && node --check scripts/test-product-clarity.mjs && node --check scripts/test-data-usefulness.mjs && node --check scripts/validate.mjs && node --check scripts/audit-source-links.mjs && node --check scripts/publish-refresh-artifacts.mjs && node --check site/search-engine.js && node --check site/app.js && node --check site/enhancements.js && node --check site/attribution.js && node --check site/theme-init.js && node --check site/ui-controls.js",
-    "check": "npm run check:syntax && node scripts/validate.mjs && node scripts/test-source-resolution.mjs && node scripts/test-search.mjs && node scripts/test-ui-controls.mjs && node scripts/test-product-clarity.mjs && node scripts/test-data-usefulness.mjs && node scripts/audit-source-links.mjs --dry-run && node scripts/write-refresh-marker.mjs --check",
+    "refresh:sources": "npm run build:base && node scripts/resolve-sources.mjs && node scripts/enrich-paper-metadata.mjs && node scripts/apply-source-registry.mjs && node scripts/apply-methodological-reviews.mjs && node scripts/publish-refresh-artifacts.mjs",
+    "build": "npm run build:base && node scripts/apply-source-registry.mjs && node scripts/apply-methodological-reviews.mjs && node scripts/publish-refresh-artifacts.mjs",
+    "check:syntax": "node --check scripts/build.mjs && node --check scripts/enrich-register.mjs && node --check scripts/enrich-internal.mjs && node --check scripts/resolve-sources.mjs && node --check scripts/enrich-paper-metadata.mjs && node --check scripts/apply-source-registry.mjs && node --check scripts/apply-methodological-reviews.mjs && node --check scripts/write-refresh-marker.mjs && node --check scripts/test-source-resolution.mjs && node --check scripts/test-ui-controls.mjs && node --check scripts/test-product-clarity.mjs && node --check scripts/test-data-usefulness.mjs && node --check scripts/test-methodological-reviews.mjs && node --check scripts/test-weekly-automation.mjs && node --check scripts/validate.mjs && node --check scripts/audit-source-links.mjs && node --check scripts/publish-refresh-artifacts.mjs && node --check site/search-engine.js && node --check site/app.js && node --check site/enhancements.js && node --check site/attribution.js && node --check site/theme-init.js && node --check site/ui-controls.js && node --check site/methodological-reviews.js",
+    "check": "npm run check:syntax && node scripts/validate.mjs && node scripts/test-source-resolution.mjs && node scripts/test-search.mjs && node scripts/test-ui-controls.mjs && node scripts/test-product-clarity.mjs && node scripts/test-data-usefulness.mjs && node scripts/test-methodological-reviews.mjs && node scripts/test-weekly-automation.mjs && node scripts/audit-source-links.mjs --dry-run && node scripts/write-refresh-marker.mjs --check",
     "audit:links": "node scripts/audit-source-links.mjs"
   },
   "dependencies": {
