@@ -1,0 +1,30 @@
+{
+  "id": "canonical:ailuminate",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Propensity of a language-model system to produce unsafe responses across a standardized taxonomy of hazard categories and prompts.",
+  "unit_of_analysis": "One model response to one benchmark prompt, classified against category-specific safety criteria.",
+  "interaction_type": "Primarily single-turn text prompting of a specified model system under standardized evaluation conditions.",
+  "target_outcome": "Prompt-level unsafe-response classification and aggregate safety performance across hazard categories.",
+  "human_participants": "No human recipients are exposed in benchmark runs. Human expertise informs prompt development, hazard taxonomy, annotation, and evaluator validation.",
+  "elicitation": "The evaluated system receives a controlled prompt set spanning defined hazards, using specified system instructions and generation settings.",
+  "scoring": "Prompt responses are classified with benchmark-defined evaluators and aggregated into category and overall safety results under MLCommons reporting rules.",
+  "measures": "Response safety on AILuminate's prompt distribution, taxonomy, language, evaluator, and model-system configuration.",
+  "does_not_measure": "All safety hazards, adaptive jailbreak robustness, multi-turn or tool-using misuse, deployment incidence, human harm, or a complete product safety case.",
+  "best_for": "Providing a standardized baseline for harmful-response behavior and comparing systems under a common prompt and reporting protocol.",
+  "not_sufficient_for": "Certifying a model or product as safe across contexts, languages, adversaries, or agentic deployments.",
+  "protocol_dependence": "Very high: hazard taxonomy, prompt set, language, model-system prompt, generation settings, evaluator, and aggregation rules define the result.",
+  "implementation_dependence": "High: evaluator calibration, endpoint behavior, prompt formatting, and benchmark version affect classifications.",
+  "limitations": [
+    "A fixed prompt distribution cannot cover adaptive or newly emerging misuse strategies.",
+    "Aggregate safety ratings can conceal hazard-category and prompt-level variation.",
+    "Automated or model-assisted evaluators may make systematic classification errors.",
+    "Text response safety is narrower than agentic, multimodal, and deployment safety."
+  ],
+  "comparability": "Require the same AILuminate release, language and prompt set, category taxonomy, system prompt, decoding, model snapshot, evaluator, and aggregation rules.",
+  "decision_relevance": "Useful as a standardized assurance input and regression baseline. Procurement or deployment decisions require product-specific threat models, adaptive testing, and operational controls.",
+  "source_basis": [
+    {"kind": "official", "url": "https://mlcommons.org/ailuminate/"},
+    {"kind": "implementation", "url": "https://github.com/mlcommons/ailuminate"}
+  ]
+}
