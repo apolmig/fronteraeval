@@ -1,0 +1,31 @@
+{
+  "id": "canonical:re-bench",
+  "review_confidence": "high",
+  "evidence_reach": ["controlled-model-behaviour", "deployment-readiness"],
+  "construct": "Performance of language-model agents on a selected set of machine-learning research-engineering tasks under controlled time, compute, and tooling budgets.",
+  "unit_of_analysis": "One agent or human attempt on one research-engineering task, scored by a task-specific objective metric.",
+  "interaction_type": "Long-horizon coding and experimentation in isolated environments with files, compute, iterative execution, and an agent scaffold.",
+  "target_outcome": "Task-specific continuous performance, compared with starting solutions, expert solutions, and human-expert trajectories under the study conditions.",
+  "human_participants": "Experienced human researchers perform the same tasks under study budgets to provide reference trajectories and comparisons.",
+  "elicitation": "Agents receive task descriptions, environments, compute, tools, and a fixed time budget; the chosen scaffold and model access are part of the evaluated system.",
+  "scoring": "Each task has a native objective metric transformed for comparison; aggregate analysis combines heterogeneous task scores and performance over time.",
+  "measures": "Research-engineering performance on RE-Bench's seven selected tasks under the exact budget, environment, model-agent scaffold, and scoring setup.",
+  "does_not_measure": "All AI R&D, research taste, agenda setting, theory development, reliable autonomous research, organizational productivity, or aggregate AI-progress acceleration.",
+  "best_for": "Comparing model-agent and human performance on reproducible ML research-engineering tasks and analysing performance as a function of time budget.",
+  "not_sufficient_for": "Claims that a model can automate AI research, recursively improve AI systems, or replace a research team.",
+  "protocol_dependence": "Very high: task selection, time and compute budgets, human comparison protocol, scaffold, tools, and score normalization shape conclusions.",
+  "implementation_dependence": "Very high: environment and dependency stability, task graders, agent harness, checkpointing, and experiment infrastructure affect performance.",
+  "limitations": [
+    "Seven tasks cannot represent the breadth of AI R&D.",
+    "The tasks emphasize research engineering more than problem selection, theory, collaboration, or scientific judgment.",
+    "Aggregate results combine heterogeneous native metrics and task difficulty.",
+    "Human and agent workflows may use tools, prior knowledge, and iteration strategies differently."
+  ],
+  "comparability": "Match RE-Bench task and environment versions, task subset, time and compute budgets, score transformations, agent scaffold, tools, model snapshot, and human-reference protocol.",
+  "decision_relevance": "Useful for monitoring a bounded AI R&D capability and calibrating more realistic safety evaluations. It should not by itself determine capability thresholds or policy responses.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2411.15114"},
+    {"kind": "implementation", "url": "https://github.com/METR/RE-Bench"},
+    {"kind": "official", "url": "https://metr.org/"}
+  ]
+}
