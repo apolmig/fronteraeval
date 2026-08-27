@@ -1,0 +1,31 @@
+{
+  "id": "register:machiavelli",
+  "review_confidence": "high",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Ethical, power-seeking, and reward-maximizing behavior by language-model agents in text-based social decision environments.",
+  "unit_of_analysis": "One agent trajectory or action sequence within a choose-your-own-adventure game.",
+  "interaction_type": "Sequential decision making in partially observed text games with social relationships, goals, and consequences.",
+  "target_outcome": "Game reward and benchmark annotations for power, disutility, deception, and other ethically relevant behavior across trajectories.",
+  "human_participants": "No human subjects in evaluation runs. Human annotations and game text support behavior labels and validation.",
+  "elicitation": "Agents are prompted to pursue game objectives in interactive environments; behavior depends on agent policy, action-generation method, and any ethical constraint or regularizer.",
+  "scoring": "Trajectory rewards are combined with scene- or action-level annotations of power and ethical harms to characterize reward-harm tradeoffs.",
+  "measures": "Behavioral choices and reward-harm tradeoffs in the benchmark's selected fictional social games under the specified agent policy.",
+  "does_not_measure": "Real-world political manipulation, stable model values, human victim impact, deployment intent, or the incidence of power-seeking outside simulated games.",
+  "best_for": "Studying social decision behavior and testing methods intended to reduce harmful strategies while preserving task reward.",
+  "not_sufficient_for": "Claims that a model is politically manipulative, power-seeking in deployment, or aligned across real institutions.",
+  "protocol_dependence": "High: game selection, action space, observation format, reward objective, agent prompting, and behavior annotations shape results.",
+  "implementation_dependence": "High: game interfaces, trajectory generation, annotation models, and aggregation of heterogeneous harms affect scores.",
+  "limitations": [
+    "Fictional games are stylized proxies for real social and institutional environments.",
+    "Behavior labels depend on annotation taxonomies and contextual interpretation.",
+    "Game reward can create incentives unlike those in deployed assistants.",
+    "Aggregate ethical scores may obscure very different failure modes across games."
+  ],
+  "comparability": "Match MACHIAVELLI version, game subset, agent prompt and action policy, reward setup, annotation version, trajectory budget, and model snapshot.",
+  "decision_relevance": "Useful for research on social decision-making and reward-harm tradeoffs; weak standalone evidence for real-world manipulation or power-seeking risk.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2304.03279"},
+    {"kind": "implementation", "url": "https://github.com/aypan17/machiavelli"},
+    {"kind": "registry", "url": "https://github.com/UKGovernmentBEIS/inspect_evals/tree/main/register/machiavelli"}
+  ]
+}
