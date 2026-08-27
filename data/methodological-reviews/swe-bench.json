@@ -1,0 +1,30 @@
+{
+  "id": "inspect:swe_bench",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Ability to resolve selected real-world software issues in existing repositories.",
+  "unit_of_analysis": "A generated patch for one GitHub issue and repository snapshot.",
+  "interaction_type": "Repository-level coding and debugging with issue text, codebase context, tools, and tests.",
+  "target_outcome": "Whether the patch passes task-specific fail-to-pass and pass-to-pass tests.",
+  "human_participants": "No human subjects. Historical developer patches and issue discussions define tasks and test expectations.",
+  "elicitation": "The system receives an issue and repository snapshot and may inspect, edit, and test code under the chosen agent scaffold.",
+  "scoring": "Repository tests determine whether the issue is resolved without breaking previously passing behavior.",
+  "measures": "Patch-generation success on the selected SWE-bench issues under the exact repository, test, scaffold, and execution setup.",
+  "does_not_measure": "General software engineering productivity, requirements discovery, maintainability, security, teamwork, or reliable deployment.",
+  "best_for": "Comparing coding agents on reproducible repository-level bug-fixing tasks.",
+  "not_sufficient_for": "Claims that a model can replace software engineers or safely maintain production systems.",
+  "protocol_dependence": "High: issue subset, repository snapshot, tests, tool access, time budget, and scaffold affect resolution rates.",
+  "implementation_dependence": "High: environment construction and test validity are known sources of benchmark error; verified subsets are not interchangeable with the original set.",
+  "limitations": [
+    "Tests may incompletely specify the intended fix or admit brittle patches.",
+    "Repository selection is narrow and historically Python-heavy.",
+    "Benchmark contamination and memorised patches are material concerns.",
+    "Resolution rates often conflate model ability with search, context management, and scaffold quality."
+  ],
+  "comparability": "Use the same SWE-bench variant, task IDs, repository images, tests, timeout, scaffold, and model version; report Verified and full-set results separately.",
+  "decision_relevance": "Useful for software-agent capability monitoring and procurement trials, with additional security, maintainability, and live-workflow evidence required.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2310.06770"},
+    {"kind": "implementation", "url": "https://github.com/swe-bench/SWE-bench"}
+  ]
+}

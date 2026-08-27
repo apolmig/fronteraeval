@@ -3,10 +3,12 @@ name: Weekly catalogue and source refresh
 on:
   schedule:
     - cron: "23 2 * * 0"
+    - cron: "23 8 * * 0"
   workflow_dispatch:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: weekly-catalogue-refresh
@@ -15,7 +17,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,31 +29,148 @@ jobs:
           node-version: "22"
           cache: npm
 
-      - name: Install locked dependencies
-        run: npm ci --no-audit --no-fund
+      - name: Skip the backup run only after a verified primary deployment
+        id: guard
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          should_run=true
+          if [[ "$EVENT_NAME" == "schedule" && "$EVENT_SCHEDULE" == "23 8 * * 0" && -f refresh/last-run.json ]]; then
+            expected="$(node --input-type=module -e 'import fs from "node:fs"; const marker=JSON.parse(fs.readFileSync("refresh/last-run.json","utf8")); process.stdout.write(marker.refreshed_at || "")')"
+            recent="$(EXPECTED="$expected" node --input-type=module -e 'const value=Date.parse(process.env.EXPECTED || ""); process.stdout.write(Number.isFinite(value) && Date.now()-value < 10*60*60*1000 ? "true" : "false")')"
+            if [[ "$recent" == "true" ]] && curl -fsS --retry 2 --retry-all-errors --max-time 20 "https://fronteraeval.org/data/weekly-refresh.json?backup-check=$(date +%s)" -o /tmp/weekly-refresh.json; then
+              if EXPECTED="$expected" node --input-type=module -e 'import fs from "node:fs"; const remote=JSON.parse(fs.readFileSync("/tmp/weekly-refresh.json","utf8")); process.exit(remote.refreshed_at === process.env.EXPECTED ? 0 : 1)'; then
+                should_run=false
+                echo "Primary refresh and production deployment are already current; backup run is not needed."
+              fi
+            fi
+          fi
+          echo "run=$should_run" >> "$GITHUB_OUTPUT"
+
+      - name: Install locked dependencies with retries
+        if: steps.guard.outputs.run == 'true'
+        shell: bash
+        run: |
+          for attempt in 1 2 3; do
+            if npm ci --no-audit --no-fund; then
+              exit 0
+            fi
+            [[ "$attempt" -lt 3 ]] && sleep "$((attempt * 15))"
+          done
+          exit 1
 
       - name: Refresh upstream catalogue, papers, authors and organisations
+        if: steps.guard.outputs.run == 'true'
+        shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REFRESH_INSPECT: "1"
-        run: npm run refresh:sources
+        run: |
+          for attempt in 1 2 3; do
+            if npm run refresh:sources; then
+              exit 0
+            fi
+            [[ "$attempt" -lt 3 ]] && sleep "$((attempt * 20))"
+          done
+          exit 1
 
-      - name: Run structural, source-resolution, construct, search, and usefulness gates
+      - name: Run structural, source-resolution, construct, search, review, and usefulness gates
+        if: steps.guard.outputs.run == 'true'
         run: npm run check
 
-      - name: Audit primary-source links
+      - name: Audit primary and methodological-review sources
+        if: steps.guard.outputs.run == 'true'
+        shell: bash
         env:
           SOURCE_AUDIT_CONCURRENCY: "8"
-        run: npm run audit:links -- --fail-critical
+        run: |
+          for attempt in 1 2; do
+            if npm run audit:links -- --fail-critical; then
+              exit 0
+            fi
+            [[ "$attempt" -lt 2 ]] && sleep 30
+          done
+          exit 1
 
       - name: Write validated refresh marker
+        if: steps.guard.outputs.run == 'true'
         run: node scripts/write-refresh-marker.mjs
 
-      - name: Commit updated registry, source-health report, and refresh marker
+      - name: Commit and push the validated refresh
+        if: steps.guard.outputs.run == 'true'
+        id: commit
+        shell: bash
         run: |
           git config user.name "fronteraeval-bot"
           git config user.email "fronteraeval-bot@users.noreply.github.com"
           git add data/source-registry.json refresh/last-run.json refresh/source-link-audit.json
-          git commit -m "chore: weekly catalogue and source refresh" || exit 0
-          git pull --rebase origin main
-          git push origin HEAD:main
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "chore: weekly catalogue and source refresh"
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            [[ "$attempt" -lt 3 ]] && sleep "$((attempt * 20))"
+          done
+          exit 1
+
+      - name: Verify the production deployment contains this refresh
+        if: steps.guard.outputs.run == 'true' && steps.commit.outputs.changed == 'true'
+        shell: bash
+        run: |
+          expected="$(node --input-type=module -e 'import fs from "node:fs"; const marker=JSON.parse(fs.readFileSync("refresh/last-run.json","utf8")); process.stdout.write(marker.refreshed_at)')"
+          verified=false
+          for attempt in $(seq 1 30); do
+            if curl -fsS --retry 2 --retry-all-errors --max-time 20 "https://fronteraeval.org/data/weekly-refresh.json?deploy-check=$(date +%s)" -o /tmp/weekly-refresh.json; then
+              if EXPECTED="$expected" node --input-type=module -e 'import fs from "node:fs"; const remote=JSON.parse(fs.readFileSync("/tmp/weekly-refresh.json","utf8")); process.exit(remote.refreshed_at === process.env.EXPECTED ? 0 : 1)'; then
+                verified=true
+                break
+              fi
+            fi
+            sleep 20
+          done
+          if [[ "$verified" != "true" ]]; then
+            echo "Production did not expose refresh marker $expected within ten minutes."
+            exit 1
+          fi
+          curl -fsS --retry 3 --retry-all-errors --max-time 20 https://fronteraeval.org/ >/dev/null
+
+      - name: Open or update the automated failure issue
+        if: failure()
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          TRIGGER: ${{ github.event_name }} ${{ github.event.schedule }}
+        run: |
+          title="Automated weekly refresh failed"
+          issue="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')"
+          body="The autonomous FronteraEval refresh failed.\n\nRun: $RUN_URL\nTrigger: $TRIGGER\nTime: $(date -u +'%Y-%m-%d %H:%M:%S UTC')\n\nProduction remains on the last validated deployment."
+          if [[ -n "$issue" ]]; then
+            printf '%b\n' "$body" | gh issue comment "$issue" --repo "$GITHUB_REPOSITORY" --body-file -
+          else
+            printf '%b\n' "$body" | gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file -
+          fi
+
+      - name: Close any stale automated failure issue
+        if: success() && steps.guard.outputs.run == 'true'
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          title="Automated weekly refresh failed"
+          issue="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')"
+          if [[ -n "$issue" ]]; then
+            gh issue close "$issue" --repo "$GITHUB_REPOSITORY" --comment "The latest autonomous refresh completed and was verified in production."
+          fi

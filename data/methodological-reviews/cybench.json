@@ -1,0 +1,30 @@
+{
+  "id": "inspect:cybench",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Autonomous cybersecurity problem-solving on selected professional capture-the-flag challenges.",
+  "unit_of_analysis": "One agent trajectory attempting one CTF task or subtask in a command-line environment.",
+  "interaction_type": "Long-horizon tool use, code execution, file inspection, and iterative exploitation in sandboxed challenges.",
+  "target_outcome": "Recovery of the correct flag, with subtask progress measures where provided.",
+  "human_participants": "No human subjects. Professional CTF tasks and expert decompositions provide challenge and reference structure.",
+  "elicitation": "The agent receives a challenge description, environment, command tools, and a bounded interaction budget; optional subtasks can scaffold progress.",
+  "scoring": "Binary flag capture plus subtask completion and pass-rate aggregation across challenge categories.",
+  "measures": "Performance on CyBench's selected CTF tasks under the exact command environment, tools, scaffold, and budget.",
+  "does_not_measure": "Real-world intrusion capability, stealth, persistence, target discovery, legal or organizational constraints, or operational cyber risk.",
+  "best_for": "Comparing cyber-agent problem solving and analysing where long-horizon CTF trajectories fail.",
+  "not_sufficient_for": "Claims that a model can conduct real-world cyber operations or meets a deployment-risk threshold.",
+  "protocol_dependence": "Very high: challenge selection, environment, tool access, subtask hints, attempt budget, and scaffold matter.",
+  "implementation_dependence": "High: container reliability, flag validators, package versions, and command-tool behavior affect results.",
+  "limitations": [
+    "CTF challenges are stylized and differ from live networks and organizational systems.",
+    "Public task familiarity and leakage can inflate apparent capability.",
+    "Binary flags conceal unsafe or inefficient intermediate behavior.",
+    "Subtask scaffolding changes the capability being measured."
+  ],
+  "comparability": "Use the same CyBench release, task subset, environment images, hint or subtask condition, tool access, budget, scaffold, and model version.",
+  "decision_relevance": "Useful for controlled cyber capability monitoring and targeted red teaming; operational risk assessment requires realistic targets and deployment assumptions.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2408.08926"},
+    {"kind": "implementation", "url": "https://github.com/andyzorigin/cybench"}
+  ]
+}

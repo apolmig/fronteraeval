@@ -1,0 +1,31 @@
+{
+  "id": "canonical:harmbench",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Standardized red-team elicitation of a broad set of harmful text behaviors.",
+  "unit_of_analysis": "One harmful behavior attempted against one target model using one red-teaming method.",
+  "interaction_type": "Adversarial prompt generation and target-model interaction under benchmark-defined methods and behavior categories.",
+  "target_outcome": "Whether the response is classified as successfully exhibiting the specified harmful behavior.",
+  "human_participants": "No human subjects. Human curation and validation inform behaviors and classifiers.",
+  "elicitation": "Multiple red-teaming methods are run with defined budgets against target models and, in some cases, defenses.",
+  "scoring": "Automated behavior classifiers and aggregate attack-success metrics across behaviors, methods, and targets.",
+  "measures": "Elicitability of HarmBench's harmful behaviors under the selected red-team methods and target configuration.",
+  "does_not_measure": "Real-world harm, user intent, deployment prevalence, universal safeguard robustness, or agentic end-to-end misuse.",
+  "best_for": "Comparing red-teaming methods, target-model vulnerability, and defense regressions on a standardized behavior set.",
+  "not_sufficient_for": "A comprehensive safety certification or estimate of incident probability.",
+  "protocol_dependence": "Very high: behavior taxonomy, attack method and budget, target setup, generation settings, and classifier all matter.",
+  "implementation_dependence": "High: classifier calibration, prompt templates, target API changes, and attack-code versions affect results.",
+  "limitations": [
+    "The behavior set cannot cover the full space of harmful requests.",
+    "Automated classifiers introduce false positives and false negatives.",
+    "Static attacks may underestimate adaptive adversaries.",
+    "Text-only elicitation is narrower than tool-using or multimodal misuse."
+  ],
+  "comparability": "Use the same HarmBench release, behavior subset, attack implementations and budgets, target snapshot, generation settings, and classifier.",
+  "decision_relevance": "Useful for standardized red-team coverage and regression tracking; it should feed into, not substitute for, a broader safety case.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2402.04249"},
+    {"kind": "official", "url": "https://www.harmbench.org/"},
+    {"kind": "implementation", "url": "https://github.com/centerforaisafety/HarmBench"}
+  ]
+}

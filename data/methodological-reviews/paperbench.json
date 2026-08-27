@@ -1,0 +1,31 @@
+{
+  "id": "inspect:paperbench",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Performance at reproducing selected AI research papers under a fixed long-horizon agent, compute, time, and grading setup.",
+  "unit_of_analysis": "One agent attempt to reproduce the central experimental contribution of one selected paper.",
+  "interaction_type": "Long-horizon tool-using agent operating in an isolated research-compute environment.",
+  "target_outcome": "Paper-specific rubric score over produced code, artifacts, and experimental results.",
+  "human_participants": "No human subjects. Paper authors and ML experts contribute rubrics, clarifications, validation, and human baselines.",
+  "elicitation": "The agent receives the paper, task materials, a scaffold, tools, compute, and a bounded time budget; performance is sensitive to all of these choices.",
+  "scoring": "Hierarchical paper-specific rubrics with thousands of gradable criteria, assessed by an automated judge benchmarked against expert grading.",
+  "measures": "How well an evaluated agent reproduces specified AI research outputs for the selected papers under the published PaperBench protocol.",
+  "does_not_measure": "Unbounded original research ability, research taste, theory generation, lab management, reliable scientific autonomy, or acceleration of AI progress in deployment.",
+  "best_for": "Comparing research-replication performance when paper set, rubric, judge, time, compute, tools, and scaffold are held fixed.",
+  "not_sufficient_for": "Claims that a system can autonomously conduct general AI research or replace an end-to-end research team.",
+  "protocol_dependence": "High: task instructions, paper selection, compute, time budget, scaffold, tool access, and rubric materially shape the result.",
+  "implementation_dependence": "High: agent harness, environment reliability, judge model, and artifact collection affect scores.",
+  "limitations": [
+    "The selected paper set is not representative of all AI research.",
+    "Rubric coverage and automated judging can miss scientifically important failure modes or reward surface reproduction.",
+    "Replication is narrower than original research and does not test agenda setting or research taste.",
+    "Results are highly sensitive to compute, time, scaffold, and tool configuration."
+  ],
+  "comparability": "Compare only runs using the same PaperBench version, paper subset, rubric and judge, time and compute budgets, model-system configuration, and scaffold.",
+  "decision_relevance": "Useful for monitoring a bounded slice of AI R&D capability and designing follow-up evaluations; insufficient alone for capability thresholds or deployment decisions.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2504.01848"},
+    {"kind": "official", "url": "https://openai.com/index/paperbench/"},
+    {"kind": "implementation", "url": "https://github.com/openai/preparedness/tree/main/project/paperbench"}
+  ]
+}

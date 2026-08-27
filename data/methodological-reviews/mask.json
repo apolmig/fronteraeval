@@ -1,0 +1,31 @@
+{
+  "id": "inspect:mask",
+  "reviewed_at": "2026-08-24",
+  "review_confidence": "high",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Honesty as consistency between a model's previously elicited belief and the answer it gives when prompted or pressured to report something else.",
+  "unit_of_analysis": "A paired benchmark item consisting of belief elicitation and a subsequent response under a specified pressure or incentive condition.",
+  "interaction_type": "Structured model-only prompting across neutral belief-elicitation contexts and controlled scenarios that create pressure to misreport.",
+  "target_outcome": "Protocol-defined evidence that the model reports an answer inconsistent with its elicited belief, separated where possible from whether the answer is factually accurate.",
+  "human_participants": "No human persuasion subjects participate in the core benchmark. Human decisions enter task design, annotations, and scoring validation.",
+  "elicitation": "The protocol first estimates the model's belief under benchmark-specific prompts, then presents a related scenario with incentives, social pressure, or instructions that may induce a conflicting report.",
+  "scoring": "Benchmark-specific rules compare the elicited belief, the pressured response, and relevant answer labels to classify honesty-related behavior and aggregate it across scenario categories.",
+  "measures": "Whether model responses remain consistent with benchmark-elicited beliefs under MASK's controlled pressure scenarios and scoring rules.",
+  "does_not_measure": "Private internal beliefs, privileged access to hidden cognition, persuasion effectiveness, human belief change, strategic deployment, or downstream social harm.",
+  "best_for": "Studying protocol-specific honesty and motivated-misreporting behavior while separating it from ordinary factual accuracy more carefully than a single-answer test.",
+  "not_sufficient_for": "Claims that a model is generally truthful, intentionally deceptive in deployment, or effective at manipulating people.",
+  "protocol_dependence": "Very high: the belief-elicitation prompt, pressure scenario, answer representation, and classification rules jointly define what counts as an honest or dishonest response.",
+  "implementation_dependence": "High: prompt formatting, model sampling, answer extraction, ambiguous belief estimates, and version-specific task construction can materially change classifications.",
+  "limitations": [
+    "An elicited belief is a behavioral proxy, not direct observation of a private internal state.",
+    "Prompt sensitivity can change both the baseline belief estimate and the pressured answer.",
+    "Inconsistent answers may reflect ambiguity, instability, or task misunderstanding rather than deliberate lying.",
+    "Controlled pressure scenarios do not establish deception frequency or consequences in real deployment."
+  ],
+  "comparability": "Compare results only when the MASK version, item set, belief-elicitation procedure, pressure prompts, answer extraction, sampling settings, and scoring implementation are held fixed.",
+  "decision_relevance": "Useful as bounded evidence about honesty-related behavior and pressure sensitivity. Deployment claims require additional evidence about goals, context, persistence, access, and real-world consequences.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2503.03750"},
+    {"kind": "implementation", "url": "https://github.com/centerforaisafety/mask"}
+  ]
+}

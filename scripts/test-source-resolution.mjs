@@ -41,7 +41,10 @@ for (const record of catalog.records) {
 
   if (record.review_status === "reviewed") {
     assert.ok(!["host-only", "unresolved"].includes(record.attribution_status), `${record.id}: reviewed record has unresolved origin`);
-    assert.equal(record.editorial_reviewed_at, "2026-08-24", `${record.id}: editorial review date is not fixed`);
+    assert.match(record.editorial_reviewed_at || "", /^2026-08-(24|27)$/, `${record.id}: reviewed date is not versioned`);
+    if (record.methodological_review?.reviewed_at) {
+      assert.equal(record.editorial_reviewed_at, record.methodological_review.reviewed_at, `${record.id}: review dates disagree`);
+    }
     if (record.paper?.arxiv_id) assert.ok(paperResolved(record.paper), `${record.id}: reviewed paper metadata unresolved`);
   }
 }

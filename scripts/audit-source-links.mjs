@@ -5,7 +5,7 @@ const FAIL_CRITICAL = process.argv.includes("--fail-critical");
 const limitArg = process.argv.find((argument) => argument.startsWith("--limit="));
 const LIMIT = limitArg ? Math.max(1, Number(limitArg.split("=")[1]) || 1) : Infinity;
 const OUTPUT_PATH = "refresh/source-link-audit.json";
-const USER_AGENT = "FronteraEval/0.8 (+https://fronteraeval.org; source-health-audit)";
+const USER_AGENT = "FronteraEval/0.9 (+https://fronteraeval.org; source-health-audit)";
 const TIMEOUT_MS = 12000;
 const CONCURRENCY = Math.max(1, Math.min(12, Number(process.env.SOURCE_AUDIT_CONCURRENCY || 8)));
 
@@ -52,6 +52,9 @@ for (const record of catalog.records) {
     const critical = highValueRecord && ["paper", "evaluation_developer", "implementation", "code", "official"].includes(role);
     addCandidate(candidates, record, role, link.url, critical);
   }
+  for (const source of record.methodological_review?.source_basis || []) {
+    addCandidate(candidates, record, "methodological-review-source", source.url, true);
+  }
 }
 
 const queue = [...candidates.values()]
@@ -85,6 +88,8 @@ async function request(url, method) {
   });
 }
 
+const sleep = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
+
 async function inspect(candidate) {
   const started = Date.now();
   let method = "HEAD";
@@ -93,9 +98,13 @@ async function inspect(candidate) {
 
   try {
     response = await request(candidate.url, method);
-    if ([400, 405, 501].includes(response.status)) {
+    if ([400, 404, 405, 410, 501].includes(response.status)) {
       method = "GET";
       response = await request(candidate.url, method);
+      if ([404, 410].includes(response.status)) {
+        await sleep(500);
+        response = await request(candidate.url, method);
+      }
     }
   } catch (firstError) {
     error = firstError instanceof Error ? firstError.message : String(firstError);
@@ -151,10 +160,10 @@ const reviewedFailures = results.filter((result) => result.category === "missing
 const exceptions = results.filter((result) => result.category !== "reachable");
 
 const report = {
-  schema_version: "1.1.0",
+  schema_version: "1.2.0",
   generated_at: new Date().toISOString(),
   inspect_source_commit: catalog.inspect_source_commit || catalog.inspect_source_sha || null,
-  policy: "Confirmed 404/410 responses are treated as missing. Access restrictions, rate limits, timeouts and server errors are reported separately and do not by themselves establish that a source is broken.",
+  policy: "Confirmed 404/410 responses are treated as missing only after a GET verification. Access restrictions, rate limits, timeouts and server errors are reported separately and do not by themselves establish that a source is broken.",
   totals: {
     catalogue_records: catalog.records.length,
     unique_urls: results.length,
@@ -172,4 +181,7 @@ await mkdir("refresh", { recursive: true });
 await writeFile(OUTPUT_PATH, `${JSON.stringify(report, null, 2)}\n`);
 console.log(JSON.stringify(report.totals));
 
-if (FAIL_CRITICAL && criticalFailures.length) process.exit(1);
+if (FAIL_CRITICAL && criticalFailures.length) {
+  console.error(JSON.stringify({ critical_failures: criticalFailures }, null, 2));
+  process.exit(1);
+}

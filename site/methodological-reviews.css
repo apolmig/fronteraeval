@@ -1,0 +1,19 @@
+.methodological-assessment{border-top:2px solid var(--ink)}
+.methodological-heading{display:flex;justify-content:space-between;align-items:end;gap:1.25rem;margin-bottom:1rem}
+.methodological-heading h2{margin-top:.18rem}
+.review-boundary{border:1px solid var(--line);border-radius:999px;padding:.28rem .55rem;color:var(--muted);font-size:.58rem;font-weight:800;letter-spacing:.055em;text-transform:uppercase;white-space:nowrap}
+.methodological-notice{border-left:3px solid var(--amber);background:var(--amber-soft);padding:.75rem .9rem;margin-bottom:1.2rem;color:var(--ink);font-size:.72rem;line-height:1.55}
+.methodological-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:0;background:var(--line);border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.methodological-grid>div{background:var(--surface);padding:.9rem}
+.methodological-grid dt,.methodological-columns h3,.methodological-limitations h3{margin:0 0 .32rem;font-family:var(--sans);font-size:.58rem;font-weight:800;letter-spacing:.085em;text-transform:uppercase;color:var(--muted)}
+.methodological-grid dd{margin:0;font-family:var(--serif);font-size:.9rem;line-height:1.5}
+.methodological-columns{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid var(--line)}
+.methodological-columns p{margin:0!important;font-family:var(--serif);font-size:.9rem!important;line-height:1.6}
+.methodological-limitations{padding:1.2rem 0;border-bottom:1px solid var(--line)}
+.methodological-limitations ul{margin:.4rem 0 0;padding-left:1.15rem;color:var(--muted)}
+.methodological-limitations li{margin:.28rem 0;font-size:.75rem;line-height:1.5}
+.methodological-sources{display:flex;flex-wrap:wrap;gap:.55rem .8rem;align-items:center;padding-top:1rem;font-size:.66rem}
+.methodological-sources>span{font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.methodological-sources a{color:var(--accent);font-weight:700;text-decoration:none}
+.methodological-sources a:hover{text-decoration:underline}
+@media(max-width:700px){.methodological-heading{align-items:start;flex-direction:column;gap:.55rem}.methodological-grid,.methodological-columns{grid-template-columns:1fr}.methodological-columns{gap:.9rem}}

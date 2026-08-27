@@ -9,6 +9,8 @@ const [catalog, audit, registry, linkAudit] = await Promise.all([
 ]);
 
 const enrichment = catalog.stats?.enrichment || {};
+const methodologicalReviews = catalog.stats?.methodological_reviews || {};
+const reviewStatus = catalog.stats?.review_status || {};
 const sourceProblems =
   (audit.reviewed_source_problems?.length || 0) +
   (audit.inspect_as_origin_problems?.length || 0) +
@@ -16,12 +18,19 @@ const sourceProblems =
   (audit.unresolved_records?.length || 0);
 
 const marker = {
-  schema_version: "2.0.0",
+  schema_version: "2.1.0",
   status: sourceProblems === 0 ? "completed" : "completed-with-source-problems",
   refreshed_at: new Date().toISOString(),
   inspect_source_commit: catalog.inspect_source_commit,
   records: catalog.stats.records,
   source_groups: registry.stats.source_groups,
+  methodological_reviews: {
+    reviewed_records: reviewStatus.reviewed || 0,
+    documentary: methodologicalReviews.documentary || 0,
+    independently_replicated: methodologicalReviews.independently_replicated || 0,
+    registry_entries: methodologicalReviews.added_by_registry || 0,
+    reviewed_at: methodologicalReviews.reviewed_at || null
+  },
   source_resolution: {
     verified: audit.status.verified || 0,
     source_derived: audit.status["source-derived"] || 0,
@@ -66,6 +75,10 @@ const errors = [];
 if (!marker.inspect_source_commit) errors.push("missing Inspect source commit");
 if (marker.records < 250) errors.push(`catalogue unexpectedly small: ${marker.records}`);
 if (marker.source_groups < 190) errors.push(`source registry unexpectedly small: ${marker.source_groups}`);
+if (marker.methodological_reviews.reviewed_records < 30) errors.push(`reviewed record regression: ${marker.methodological_reviews.reviewed_records}`);
+if (marker.methodological_reviews.documentary < 30) errors.push(`documentary review regression: ${marker.methodological_reviews.documentary}`);
+if (marker.methodological_reviews.registry_entries < 30) errors.push(`methodological review registry regression: ${marker.methodological_reviews.registry_entries}`);
+if (marker.methodological_reviews.independently_replicated !== 0) errors.push("documentary reviews are being represented as independent replications");
 if (marker.papers.arxiv_metadata_pending > Math.max(3, Math.ceil(marker.papers.unique_arxiv_papers * 0.03))) {
   errors.push(`too many unresolved arXiv papers: ${marker.papers.arxiv_metadata_pending}`);
 }
@@ -91,6 +104,7 @@ console.log(JSON.stringify({
   status: marker.status,
   records: marker.records,
   source_groups: marker.source_groups,
+  documentary_reviews: marker.methodological_reviews.documentary,
   verified: marker.source_resolution.verified,
   paper_only: marker.source_resolution.paper_only,
   host_only: marker.source_resolution.host_only,

@@ -1,0 +1,31 @@
+{
+  "id": "inspect:mle_bench",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "End-to-end machine-learning engineering performance on a selected set of Kaggle competitions.",
+  "unit_of_analysis": "One agent run on one competition, including data inspection, experimentation, training, and submission generation.",
+  "interaction_type": "Tool-using coding and experimentation agent with competition data, compute, and a bounded execution budget.",
+  "target_outcome": "Competition score and derived Kaggle medal threshold achieved by the submitted solution.",
+  "human_participants": "No human subjects. Historical Kaggle results supply human-reference distributions and medal thresholds.",
+  "elicitation": "The agent receives competition files, instructions, coding tools, compute, and a scaffold; results depend on iteration budget and infrastructure.",
+  "scoring": "Native competition metrics converted to leaderboard placement and medal thresholds, with benchmark-level aggregation across competitions.",
+  "measures": "Ability to execute selected machine-learning engineering workflows under the MLE-Bench task, compute, and scaffold conditions.",
+  "does_not_measure": "General AI research ability, production ML reliability, data acquisition, stakeholder work, long-term maintenance, or autonomous scientific discovery.",
+  "best_for": "Comparing model systems on reproducible ML engineering tasks when competition set, compute, time, and scaffold are fixed.",
+  "not_sufficient_for": "Forecasting replacement of ML engineers, general AI R&D acceleration, or safe autonomous operation.",
+  "protocol_dependence": "High: competition selection, time, GPU resources, submission rules, and scaffold strongly affect medal rates.",
+  "implementation_dependence": "High: environment setup, data access, libraries, agent loop, and experiment-management tooling influence results.",
+  "limitations": [
+    "Kaggle competitions reward benchmark-specific optimisation and may not represent production ML work.",
+    "Public competition familiarity and training-data exposure may affect performance.",
+    "Medal thresholds are intuitive but compress heterogeneous tasks and metrics.",
+    "Compute and iteration budgets are central confounders."
+  ],
+  "comparability": "Use the same MLE-Bench release, competition subset, medal definitions, compute and time budget, model access route, and agent scaffold.",
+  "decision_relevance": "Useful as a bounded AI R&D and ML-engineering capability indicator; should be combined with research, reliability, and operational evaluations.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2410.07095"},
+    {"kind": "official", "url": "https://openai.com/index/mle-bench/"},
+    {"kind": "implementation", "url": "https://github.com/openai/mle-bench"}
+  ]
+}

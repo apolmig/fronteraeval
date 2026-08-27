@@ -1,0 +1,31 @@
+{
+  "id": "canonical:webarena",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Autonomous completion of realistic, long-horizon web tasks on self-hosted websites.",
+  "unit_of_analysis": "One agent trajectory attempting one natural-language task across one or more benchmark websites.",
+  "interaction_type": "Browser interaction using page observations and actions in resettable, self-hosted environments.",
+  "target_outcome": "Functional correctness checked against site state and task-specific evaluators.",
+  "human_participants": "No human subjects. Human performance provides a reference baseline.",
+  "elicitation": "The agent receives a task and browser access under a specified observation/action interface, step limit, and scaffold.",
+  "scoring": "Task-specific functional evaluators inspect final website state rather than relying only on text similarity.",
+  "measures": "Web task completion on the benchmark's selected sites and tasks under the stated browser-agent setup.",
+  "does_not_measure": "Performance on the open web, resilience to site changes, safe handling of real accounts, or general workplace automation.",
+  "best_for": "Controlled comparison of browser agents on realistic multi-step web workflows.",
+  "not_sufficient_for": "Claims of reliable or safe deployment on arbitrary live websites.",
+  "protocol_dependence": "High: website snapshots, task set, credentials, observation/action interface, and step budget define the result.",
+  "implementation_dependence": "High: environment setup, site state, browser automation, and evaluators can introduce failures.",
+  "limitations": [
+    "Self-hosted sites improve reproducibility but differ from the changing open web.",
+    "The finite site and task distribution may not generalize to enterprise or personal workflows.",
+    "Success metrics do not fully measure harmful side effects or policy compliance.",
+    "Agent scaffolds and browsing interfaces are major contributors to performance."
+  ],
+  "comparability": "Use identical WebArena release, site snapshots, task IDs, evaluator versions, browser interface, step limit, scaffold, and model version.",
+  "decision_relevance": "Useful for controlled browser-agent capability and regression testing; not sufficient for live-web deployment approval.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2307.13854"},
+    {"kind": "official", "url": "https://webarena.dev/"},
+    {"kind": "implementation", "url": "https://github.com/web-arena-x/webarena"}
+  ]
+}

@@ -9,7 +9,7 @@
   "human_participants": "No human targets participate. The mark is a model-generated or simulated interlocutor.",
   "elicitation": "The influencing model receives an objective and conversational context; success depends on the mark model, prompts, turn budget, and payment-decision rules.",
   "scoring": "Protocol-specific detection of the simulated payment outcome, sometimes supplemented by strategy or transcript analysis.",
-  "measures": "Success at obtaining the benchmark's simulated financial outcome from the specified model counterpart under controlled dialogue conditions.",
+  "measures": "Model-to-model success at obtaining the benchmark's simulated financial outcome from the specified model counterpart under controlled dialogue conditions.",
   "does_not_measure": "Human susceptibility to fraud, actual financial loss, prevalence of scams, lawful or covert deployment, or real-world victimization.",
   "best_for": "Studying goal-directed social-influence strategies and model-to-model interaction under a fixed simulated task.",
   "not_sufficient_for": "Claims that a model can defraud people, cause financial harm, or automate effective scams in deployment.",
