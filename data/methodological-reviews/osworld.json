@@ -1,0 +1,30 @@
+{
+  "id": "inspect:osworld",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Execution of open-ended computer tasks across real operating systems and applications.",
+  "unit_of_analysis": "One multimodal agent trajectory on one computer task in a resettable environment.",
+  "interaction_type": "Visual and/or accessibility-tree observation with mouse, keyboard, code, or application actions.",
+  "target_outcome": "Task-specific state or execution checks indicating successful completion.",
+  "human_participants": "No human subjects. Human demonstrations and performance provide reference baselines.",
+  "elicitation": "The agent receives a natural-language task and operates a real computer environment under fixed observation, action, and step limits.",
+  "scoring": "Scripted execution-based and final-state evaluators with task-specific success criteria.",
+  "measures": "Success on selected OSWorld tasks under the specified environment image, observation/action interface, and scaffold.",
+  "does_not_measure": "Safe and reliable desktop deployment, user preference satisfaction, long-term operation, privacy protection, or arbitrary computer-use competence.",
+  "best_for": "Comparing computer-use agents and diagnosing grounding, planning, and application-interaction failures.",
+  "not_sufficient_for": "Claims of production-ready general computer autonomy or safe access to sensitive desktops.",
+  "protocol_dependence": "Very high: environment image, app versions, observation modality, action space, step limit, and scaffold materially affect results.",
+  "implementation_dependence": "Very high: environment drift, reset failures, evaluator brittleness, and UI changes can alter scores.",
+  "limitations": [
+    "The benchmark covers a finite task distribution and application set.",
+    "Environment failures may be infrastructural rather than model-caused.",
+    "Task success does not comprehensively assess unsafe side effects or privacy violations.",
+    "Visual, accessibility-tree, and code-based agents require qualified comparison."
+  ],
+  "comparability": "Match OSWorld version, environment snapshot, task subset, observation/action interface, step limit, scaffold, and evaluator fixes.",
+  "decision_relevance": "Useful for controlled computer-use capability and reliability testing; deployment requires separate security, privacy, monitoring, and oversight evidence.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2404.07972"},
+    {"kind": "implementation", "url": "https://github.com/xlang-ai/OSWorld"}
+  ]
+}

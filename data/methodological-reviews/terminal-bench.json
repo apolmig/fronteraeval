@@ -1,0 +1,30 @@
+{
+  "id": "canonical:terminal-bench",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Completion of selected, self-contained real-world tasks through a terminal environment.",
+  "unit_of_analysis": "One agent trajectory attempting one terminal task in a containerized environment.",
+  "interaction_type": "Long-horizon command-line tool use with filesystem, programs, and task-specific environment state.",
+  "target_outcome": "Task-specific verifier outcome, usually based on final environment state or tests.",
+  "human_participants": "No human subjects. Task authors create tasks, reference solutions, and verifiers.",
+  "elicitation": "The agent receives a natural-language task and terminal access under a fixed harness, time limit, and scaffold.",
+  "scoring": "Task-specific deterministic or scripted verifiers aggregated into task success rates.",
+  "measures": "Ability to complete the benchmark's terminal tasks under a specified agent harness, environment, and budget.",
+  "does_not_measure": "General computer-use autonomy, safe production administration, open-ended planning, or reliability across arbitrary terminal workloads.",
+  "best_for": "Testing tool-using agents on reproducible terminal tasks and analysing failures at the trajectory level.",
+  "not_sufficient_for": "Claims of dependable autonomous software operation, cyber capability, or broad workplace automation.",
+  "protocol_dependence": "High: task set, container image, timeouts, tool permissions, and scaffold determine difficulty.",
+  "implementation_dependence": "High: harness reliability, verifier correctness, and environment reproducibility directly affect outcomes.",
+  "limitations": [
+    "Task selection may overrepresent benchmark-friendly, self-contained work.",
+    "Binary verifier success can hide partial progress and unsafe intermediate actions.",
+    "Public tasks create contamination and overfitting risk.",
+    "Agent performance can change substantially with scaffold and environment fixes."
+  ],
+  "comparability": "Require the same Terminal-Bench release, task subset, environment images, verifier versions, timeouts, agent scaffold, and model access route.",
+  "decision_relevance": "Useful for bounded agent capability and reliability testing; not a standalone deployment-readiness or safety assessment.",
+  "source_basis": [
+    {"kind": "official", "url": "https://www.tbench.ai/"},
+    {"kind": "implementation", "url": "https://github.com/laude-institute/terminal-bench"}
+  ]
+}

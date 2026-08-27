@@ -1,0 +1,31 @@
+{
+  "id": "canonical:workarena",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Completion of common enterprise knowledge-work tasks in a ServiceNow environment.",
+  "unit_of_analysis": "One browser-agent trajectory on a generated or compositional ServiceNow task instance.",
+  "interaction_type": "Browser-based interaction with enterprise forms, lists, knowledge bases, catalogs, dashboards, and workflows.",
+  "target_outcome": "Task-specific validation of the resulting ServiceNow state.",
+  "human_participants": "No human subjects. Human or oracle solutions and performance are used for feasibility and reference.",
+  "elicitation": "The agent receives a natural-language workplace task and operates a configured ServiceNow instance under a browser-agent harness and step limit.",
+  "scoring": "Hand-authored validation functions or task-specific checks against the enterprise application state.",
+  "measures": "Performance on WorkArena's selected ServiceNow task distribution under the specified instance, agent interface, and budget.",
+  "does_not_measure": "General enterprise productivity, organizational integration, safe access control, user acceptance, or performance across other business software.",
+  "best_for": "Testing browser agents on reproducible enterprise workflows and compositional planning tasks.",
+  "not_sufficient_for": "Procurement claims that an agent can safely automate enterprise work without organization-specific pilots and controls.",
+  "protocol_dependence": "High: WorkArena version and level, instance data, task distribution, step limit, observation/action mode, and scaffold matter.",
+  "implementation_dependence": "High: ServiceNow version, BrowserGym integration, task validators, and environment state affect outcomes.",
+  "limitations": [
+    "The environment is limited to ServiceNow and does not represent all enterprise software.",
+    "Generated tasks may not capture ambiguity, exceptions, and social context in real work.",
+    "Task completion does not establish correct authorization or safe handling of sensitive data.",
+    "Atomic and compositional variants should be reported separately."
+  ],
+  "comparability": "Match WorkArena or WorkArena++ release, task level, instance snapshot, validator version, browser interface, step limit, and scaffold.",
+  "decision_relevance": "Useful for enterprise-agent pilots and procurement test design; must be supplemented by organization-specific safety, permissions, and workflow evaluations.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://proceedings.mlr.press/v235/drouin24a.html"},
+    {"kind": "paper", "url": "https://arxiv.org/abs/2407.05291"},
+    {"kind": "implementation", "url": "https://github.com/ServiceNow/WorkArena"}
+  ]
+}

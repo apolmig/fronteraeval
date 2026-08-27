@@ -1,0 +1,30 @@
+{
+  "id": "inspect:frontier_cs_research",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Open-ended reasoning on expert-authored frontier computer-science research problems.",
+  "unit_of_analysis": "A proposed solution to one research problem, assessed against problem-specific criteria.",
+  "interaction_type": "Long-form research reasoning, sometimes supported by code or formal artifacts depending on the task.",
+  "target_outcome": "Problem-specific partial-credit score from custom evaluators and/or judge rubrics.",
+  "human_participants": "No human subjects. Domain experts create problems, reference expectations, and scoring criteria.",
+  "elicitation": "The model receives an unpublished research-style problem and produces a solution under the benchmark's prompting and tool conditions.",
+  "scoring": "Continuous partial credit using problem-specific evaluators or rubrics rather than one uniform metric.",
+  "measures": "Performance on the benchmark's selected frontier computer-science research questions under its elicitation and grading protocol.",
+  "does_not_measure": "End-to-end research execution, empirical validation, research taste, durable autonomy, or general scientific productivity.",
+  "best_for": "Probing advanced research reasoning and identifying problem-specific capability gaps.",
+  "not_sufficient_for": "Claims that a model can independently conduct original computer-science research or accelerate an entire R&D pipeline.",
+  "protocol_dependence": "High: problem selection, unpublished status, allowed tools, answer format, and grader design affect scores.",
+  "implementation_dependence": "Moderate to high: custom evaluators and judge models can vary in reliability across subfields.",
+  "limitations": [
+    "The expert-selected problem set is not a representative sample of computer-science research.",
+    "Some tasks may reward written solution quality without requiring empirical execution.",
+    "Custom graders reduce metric uniformity and complicate aggregation.",
+    "Confidential tasks improve contamination resistance but limit external scrutiny."
+  ],
+  "comparability": "Compare only within the same task release, evaluator versions, tool access, prompt format, and model-system settings; do not treat the aggregate as interchangeable with replication benchmarks.",
+  "decision_relevance": "Useful for frontier research-reasoning monitoring and targeted follow-up; weak evidence for operational research autonomy.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2512.15699"},
+    {"kind": "metadata", "url": "https://github.com/UKGovernmentBEIS/inspect_evals/tree/main/src/inspect_evals/frontier_cs"}
+  ]
+}

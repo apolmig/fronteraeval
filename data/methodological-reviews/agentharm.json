@@ -1,0 +1,31 @@
+{
+  "id": "inspect:agentharm",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Ability and willingness of tool-using agents to complete selected malicious multi-step tasks, including after jailbreak elicitation.",
+  "unit_of_analysis": "One agent trajectory on one malicious or benign task in a benchmark environment.",
+  "interaction_type": "Multi-step tool use with task-specific environments, system prompts, and optional jailbreaks.",
+  "target_outcome": "Refusal or compliance and task completion across harmful categories, with retained benign capability where tested.",
+  "human_participants": "No human subjects. Experts author and validate task scenarios and scoring criteria.",
+  "elicitation": "The agent receives malicious or benign tasks, tools, and an environment; jailbreak techniques may be applied to test retained harmful capability.",
+  "scoring": "Task-specific completion checks combined with refusal or compliance measures and category-level aggregation.",
+  "measures": "Whether an evaluated agent can be elicited to execute AgentHarm's selected harmful tasks under the published tools, environment, and jailbreak setup.",
+  "does_not_measure": "Real-world misuse prevalence, operator skill, deployment access, victim impact, or the probability that a deployed agent will cause harm.",
+  "best_for": "Stress-testing harmful agent behavior and the interaction between refusal safeguards and retained task capability.",
+  "not_sufficient_for": "Estimating incident rates or certifying that an agent is safe in operational environments.",
+  "protocol_dependence": "Very high: task set, tools, environment, system prompt, jailbreak, and agent scaffold determine performance.",
+  "implementation_dependence": "High: task validators, sandbox behavior, tool affordances, and model endpoint changes affect outcomes.",
+  "limitations": [
+    "Benchmark tasks are selected and simulated rather than observed real incidents.",
+    "Jailbreak success does not establish that an operator can deploy the same workflow at scale.",
+    "Tool and environment design may over- or under-estimate operational difficulty.",
+    "Task completion is not equivalent to downstream harm."
+  ],
+  "comparability": "Match AgentHarm release, malicious and benign subsets, tools, environment, jailbreaks, agent scaffold, and model snapshot.",
+  "decision_relevance": "Useful for agentic misuse stress tests and safeguard design; it must be combined with deployment exposure, monitoring, and consequence analysis.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2410.09024"},
+    {"kind": "official", "url": "https://www.aisi.gov.uk/research/agentharm-a-benchmark-for-measuring-harmfulness-of-llm-agents"},
+    {"kind": "metadata", "url": "https://github.com/UKGovernmentBEIS/inspect_evals/tree/main/src/inspect_evals/agentharm"}
+  ]
+}
