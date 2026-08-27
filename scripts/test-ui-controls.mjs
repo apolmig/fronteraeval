@@ -13,6 +13,7 @@ assert.ok(index.includes('id="command-search-trigger"'), "Ctrl K search trigger 
 assert.ok(index.includes('aria-keyshortcuts="Control+K Meta+K"'), "keyboard shortcut metadata missing");
 assert.ok(index.includes('id="theme-toggle"'), "theme toggle missing");
 assert.ok(index.includes('data-nav="about"'), "About navigation missing");
+assert.ok(!index.includes('data-nav="collection"'), "Collections navigation should be removed");
 assert.ok(index.includes('src="/theme-init.js"'), "early theme initializer missing");
 assert.ok(index.includes('src="/ui-controls.js"'), "UI controls script missing");
 assert.ok(index.includes('href="/ui-controls.css"'), "UI controls stylesheet missing");
@@ -23,6 +24,11 @@ assert.match(controls, /FronteraSearch/, "command palette must use the semantic 
 assert.match(controls, /event\.ctrlKey \|\| event\.metaKey/, "Ctrl/Cmd K shortcut handler missing");
 assert.match(controls, /#\/about/, "About route missing from command palette");
 assert.match(controls, /Cambridge ERA research fellowship/, "fellowship origin text missing");
+assert.doesNotMatch(controls, /title: "Agency Transfer"/, "Collections item should be removed from the command palette");
+assert.match(controls, /not exhaustive/i, "About must state that coverage is not exhaustive");
+assert.match(controls, /will contain omissions/i, "About must acknowledge likely omissions and errors");
+assert.match(controls, /not an independent replication/i, "About must distinguish review from replication");
+assert.match(controls, /Report a correction/, "About should expose a correction route");
 assert.match(controls, /https:\/\/miguelguerrero\.eu/, "personal-site attribution link missing");
 assert.match(controls, /Related results are not necessarily equivalent measures/, "semantic-search inference warning missing");
 assert.match(theme, /fronteraeval-theme/, "persistent theme key missing");

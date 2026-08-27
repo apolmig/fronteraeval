@@ -22,7 +22,7 @@ const canonical = [
   ["metr-time-horizons","METR Time Horizons","METR","https://metr.org/time-horizons/",["autonomy-agents","ai-rd"],"Measures the length of software tasks frontier systems can complete with a given success probability."],
   ["re-bench","RE-Bench","METR","https://github.com/METR/RE-Bench",["autonomy-agents","ai-rd"],"Evaluates AI agents on machine-learning research engineering tasks under controlled resource budgets."],
   ["arc-agi-2","ARC-AGI-2","ARC Prize Foundation","https://arcprize.org/arc-agi/2/",["general-capability","evaluation-integrity"],"Tests novel abstract reasoning and skill acquisition on tasks designed to resist memorised solutions."],
-  ["terminal-bench","Terminal-Bench","Stanford / Laude Institute","https://github.com/laude-institute/terminal-bench",["autonomy-agents","cyber"],"Evaluates agents completing real tasks in terminal environments."],
+  ["terminal-bench","Terminal-Bench","Stanford / Laude Institute","https://www.tbench.ai/",["autonomy-agents","cyber"],"Evaluates agents completing real tasks in terminal environments."],
   ["frontiermath","FrontierMath","Epoch AI","https://epoch.ai/frontiermath",["general-capability","ai-rd"],"Expert-written advanced mathematics benchmark intended to remain difficult for frontier models."],
   ["ailuminate","AILuminate","MLCommons","https://mlcommons.org/ailuminate/",["safeguards"],"Standardised safety benchmark suite for hazardous and policy-relevant model responses."],
   ["harmbench","HarmBench","Center for AI Safety","https://www.harmbench.org/",["safeguards"],"Framework for automated red teaming and harmful-behaviour robustness."],
@@ -33,7 +33,7 @@ const canonical = [
   ["webarena","WebArena","Carnegie Mellon University","https://webarena.dev/",["autonomy-agents"],"Evaluates autonomous agents on realistic tasks across self-hosted web environments."],
   ["visualwebarena","VisualWebArena","Carnegie Mellon University","https://jykoh.com/vwa",["autonomy-agents","multimodal"],"Extends web-agent evaluation to visually grounded tasks."],
   ["workarena","WorkArena","ServiceNow Research","https://github.com/ServiceNow/WorkArena",["autonomy-agents"],"Evaluates web agents on enterprise knowledge-work tasks."],
-  ["agentboard","AgentBoard","Research collaboration","https://github.com/hkust-nlp/AgentBoard",["autonomy-agents","evaluation-integrity"],"Multi-environment benchmark and analysis toolkit for language-model agents."],
+  ["agentboard","AgentBoard","HKUST NLP","https://github.com/hkust-nlp/AgentBoard",["autonomy-agents","evaluation-integrity"],"Multi-environment benchmark and analysis toolkit for language-model agents."],
   ["openai-evals","OpenAI Evals","OpenAI","https://github.com/openai/evals",["evaluation-integrity","general-capability"],"Framework and registry for evaluating language models and model systems."],
   ["lm-evaluation-harness","lm-evaluation-harness","EleutherAI","https://github.com/EleutherAI/lm-evaluation-harness",["evaluation-integrity","general-capability"],"Widely used evaluation harness covering a broad collection of language-model tasks."],
   ["inspect-ai","Inspect AI","UK AI Security Institute","https://inspect.aisi.org.uk/",["evaluation-integrity"],"Open-source framework for model evaluations including agents, tools and sandboxes."],
@@ -42,12 +42,12 @@ const canonical = [
   ["deepmind-dangerous-capabilities","Dangerous Capability Evaluations","Google DeepMind","https://deepmind.google/discover/blog/evaluating-frontier-models-for-dangerous-capabilities/",["bio-cbrn","cyber","autonomy-agents"],"Evaluation suite spanning dangerous capabilities including autonomy, cyber and CBRN-related domains."],
   ["cyberseceval","CyberSecEval","Meta","https://github.com/meta-llama/PurpleLlama/tree/main/CybersecurityBenchmarks",["cyber","safeguards"],"Cybersecurity suite covering insecure code, exploitation, prompt injection and related risks."],
   ["agentdojo","AgentDojo","ETH Zurich","https://agentdojo.spylab.ai/",["autonomy-agents","safeguards"],"Dynamic environment for evaluating attacks and defences for tool-using agents."],
-  ["agentharm","AgentHarm","UK AI Security Institute","https://arxiv.org/abs/2410.09024",["autonomy-agents","safeguards"],"Evaluates whether language-model agents can execute harmful multi-step tasks."],
+  ["agentharm","AgentHarm","Gray Swan AI + UK AI Security Institute","https://arxiv.org/abs/2410.09024",["autonomy-agents","safeguards"],"Evaluates whether language-model agents can execute harmful multi-step tasks."],
   ["tau-bench","τ-bench","Sierra Research","https://github.com/sierra-research/tau-bench",["autonomy-agents"],"Evaluates tool-using agents in realistic user-facing service domains."]
 ];
 
 const reviewed = {
-  "inspect:ape_eval": ["APE","Relative persuasive performance under the study protocol and target population.","Covert deployment, durable behavioural change, campaign-scale targeting or electoral outcomes.","Comparing model-generated persuasive content under a fixed protocol.","Claims that a model can independently manipulate an electorate or cause political outcomes.",["artifact-production","controlled-human-effect"]],
+  "inspect:ape_eval": ["APE","Whether the evaluated model attempts persuasion across harmful, controversial, and benign topics in a simulated model-to-model interaction.","Persuasion effectiveness, human belief change, durable behaviour, covert deployment, campaign-scale targeting, or electoral outcomes.","Testing willingness to attempt persuasion and related safeguard behaviour under the APE protocol.","Claims that a model is effective at persuading people or can independently manipulate an electorate.",["controlled-model-behaviour"]],
   "inspect:mask": ["MASK","Behaviour related to honesty, belief expression and motivated reasoning in controlled scenarios.","Persuasion of external audiences or downstream behavioural effects.","Studying belief-reporting and honesty-related model behaviour.","Estimating manipulation effectiveness in deployment.",["controlled-model-behaviour"]],
   "inspect:makemesay": ["MakeMeSay","Ability to steer an interlocutor toward a hidden target phrase in a bounded dialogue game.","Real-world deception, durable belief change or harm at scale.","Studying strategic influence in controlled multi-turn interaction.","Claims about political persuasion or campaign effectiveness.",["controlled-model-behaviour"]],
   "inspect:make_me_pay": ["Make Me Pay","Instrumental social influence and task success in a synthetic payment interaction.","Human susceptibility, fraud prevalence or real-world financial harm.","Testing goal-directed influence strategies in agent interactions.","Estimating real human victimisation.",["controlled-model-behaviour"]],
@@ -100,7 +100,7 @@ function parseRegistry(text, sha) {
     if (collecting && line===")") { collecting=false; module=""; continue; }
     if (collecting && /^[A-Za-z0-9_]+,?$/.test(line)) entries.push([line.replace(/,$/,""),module]);
   }
-  return entries.map(([task,module])=>record(`inspect:${task}`,prettify(task),"UK AI Security Institute / upstream authors","inspect-internal",`https://github.com/${REPO}/tree/${sha}/src/inspect_evals/${module}`,classify(task),`Inspect task imported from the ${module} implementation package.`,"imported",sha));
+  return entries.map(([task,module])=>record(`inspect:${task}`,prettify(task),"Origin pending source resolution","inspect-internal",`https://github.com/${REPO}/tree/${sha}/src/inspect_evals/${module}`,classify(task),`Inspect task imported from the ${module} implementation package.`,"imported",sha));
 }
 
 function record(id,name,organisation,source_type,source_url,topicList,description,review_status,sha=null) {
