@@ -28,6 +28,18 @@
     "inspect-register": "Registry entry",
     "canonical-source": "Official source"
   })[record.source_type] || "Source";
+  const recordTypeLabel = (value) => ({
+    "evaluation-task": "Evaluation task",
+    "evaluation-family": "Evaluation family",
+    "evaluation-package": "Evaluation package",
+    "evaluation-resource": "Evaluation resource",
+    "evaluation-framework": "Framework",
+    "evaluation-environment": "Environment",
+    "evaluation-suite": "Evaluation suite",
+    "evaluation-methodology": "Methodology",
+    "evaluation-dataset-adaptation": "Dataset adaptation",
+    "unreviewed-live-entry": "New, unreviewed entry"
+  })[value] || String(value || "Catalogue record").replaceAll("-", " ");
   const formatDate = (value) => {
     if (!value) return "Not recorded";
     const raw = String(value).slice(0, 10);
@@ -82,7 +94,6 @@
         best_for: "Discovery and source navigation.",
         not_sufficient_for: "Substantive capability, safety, or policy claims without reading the underlying protocol.",
         evidence_reach: [],
-        collections: [],
         provenance: { source_sha: state.live?.inspect?.sha, method: "live weekly import" }
       });
     }
@@ -198,7 +209,7 @@
     const records = state.records.filter((record) => {
       const searchable = [
         record.name, record.description, record.organisation, record.id,
-        record.paper_title, record.group, ...(record.tags || []),
+        record.paper_title, record.group, record.record_type, record.family_title, ...(record.tags || []),
         record.measures, record.does_not_measure, ...record.topics.map(topicLabel)
       ].join(" ").toLowerCase();
       return (!tokens.length || tokens.some((token) => searchable.includes(token)))
@@ -469,7 +480,7 @@
       </a>
       <div class="eval-context">
         <span>${esc(record.organisation)}</span>
-        <span>${esc(record.topics.slice(0, 2).map(topicLabel).join(" · "))}</span>
+        <span>${esc([recordTypeLabel(record.record_type), ...record.topics.slice(0, 2).map(topicLabel)].filter(Boolean).join(" · "))}</span>
       </div>
       <div class="eval-actions">
         <span class="eval-status ${esc(record.review_status)}">${esc(statusLabel(record.review_status))}</span>
@@ -504,7 +515,7 @@
           </div>
           <div class="record-actions">${links.slice(0, 4).map((link, index) => `<a class="${index === 0 ? "button primary" : "button"}" href="${esc(link.url)}" target="_blank" rel="noopener">${esc(link.label)} ↗</a>`).join("")}</div>
         </div>
-        <div class="record-meta"><span>${esc(record.organisation)}</span><span>${esc(sourceLabel(record.source_type))}</span><span>Checked ${esc(formatDate(record.last_source_check))}</span></div>
+        <div class="record-meta"><span>${esc(record.organisation)}</span><span>${esc(recordTypeLabel(record.record_type))}</span><span>${esc(sourceLabel(record.source_type))}</span><span>Checked ${esc(formatDate(record.last_source_check))}</span></div>
       </div></header>
 
       <div class="wide record-layout">
@@ -540,6 +551,7 @@
           <div class="source-links">${links.map((link) => `<a href="${esc(link.url)}" target="_blank" rel="noopener"><span>${esc(link.label)}</span><strong>↗</strong></a>`).join("")}</div>
           <dl>
             <dt>Organisation</dt><dd>${esc(record.organisation)}</dd>
+            <dt>Record type</dt><dd>${esc(recordTypeLabel(record.record_type))}</dd>
             <dt>Source layer</dt><dd>${esc(sourceLabel(record.source_type))}</dd>
             <dt>Review state</dt><dd>${esc(statusLabel(record.review_status))}</dd>
             <dt>Editorial review</dt><dd>${esc(formatDate(record.editorial_reviewed_at))}</dd>
@@ -610,7 +622,7 @@
     document.title = "Open data — FronteraEval";
     main.innerHTML = `
       <header class="page-head"><div class="wide page-head-inner"><div><div class="eyebrow">Open metadata</div><h1>Data</h1></div><p>Reuse the catalogue, but preserve record state, provenance, and inference limits. The catalogue is broad, not exhaustive, and its records are not interchangeable benchmarks.</p></div></header>
-      <article class="prose"><div class="download-list"><a href="/data/catalog.json" download><strong>JSON catalogue</strong><span>Complete structured records ↓</span></a><a href="/data/catalog.csv" download><strong>CSV catalogue</strong><span>Tabular metadata ↓</span></a><a href="/data/freshness.json"><strong>Build freshness</strong><span>Source snapshot ↗</span></a></div><h2>Snapshot</h2><dl class="data-dl"><dt>Records</dt><dd>${state.catalog.stats.records}</dd><dt>Inspect commit</dt><dd><code>${esc(state.catalog.inspect_source_commit || state.catalog.inspect_source_sha)}</code></dd><dt>Generated</dt><dd>${esc(formatDate(state.catalog.generated_at))}</dd><dt>Schema</dt><dd>${esc(state.catalog.schema_version)}</dd></dl></article>`;
+      <article class="prose"><div class="download-list"><a href="/data/catalog.json" download><strong>JSON catalogue</strong><span>Complete structured records ↓</span></a><a href="/data/catalog.csv" download><strong>CSV catalogue</strong><span>Tabular metadata ↓</span></a><a href="/data/freshness.json"><strong>Build freshness</strong><span>Source snapshot ↗</span></a><a href="/data/weekly-refresh.json"><strong>Weekly refresh</strong><span>Validated refresh summary ↗</span></a><a href="/data/source-link-audit.json"><strong>Source-link audit</strong><span>Primary-source health report ↗</span></a></div><h2>Snapshot</h2><dl class="data-dl"><dt>Records</dt><dd>${state.catalog.stats.records}</dd><dt>Inspect commit</dt><dd><code>${esc(state.catalog.inspect_source_commit || state.catalog.inspect_source_sha)}</code></dd><dt>Generated</dt><dd>${esc(formatDate(state.catalog.generated_at))}</dd><dt>Schema</dt><dd>${esc(state.catalog.schema_version)}</dd></dl></article>`;
   }
 
   function renderNotFound() {

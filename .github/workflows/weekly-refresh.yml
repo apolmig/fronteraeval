@@ -15,7 +15,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,17 +36,22 @@ jobs:
           REFRESH_INSPECT: "1"
         run: npm run refresh:sources
 
-      - name: Run structural, source-resolution, construct and search quality gates
+      - name: Run structural, source-resolution, construct, search, and usefulness gates
         run: npm run check
+
+      - name: Audit primary-source links
+        env:
+          SOURCE_AUDIT_CONCURRENCY: "8"
+        run: npm run audit:links -- --fail-critical
 
       - name: Write validated refresh marker
         run: node scripts/write-refresh-marker.mjs
 
-      - name: Commit updated registry and refresh marker
+      - name: Commit updated registry, source-health report, and refresh marker
         run: |
           git config user.name "fronteraeval-bot"
           git config user.email "fronteraeval-bot@users.noreply.github.com"
-          git add data/source-registry.json refresh/last-run.json
+          git add data/source-registry.json refresh/last-run.json refresh/source-link-audit.json
           git commit -m "chore: weekly catalogue and source refresh" || exit 0
           git pull --rebase origin main
           git push origin HEAD:main

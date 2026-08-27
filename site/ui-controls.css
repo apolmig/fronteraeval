@@ -38,6 +38,11 @@
 .about-principles>div{display:grid;gap:.32rem;background:var(--surface);padding:1rem}
 .about-principles strong{font-family:var(--serif);font-size:1rem;font-weight:500}
 .about-principles span{color:var(--muted);font-size:.7rem;line-height:1.45}
+.about-coverage{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:2rem 0 1rem;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.about-coverage>div{display:grid;gap:.15rem;background:var(--surface);padding:1rem}
+.about-coverage strong{font-family:var(--serif);font-size:1.55rem;font-weight:500}
+.about-coverage span{color:var(--muted);font-size:.65rem;text-transform:uppercase;letter-spacing:.06em}
+.about-boundary{font-family:var(--sans)!important;font-size:.76rem!important;color:var(--muted);line-height:1.6!important}
 .about-credit{margin-top:2.6rem!important;padding-top:1rem;border-top:1px solid var(--line);font-family:var(--sans)!important;font-size:.7rem!important;color:var(--muted)}
 .about-credit a{font-weight:750;text-decoration:none;color:var(--ink)}
 .about-credit a:hover{text-decoration:underline}
@@ -90,7 +95,7 @@
   .header-search-trigger{padding:.34rem .42rem}
   .theme-toggle{padding:.34rem .45rem}
   .github-link{display:none}
-  .about-principles{grid-template-columns:1fr}
+  .about-principles,.about-coverage{grid-template-columns:1fr}
 }
 @media(max-width:560px){
   .site-header nav a{display:none!important}

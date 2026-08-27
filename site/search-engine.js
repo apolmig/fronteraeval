@@ -40,7 +40,6 @@
         "social engineering", "targeted persuasion", "human influence"
       ],
       topics: { "human-influence": 14, "deception-misalignment": 5, safeguards: 2 },
-      collections: { "agency-transfer": 11 },
       anchors: {
         "inspect:ape_eval": 15,
         "inspect:makemesay": 14,
@@ -300,8 +299,9 @@
     const taxonomy = [
       ...(record.topics || []).map((topic) => topicName(topic, topicLabels)),
       record.group,
+      record.record_type,
+      record.family_title,
       ...(record.tags || []),
-      ...(record.collections || []),
       record.dependency
     ];
     return [
@@ -405,14 +405,6 @@
         if (boost) {
           intentContribution += boost;
           reasons.push(`${intent.label}: ${topicName(topic, topicLabels)}`);
-        }
-      }
-
-      for (const collection of record.collections || []) {
-        const boost = intent.collections?.[collection] || 0;
-        if (boost) {
-          intentContribution += boost;
-          reasons.push(`${intent.label}: collection match`);
         }
       }
 

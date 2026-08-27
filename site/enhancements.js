@@ -178,21 +178,33 @@
 
   async function enhanceUpdatesPage() {
     if (currentPath() !== "/updates") return;
-    const catalog = await catalogPromise;
+    const [catalog, weekly, linkAudit] = await Promise.all([
+      catalogPromise,
+      fetch("/data/weekly-refresh.json").then((response) => response.ok ? response.json() : null).catch(() => null),
+      fetch("/data/source-link-audit.json").then((response) => response.ok ? response.json() : null).catch(() => null)
+    ]);
     const article = document.querySelector("article.prose");
     if (!catalog || !article || article.dataset.enriched === "true") return;
     article.dataset.enriched = "true";
     const enrichment = catalog.stats?.enrichment || {};
     const review = catalog.stats?.review_status || {};
+    const links = linkAudit?.totals || {};
     article.insertAdjacentHTML("beforeend", `
-      <h2>Build-time source enrichment</h2>
+      <h2>Validated catalogue build</h2>
       <div class="metric-list enrichment-metrics">
-        <div><strong>${esc(enrichment.internal_entries_enriched ?? 0)}</strong><span>Internal tasks enriched</span></div>
-        <div><strong>${esc(enrichment.register_entries_enriched ?? 0)}</strong><span>Register entries enriched</span></div>
-        <div><strong>${esc(review.reviewed ?? 0)}</strong><span>Independently reviewed records</span></div>
+        <div><strong>${esc(catalog.records.length)}</strong><span>Public catalogue records</span></div>
+        <div><strong>${esc(review.reviewed ?? 0)}</strong><span>Documentary reviews</span></div>
+        <div><strong>${esc(enrichment.support_tasks_excluded ?? 0)}</strong><span>Unscored support tasks excluded</span></div>
         <div><strong>${esc(enrichment.linked_resources ?? 0)}</strong><span>Versioned resources</span></div>
       </div>
-      <p class="results-caveat">A scheduled GitHub refresh rebuilds the catalogue weekly. Netlify then deploys the validated source from <code>main</code>. Parse failures: ${esc((enrichment.internal_metadata_failures ?? 0) + (enrichment.register_parse_failures ?? 0))}. A successful refresh improves source freshness; it does not make the catalogue exhaustive or convert imported records into independent reviews.</p>
+      <h2>Primary-source health</h2>
+      <div class="metric-list enrichment-metrics">
+        <div><strong>${esc(links.unique_urls ?? 0)}</strong><span>Unique URLs audited</span></div>
+        <div><strong>${esc(links.reachable ?? 0)}</strong><span>Reachable</span></div>
+        <div><strong>${esc(links.restricted ?? 0)}</strong><span>Restricted or rate-limited</span></div>
+        <div><strong>${esc(links.critical_missing ?? 0)}</strong><span>Critical confirmed missing</span></div>
+      </div>
+      <p class="results-caveat">Last full refresh: ${esc(weekly?.refreshed_at || catalog.generated_at || "not recorded")}. A successful refresh checks structure, provenance, source resolution, search regressions, and primary-source availability. It improves freshness; it does not make the catalogue exhaustive, validate upstream results, or convert discovery records into independent reviews.</p>
     `);
   }
 

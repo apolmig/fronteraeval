@@ -71,6 +71,14 @@ function normalizeTasks(tasks) {
   })).slice(0, 24);
 }
 
+function humaniseTaskVariant(value, familyTitle = "") {
+  const familyTokens = new Set(String(familyTitle).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim().split(/\s+/).filter(Boolean));
+  const tokens = String(value || "").toLowerCase().split(/[_-]+/).filter((token) => token && !familyTokens.has(token));
+  const replacements = { refmodel: "reference model", gen: "generation", debug: "debugging", prereqs: "prerequisites" };
+  const words = tokens.flatMap((token) => (replacements[token] || token).split(" "));
+  return words.join(" ").replace(/\b\w/g, (character) => character.toUpperCase()) || "Task variant";
+}
+
 async function fetchJSON(url) {
   const response = await fetch(url, {
     headers: { accept: "application/vnd.github+json", "user-agent": USER_AGENT }
@@ -184,6 +192,23 @@ await mapLimit(registerRecords, 8, async (record) => {
     record.provenance = { ...(record.provenance || {}), source_sha: commitSha, registry_url: registryURL };
   }
 });
+
+const registerNameGroups = new Map();
+for (const record of registerRecords) {
+  const key = String(record.name || "").toLowerCase();
+  if (!registerNameGroups.has(key)) registerNameGroups.set(key, []);
+  registerNameGroups.get(key).push(record);
+}
+for (const group of registerNameGroups.values()) {
+  if (group.length < 2) continue;
+  for (const record of group) {
+    const familyTitle = record.name;
+    const variant = humaniseTaskVariant(record.tasks?.[0]?.name || record.id.split(":").pop(), familyTitle);
+    record.family_title = familyTitle;
+    record.variant_title = variant;
+    record.name = `${familyTitle} — ${variant}`;
+  }
+}
 
 for (const record of catalog.records) {
   if (record.source_type === "inspect-internal") {

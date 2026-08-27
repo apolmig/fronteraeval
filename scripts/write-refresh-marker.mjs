@@ -1,10 +1,11 @@
 import { readFile, mkdir, writeFile } from "node:fs/promises";
 
 const CHECK_ONLY = process.argv.includes("--check");
-const [catalog, audit, registry] = await Promise.all([
+const [catalog, audit, registry, linkAudit] = await Promise.all([
   readFile("site/data/catalog.json", "utf8").then(JSON.parse),
   readFile("site/data/source-audit.json", "utf8").then(JSON.parse),
-  readFile("data/source-registry.json", "utf8").then(JSON.parse)
+  readFile("data/source-registry.json", "utf8").then(JSON.parse),
+  readFile("refresh/source-link-audit.json", "utf8").then(JSON.parse).catch(() => null)
 ]);
 
 const enrichment = catalog.stats?.enrichment || {};
@@ -49,6 +50,15 @@ const marker = {
     inspect_as_origin_problems: audit.inspect_as_origin_problems?.length || 0,
     duplicate_resource_problems: audit.duplicate_resource_problems?.length || 0,
     unresolved_records: audit.unresolved_records?.length || 0
+  },
+  source_links: {
+    audited_at: linkAudit?.generated_at || null,
+    unique_urls: linkAudit?.totals?.unique_urls || 0,
+    reachable: linkAudit?.totals?.reachable || 0,
+    restricted: linkAudit?.totals?.restricted || 0,
+    transient: (linkAudit?.totals?.transient || 0) + (linkAudit?.totals?.["network-error"] || 0),
+    critical_missing: linkAudit?.totals?.critical_missing || 0,
+    reviewed_missing: linkAudit?.totals?.reviewed_missing || 0
   }
 };
 
@@ -63,6 +73,8 @@ if (marker.quality.reviewed_source_problems > 0) errors.push("reviewed records h
 if (marker.quality.inspect_as_origin_problems > 0) errors.push("Inspect hosting is still used as evaluation origin");
 if (marker.quality.duplicate_resource_problems > 0) errors.push("duplicate source resources remain");
 if (marker.quality.unresolved_records > 0) errors.push("unresolved catalogue records remain");
+if (!CHECK_ONLY && marker.source_links.critical_missing > 0) errors.push("critical source links are confirmed missing");
+if (!CHECK_ONLY && marker.source_links.reviewed_missing > 0) errors.push("reviewed source links are confirmed missing");
 
 if (errors.length) {
   console.error(errors.join("\n"));
@@ -83,5 +95,7 @@ console.log(JSON.stringify({
   paper_only: marker.source_resolution.paper_only,
   host_only: marker.source_resolution.host_only,
   arxiv_pending: marker.papers.arxiv_metadata_pending,
-  source_problems: marker.quality.source_resolution_problems
+  source_problems: marker.quality.source_resolution_problems,
+  source_urls: marker.source_links.unique_urls,
+  critical_missing: marker.source_links.critical_missing
 }));
