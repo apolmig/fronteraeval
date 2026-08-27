@@ -112,6 +112,10 @@ jobs:
             exit 0
           fi
           git commit -m "chore: weekly catalogue and source refresh"
+          # The refresh also regenerates deploy-time site/data files. They are validated above
+          # but intentionally not versioned here; discard them before a rebase so Git can pull.
+          git reset --hard HEAD
+          git clean -fd
           for attempt in 1 2 3; do
             if git pull --rebase origin main && git push origin HEAD:main; then
               echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -119,6 +123,8 @@ jobs:
               exit 0
             fi
             git rebase --abort 2>/dev/null || true
+            git reset --hard HEAD
+            git clean -fd
             [[ "$attempt" -lt 3 ]] && sleep "$((attempt * 20))"
           done
           exit 1
