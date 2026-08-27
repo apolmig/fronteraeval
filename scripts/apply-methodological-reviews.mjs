@@ -40,8 +40,9 @@ for (const review of reviews) {
     }
   }
 
+  const reviewedAt = review.reviewed_at || record.editorial_reviewed_at || policy.reviewed_at;
   record.review_status = "reviewed";
-  record.editorial_reviewed_at = review.reviewed_at || policy.reviewed_at;
+  record.editorial_reviewed_at = reviewedAt;
   record.measures = review.measures;
   record.does_not_measure = review.does_not_measure;
   record.best_for = review.best_for;
@@ -51,7 +52,7 @@ for (const review of reviews) {
     status: "reviewed",
     review_type: review.review_type || policy.review_type,
     replication_status: review.replication_status || policy.replication_status,
-    reviewed_at: review.reviewed_at || policy.reviewed_at,
+    reviewed_at: reviewedAt,
     review_confidence: review.review_confidence || "moderate",
     construct: review.construct,
     unit_of_analysis: review.unit_of_analysis,
