@@ -70,6 +70,14 @@ jobs:
           npm run audit:links -- --fail-critical > /tmp/links.log 2>&1
           code=$?
           tail -n 180 /tmp/links.log
+          if [ -f refresh/source-link-audit.json ]; then
+            node --input-type=module <<'NODE'
+          import { readFile } from 'node:fs/promises';
+          const report = JSON.parse(await readFile('refresh/source-link-audit.json', 'utf8'));
+          console.log('Confirmed critical missing sources:');
+          console.log(JSON.stringify(report.critical_failures || [], null, 2));
+          NODE
+          fi
           exit $code
 
       - name: Write refresh marker
