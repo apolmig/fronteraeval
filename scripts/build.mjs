@@ -39,7 +39,7 @@ const canonical = [
   ["inspect-ai","Inspect AI","UK AI Security Institute","https://inspect.aisi.org.uk/",["evaluation-integrity"],"Open-source framework for model evaluations including agents, tools and sandboxes."],
   ["wmdp","WMDP","Center for AI Safety","https://www.wmdp.ai/",["bio-cbrn","cyber"],"Measures hazardous knowledge in biosecurity, chemical security and cybersecurity."],
   ["anthropic-sabotage","Sabotage Evaluations","Anthropic","https://www.anthropic.com/research/sabotage-evaluations",["deception-misalignment","ai-rd"],"Evaluations for capabilities relevant to sabotaging oversight or research workflows."],
-  ["deepmind-dangerous-capabilities","Dangerous Capability Evaluations","Google DeepMind","https://deepmind.google/discover/blog/evaluating-frontier-models-for-dangerous-capabilities/",["bio-cbrn","cyber","autonomy-agents"],"Evaluation suite spanning dangerous capabilities including autonomy, cyber and CBRN-related domains."],
+  ["deepmind-dangerous-capabilities","Dangerous Capability Evaluations","Google DeepMind","https://deepmind.google/frontier-safety/",["bio-cbrn","cyber","autonomy-agents"],"Evaluation suite spanning dangerous capabilities including autonomy, cyber and CBRN-related domains."],
   ["cyberseceval","CyberSecEval","Meta","https://github.com/meta-llama/PurpleLlama/tree/main/CybersecurityBenchmarks",["cyber","safeguards"],"Cybersecurity suite covering insecure code, exploitation, prompt injection and related risks."],
   ["agentdojo","AgentDojo","ETH Zurich","https://agentdojo.spylab.ai/",["autonomy-agents","safeguards"],"Dynamic environment for evaluating attacks and defences for tool-using agents."],
   ["agentharm","AgentHarm","Gray Swan AI + UK AI Security Institute","https://arxiv.org/abs/2410.09024",["autonomy-agents","safeguards"],"Evaluates whether language-model agents can execute harmful multi-step tasks."],
@@ -63,8 +63,6 @@ const reviewed = {
   "canonical:wmdp": ["WMDP","Multiple-choice knowledge performance in designated hazardous domains.","Operational ability, intent, tool use or end-to-end harm creation.","Measuring hazardous knowledge and evaluating unlearning methods.","Claims that a model can execute a CBRN or cyber operation.",["artifact-production"]],
   "canonical:frontiermath": ["FrontierMath","Performance on difficult mathematics problems under a specified setup.","General intelligence, research autonomy or safety.","Tracking high-end mathematical reasoning with protocol qualifications.","Safety or dangerous-capability claims.",["artifact-production"]]
 };
-
-const agencyTransfer = new Set(["inspect:ape_eval","inspect:mask","inspect:makemesay","inspect:make_me_pay","inspect:sycophancy","inspect:agentic_misalignment","inspect:sad_influence","inspect:gdm_classifier_evasion","inspect:gdm_cover_your_tracks","inspect:gdm_oversight_pattern","inspect:gdm_strategic_rule_breaking","register:machiavelli","register:deceptionbench","register:manager_coercion_benchmark"]);
 
 function prettify(value) {
   const fixed = { ape_eval:"APE", mask:"MASK", hle:"Humanity's Last Exam", gpqa_diamond:"GPQA Diamond", wmdp_bio:"WMDP Bio", wmdp_chem:"WMDP Chem", wmdp_cyber:"WMDP Cyber", osworld:"OSWorld", xstest:"XSTest", bfcl:"BFCL" };
@@ -104,7 +102,7 @@ function parseRegistry(text, sha) {
 }
 
 function record(id,name,organisation,source_type,source_url,topicList,description,review_status,sha=null) {
-  const r={id,name,slug:id.replace(":","--").replaceAll("_","-"),organisation,source_type,source_url,topics:topicList,description,review_status,code_available:source_type!=="canonical-source",inspect_compatible:source_type.startsWith("inspect-"),last_source_check:checkedAt.slice(0,10),editorial_reviewed_at:null,measures:"Not independently assessed by FronteraEval yet.",does_not_measure:"No inference beyond the upstream source should be made until the protocol is reviewed.",best_for:"Discovery and source navigation.",not_sufficient_for:"Substantive capability, safety or policy claims without reading the underlying protocol.",evidence_reach:[],collections:agencyTransfer.has(id)?["agency-transfer"]:[],provenance:{source_sha:sha,method:"official-source import"}};
+  const r={id,name,slug:id.replace(":","--").replaceAll("_","-"),organisation,source_type,source_url,topics:topicList,description,review_status,code_available:source_type!=="canonical-source",inspect_compatible:source_type.startsWith("inspect-"),last_source_check:checkedAt.slice(0,10),editorial_reviewed_at:null,measures:"Not independently assessed by FronteraEval yet.",does_not_measure:"No inference beyond the upstream source should be made until the protocol is reviewed.",best_for:"Discovery and source navigation.",not_sufficient_for:"Substantive capability, safety or policy claims without reading the underlying protocol.",evidence_reach:[],provenance:{source_sha:sha,method:"official-source import"}};
   const ed=reviewed[id];
   if (ed) { r.name=ed[0]; r.measures=ed[1]; r.does_not_measure=ed[2]; r.best_for=ed[3]; r.not_sufficient_for=ed[4]; r.evidence_reach=ed[5]; r.review_status="reviewed"; r.editorial_reviewed_at=checkedAt.slice(0,10); }
   return r;
@@ -122,7 +120,7 @@ const canonicalRecords=canonical.map(([slug,name,org,url,t,description])=>record
 const records=[...internal,...registerRecords,...canonicalRecords].sort((a,b)=>a.name.localeCompare(b.name)||a.id.localeCompare(b.id));
 if (new Set(records.map(r=>r.id)).size!==records.length) throw new Error("Duplicate stable IDs");
 const sourceCounts={}, statusCounts={}; for(const r of records){sourceCounts[r.source_type]=(sourceCounts[r.source_type]||0)+1;statusCounts[r.review_status]=(statusCounts[r.review_status]||0)+1;}
-const catalog={schema_version:"0.1.0",generated_at:checkedAt,inspect_source_sha:sha,title:"FronteraEval evaluation catalogue",scope_note:"Discovery metadata is not independent validation. Only records marked reviewed contain a bounded FronteraEval assessment.",topics,collections:{"agency-transfer":{title:"Agency Transfer & Harmful Manipulation",subtitle:"Evaluations relevant to persuasion, manipulation, deception, social influence and transfer of consequential agency.",thesis:"Capability evidence is not deployment evidence; deployment is not individual effect; individual effect is not aggregate political consequence.",limitations:"The included evaluations target adjacent but non-identical constructs. FronteraEval does not aggregate them into a universal manipulation score."}},stats:{records:records.length,sources:sourceCounts,review_status:statusCounts},records};
+const catalog={schema_version:"0.1.0",generated_at:checkedAt,inspect_source_sha:sha,title:"FronteraEval evaluation catalogue",scope_note:"Discovery metadata is not independent validation. Only records marked reviewed contain a bounded FronteraEval assessment.",topics,stats:{records:records.length,sources:sourceCounts,review_status:statusCounts},records};
 await mkdir("site/data",{recursive:true});
 await writeFile("site/data/catalog.json",JSON.stringify(catalog,null,2)+"\n");
 const quote=v=>`"${String(v??"").replaceAll('"','""')}"`;

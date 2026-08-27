@@ -190,13 +190,7 @@
           "status": "present"
         }
       ],
-      "implementation": {
-        "url": "https://github.com/ai-safety-institute/AgentHarm",
-        "owner": "UK AI Security Institute",
-        "relation": "reference_implementation",
-        "confidence": "verified"
-      },
-      "note": "AgentHarm was developed as a collaboration; it must not be attributed to the repository host alone."
+      "note": "AgentHarm was developed by Gray Swan AI and the UK AI Security Institute. The previously linked GitHub repository is no longer available; the paper, official AISI research page, dataset, and maintained Inspect implementation remain the defensible public sources."
     },
     "inspect-family:paperbench": {
       "origin": {
@@ -552,12 +546,7 @@
           "status": "present"
         }
       ],
-      "implementation": {
-        "url": "https://github.com/ai-safety-institute/AgentHarm",
-        "owner": "UK AI Security Institute",
-        "relation": "reference_implementation",
-        "confidence": "verified"
-      }
+      "note": "AgentHarm was developed by Gray Swan AI and the UK AI Security Institute. The previously linked GitHub repository is no longer available; the paper, official AISI research page, dataset, and maintained Inspect implementation remain the defensible public sources."
     },
     "canonical:arc-agi-2": {
       "origin": {
@@ -759,7 +748,7 @@
     },
     "canonical:tau-bench": {
       "origin": {
-        "name": "Sierra Research and the τ-bench paper authors",
+        "name": "Sierra Research and the \u03c4-bench paper authors",
         "organization": "Sierra Research",
         "entity_type": "research_collaboration",
         "role": "evaluation_developer",

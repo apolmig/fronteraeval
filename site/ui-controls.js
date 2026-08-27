@@ -151,7 +151,7 @@
       const record = entry.record;
       return {
         title: record.name,
-        meta: [record.organisation, ...(record.topics || []).slice(0, 2).map((id) => catalog.topics?.[id]?.label || id)].filter(Boolean).join(" · "),
+        meta: [record.organisation, String(record.record_type || "catalogue record").replaceAll("-", " "), ...(record.topics || []).slice(0, 2).map((id) => catalog.topics?.[id]?.label || id)].filter(Boolean).join(" · "),
         detail: (entry.reasons || []).slice(0, 2).join(" · "),
         badge: record.review_status === "reviewed" ? "Reviewed" : record.review_status === "catalogued" ? "Catalogued" : "Imported",
         href: `#/eval/${encodeURIComponent(record.id)}`,
@@ -256,7 +256,10 @@
     });
   }
 
-  function aboutMarkup() {
+  function aboutMarkup(catalog) {
+    const total = catalog?.records?.length || 0;
+    const reviewed = catalog?.stats?.review_status?.reviewed || 0;
+    const discovery = Math.max(0, total - reviewed);
     return `
       <header class="page-head about-head"><div class="wide page-head-inner">
         <div><div class="eyebrow">About</div><h1>Why FronteraEval exists</h1></div>
@@ -266,7 +269,12 @@
         <p class="about-lede">FronteraEval began during my Cambridge ERA research fellowship. I kept losing time trying to locate relevant evaluations across papers, system cards, repositories, registries, and lab reports. I could not find one place that was simultaneously current, broad, careful about what each result actually supports, and simple enough to use outside a narrow technical audience.</p>
         <p>This site is my attempt to reduce that friction—not a claim to have solved evaluation discovery. It links records back to primary sources and, for a limited reviewed subset, adds a bounded interpretation of what the evidence can and cannot establish.</p>
         <p>The catalogue is not exhaustive and will contain omissions, judgement calls, and occasional errors. Coverage depends on public information and on a taxonomy that will need revision. A listing is not an endorsement. A reviewed record is a documented reading of the available sources, not an independent replication. Weekly refreshes improve freshness; they do not guarantee completeness or correctness.</p>
-        <p>Use FronteraEval as a starting point: follow the paper, inspect the implementation, check the exact protocol and model-system conditions, and treat comparisons cautiously. Corrections and missing evaluations are welcome.</p>
+        <div class="about-coverage" aria-label="Current coverage boundary">
+          <div><strong>${total}</strong><span>catalogue records</span></div>
+          <div><strong>${reviewed}</strong><span>documentary reviews</span></div>
+          <div><strong>${discovery}</strong><span>discovery-only records</span></div>
+        </div>
+        <p class="about-boundary"><strong>These counts describe current public coverage, not completeness, validity, or quality.</strong> Use FronteraEval as a starting point: follow the paper, inspect the implementation, check the exact protocol and model-system conditions, and treat comparisons cautiously.</p>
         <div class="about-principles" aria-label="Project principles">
           <div><strong>Updated, not exhaustive</strong><span>Sources are refreshed regularly, but important work may still be missing.</span></div>
           <div><strong>Source-first</strong><span>Papers, code, datasets, and provenance should remain visible and contestable.</span></div>
@@ -276,14 +284,16 @@
       </article>`;
   }
 
-  function renderAbout() {
+  async function renderAbout() {
     if (currentPath() !== "/about" || renderingAbout) return;
     if (main.querySelector("[data-ui-about]")) return;
     renderingAbout = true;
     document.title = "About — FronteraEval";
     document.querySelectorAll("[data-nav]").forEach((link) => link.removeAttribute("aria-current"));
     document.querySelector('[data-nav="about"]')?.setAttribute("aria-current", "page");
-    main.innerHTML = aboutMarkup();
+    const catalog = await catalogPromise;
+    if (currentPath() !== "/about") { renderingAbout = false; return; }
+    main.innerHTML = aboutMarkup(catalog);
     main.focus();
     renderingAbout = false;
   }

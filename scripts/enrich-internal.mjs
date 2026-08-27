@@ -42,6 +42,11 @@ function cleanText(value) {
   return cleaned || null;
 }
 
+function isSupportOnlyTask(comment) {
+  const text = cleanText(comment) || "";
+  return /(?:produces?|returns?)\s+no\s+scored\s+metrics|no\s+scored\s+metrics|not\s+scored|setup task/i.test(text);
+}
+
 function asArray(value) {
   if (Array.isArray(value)) return value;
   return value == null ? [] : [value];
@@ -145,14 +150,21 @@ await mapLimit([...recordsByModule.entries()], 10, async ([module, records]) => 
         ...asArray(metadata.tags).map(cleanText).filter(Boolean),
         cleanText(metadata.group)
       ].filter(Boolean))];
+      const taskComment = cleanText(task?.comment);
+      const supportOnly = isSupportOnlyTask(taskComment);
       record.task = {
         name: taskName,
-        dataset_samples: task?.dataset_samples ?? null
+        dataset_samples: task?.dataset_samples ?? null,
+        comment: taskComment,
+        support_only: supportOnly
       };
       record.tasks = tasks.map((item) => ({
         name: cleanText(item?.name) || "task",
-        dataset_samples: item?.dataset_samples ?? null
+        dataset_samples: item?.dataset_samples ?? null,
+        comment: cleanText(item?.comment),
+        support_only: isSupportOnlyTask(item?.comment)
       })).slice(0, 32);
+      if (supportOnly) record.record_type = "evaluation-support-task";
       record.protocol = {
         ...(record.protocol || {}),
         version: cleanText(metadata.version),
@@ -187,6 +199,21 @@ await mapLimit([...recordsByModule.entries()], 10, async ([module, records]) => 
   }
 });
 
+const excludedSupportTasks = catalog.records.filter((record) => record.record_type === "evaluation-support-task");
+catalog.records = catalog.records.filter((record) => record.record_type !== "evaluation-support-task");
+
+function countBy(records, key) {
+  return records.reduce((counts, record) => {
+    const value = record[key];
+    counts[value] = (counts[value] || 0) + 1;
+    return counts;
+  }, {});
+}
+
+catalog.stats.records = catalog.records.length;
+catalog.stats.sources = countBy(catalog.records, "source_type");
+catalog.stats.review_status = countBy(catalog.records, "review_status");
+
 const linkedResources = catalog.records.reduce((sum, record) => sum + (Array.isArray(record.links) ? record.links.length : 0), 0);
 const entriesWithPaper = catalog.records.filter((record) => Boolean(record.paper_url)).length;
 const entriesWithVersion = catalog.records.filter((record) => Boolean(record.version || record.protocol?.version || record.protocol?.implementation_commit)).length;
@@ -198,6 +225,7 @@ catalog.stats.enrichment = {
   internal_modules_enriched: modulesEnriched,
   internal_entries_enriched: internalEntriesEnriched,
   internal_metadata_failures: metadataFailures,
+  support_tasks_excluded: excludedSupportTasks.length,
   entries_with_paper: entriesWithPaper,
   entries_with_version: entriesWithVersion,
   linked_resources: linkedResources
@@ -239,6 +267,7 @@ await writeFile(FRESHNESS_PATH, `${JSON.stringify({
   internal_modules_enriched: modulesEnriched,
   internal_entries_enriched: internalEntriesEnriched,
   internal_metadata_failures: metadataFailures,
+  support_tasks_excluded: excludedSupportTasks.length,
   entries_with_paper: entriesWithPaper,
   entries_with_version: entriesWithVersion,
   linked_resources: linkedResources
@@ -248,6 +277,7 @@ console.log(JSON.stringify({
   internal_modules_enriched: modulesEnriched,
   internal_entries_enriched: internalEntriesEnriched,
   internal_metadata_failures: metadataFailures,
+  support_tasks_excluded: excludedSupportTasks.length,
   entries_with_paper: entriesWithPaper,
   linked_resources: linkedResources
 }));

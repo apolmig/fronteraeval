@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0.0",
+  "status": "not-yet-run",
+  "generated_at": null,
+  "totals": {
+    "unique_urls": 0,
+    "critical_missing": 0,
+    "reviewed_missing": 0
+  },
+  "results": []
+}

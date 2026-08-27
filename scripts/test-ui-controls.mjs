@@ -24,6 +24,9 @@ assert.match(controls, /FronteraSearch/, "command palette must use the semantic 
 assert.match(controls, /event\.ctrlKey \|\| event\.metaKey/, "Ctrl/Cmd K shortcut handler missing");
 assert.match(controls, /#\/about/, "About route missing from command palette");
 assert.match(controls, /Cambridge ERA research fellowship/, "fellowship origin text missing");
+assert.match(controls, /not a claim to have solved evaluation discovery/i, "About lacks epistemic humility");
+assert.match(controls, /These counts describe current public coverage, not completeness, validity, or quality/i, "About lacks a clear coverage boundary");
+assert.match(controls, /documentary reviews/, "About should disclose actual review depth");
 assert.doesNotMatch(controls, /title: "Agency Transfer"/, "Collections item should be removed from the command palette");
 assert.match(controls, /not exhaustive/i, "About must state that coverage is not exhaustive");
 assert.match(controls, /will contain omissions/i, "About must acknowledge likely omissions and errors");

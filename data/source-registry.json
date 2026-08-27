@@ -1,11 +1,11 @@
 {
   "schema_version": "2.1.0",
-  "generated_at": "2026-08-27T11:49:55.417Z",
+  "generated_at": "2026-08-27T13:21:17.544Z",
   "inspect_source_commit": "979bf44681dfdb148021676f9b2be964150bb5ed",
   "policy": "Hosting and registry stewardship are provenance, not authorship. Paper affiliations are reported separately from evaluation-developer attribution. Unknown origin remains explicit.",
   "stats": {
     "source_groups": 196,
-    "records": 315,
+    "records": 314,
     "status": {
       "verified": 50,
       "source-derived": 2,
@@ -198,26 +198,19 @@
           "metadata_status": "resolved"
         }
       ],
-      "implementation": {
-        "url": "https://github.com/ai-safety-institute/AgentHarm",
-        "owner": "UK AI Security Institute",
-        "relation": "reference_implementation",
-        "confidence": "verified"
-      },
+      "implementation": null,
       "inspect": null,
       "datasets": [],
       "official_pages": [
         "https://arxiv.org/abs/2410.09024",
         "https://www.aisi.gov.uk/research/agentharm-a-benchmark-for-measuring-harmfulness-of-llm-agents"
       ],
-      "note": null,
+      "note": "AgentHarm was developed by Gray Swan AI and the UK AI Security Institute. The previously linked GitHub repository is no longer available; the paper, official AISI research page, dataset, and maintained Inspect implementation remain the defensible public sources.",
       "source_inputs": {
         "paper_urls": [
           "https://arxiv.org/abs/2410.09024"
         ],
-        "implementation_candidates": [
-          "https://github.com/ai-safety-institute/AgentHarm"
-        ],
+        "implementation_candidates": [],
         "inspect_source": null
       }
     },
@@ -410,7 +403,7 @@
         "role": "suite_developer",
         "role_label": "Suite developed by",
         "confidence": "curated",
-        "evidence_url": "https://deepmind.google/discover/blog/evaluating-frontier-models-for-dangerous-capabilities"
+        "evidence_url": "https://deepmind.google/frontier-safety"
       },
       "paper_status": "not-applicable",
       "papers": [],
@@ -418,7 +411,7 @@
       "inspect": null,
       "datasets": [],
       "official_pages": [
-        "https://deepmind.google/discover/blog/evaluating-frontier-models-for-dangerous-capabilities"
+        "https://deepmind.google/frontier-safety"
       ],
       "note": null,
       "source_inputs": {
@@ -1804,12 +1797,7 @@
           "metadata_status": "resolved"
         }
       ],
-      "implementation": {
-        "url": "https://github.com/ai-safety-institute/AgentHarm",
-        "owner": "UK AI Security Institute",
-        "relation": "reference_implementation",
-        "confidence": "verified"
-      },
+      "implementation": null,
       "inspect": {
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
@@ -1825,14 +1813,12 @@
       "official_pages": [
         "https://www.aisi.gov.uk/research/agentharm-a-benchmark-for-measuring-harmfulness-of-llm-agents"
       ],
-      "note": "AgentHarm was developed as a collaboration; it must not be attributed to the repository host alone.",
+      "note": "AgentHarm was developed by Gray Swan AI and the UK AI Security Institute. The previously linked GitHub repository is no longer available; the paper, official AISI research page, dataset, and maintained Inspect implementation remain the defensible public sources.",
       "source_inputs": {
         "paper_urls": [
           "https://arxiv.org/abs/2410.09024"
         ],
-        "implementation_candidates": [
-          "https://github.com/ai-safety-institute/AgentHarm"
-        ],
+        "implementation_candidates": [],
         "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/979bf44681dfdb148021676f9b2be964150bb5ed/src/inspect_evals/agentharm/eval.yaml"
       }
     },
@@ -2941,11 +2927,10 @@
     "inspect-family:bfcl": {
       "source_key": "inspect-family:bfcl",
       "record_ids": [
-        "inspect:bfcl",
-        "inspect:bfcl_prereqs"
+        "inspect:bfcl"
       ],
       "family_title": "BFCL: Berkeley Function-Calling Leaderboard",
-      "record_type": "evaluation-family",
+      "record_type": "evaluation-task",
       "status": "verified",
       "resolution_method": "curated-primary-sources",
       "origin": {
@@ -15344,7 +15329,7 @@
     }
   },
   "paper_metadata": {
-    "refreshed_at": "2026-08-27T11:49:56.359Z",
+    "refreshed_at": "2026-08-27T13:21:17.633Z",
     "pending": [],
     "failures": []
   }
