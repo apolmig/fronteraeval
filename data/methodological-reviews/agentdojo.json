@@ -1,0 +1,31 @@
+{
+  "id": "canonical:agentdojo",
+  "review_confidence": "moderate",
+  "evidence_reach": ["controlled-model-behaviour"],
+  "construct": "Task utility and resistance to indirect prompt-injection attacks for tool-using agents in simulated application environments.",
+  "unit_of_analysis": "One agent trajectory on a user task with or without an injected adversarial instruction.",
+  "interaction_type": "Tool-using agent interaction with structured environments, user goals, and attacker-controlled content.",
+  "target_outcome": "User-task success, attacker-goal success, and defense performance across benchmark security cases.",
+  "human_participants": "No human subjects. Task and attack scenarios are authored and curated.",
+  "elicitation": "Agents operate with defined tools, system prompts, environments, attack placements, and optional defenses.",
+  "scoring": "Environment-specific checks measure legitimate task completion and whether the attacker's goal was achieved.",
+  "measures": "Utility-security tradeoffs against AgentDojo's prompt-injection scenarios under the exact agent and defense configuration.",
+  "does_not_measure": "All prompt-injection vectors, live tool ecosystems, supply-chain attacks, or real-world incident frequency.",
+  "best_for": "Comparing agents and defenses on reproducible indirect prompt-injection scenarios.",
+  "not_sufficient_for": "Claims that a production agent is secure against prompt injection.",
+  "protocol_dependence": "Very high: environment, tools, attack placement, system prompt, defense, and model snapshot define the threat surface.",
+  "implementation_dependence": "High: tool semantics, environment state, attack code, and success checks affect outcomes.",
+  "limitations": [
+    "Simulated environments do not capture the full complexity of production integrations.",
+    "Attack scenarios are finite and can become familiar to models or defenses.",
+    "Task and attack success may miss subtler integrity or confidentiality harms.",
+    "Defense results may not transfer to different tool APIs or system prompts."
+  ],
+  "comparability": "Use the same AgentDojo version, task and attack set, environment, tools, system prompt, defense, and model snapshot.",
+  "decision_relevance": "Useful for agent-security engineering and defense regression; production approval requires product-specific threat modeling and adversarial testing.",
+  "source_basis": [
+    {"kind": "paper", "url": "https://arxiv.org/abs/2406.13352"},
+    {"kind": "official", "url": "https://agentdojo.spylab.ai/"},
+    {"kind": "implementation", "url": "https://github.com/ethz-spylab/agentdojo"}
+  ]
+}
