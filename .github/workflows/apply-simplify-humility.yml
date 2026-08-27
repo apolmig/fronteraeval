@@ -24,7 +24,7 @@ jobs:
 
       - name: Apply reviewed source tree
         run: |
-          base64 --decode tools/simplify-humility-payload.b64 > /tmp/fronteraeval-simplify-humility.tar.gz
+          cp tools/simplify-humility-payload.b64 /tmp/fronteraeval-simplify-humility.tar.gz
           echo 'dd8d5d9f708d26758cdb078076b6aa65117514b79c6e02b6c65e0267b1438ea1  /tmp/fronteraeval-simplify-humility.tar.gz' | sha256sum --check
           tar -xzf /tmp/fronteraeval-simplify-humility.tar.gz -C .
           rm tools/simplify-humility-payload.b64
