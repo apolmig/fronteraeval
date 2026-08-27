@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import YAML from "yaml";
 
 const [workflow, packageJson, marker, audit, index, netlifySweep] = await Promise.all([
   readFile(".github/workflows/weekly-refresh.yml", "utf8"),
@@ -10,12 +11,13 @@ const [workflow, packageJson, marker, audit, index, netlifySweep] = await Promis
   readFile("netlify/functions/weekly-sweep.mts", "utf8")
 ]);
 
-assert.match(workflow, /cron: "23 2 \* \* 0"/, "primary Sunday schedule missing");
-assert.match(workflow, /cron: "23 8 \* \* 0"/, "backup Sunday schedule missing");
-assert.match(workflow, /workflow_dispatch:/, "manual recovery trigger missing");
-assert.match(workflow, /contents: write/, "catalogue refresh cannot write validated updates");
-assert.match(workflow, /issues: write/, "failure alert cannot create or close an issue");
-assert.match(workflow, /cancel-in-progress: false/, "overlapping refreshes must queue rather than cancel");
+const parsedWorkflow = YAML.parse(workflow);
+const schedules = parsedWorkflow?.on?.schedule?.map((entry) => entry.cron) || [];
+assert.deepEqual(schedules, ["23 2 * * 0", "23 8 * * 0"], "primary and backup Sunday schedules are not structurally valid");
+assert.ok(parsedWorkflow?.on?.workflow_dispatch != null, "manual recovery trigger missing");
+assert.equal(parsedWorkflow?.permissions?.contents, "write", "catalogue refresh cannot write validated updates");
+assert.equal(parsedWorkflow?.permissions?.issues, "write", "failure alert cannot create or close an issue");
+assert.equal(parsedWorkflow?.concurrency?.["cancel-in-progress"], false, "overlapping refreshes must queue rather than cancel");
 assert.match(workflow, /Install locked dependencies with retries/, "dependency retries missing");
 assert.match(workflow, /for attempt in 1 2 3/, "three-attempt retry loop missing");
 assert.match(workflow, /npm run audit:links -- --fail-critical/, "critical source audit is not fail-closed");
