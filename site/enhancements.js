@@ -160,13 +160,20 @@
     }
 
     const enrichment = catalog.stats?.enrichment || {};
+    const review = catalog.stats?.review_status || {};
+    const sourceResolution = catalog.stats?.source_resolution || {};
+    const sourceStatus = sourceResolution.status || {};
     definitionList.insertAdjacentHTML("beforeend", `
+      <dt>Independent reviews</dt><dd>${esc(review.reviewed ?? 0)} of ${esc(catalog.records.length)} records</dd>
+      <dt>Discovery-only records</dt><dd>${esc((review.imported ?? 0) + (review.catalogued ?? 0))} records</dd>
+      <dt>Source resolution</dt><dd>${esc(sourceStatus.verified ?? 0)} verified · ${esc(sourceStatus["source-derived"] ?? 0)} source-derived · ${esc(sourceStatus["paper-only"] ?? 0)} paper-only · ${esc(sourceStatus["host-only"] ?? 0)} host-only</dd>
       <dt>Internal metadata</dt><dd>${esc(enrichment.internal_entries_enriched ?? 0)} tasks enriched</dd>
       <dt>Register metadata</dt><dd>${esc(enrichment.register_entries_enriched ?? 0)} entries enriched</dd>
       <dt>Paper links</dt><dd>${esc(enrichment.entries_with_paper ?? 0)} records</dd>
       <dt>Source links</dt><dd>${esc(enrichment.linked_resources ?? 0)} versioned resources</dd>
       <dt>Reported results</dt><dd>${esc(enrichment.entries_with_reported_results ?? 0)} entries with upstream result tables</dd>
     `);
+    definitionList.insertAdjacentHTML("afterend", `<p class="results-caveat"><strong>Coverage note.</strong> Catalogue size is not review depth. Most records support discovery and provenance; only records marked Reviewed contain a FronteraEval methodological interpretation, and none should be treated as an independent experimental replication unless explicitly stated.</p>`);
   }
 
   async function enhanceUpdatesPage() {
@@ -176,15 +183,16 @@
     if (!catalog || !article || article.dataset.enriched === "true") return;
     article.dataset.enriched = "true";
     const enrichment = catalog.stats?.enrichment || {};
+    const review = catalog.stats?.review_status || {};
     article.insertAdjacentHTML("beforeend", `
       <h2>Build-time source enrichment</h2>
       <div class="metric-list enrichment-metrics">
         <div><strong>${esc(enrichment.internal_entries_enriched ?? 0)}</strong><span>Internal tasks enriched</span></div>
         <div><strong>${esc(enrichment.register_entries_enriched ?? 0)}</strong><span>Register entries enriched</span></div>
-        <div><strong>${esc(enrichment.entries_with_reported_results ?? 0)}</strong><span>Entries with results</span></div>
+        <div><strong>${esc(review.reviewed ?? 0)}</strong><span>Independently reviewed records</span></div>
         <div><strong>${esc(enrichment.linked_resources ?? 0)}</strong><span>Versioned resources</span></div>
       </div>
-      <p class="results-caveat">A scheduled GitHub refresh rebuilds the catalogue weekly. Netlify then deploys the validated source from <code>main</code>. Parse failures: ${esc((enrichment.internal_metadata_failures ?? 0) + (enrichment.register_parse_failures ?? 0))}.</p>
+      <p class="results-caveat">A scheduled GitHub refresh rebuilds the catalogue weekly. Netlify then deploys the validated source from <code>main</code>. Parse failures: ${esc((enrichment.internal_metadata_failures ?? 0) + (enrichment.register_parse_failures ?? 0))}. A successful refresh improves source freshness; it does not make the catalogue exhaustive or convert imported records into independent reviews.</p>
     `);
   }
 

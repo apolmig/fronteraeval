@@ -2,7 +2,7 @@
 
 **Find the right evaluation. Follow the original source. Read its limits.**
 
-FronteraEval is a public decision-support catalogue for frontier AI evaluation. It is designed for researchers, policy analysts, assurance teams, and technically informed general analysts.
+FronteraEval is a public, evolving decision-support catalogue for frontier AI evaluation. It is designed for researchers, policy analysts, assurance teams, and technically informed general analysts. It aims to reduce discovery friction, not to provide an exhaustive or authoritative map of the field.
 
 It is not a universal leaderboard or a benchmark card wall. It separates evaluation origin, associated paper, reference implementation, Inspect implementation or registry provenance, protocol interpretation, evidence reach, model-system results, deployment claims, and downstream-effect claims.
 
@@ -78,6 +78,6 @@ Generated outputs include:
 
 The source registry and curated overrides are versioned in the repository so attribution changes are reviewable.
 
-## Current limitation
+## Epistemic limits
 
-A paper does not always exist, and author affiliations do not always establish an institutional evaluation developer. FronteraEval preserves those distinctions. A source-resolved record is not automatically an independently validated evaluation, and upstream-reported results are not represented as reproduced by FronteraEval.
+A paper does not always exist, and author affiliations do not always establish an institutional evaluation developer. FronteraEval preserves those distinctions. The catalogue will contain omissions, classification choices, and occasional errors. A source-resolved record is not automatically an independently validated evaluation; a reviewed record is a bounded documentary assessment, not an experimental replication; and upstream-reported results are not represented as reproduced by FronteraEval. Corrections and missing evaluations are welcome through GitHub issues.

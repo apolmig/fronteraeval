@@ -59,12 +59,19 @@
       state.records.push({
         id: entry.id,
         name: entry.name,
-        organisation: "UK AI Security Institute / upstream authors",
+        organisation: "Origin pending review",
+        organisation_role: "Live source discovery",
+        attribution_status: "unresolved",
+        record_type: "unreviewed-live-entry",
+        source_resolution: {
+          status: "unresolved",
+          note: "Detected after the last validated catalogue build; origin and methodology have not yet been reviewed."
+        },
         source_type: entry.source_type,
         source_url: entry.source_url,
         links: [{ label: "Inspect source", kind: "implementation", url: entry.source_url }],
         topics: inferTopics(entry.name),
-        description: "New Inspect entry detected by the weekly source sweep.",
+        description: "New Inspect entry detected after the last validated catalogue build. Source identity and methodology remain pending review.",
         review_status: "imported",
         code_available: true,
         inspect_compatible: true,
@@ -115,7 +122,10 @@
     else if (path.startsWith("/eval/")) renderDetail(decodeURIComponent(path.slice(6)));
     else if (path === "/topics") renderTopics();
     else if (path.startsWith("/topic/")) renderTopic(path.slice(7));
-    else if (path === "/collection/agency-transfer") renderAgencyTransfer();
+    else if (path === "/collection/agency-transfer") {
+      location.replace("#/evals?q=harmful%20manipulation");
+      return;
+    }
     else if (path === "/methodology") renderMethodology();
     else if (path === "/updates") renderUpdates();
     else if (path === "/data") renderData();
@@ -127,7 +137,6 @@
     document.querySelectorAll("[data-nav]").forEach((link) => link.removeAttribute("aria-current"));
     const key = path.startsWith("/eval") ? "evals"
       : path.startsWith("/topic") ? "topics"
-      : path.startsWith("/collection") ? "collection"
       : path.startsWith("/methodology") ? "methodology" : null;
     if (key) document.querySelector(`[data-nav="${key}"]`)?.setAttribute("aria-current", "page");
   }
@@ -262,7 +271,7 @@
   }
 
   function renderHome() {
-    document.title = "FronteraEval — Frontier AI evaluations, mapped";
+    document.title = "FronteraEval — Find and interpret frontier AI evaluations";
     const reviewedCount = state.records.filter((record) => record.review_status === "reviewed").length;
     const reviewed = sortedRecords(state.records.filter((record) => record.review_status === "reviewed")).slice(0, 8);
     const counts = topicCounts();
@@ -284,7 +293,7 @@
             <button type="button" data-query="autonomous AI R&D">Autonomous AI R&amp;D</button>
             <button type="button" data-query="jailbreak robustness">Jailbreak robustness</button>
           </div>
-          <div class="catalogue-meta">${freshnessText()}<span>${state.records.length} evaluations</span><span>${reviewedCount} reviewed</span></div>
+          <div class="catalogue-meta">${freshnessText()}<span>${state.records.length} catalogue records</span><span>${reviewedCount} independently reviewed</span></div>
         </div>
       </section>
 
@@ -292,8 +301,8 @@
         <div class="wide home-grid">
           <div class="home-main">
             <div class="section-heading compact">
-              <div><div class="eyebrow">Interpreted records</div><h2>Reviewed evaluations</h2></div>
-              <a href="#/evals?status=reviewed">View all reviewed →</a>
+              <div><div class="eyebrow">Interpreted records</div><h2>Reviewed records</h2></div>
+              <a href="#/evals?status=reviewed">View reviewed records →</a>
             </div>
             <div class="eval-list featured-list">${reviewed.map(renderRow).join("")}</div>
           </div>
@@ -319,15 +328,8 @@
             <div><small>Cannot support by itself</small><strong>The system will cause the corresponding harm in deployment.</strong></div>
           </div>
         </div>
-      </section>
-
-      <section class="collection-strip">
-        <div class="wide collection-row">
-          <div><div class="eyebrow">Research collection</div><h2>Agency Transfer</h2></div>
-          <p>Persuasion, manipulation, deception, and the missing links between capability, deployment, human effect, and political consequence.</p>
-          <a href="#/collection/agency-transfer">Open collection →</a>
-        </div>
       </section>`;
+
 
     document.querySelector("#home-search").addEventListener("submit", (event) => {
       event.preventDefault();
@@ -409,14 +411,14 @@
     if (interpretation) {
       node.innerHTML = `<div class="semantic-summary">
         <div><strong>Interpreted as ${esc(interpretation.labels.join(" + "))}</strong><span>${esc(interpretation.notes.join(" "))}</span></div>
-        <small>${count} related evaluation${count === 1 ? "" : "s"} · domain-aware ranking</small>
+        <small>${count} related record${count === 1 ? "" : "s"} · domain-aware ranking</small>
       </div>`;
       return;
     }
 
     node.innerHTML = `<div class="semantic-summary">
       <div><strong>Ranked matches for “${esc(query)}”</strong><span>Search covers titles, topics, descriptions, papers, tasks, methods, and editorial fields; partial and close-word matches are allowed.</span></div>
-      <small>${count} evaluation${count === 1 ? "" : "s"}</small>
+      <small>${count} record${count === 1 ? "" : "s"}</small>
     </div>`;
   }
 
@@ -426,7 +428,7 @@
     if (state.page > pages) state.page = pages;
     const start = (state.page - 1) * PAGE_SIZE;
     const visible = records.slice(start, start + PAGE_SIZE);
-    document.querySelector("#result-count").textContent = `${records.length} evaluation${records.length === 1 ? "" : "s"}`;
+    document.querySelector("#result-count").textContent = `${records.length} record${records.length === 1 ? "" : "s"}`;
     renderSearchContext(records.length);
     document.querySelector("#results").innerHTML = records.length
       ? `<div class="eval-list catalogue-list">${visible.map(renderRow).join("")}</div>`
@@ -528,7 +530,7 @@
             <p>Attribute any result to the exact protocol, implementation, model-system configuration, access route, elicitation method, and evaluation date. A shared topic is not evidence of comparability.</p>
           </section>
           <section class="record-section related-section">
-            <div class="section-heading compact"><div><h2>Related evaluations</h2><p>Same topic, not necessarily the same construct.</p></div><a href="#/topic/${encodeURIComponent(record.topics[0] || "general-capability")}">View topic →</a></div>
+            <div class="section-heading compact"><div><h2>Related records</h2><p>Shared topic does not imply the same construct.</p></div><a href="#/topic/${encodeURIComponent(record.topics[0] || "general-capability")}">View topic →</a></div>
             <div class="eval-list">${related.map(renderRow).join("")}</div>
           </section>
         </article>
@@ -561,11 +563,11 @@
     document.title = "Topics — FronteraEval";
     const counts = topicCounts();
     main.innerHTML = `
-      <header class="page-head"><div class="wide page-head-inner"><div><div class="eyebrow">Risk and capability map</div><h1>Topics</h1></div><p>Topics are entry points into the catalogue. They do not imply that all included evaluations measure the same construct.</p></div></header>
+      <header class="page-head"><div class="wide page-head-inner"><div><div class="eyebrow">Risk and capability map</div><h1>Topics</h1></div><p>Topics are imperfect navigation aids. Inclusion reflects the current taxonomy and does not imply construct equivalence, completeness, or endorsement.</p></div></header>
       <section class="topics-section"><div class="wide topic-grid">
         ${Object.entries(state.catalog.topics).map(([id, topic]) => {
           const examples = sortedRecords(state.records.filter((record) => record.topics.includes(id))).slice(0, 3);
-          return `<a class="topic-card" href="#/topic/${esc(id)}"><div><span>${counts[id] || 0} evaluations</span><h2>${esc(topic.label)}</h2><p>${esc(topic.definition)}</p></div><small>${examples.map((record) => esc(record.name)).join(" · ")}</small></a>`;
+          return `<a class="topic-card" href="#/topic/${esc(id)}"><div><span>${counts[id] || 0} records</span><h2>${esc(topic.label)}</h2><p>${esc(topic.definition)}</p></div><small>${examples.map((record) => esc(record.name)).join(" · ")}</small></a>`;
         }).join("")}
       </div></section>`;
   }
@@ -578,16 +580,6 @@
     main.innerHTML = `
       <header class="page-head"><div class="wide page-head-inner"><div><div class="breadcrumbs"><a href="#/topics">Topics</a><span>/</span>${esc(topic.label)}</div><h1>${esc(topic.label)}</h1></div><p>${esc(topic.definition)}</p></div></header>
       <section class="browse"><div class="wide"><div class="topic-warning"><strong>${records.length} records.</strong> Inclusion does not establish construct equivalence, completeness, or comparability.</div><div class="eval-list catalogue-list">${records.map(renderRow).join("")}</div></div></section>`;
-  }
-
-  function renderAgencyTransfer() {
-    document.title = "Agency Transfer — FronteraEval";
-    const collection = state.catalog.collections["agency-transfer"];
-    const records = sortedRecords(state.records.filter((record) => record.collections?.includes("agency-transfer")));
-    main.innerHTML = `
-      <header class="collection-head"><div class="wide"><div class="eyebrow">Research collection</div><h1>Agency Transfer</h1><p>Harmful manipulation, persuasion, deception, and the gap between model capability and political consequence.</p></div></header>
-      <section class="collection-overview"><div class="wide collection-overview-grid"><div><h2>The causal chain is the point.</h2><p>${esc(collection.thesis)}</p><p class="section-note">${esc(collection.limitations)}</p></div><div class="causal-chain"><span>Capability</span><span>Deployment</span><span>Human effect</span><span>Aggregate consequence</span></div></div></section>
-      <section class="browse"><div class="wide"><div class="section-heading compact"><div><div class="eyebrow">Evidence map</div><h2>${records.length} relevant evaluations</h2></div><p>Adjacent constructs; no aggregate score.</p></div><div class="eval-list catalogue-list">${records.map(renderRow).join("")}</div></div></section>`;
   }
 
   function renderMethodology() {
@@ -617,7 +609,7 @@
   function renderData() {
     document.title = "Open data — FronteraEval";
     main.innerHTML = `
-      <header class="page-head"><div class="wide page-head-inner"><div><div class="eyebrow">Open metadata</div><h1>Data</h1></div><p>Reuse the catalogue, but preserve record state, provenance, and inference limits.</p></div></header>
+      <header class="page-head"><div class="wide page-head-inner"><div><div class="eyebrow">Open metadata</div><h1>Data</h1></div><p>Reuse the catalogue, but preserve record state, provenance, and inference limits. The catalogue is broad, not exhaustive, and its records are not interchangeable benchmarks.</p></div></header>
       <article class="prose"><div class="download-list"><a href="/data/catalog.json" download><strong>JSON catalogue</strong><span>Complete structured records ↓</span></a><a href="/data/catalog.csv" download><strong>CSV catalogue</strong><span>Tabular metadata ↓</span></a><a href="/data/freshness.json"><strong>Build freshness</strong><span>Source snapshot ↗</span></a></div><h2>Snapshot</h2><dl class="data-dl"><dt>Records</dt><dd>${state.catalog.stats.records}</dd><dt>Inspect commit</dt><dd><code>${esc(state.catalog.inspect_source_commit || state.catalog.inspect_source_sha)}</code></dd><dt>Generated</dt><dd>${esc(formatDate(state.catalog.generated_at))}</dd><dt>Schema</dt><dd>${esc(state.catalog.schema_version)}</dd></dl></article>`;
   }
 

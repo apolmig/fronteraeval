@@ -111,7 +111,6 @@
     return [
       { title: "Browse evaluations", meta: "Search and filter the full catalogue", href: "#/evals", kind: "Page" },
       { title: "Topics", meta: "Browse by risk and capability area", href: "#/topics", kind: "Page" },
-      { title: "Agency Transfer", meta: "Persuasion, manipulation, deception, and evidence gaps", href: "#/collection/agency-transfer", kind: "Collection" },
       { title: "Method", meta: "How records, evidence states, and inference limits work", href: "#/methodology", kind: "Page" },
       { title: "About FronteraEval", meta: "Why the project exists", href: "#/about", kind: "Page" }
     ];
@@ -261,18 +260,19 @@
     return `
       <header class="page-head about-head"><div class="wide page-head-inner">
         <div><div class="eyebrow">About</div><h1>Why FronteraEval exists</h1></div>
-        <p>A practical response to a fragmented evaluation landscape.</p>
+        <p>A practical, incomplete attempt to make a fragmented field easier to navigate.</p>
       </div></header>
       <article class="prose about-page" data-ui-about>
-        <p class="about-lede">FronteraEval began during my Cambridge ERA research fellowship. While working across frontier-model evaluation, harmful manipulation, and AI governance, I kept encountering the same practical problem: there was no single place that was at once current, comprehensive, methodologically careful, and simple to use.</p>
-        <p>FronteraEval is an attempt to build that missing layer: a source-linked map of frontier AI evaluations, refreshed every week. It helps researchers, policy analysts, and evaluators find relevant work, understand what each evaluation measures, and see where the evidence stops.</p>
-        <p>It is not a universal safety score, and it does not replace original papers, datasets, or implementations. Every record should lead back to the source; reviewed records add a bounded interpretation of what the evidence can and cannot establish.</p>
+        <p class="about-lede">FronteraEval began during my Cambridge ERA research fellowship. I kept losing time trying to locate relevant evaluations across papers, system cards, repositories, registries, and lab reports. I could not find one place that was simultaneously current, broad, careful about what each result actually supports, and simple enough to use outside a narrow technical audience.</p>
+        <p>This site is my attempt to reduce that friction—not a claim to have solved evaluation discovery. It links records back to primary sources and, for a limited reviewed subset, adds a bounded interpretation of what the evidence can and cannot establish.</p>
+        <p>The catalogue is not exhaustive and will contain omissions, judgement calls, and occasional errors. Coverage depends on public information and on a taxonomy that will need revision. A listing is not an endorsement. A reviewed record is a documented reading of the available sources, not an independent replication. Weekly refreshes improve freshness; they do not guarantee completeness or correctness.</p>
+        <p>Use FronteraEval as a starting point: follow the paper, inspect the implementation, check the exact protocol and model-system conditions, and treat comparisons cautiously. Corrections and missing evaluations are welcome.</p>
         <div class="about-principles" aria-label="Project principles">
-          <div><strong>Current</strong><span>Weekly source and registry refreshes.</span></div>
-          <div><strong>Source-first</strong><span>Papers, code, datasets, and provenance remain visible.</span></div>
-          <div><strong>Inference-aware</strong><span>Capability evidence is not deployment or downstream effect.</span></div>
+          <div><strong>Updated, not exhaustive</strong><span>Sources are refreshed regularly, but important work may still be missing.</span></div>
+          <div><strong>Source-first</strong><span>Papers, code, datasets, and provenance should remain visible and contestable.</span></div>
+          <div><strong>Explicit uncertainty</strong><span>Related records are not necessarily comparable, and capability evidence is not downstream harm.</span></div>
         </div>
-        <p class="about-credit">Built and maintained by <a href="https://miguelguerrero.eu" target="_blank" rel="me noopener">Miguel Guerrero ↗</a>.</p>
+        <p class="about-credit">Built and maintained by <a href="https://miguelguerrero.eu" target="_blank" rel="me noopener">Miguel Guerrero ↗</a> · <a href="https://github.com/apolmig/fronteraeval/issues" target="_blank" rel="noopener">Report a correction ↗</a></p>
       </article>`;
   }
 

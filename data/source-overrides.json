@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "reviewed_at": "2026-08-24",
   "entries": {
     "inspect-family:ape": {
@@ -12,7 +12,10 @@
         "evidence_url": "https://www.far.ai/blog/attempt-to-persuade-eval"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2506.02873", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2506.02873",
+          "status": "present"
+        }
       ],
       "implementation": {
         "url": "https://github.com/AlignmentResearch/AttemptPersuadeEval",
@@ -32,7 +35,10 @@
         "evidence_url": "https://github.com/centerforaisafety/mask"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2503.03750", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2503.03750",
+          "status": "present"
+        }
       ],
       "implementation": {
         "url": "https://github.com/centerforaisafety/mask",
@@ -85,7 +91,10 @@
         "evidence_url": "https://www.anthropic.com/research/towards-understanding-sycophancy-in-language-models"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2310.13548", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2310.13548",
+          "status": "present"
+        }
       ],
       "implementation": {
         "url": "https://github.com/meg-tong/sycophancy-eval",
@@ -104,7 +113,11 @@
         "evidence_url": "https://www.anthropic.com/research/agentic-misalignment"
       },
       "papers": [
-        {"url": "https://www.anthropic.com/research/agentic-misalignment", "status": "present", "source": "official-research-page"}
+        {
+          "url": "https://www.anthropic.com/research/agentic-misalignment",
+          "status": "present",
+          "source": "official-research-page"
+        }
       ]
     },
     "inspect-family:sad": {
@@ -117,7 +130,10 @@
         "evidence_url": "https://arxiv.org/abs/2407.04694"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2407.04694", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2407.04694",
+          "status": "present"
+        }
       ],
       "implementation": {
         "url": "https://github.com/LRudL/sad",
@@ -137,7 +153,10 @@
         "evidence_url": "https://arxiv.org/abs/2505.01420"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2505.01420", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2505.01420",
+          "status": "present"
+        }
       ]
     },
     "inspect-family:gdm_self_reasoning": {
@@ -150,7 +169,10 @@
         "evidence_url": "https://arxiv.org/abs/2505.01420"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2505.01420", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2505.01420",
+          "status": "present"
+        }
       ]
     },
     "inspect-family:agentharm": {
@@ -163,7 +185,10 @@
         "evidence_url": "https://www.aisi.gov.uk/research/agentharm-a-benchmark-for-measuring-harmfulness-of-llm-agents"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2410.09024", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2410.09024",
+          "status": "present"
+        }
       ],
       "implementation": {
         "url": "https://github.com/ai-safety-institute/AgentHarm",
@@ -183,7 +208,10 @@
         "evidence_url": "https://openai.com/index/paperbench/"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2504.01848", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2504.01848",
+          "status": "present"
+        }
       ]
     },
     "inspect-family:mle_bench": {
@@ -196,7 +224,10 @@
         "evidence_url": "https://openai.com/index/mle-bench/"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2410.07095", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2410.07095",
+          "status": "present"
+        }
       ],
       "implementation": {
         "url": "https://github.com/openai/mle-bench",
@@ -215,7 +246,10 @@
         "evidence_url": "https://openai.com/index/browsecomp/"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2504.12516", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2504.12516",
+          "status": "present"
+        }
       ]
     },
     "inspect-family:healthbench": {
@@ -228,7 +262,10 @@
         "evidence_url": "https://openai.com/index/healthbench/"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2505.08775", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2505.08775",
+          "status": "present"
+        }
       ]
     },
     "register:machiavelli": {
@@ -241,7 +278,10 @@
         "evidence_url": "https://arxiv.org/abs/2304.03279"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2304.03279", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2304.03279",
+          "status": "present"
+        }
       ],
       "note": "The paper spans multiple institutions; no single institutional owner is asserted."
     },
@@ -255,7 +295,10 @@
         "evidence_url": "https://arxiv.org/abs/2505.18807"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2505.18807", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2505.18807",
+          "status": "present"
+        }
       ],
       "implementation": {
         "url": "https://github.com/WatchTree-19/inspect-deceptionbench",
@@ -274,7 +317,10 @@
         "evidence_url": "https://arxiv.org/abs/2607.15434"
       },
       "papers": [
-        {"url": "https://arxiv.org/abs/2607.15434", "status": "present"}
+        {
+          "url": "https://arxiv.org/abs/2607.15434",
+          "status": "present"
+        }
       ],
       "implementation": {
         "url": "https://github.com/CompassionML/manager-coercion-bench",
@@ -282,6 +328,493 @@
         "relation": "reference_implementation",
         "confidence": "verified"
       }
+    },
+    "inspect-family:compute_eval": {
+      "origin": {
+        "name": "NVIDIA",
+        "organization": "NVIDIA",
+        "entity_type": "organization",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://github.com/NVIDIA/compute-eval"
+      },
+      "paper_status": "not-found",
+      "implementation": {
+        "url": "https://github.com/NVIDIA/compute-eval",
+        "owner": "NVIDIA",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      },
+      "official_pages": [
+        "https://huggingface.co/datasets/nvidia/compute-eval"
+      ],
+      "note": "ComputeEval is developed and maintained in NVIDIA's official repository. No dedicated benchmark paper was identified in the reviewed primary sources."
+    },
+    "inspect-family:ipi_coding_agent": {
+      "origin": {
+        "name": "Debu Sinha",
+        "organization": null,
+        "entity_type": "individual_contributor",
+        "role": "evaluation_developer",
+        "role_label": "Benchmark contributed by",
+        "confidence": "source-derived",
+        "evidence_url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/main/src/inspect_evals/ipi_coding_agent/README.md"
+      },
+      "paper_status": "not-found",
+      "note": "CodeIPI is documented as an Inspect-native contribution by Debu Sinha. No separate project repository or dedicated paper was identified in the reviewed primary sources; Inspect remains the maintained implementation host."
+    },
+    "inspect-family:moru": {
+      "origin": {
+        "name": "Compassion in Machine Learning",
+        "organization": "Compassion in Machine Learning",
+        "entity_type": "research_project",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://huggingface.co/datasets/CompassioninMachineLearning/moru-benchmark"
+      },
+      "paper_status": "not-found",
+      "official_pages": [
+        "https://huggingface.co/datasets/CompassioninMachineLearning/moru-benchmark",
+        "https://huggingface.co/datasets/CompassioninMachineLearning/moru-benchmark-dimensions"
+      ],
+      "note": "The benchmark datasets are published by Compassion in Machine Learning. No dedicated paper was identified in the reviewed primary sources."
+    },
+    "inspect-family:onet": {
+      "record_type": "evaluation-dataset-adaptation",
+      "origin": {
+        "name": "National Institute of Educational Testing Service (NIETS)",
+        "organization": "National Institute of Educational Testing Service (Public Organization)",
+        "entity_type": "public_institution",
+        "role": "original_benchmark_source",
+        "confidence": "verified",
+        "evidence_url": "https://www.niets.or.th/en/"
+      },
+      "paper_status": "not-applicable",
+      "official_pages": [
+        "https://www.niets.or.th/en/",
+        "https://huggingface.co/datasets/matichon/thai-onet-m6-exam"
+      ],
+      "note": "O-NET is administered by NIETS. The Inspect task adapts a public Grade 12 O-NET question dataset maintained on Hugging Face by matichon; that dataset host is not the test's institutional origin."
+    },
+    "inspect-family:vimgolf_challenges": {
+      "record_type": "evaluation-dataset-adaptation",
+      "origin": {
+        "name": "VimGolf",
+        "organization": null,
+        "entity_type": "benchmark_project",
+        "role": "original_benchmark_source",
+        "confidence": "verified",
+        "evidence_url": "https://www.vimgolf.com/"
+      },
+      "paper_status": "not-applicable",
+      "implementation": {
+        "url": "https://huggingface.co/datasets/cybergod-kevin/vimgolf-public-challenges-inspect-eval",
+        "owner": "cybergod-kevin",
+        "relation": "inspect_evaluation_dataset",
+        "confidence": "source-derived"
+      },
+      "note": "The task adapts public VimGolf challenges. The Hugging Face dataset and Inspect implementation are downstream adaptations, not the origin of VimGolf."
+    },
+    "inspect-family:bfcl": {
+      "origin": {
+        "name": "Berkeley Gorilla / UC Berkeley",
+        "organization": "University of California, Berkeley",
+        "entity_type": "research_project",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://gorilla.cs.berkeley.edu/leaderboard"
+      },
+      "papers": [
+        {
+          "url": "https://openreview.net/forum?id=2GmDdhBdDk",
+          "status": "present",
+          "title": "The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation",
+          "source": "openreview"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/ShishirPatil/gorilla",
+        "owner": "Berkeley Gorilla",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      },
+      "note": "BFCL is developed by the Berkeley Gorilla project. The Inspect task is a maintained implementation of a selected BFCL split."
+    },
+    "register:hangman-bench": {
+      "origin": {
+        "name": "Matt Fisher",
+        "organization": null,
+        "entity_type": "individual_developer",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://github.com/MattFisher/hangman-bench"
+      },
+      "paper_status": "not-found",
+      "implementation": {
+        "url": "https://github.com/MattFisher/hangman-bench",
+        "owner": "Matt Fisher",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      },
+      "note": "The repository describes Hangman Bench as an Inspect demonstration benchmark. No dedicated paper was identified."
+    },
+    "inspect-family:personality": {
+      "origin": {
+        "name": "Guiem Solans",
+        "organization": null,
+        "entity_type": "individual_developer",
+        "role": "evaluation_developer",
+        "confidence": "source-derived",
+        "evidence_url": "https://github.com/guiem/personality-tests"
+      },
+      "paper_status": "not-found",
+      "implementation": {
+        "url": "https://github.com/guiem/personality-tests",
+        "owner": "Guiem Solans",
+        "relation": "reference_implementation",
+        "confidence": "source-derived"
+      },
+      "note": "Attribution follows the upstream repository owner. The repository provides minimal methodological documentation and no dedicated paper was identified."
+    },
+    "register:pinchbench": {
+      "origin": {
+        "name": "PinchBench project",
+        "organization": null,
+        "entity_type": "benchmark_project",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://github.com/pinchbench/skill"
+      },
+      "paper_status": "not-found",
+      "implementation": {
+        "url": "https://github.com/pinchbench/skill",
+        "owner": "PinchBench project",
+        "relation": "original_benchmark_implementation",
+        "confidence": "verified"
+      },
+      "official_pages": [
+        "https://github.com/zytoh0/pinch-wildclawbench-inspect"
+      ],
+      "note": "The registered repository is an Inspect wrapper. It explicitly delegates benchmark data and native scoring to the pinned upstream PinchBench implementation."
+    },
+    "register:tarantubench": {
+      "origin": {
+        "name": "TarantuLabs",
+        "organization": "TarantuLabs",
+        "entity_type": "organization",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://www.tarantulabs.com/"
+      },
+      "paper_status": "not-found",
+      "implementation": {
+        "url": "https://github.com/Trivulzianus/TarantuBench",
+        "owner": "TarantuLabs / Trivulzianus",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      },
+      "note": "TarantuBench states that its labs are generated by the TarantuLabs engine. No dedicated academic paper was identified in the reviewed primary sources."
+    },
+    "canonical:agentboard": {
+      "origin": {
+        "name": "HKUST NLP and the AgentBoard paper authors",
+        "organization": "Hong Kong University of Science and Technology",
+        "entity_type": "research_group",
+        "role": "original_research",
+        "confidence": "verified",
+        "evidence_url": "https://github.com/hkust-nlp/AgentBoard"
+      },
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2401.13178",
+          "status": "present"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/hkust-nlp/AgentBoard",
+        "owner": "HKUST NLP",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "canonical:agentharm": {
+      "origin": {
+        "name": "Gray Swan AI and the UK AI Security Institute",
+        "organization": "Gray Swan AI + UK AI Security Institute",
+        "entity_type": "research_collaboration",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://www.aisi.gov.uk/research/agentharm-a-benchmark-for-measuring-harmfulness-of-llm-agents"
+      },
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2410.09024",
+          "status": "present"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/ai-safety-institute/AgentHarm",
+        "owner": "UK AI Security Institute",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "canonical:arc-agi-2": {
+      "origin": {
+        "name": "ARC Prize Foundation and the ARC-AGI-2 authors",
+        "organization": "ARC Prize Foundation",
+        "entity_type": "research_project",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://arcprize.org/arc-agi/2/"
+      },
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2505.11831",
+          "status": "present"
+        }
+      ],
+      "official_pages": [
+        "https://arcprize.org/arc-agi/2/"
+      ]
+    },
+    "canonical:re-bench": {
+      "origin": {
+        "name": "METR",
+        "organization": "METR",
+        "entity_type": "organization",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://github.com/METR/RE-Bench"
+      },
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2411.15114",
+          "status": "present"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/METR/RE-Bench",
+        "owner": "METR",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "canonical:harmbench": {
+      "origin": {
+        "name": "Center for AI Safety and the HarmBench paper authors",
+        "organization": "Center for AI Safety",
+        "entity_type": "research_collaboration",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://github.com/centerforaisafety/HarmBench"
+      },
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2402.04249",
+          "status": "present"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/centerforaisafety/HarmBench",
+        "owner": "Center for AI Safety",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "canonical:jailbreakbench": {
+      "origin": {
+        "name": "JailbreakBench project and paper authors",
+        "organization": null,
+        "entity_type": "research_collaboration",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://jailbreakbench.github.io/"
+      },
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2404.01318",
+          "status": "present"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/JailbreakBench/jailbreakbench",
+        "owner": "JailbreakBench project",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "canonical:agentdojo": {
+      "origin": {
+        "name": "ETH Zurich SPY Lab and Invariant Labs",
+        "organization": "ETH Zurich + Invariant Labs",
+        "entity_type": "research_collaboration",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://github.com/ethz-spylab/agentdojo"
+      },
+      "papers": [
+        {
+          "url": "https://openreview.net/forum?id=m1YYAQjO3w",
+          "status": "present",
+          "title": "AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents",
+          "source": "openreview"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/ethz-spylab/agentdojo",
+        "owner": "ETH Zurich SPY Lab",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "canonical:wmdp": {
+      "origin": {
+        "name": "Center for AI Safety and the WMDP paper authors",
+        "organization": "Center for AI Safety",
+        "entity_type": "research_collaboration",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://github.com/centerforaisafety/wmdp"
+      },
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2403.03218",
+          "status": "present"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/centerforaisafety/wmdp",
+        "owner": "Center for AI Safety",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "canonical:webarena": {
+      "origin": {
+        "name": "Carnegie Mellon University and the WebArena paper authors",
+        "organization": "Carnegie Mellon University",
+        "entity_type": "research_collaboration",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://webarena.dev/"
+      },
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2307.13854",
+          "status": "present"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/web-arena-x/webarena",
+        "owner": "WebArena project",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "canonical:visualwebarena": {
+      "origin": {
+        "name": "Carnegie Mellon University and the VisualWebArena paper authors",
+        "organization": "Carnegie Mellon University",
+        "entity_type": "research_collaboration",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://jykoh.com/vwa"
+      },
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2401.13649",
+          "status": "present"
+        }
+      ],
+      "official_pages": [
+        "https://jykoh.com/vwa"
+      ]
+    },
+    "canonical:workarena": {
+      "origin": {
+        "name": "ServiceNow Research and the WorkArena paper authors",
+        "organization": "ServiceNow Research",
+        "entity_type": "research_collaboration",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://github.com/ServiceNow/WorkArena"
+      },
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2403.07718",
+          "status": "present"
+        },
+        {
+          "url": "https://arxiv.org/abs/2407.05291",
+          "status": "present"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/ServiceNow/WorkArena",
+        "owner": "ServiceNow Research",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "canonical:tau-bench": {
+      "origin": {
+        "name": "Sierra Research and the τ-bench paper authors",
+        "organization": "Sierra Research",
+        "entity_type": "research_collaboration",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://sierra.ai/resources/research/tau-bench"
+      },
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2406.12045",
+          "status": "present"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/sierra-research/tau-bench",
+        "owner": "Sierra Research",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "canonical:mm-safetybench": {
+      "origin": {
+        "name": "MM-SafetyBench paper authors",
+        "organization": null,
+        "entity_type": "research_collaboration",
+        "role": "original_research",
+        "confidence": "verified",
+        "evidence_url": "https://github.com/isXinLiu/MM-SafetyBench"
+      },
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2311.17600",
+          "status": "present"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/isXinLiu/MM-SafetyBench",
+        "owner": "MM-SafetyBench authors",
+        "relation": "reference_implementation",
+        "confidence": "verified"
+      }
+    },
+    "canonical:terminal-bench": {
+      "origin": {
+        "name": "Stanford and the Laude Institute",
+        "organization": "Stanford University + Laude Institute",
+        "entity_type": "research_collaboration",
+        "role": "evaluation_developer",
+        "confidence": "verified",
+        "evidence_url": "https://www.tbench.ai/"
+      },
+      "paper_status": "not-found",
+      "official_pages": [
+        "https://www.tbench.ai/"
+      ],
+      "note": "Terminal-Bench is now presented through its official tbench.ai site and versioned benchmark registry. No dedicated academic paper was identified; the project provides a citable software/benchmark reference."
     }
   }
 }

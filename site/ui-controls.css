@@ -65,10 +65,6 @@
 :root[data-theme="dark"] .button.primary{background:#eee9df;color:#171613;border-color:#eee9df}
 :root[data-theme="dark"] .global-search:focus-within{box-shadow:0 0 0 3px rgba(238,233,223,.08)}
 :root[data-theme="dark"] .all-evals{background:#292620;color:var(--ink)}
-:root[data-theme="dark"] .collection-strip,
-:root[data-theme="dark"] .collection-head{background:#0e0e0d;color:#f2eee6}
-:root[data-theme="dark"] .collection-row p,
-:root[data-theme="dark"] .collection-head p{color:#c7c0b5}
 :root[data-theme="dark"] .eval-row:hover{background:linear-gradient(90deg,rgba(255,255,255,.035),transparent)}
 :root[data-theme="dark"] .inference-grid>div+div{background:#2b1f1c}
 :root[data-theme="dark"] .notice,
@@ -89,7 +85,7 @@
 @media(max-width:760px){
   .header-inner{gap:.65rem}
   .site-header nav{gap:.72rem;justify-content:flex-end}
-  .site-header nav a[data-nav="methodology"],.site-header nav a[data-nav="collection"]{display:none!important}
+  .site-header nav a[data-nav="methodology"]{display:none!important}
   .site-header nav a[data-nav="about"]{display:inline!important}
   .header-search-trigger{padding:.34rem .42rem}
   .theme-toggle{padding:.34rem .45rem}
