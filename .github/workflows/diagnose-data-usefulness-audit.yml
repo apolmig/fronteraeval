@@ -1,0 +1,86 @@
+name: Diagnose and complete data usefulness audit
+
+on:
+  push:
+    branches: [product/data-usefulness-audit]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: diagnose-data-usefulness-audit
+  cancel-in-progress: true
+
+jobs:
+  diagnose-and-apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: product/data-usefulness-audit
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Recover and apply reviewed patch
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64, gzip, re
+          text = Path('.github/workflows/apply-data-usefulness-audit.yml').read_text()
+          match = re.search(r"echo '([^']+)' \| base64 -d \| gzip -d", text)
+          if not match:
+              raise SystemExit('embedded patch payload not found')
+          Path('/tmp/apply_data_usefulness_patch.py').write_bytes(gzip.decompress(base64.b64decode(match.group(1))))
+          PY
+          python /tmp/apply_data_usefulness_patch.py
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Refresh sources
+        shell: bash
+        run: |
+          set +e
+          GITHUB_TOKEN='${{ secrets.GITHUB_TOKEN }}' REFRESH_INSPECT=1 npm run refresh:sources > /tmp/refresh.log 2>&1
+          code=$?
+          tail -n 120 /tmp/refresh.log
+          exit $code
+
+      - name: Run deterministic quality gates
+        shell: bash
+        run: |
+          set +e
+          npm run check > /tmp/check.log 2>&1
+          code=$?
+          tail -n 180 /tmp/check.log
+          exit $code
+
+      - name: Audit primary-source links
+        shell: bash
+        env:
+          SOURCE_AUDIT_CONCURRENCY: '8'
+        run: |
+          set +e
+          npm run audit:links -- --fail-critical > /tmp/links.log 2>&1
+          code=$?
+          tail -n 180 /tmp/links.log
+          exit $code
+
+      - name: Write refresh marker
+        run: node scripts/write-refresh-marker.mjs
+
+      - name: Remove one-time workflows and commit verified tree
+        run: |
+          rm .github/workflows/apply-data-usefulness-audit.yml
+          rm .github/workflows/diagnose-data-usefulness-audit.yml
+          git config user.name 'fronteraeval-bot'
+          git config user.email 'fronteraeval-bot@users.noreply.github.com'
+          git add -A
+          git commit -m 'Harden catalogue usefulness and source health'
+          git push origin HEAD:product/data-usefulness-audit
