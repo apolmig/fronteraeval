@@ -1,0 +1,194 @@
+name: Apply FronteraEval runtime batching
+
+on:
+  push:
+    branches: [performance/interactive-runtime]
+    paths:
+      - ".github/workflows/apply-runtime-batching.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: performance/interactive-runtime
+          fetch-depth: 0
+      - name: Remove duplicate catalogue parsing and mutation observers
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def replace(path, old, new, count=1):
+              p=Path(path); s=p.read_text()
+              if old not in s:
+                  raise SystemExit(f'anchor not found in {path}: {old[:100]}')
+              p.write_text(s.replace(old,new,count))
+
+          # app.js: one catalogue promise shared by every enhancement layer.
+          replace('site/app.js',
+              '  const main = document.querySelector("#main");\n  const esc =',
+              '  const main = document.querySelector("#main");\n  const catalogPromise = globalThis.FronteraEvalCatalogPromise ||= fetch("/data/catalog.json")\n    .then((response) => response.ok ? response.json() : null)\n    .catch(() => null);\n  const esc =')
+
+          replace('site/app.js', '''  async function load() {
+    const response = await fetch("/data/catalog.json");
+    if (!response.ok) throw new Error("Catalogue unavailable");
+    state.catalog = await response.json();
+    state.records = [...state.catalog.records];
+    route();
+
+    fetch("/api/weekly-status", { signal: AbortSignal.timeout(12000) })
+      .then((liveResponse) => liveResponse.ok ? liveResponse.json() : null)
+      .then((live) => {
+        if (!live) return;
+        state.live = live;
+        if (live?.inspect?.entries?.length) mergeLive(live.inspect.entries);
+        route({ preserveScroll: true });
+      })
+      .catch(() => {});
+  }
+''', '''  async function load() {
+    state.catalog = await catalogPromise;
+    if (!state.catalog) throw new Error("Catalogue unavailable");
+    state.records = [...state.catalog.records];
+    route();
+
+    fetch("/api/weekly-status", { signal: AbortSignal.timeout(12000) })
+      .then((liveResponse) => liveResponse.ok ? liveResponse.json() : null)
+      .then((live) => {
+        if (!live) return;
+        state.live = live;
+        const previousCount = state.records.length;
+        if (live?.inspect?.entries?.length) mergeLive(live.inspect.entries);
+        if (state.records.length !== previousCount) route({ preserveScroll: true });
+        else hydrateLiveStatus();
+      })
+      .catch(() => {});
+  }
+''')
+
+          replace('site/app.js', '''  function route(options = {}) {
+''', '''  function notifyRendered(path = parseHash().path) {
+    queueMicrotask(() => document.dispatchEvent(new CustomEvent("fronteraeval:rendered", { detail: { path } })));
+  }
+
+  function route(options = {}) {
+''')
+
+          replace('site/app.js', '''    else renderNotFound();
+    setTimeout(() => main.focus(), 0);
+  }
+''', '''    else renderNotFound();
+    notifyRendered(path);
+    setTimeout(() => main.focus(), 0);
+  }
+''')
+
+          replace('site/app.js', '''  function freshnessText() {
+    if (state.live?.status === "current" && state.live?.checked_at) {
+      const checked = new Date(state.live.checked_at).toLocaleString("en-GB", {
+        dateStyle: "medium", timeStyle: "short", timeZone: "UTC"
+      });
+      return `<span class="status-dot live"></span>Sources checked ${esc(checked)} UTC`;
+    }
+    return `<span class="status-dot"></span>Build snapshot ${esc(formatDate(state.catalog.generated_at))}`;
+  }
+''', '''  function freshnessText() {
+    if (state.live?.status === "current" && state.live?.checked_at) {
+      const checked = new Date(state.live.checked_at).toLocaleString("en-GB", {
+        dateStyle: "medium", timeStyle: "short", timeZone: "UTC"
+      });
+      return `<span class="status-dot live"></span>Sources checked ${esc(checked)} UTC`;
+    }
+    return `<span class="status-dot"></span>Build snapshot ${esc(formatDate(state.catalog.generated_at))}`;
+  }
+
+  function hydrateLiveStatus() {
+    document.querySelectorAll("[data-live-freshness]").forEach((node) => {
+      node.innerHTML = freshnessText();
+    });
+  }
+''')
+
+          replace('site/app.js', '<div class="catalogue-meta">${freshnessText()}<span>${state.records.length} catalogue records</span>', '<div class="catalogue-meta"><span data-live-freshness>${freshnessText()}</span><span>${state.records.length} catalogue records</span>')
+
+          replace('site/app.js', '''    renderPagination(pages, records.length);
+  }
+''', '''    renderPagination(pages, records.length);
+    notifyRendered("/evals");
+  }
+''')
+
+          # Enhancement scripts reuse the same parsed catalogue.
+          for path in ['site/enhancements.js','site/ui-controls.js','site/methodological-reviews.js','site/seo-runtime.js']:
+              p=Path(path); s=p.read_text()
+              s=s.replace('const catalogPromise = fetch("/data/catalog.json")\n    .then((response) => response.ok ? response.json() : null)\n    .catch(() => null);', 'const catalogPromise = globalThis.FronteraEvalCatalogPromise ||= fetch("/data/catalog.json")\n    .then((response) => response.ok ? response.json() : null)\n    .catch(() => null);')
+              s=s.replace("fetch('/data/catalog.json').then((r)=>r.ok?r.json():null).then((data)=>{catalog=data;update()}).catch(()=>{});", "(globalThis.FronteraEvalCatalogPromise ||= fetch('/data/catalog.json').then((r)=>r.ok?r.json():null).catch(()=>null)).then((data)=>{catalog=data;update()});")
+              p.write_text(s)
+
+          replace('site/enhancements.js', '''  window.addEventListener("hashchange", scheduleEnhancement);
+  new MutationObserver(scheduleEnhancement).observe(main, { childList: true, subtree: true });
+  scheduleEnhancement();
+''', '''  document.addEventListener("fronteraeval:rendered", scheduleEnhancement);
+  window.addEventListener("hashchange", scheduleEnhancement);
+  scheduleEnhancement();
+''')
+
+          replace('site/methodological-reviews.js', '''  const schedule = () => window.setTimeout(render, 0);
+  window.addEventListener("hashchange", schedule);
+  new MutationObserver(schedule).observe(main, { childList: true, subtree: true });
+  schedule();
+''', '''  let scheduled = false;
+  const schedule = () => {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(() => { scheduled = false; render(); });
+  };
+  document.addEventListener("fronteraeval:rendered", schedule);
+  window.addEventListener("hashchange", schedule);
+  schedule();
+''')
+
+          # attribution.js is already idempotent; use app lifecycle events rather than observing the DOM.
+          p=Path('site/attribution.js'); s=p.read_text()
+          start=s.index('  const observer = new MutationObserver')
+          end=s.index('})();', start)
+          replacement='''  function schedule() {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(async () => {
+      scheduled = false;
+      const catalog = await catalogPromise;
+      if (!catalog) return;
+      recordsById ||= new Map(catalog.records.map((record) => [record.id, record]));
+      enhanceRows();
+      enhanceDetail();
+    });
+  }
+
+  document.addEventListener("fronteraeval:rendered", schedule);
+  window.addEventListener("hashchange", schedule);
+  schedule();
+'''
+          p.write_text(s[:start] + replacement + s[end:])
+
+          # seo-runtime should react once per app render, not to every descendant mutation.
+          p=Path('site/seo-runtime.js'); s=p.read_text()
+          old="  addEventListener('hashchange',update);new MutationObserver(()=>{if(location.hash.includes('/eval/'))update()}).observe(document.querySelector('#main'),{childList:true,subtree:true});update();"
+          new="  addEventListener('hashchange',update);document.addEventListener('fronteraeval:rendered',update);update();"
+          if old not in s: raise SystemExit('seo-runtime observer anchor not found')
+          p.write_text(s.replace(old,new))
+          PY
+      - name: Remove one-time patch workflow and commit
+        run: |
+          rm .github/workflows/apply-runtime-batching.yml
+          git config user.name 'fronteraeval-bot'
+          git config user.email 'fronteraeval-bot@users.noreply.github.com'
+          git add -A
+          git commit -m 'Batch catalogue hydration and route enhancements'
+          git push origin HEAD:performance/interactive-runtime
