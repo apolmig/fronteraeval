@@ -1,0 +1,48 @@
+name: Verify batched interactive runtime
+
+on:
+  push:
+    branches: [performance/interactive-runtime]
+    paths:
+      - ".github/workflows/verify-performance-preview.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+      - name: Wait for the latest deploy preview
+        run: |
+          for attempt in $(seq 1 30); do
+            body="$(curl -fsS --max-time 15 https://deploy-preview-31--fronteraeval.netlify.app/ || true)"
+            if grep -Fq 'seo-runtime.js' <<<"$body"; then exit 0; fi
+            sleep 10
+          done
+          exit 1
+      - name: Audit the interactive homepage
+        run: |
+          for attempt in 1 2; do
+            if npx -y lighthouse@latest https://deploy-preview-31--fronteraeval.netlify.app/ --quiet --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=/tmp/lighthouse.json; then break; fi
+            [[ "$attempt" -lt 2 ]] && sleep 20
+          done
+          test -s /tmp/lighthouse.json
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const r=JSON.parse(fs.readFileSync('/tmp/lighthouse.json','utf8'));
+          const c=r.categories,a=r.audits;
+          const scores={performance:c.performance.score,accessibility:c.accessibility.score,bestPractices:c['best-practices'].score,seo:c.seo.score};
+          const boot=(a['bootup-time'].details?.items||[]).sort((x,y)=>(y.scripting||0)-(x.scripting||0)).slice(0,12);
+          const result={scores,tbt:a['total-blocking-time'].numericValue,cls:a['cumulative-layout-shift'].numericValue,tti:a.interactive.numericValue,mainthread:a['mainthread-work-breakdown'].numericValue,boot};
+          console.log(JSON.stringify(result,null,2));
+          const attribution=boot.find((item)=>item.url?.includes('/attribution.js'))?.scripting||0;
+          if(attribution>150) throw new Error(`Attribution scripting regression: ${attribution}ms`);
+          if(result.tbt>500) throw new Error(`Total blocking time remains too high: ${result.tbt}ms`);
+          if(result.cls>.1) throw new Error(`Layout shift remains too high: ${result.cls}`);
+          if(scores.accessibility<.95) throw new Error('Accessibility regression');
+          NODE
