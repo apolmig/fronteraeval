@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Dispatch the production refresh with discovery checks
+      - name: Dispatch the final production refresh with discovery checks
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh workflow run weekly-refresh.yml --repo "$GITHUB_REPOSITORY" --ref main
