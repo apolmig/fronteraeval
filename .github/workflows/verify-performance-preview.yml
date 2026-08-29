@@ -1,0 +1,40 @@
+name: Verify interactive performance preview
+
+on:
+  push:
+    branches: [performance/interactive-runtime]
+    paths:
+      - ".github/workflows/verify-performance-preview.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+      - name: Wait for deploy preview
+        run: |
+          for attempt in $(seq 1 20); do
+            if curl -fsS --max-time 15 https://deploy-preview-31--fronteraeval.netlify.app/ >/dev/null; then exit 0; fi
+            sleep 10
+          done
+          exit 1
+      - name: Audit interactive homepage and attribution runtime
+        run: |
+          npx -y lighthouse@latest https://deploy-preview-31--fronteraeval.netlify.app/ --quiet --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=/tmp/lighthouse.json
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const report=JSON.parse(fs.readFileSync('/tmp/lighthouse.json','utf8'));
+          const c=report.categories;
+          const scores={performance:c.performance.score,accessibility:c.accessibility.score,bestPractices:c['best-practices'].score,seo:c.seo.score};
+          const audits=report.audits;
+          console.log(JSON.stringify({scores,tbt:audits['total-blocking-time'].numericValue,cls:audits['cumulative-layout-shift'].numericValue,tti:audits.interactive.numericValue,mainthread:audits['mainthread-work-breakdown'].numericValue,attribution:(audits['bootup-time'].details?.items||[]).find((item)=>item.url?.includes('/attribution.js'))||null},null,2));
+          if(scores.seo < .95 || scores.accessibility < .95 || scores.bestPractices < .95) process.exit(1);
+          if(audits['total-blocking-time'].numericValue > 350) throw new Error(`TBT regression: ${audits['total-blocking-time'].numericValue}`);
+          if(audits['bootup-time'].details?.items?.some((item)=>item.url?.includes('/attribution.js') && item.scripting > 500)) throw new Error('Attribution scripting still exceeds 500ms');
+          NODE
