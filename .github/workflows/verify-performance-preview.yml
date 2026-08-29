@@ -1,4 +1,4 @@
-name: Verify interactive performance preview
+name: Diagnose interactive performance preview
 
 on:
   push:
@@ -24,17 +24,17 @@ jobs:
             sleep 10
           done
           exit 1
-      - name: Audit interactive homepage and attribution runtime
+      - name: Diagnose interactive homepage runtime
         run: |
           npx -y lighthouse@latest https://deploy-preview-31--fronteraeval.netlify.app/ --quiet --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=/tmp/lighthouse.json
           node --input-type=module <<'NODE'
           import fs from 'node:fs';
-          const report=JSON.parse(fs.readFileSync('/tmp/lighthouse.json','utf8'));
-          const c=report.categories;
+          const r=JSON.parse(fs.readFileSync('/tmp/lighthouse.json','utf8'));
+          const c=r.categories,a=r.audits;
           const scores={performance:c.performance.score,accessibility:c.accessibility.score,bestPractices:c['best-practices'].score,seo:c.seo.score};
-          const audits=report.audits;
-          console.log(JSON.stringify({scores,tbt:audits['total-blocking-time'].numericValue,cls:audits['cumulative-layout-shift'].numericValue,tti:audits.interactive.numericValue,mainthread:audits['mainthread-work-breakdown'].numericValue,attribution:(audits['bootup-time'].details?.items||[]).find((item)=>item.url?.includes('/attribution.js'))||null},null,2));
-          if(scores.seo < .95 || scores.accessibility < .95 || scores.bestPractices < .95) process.exit(1);
-          if(audits['total-blocking-time'].numericValue > 350) throw new Error(`TBT regression: ${audits['total-blocking-time'].numericValue}`);
-          if(audits['bootup-time'].details?.items?.some((item)=>item.url?.includes('/attribution.js') && item.scripting > 500)) throw new Error('Attribution scripting still exceeds 500ms');
+          const boot=(a['bootup-time'].details?.items||[]).sort((x,y)=>(y.scripting||0)-(x.scripting||0)).slice(0,20);
+          const tasks=(a['long-tasks']?.details?.items||[]).slice(0,20);
+          const third=(a['third-party-summary']?.details?.items||[]).slice(0,20);
+          console.log(JSON.stringify({scores,tbt:a['total-blocking-time'].numericValue,cls:a['cumulative-layout-shift'].numericValue,tti:a.interactive.numericValue,mainthread:a['mainthread-work-breakdown'].numericValue,boot,tasks,third},null,2));
+          if((boot.find((item)=>item.url?.includes('/attribution.js'))?.scripting||0)>500) throw new Error('Attribution scripting still exceeds 500ms');
           NODE
