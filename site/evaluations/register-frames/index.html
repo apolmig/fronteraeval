@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FRAMES — FronteraEval</title>
+  <meta name="description" content="FRAMES evaluates multi-hop reasoning by requiring models to answer questions that can only be resolved by chaining information across multiple Wikipedia documents.…">
+  <meta name="author" content="Miguel Guerrero">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f5ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171715" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://fronteraeval.org/evaluations/register-frames/">
+  <link rel="alternate" type="application/atom+xml" title="FronteraEval updates" href="https://fronteraeval.org/feed.xml">
+  <link rel="search" type="application/opensearchdescription+xml" title="FronteraEval" href="https://fronteraeval.org/opensearch.xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:site_name" content="FronteraEval">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="FRAMES — FronteraEval">
+  <meta property="og:description" content="FRAMES evaluates multi-hop reasoning by requiring models to answer questions that can only be resolved by chaining information across multiple Wikipedia documents. Two task variants are provided: -…">
+  <meta property="og:url" content="https://fronteraeval.org/evaluations/register-frames/">
+  <meta property="og:image" content="https://fronteraeval.org/social-card.png">
+  <meta property="og:image:secure_url" content="https://fronteraeval.org/social-card.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="FronteraEval — a source-linked map of frontier AI evaluations">
+  <meta property="og:locale" content="en_GB">
+  <meta property="article:modified_time" content="2026-08-29">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FRAMES — FronteraEval">
+  <meta name="twitter:description" content="FRAMES evaluates multi-hop reasoning by requiring models to answer questions that can only be resolved by chaining information across multiple Wikipedia documents. Two task variants are provided: -…">
+  <meta name="twitter:image" content="https://fronteraeval.org/social-card.png">
+  <meta name="twitter:image:alt" content="FronteraEval — a source-linked map of frontier AI evaluations">
+  <meta name="twitter:creator" content="@apolmig">
+  <script src="/theme-init.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/ui-controls.css">
+  <link rel="stylesheet" href="/discovery.css">
+  <script defer src="/discovery.js"></script>
+</head><body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="wordmark" href="/">Frontera<span>Eval</span></a>
+    <nav aria-label="Primary navigation"><a href="/evaluations/">Evaluations</a><a href="/topics/">Topics</a><a href="/method/">Method</a><a href="/about/">About</a></nav>
+    <div class="header-tools"><a class="static-search" href="/#/evals">Search <kbd>Ctrl K</kbd></a><button class="theme-toggle" data-static-theme type="button" aria-label="Switch theme"><span data-theme-label>Dark</span></button></div>
+  </div></header>
+  <main id="content" class="discovery-main"><article class="discovery-record" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="url" content="https://fronteraeval.org/evaluations/register-frames/"><meta itemprop="dateModified" content="2026-08-29">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/evaluations/">Evaluations</a><span>/</span><span>FRAMES</span></nav>
+    <header class="discovery-record-head"><div><p class="eyebrow">evaluation-package · Source-linked discovery</p><h1 itemprop="name">FRAMES</h1><p class="lede" itemprop="description">FRAMES evaluates multi-hop reasoning by requiring models to answer questions that can only be resolved by chaining information across multiple Wikipedia documents. Two task variants are provided: - **frames_baseline**: all source documents are provided upfront; tests whether a model can reason across a full document set. - **frames_socrates**: documents are withheld and the model must iteratively request them via a `request_document` tool. Retrieval is constrained to a per-sample allowlist of ground-truth source documents, preventing eval-awareness contamination. Scored with a decaying reward `accuracy × min(optimal_hops / actual_hops, 1)` that penalises unnecessary hops and hallucinated document requests.</p></div><a class="primary-cta" href="https://fronteraeval.org/#/eval/register%3Aframes">Open interactive record →</a></header>
+    <div class="record-facts"><span><strong>Origin</strong>Satyapriya Krishna, Kalpesh Krishna, Anhad Mohananey et al.</span><span><strong>Topics</strong>General capability</span><span><strong>Status</strong>catalogued</span></div>
+    <section class="claim-grid"><div><h2>Can support</h2><p>Not independently assessed by FronteraEval yet.</p></div><div><h2>Cannot support by itself</h2><p>No inference beyond the upstream source should be made until the protocol is reviewed.</p></div></section>
+    <aside class="discovery-notice"><strong>Discovery record.</strong> FronteraEval has not independently reviewed this record’s construct, protocol, or inference boundary.</aside>
+    <section><h2>Original sources</h2><ul class="source-list"><li><a href="https://arxiv.org/abs/2409.12941" rel="noopener">Primary source <span aria-hidden="true">↗</span></a></li><li><a href="https://github.com/sahil350/frames-eval" rel="noopener">Implementation <span aria-hidden="true">↗</span></a></li><li><a href="https://github.com/UKGovernmentBEIS/inspect_evals/blob/979bf44681dfdb148021676f9b2be964150bb5ed/register/frames/eval.yaml" rel="noopener">Inspect Evals Register <span aria-hidden="true">↗</span></a></li></ul></section>
+    <section class="share-row"><button type="button" data-share-url="https://fronteraeval.org/evaluations/register-frames/" data-share-title="FRAMES">Share this record</button><a href="https://fronteraeval.org/#/eval/register%3Aframes">Search related evaluations</a></section>
+  </article></main>
+  <footer class="site-footer"><div class="footer-inner"><div><strong>FronteraEval</strong><span>Find the evaluation. Read the evidence. Follow the source.</span></div><div><a href="/data-info/">Open data</a><a href="/feed.xml">Updates</a><a href="https://github.com/apolmig/fronteraeval" rel="noopener">GitHub ↗</a></div></div></footer>
+</body></html>
