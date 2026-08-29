@@ -1,0 +1,51 @@
+name: Verify FronteraEval Lighthouse quality
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/verify-lighthouse.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  lighthouse:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+      - name: Audit homepage and static catalogue
+        run: |
+          npx -y lighthouse@latest https://fronteraeval.org/ --quiet --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=/tmp/home-lighthouse.json
+          npx -y lighthouse@latest https://fronteraeval.org/evaluations/ --quiet --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" --output=json --output-path=/tmp/catalogue-lighthouse.json
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const reports=['home','catalogue'].map(name=>[name,JSON.parse(fs.readFileSync(`/tmp/${name}-lighthouse.json`,'utf8'))]);
+          for(const [name,report] of reports){
+            const c=report.categories;
+            const scores={performance:c.performance.score,accessibility:c.accessibility.score,bestPractices:c['best-practices'].score,seo:c.seo.score};
+            console.log(name, scores);
+            if(scores.seo < .95) throw new Error(`${name}: SEO score below 95`);
+            if(scores.accessibility < .90) throw new Error(`${name}: accessibility score below 90`);
+            if(scores.bestPractices < .90) throw new Error(`${name}: best-practices score below 90`);
+            if(scores.performance < .70) throw new Error(`${name}: performance score below 70`);
+          }
+          NODE
+      - name: Remove one-time audit workflow
+        if: always()
+        run: |
+          rm .github/workflows/verify-lighthouse.yml
+          git config user.name "fronteraeval-bot"
+          git config user.email "fronteraeval-bot@users.noreply.github.com"
+          git add -A
+          git commit -m "Remove one-time Lighthouse audit workflow" || exit 0
+          git pull --rebase origin main
+          git push origin HEAD:main
