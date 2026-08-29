@@ -2,7 +2,7 @@
   "use strict";
 
   const main = document.querySelector("#main");
-  const catalogPromise = fetch("/data/catalog.json")
+  const catalogPromise = globalThis.FronteraEvalCatalogPromise ||= fetch("/data/catalog.json")
     .then((response) => response.ok ? response.json() : null)
     .catch(() => null);
 
@@ -221,7 +221,7 @@
     }, 120);
   }
 
+  document.addEventListener("fronteraeval:rendered", scheduleEnhancement);
   window.addEventListener("hashchange", scheduleEnhancement);
-  new MutationObserver(scheduleEnhancement).observe(main, { childList: true, subtree: true });
   scheduleEnhancement();
 })();

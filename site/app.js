@@ -13,6 +13,9 @@
   };
 
   const main = document.querySelector("#main");
+  const catalogPromise = globalThis.FronteraEvalCatalogPromise ||= fetch("/data/catalog.json")
+    .then((response) => response.ok ? response.json() : null)
+    .catch(() => null);
   const esc = (value) => String(value ?? "").replace(/[&<>'"]/g, (char) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;"
   })[char]);
@@ -47,9 +50,8 @@
   };
 
   async function load() {
-    const response = await fetch("/data/catalog.json");
-    if (!response.ok) throw new Error("Catalogue unavailable");
-    state.catalog = await response.json();
+    state.catalog = await catalogPromise;
+    if (!state.catalog) throw new Error("Catalogue unavailable");
     state.records = [...state.catalog.records];
     route();
 
@@ -58,8 +60,10 @@
       .then((live) => {
         if (!live) return;
         state.live = live;
+        const previousCount = state.records.length;
         if (live?.inspect?.entries?.length) mergeLive(live.inspect.entries);
-        route({ preserveScroll: true });
+        if (state.records.length !== previousCount) route({ preserveScroll: true });
+        else hydrateLiveStatus();
       })
       .catch(() => {});
   }
@@ -121,6 +125,10 @@
     return { path, params: new URLSearchParams(query) };
   }
 
+  function notifyRendered(path = parseHash().path) {
+    queueMicrotask(() => document.dispatchEvent(new CustomEvent("fronteraeval:rendered", { detail: { path } })));
+  }
+
   function route(options = {}) {
     const { path, params } = parseHash();
     if (!options.preserveScroll) window.scrollTo(0, 0);
@@ -141,6 +149,7 @@
     else if (path === "/updates") renderUpdates();
     else if (path === "/data") renderData();
     else renderNotFound();
+    notifyRendered(path);
     setTimeout(() => main.focus(), 0);
   }
 
@@ -181,6 +190,12 @@
       return `<span class="status-dot live"></span>Sources checked ${esc(checked)} UTC`;
     }
     return `<span class="status-dot"></span>Build snapshot ${esc(formatDate(state.catalog.generated_at))}`;
+  }
+
+  function hydrateLiveStatus() {
+    document.querySelectorAll("[data-live-freshness]").forEach((node) => {
+      node.innerHTML = freshnessText();
+    });
   }
 
   function topicCounts() {
@@ -304,7 +319,7 @@
             <button type="button" data-query="autonomous AI R&D">Autonomous AI R&amp;D</button>
             <button type="button" data-query="jailbreak robustness">Jailbreak robustness</button>
           </div>
-          <div class="catalogue-meta">${freshnessText()}<span>${state.records.length} catalogue records</span><span>${reviewedCount} independently reviewed</span></div>
+          <div class="catalogue-meta"><span data-live-freshness>${freshnessText()}</span><span>${state.records.length} catalogue records</span><span>${reviewedCount} independently reviewed</span></div>
         </div>
       </section>
 
@@ -451,6 +466,7 @@
       renderBrowse();
     }));
     renderPagination(pages, records.length);
+    notifyRendered("/evals");
   }
 
   function renderPagination(pages, total) {

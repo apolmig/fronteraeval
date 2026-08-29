@@ -205,39 +205,20 @@
     sourcePanel.querySelector(".source-links")?.after(roleBlock);
   }
 
-  const observer = new MutationObserver(() => schedule());
-
-  function startObserver() {
-    if (observerActive) return;
-    observer.observe(main, { childList: true, subtree: true });
-    observerActive = true;
-  }
-
-  function stopObserver() {
-    if (!observerActive) return;
-    observer.disconnect();
-    observerActive = false;
-  }
-
   function schedule() {
     if (scheduled) return;
     scheduled = true;
     requestAnimationFrame(async () => {
       scheduled = false;
-      stopObserver();
-      try {
-        const catalog = await catalogPromise;
-        if (!catalog) return;
-        recordsById ||= new Map(catalog.records.map((record) => [record.id, record]));
-        enhanceRows();
-        enhanceDetail();
-      } finally {
-        startObserver();
-      }
+      const catalog = await catalogPromise;
+      if (!catalog) return;
+      recordsById ||= new Map(catalog.records.map((record) => [record.id, record]));
+      enhanceRows();
+      enhanceDetail();
     });
   }
 
+  document.addEventListener("fronteraeval:rendered", schedule);
   window.addEventListener("hashchange", schedule);
-  startObserver();
   schedule();
 })();
