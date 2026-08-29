@@ -1,0 +1,79 @@
+name: Apply final SEO hardening
+
+on:
+  push:
+    branches: [seo/final-hardening]
+    paths: [".github/workflows/final-seo-hardening.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  harden-and-test:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: seo/final-hardening
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Harden canonical hosts and metadata
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          Path('site/_redirects').write_text('''https://fronteraeval.netlify.app/* https://fronteraeval.org/:splat 301!\nhttps://main--fronteraeval.netlify.app/* https://fronteraeval.org/:splat 301!\nhttps://www.fronteraeval.org/* https://fronteraeval.org/:splat 301!\n/evals /evaluations/ 301\n/methodology /method/ 301\n/data-info /data-info/ 301\n''')
+
+          headers=Path('site/_headers')
+          text=headers.read_text()
+          if '/api/*\n  X-Robots-Tag:' not in text:
+              text=text.replace('/data/*\n', '/api/*\n  X-Robots-Tag: noindex, nofollow\n  Cache-Control: public, max-age=300, stale-while-revalidate=3600\n\n/data/*\n')
+          headers.write_text(text)
+
+          index=Path('site/index.html')
+          text=index.read_text()
+          anchor='  <meta name="application-name" content="FronteraEval">\n'
+          addition='  <meta name="apple-mobile-web-app-title" content="FronteraEval">\n  <meta name="format-detection" content="telephone=no">\n'
+          if addition.strip() not in text:
+              if anchor not in text: raise SystemExit('root metadata anchor missing')
+              text=text.replace(anchor,anchor+addition)
+          if 'property="og:image:url"' not in text:
+              text=text.replace('  <meta property="og:image" content="https://fronteraeval.org/social-card.png">\n','  <meta property="og:image" content="https://fronteraeval.org/social-card.png">\n  <meta property="og:image:url" content="https://fronteraeval.org/social-card.png">\n')
+          index.write_text(text)
+
+          generator=Path('scripts/generate-discovery.mjs')
+          text=generator.read_text()
+          if 'apple-mobile-web-app-title' not in text:
+              text=text.replace('  <meta name="author" content="Miguel Guerrero">\n','  <meta name="author" content="Miguel Guerrero">\n  <meta name="apple-mobile-web-app-title" content="FronteraEval">\n  <meta name="format-detection" content="telephone=no">\n')
+          if 'og:image:url' not in text:
+              text=text.replace('  <meta property="og:image" content="${CARD}">\n','  <meta property="og:image" content="${CARD}">\n  <meta property="og:image:url" content="${CARD}">\n')
+          generator.write_text(text)
+
+          tests=Path('scripts/test-discovery.mjs')
+          text=tests.read_text()
+          if "const redirects=" not in text:
+              text=text.replace("const robots=await readFile('site/robots.txt','utf8');", "const robots=await readFile('site/robots.txt','utf8');\nconst redirects=await readFile('site/_redirects','utf8');\nconst headers=await readFile('site/_headers','utf8');")
+              text=text.replace("assert.ok(robots.includes('https://fronteraeval.org/sitemap.xml'));", "assert.ok(robots.includes('https://fronteraeval.org/sitemap.xml'));\nassert.ok(redirects.includes('https://main--fronteraeval.netlify.app/* https://fronteraeval.org/:splat 301!'));\nassert.ok(redirects.includes('https://www.fronteraeval.org/* https://fronteraeval.org/:splat 301!'));\nassert.ok(headers.includes('X-Robots-Tag: noindex, nofollow'));\nassert.ok(index.includes('property=\"og:image:url\"'));" )
+          tests.write_text(text)
+          PY
+
+      - name: Run full build and quality gates
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
+          npm run check
+
+      - name: Remove one-time workflow and commit verified hardening
+        run: |
+          rm .github/workflows/final-seo-hardening.yml
+          git config user.name 'fronteraeval-bot'
+          git config user.email 'fronteraeval-bot@users.noreply.github.com'
+          git add -A
+          git commit -m 'Harden canonical hosts and crawler metadata'
+          git push origin HEAD:seo/final-hardening
