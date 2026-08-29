@@ -1,0 +1,32 @@
+name: Verify external evaluation discovery dispatch
+
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/verify-external-discovery-dispatch.yml"]
+
+permissions:
+  actions: write
+  contents: write
+
+jobs:
+  dispatch-and-clean:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Dispatch production external-discovery workflow
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run external-eval-discovery.yml --repo "$GITHUB_REPOSITORY" --ref main
+      - name: Remove one-time dispatcher
+        run: |
+          git config user.name 'fronteraeval-bot'
+          git config user.email 'fronteraeval-bot@users.noreply.github.com'
+          git rm .github/workflows/verify-external-discovery-dispatch.yml
+          git commit -m 'chore: remove external-discovery dispatcher'
+          git pull --rebase origin main
+          git push origin HEAD:main
