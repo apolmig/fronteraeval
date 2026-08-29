@@ -2,11 +2,13 @@
   "use strict";
 
   const main = document.querySelector("#main");
-  const catalogPromise = fetch("/data/catalog.json")
-    .then(response => response.ok ? response.json() : null)
+  if (!main) return;
+
+  const catalogPromise = globalThis.FronteraEvalCatalogPromise ||= fetch("/data/catalog.json")
+    .then((response) => response.ok ? response.json() : null)
     .catch(() => null);
 
-  const esc = value => String(value ?? "").replace(/[&<>'"]/g, character => ({
+  const esc = (value) => String(value ?? "").replace(/[&<>'"]/g, (character) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;"
   })[character]);
 
@@ -27,6 +29,10 @@
     dataset: "Dataset",
     official: "Official page"
   };
+
+  let recordsById = null;
+  let scheduled = false;
+  let observerActive = false;
 
   function currentRecordID() {
     const path = (location.hash || "#/").slice(1).split("?")[0];
@@ -63,17 +69,20 @@
     return candidates;
   }
 
-  function enhanceRows(catalog) {
-    const records = new Map(catalog.records.map(record => [record.id, record]));
-    document.querySelectorAll(".eval-row").forEach(row => {
-      const record = records.get(rowRecordID(row));
+  function enhanceRows() {
+    document.querySelectorAll(".eval-row").forEach((row) => {
+      const id = rowRecordID(row);
+      if (!id || row.dataset.attributionFor === id) return;
+      const record = recordsById.get(id);
       if (!record) return;
+
       const context = row.querySelector(".eval-context");
       const first = context?.querySelector("span:first-child");
       if (first) {
         first.classList.add("attribution-context");
         first.innerHTML = `<small>${esc(record.organisation_role || "Source")}</small>${esc(record.organisation || "Origin not verified")}`;
       }
+
       const source = row.querySelector(".source-link");
       if (source && record.preferred_source?.url) {
         const label = SHORT_LABELS[record.preferred_source.kind] || record.preferred_source.label || "Source";
@@ -81,6 +90,8 @@
         source.textContent = `${label} ↗`;
         source.setAttribute("aria-label", `${label} for ${record.name}`);
       }
+
+      row.dataset.attributionFor = id;
     });
   }
 
@@ -102,15 +113,18 @@
     return details.join(" · ");
   }
 
-  function enhanceDetail(catalog) {
+  function enhanceDetail() {
     const id = currentRecordID();
     if (!id) return;
-    const record = catalog.records.find(item => item.id === id);
+    const record = recordsById.get(id);
     if (!record) return;
 
     const recordMeta = document.querySelector(".record-meta");
-    const firstMeta = recordMeta?.querySelector("span:first-child");
-    if (firstMeta) firstMeta.textContent = `${record.organisation_role || "Source"}: ${record.organisation || "Origin not verified"}`;
+    if (recordMeta?.dataset.attributionFor !== id) {
+      const firstMeta = recordMeta?.querySelector("span:first-child");
+      if (firstMeta) firstMeta.textContent = `${record.organisation_role || "Source"}: ${record.organisation || "Origin not verified"}`;
+      if (recordMeta) recordMeta.dataset.attributionFor = id;
+    }
 
     const actionPanel = document.querySelector(".record-actions");
     if (actionPanel && actionPanel.dataset.sourceResolutionFor !== id) {
@@ -131,19 +145,19 @@
     if (heading) heading.textContent = "Origin, paper, and implementation";
 
     const organisationTerm = [...sourcePanel.querySelectorAll("dt")]
-      .find(term => term.textContent.trim() === "Organisation");
+      .find((term) => term.textContent.trim() === "Organisation");
     if (organisationTerm) {
       organisationTerm.textContent = "Primary source attribution";
       const definition = organisationTerm.nextElementSibling;
       if (definition) definition.innerHTML = `<strong>${esc(record.organisation || "Origin not verified")}</strong><br><small>${esc(record.organisation_role || "Unresolved")}</small>`;
     }
 
-    const roleBlock = document.createElement("section");
-    roleBlock.className = "source-resolution-block";
     const origin = record.origin || {};
     const paper = record.paper || {};
     const implementation = record.reference_implementation || {};
     const inspect = record.inspect_provenance || {};
+    const roleBlock = document.createElement("section");
+    roleBlock.className = "source-resolution-block";
     roleBlock.innerHTML = `
       <div class="source-resolution-heading">
         <h3>Source resolution</h3>
@@ -191,19 +205,39 @@
     sourcePanel.querySelector(".source-links")?.after(roleBlock);
   }
 
-  async function enhance() {
-    const catalog = await catalogPromise;
-    if (!catalog) return;
-    enhanceRows(catalog);
-    enhanceDetail(catalog);
+  const observer = new MutationObserver(() => schedule());
+
+  function startObserver() {
+    if (observerActive) return;
+    observer.observe(main, { childList: true, subtree: true });
+    observerActive = true;
+  }
+
+  function stopObserver() {
+    if (!observerActive) return;
+    observer.disconnect();
+    observerActive = false;
   }
 
   function schedule() {
-    window.setTimeout(enhance, 0);
-    window.setTimeout(enhance, 180);
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(async () => {
+      scheduled = false;
+      stopObserver();
+      try {
+        const catalog = await catalogPromise;
+        if (!catalog) return;
+        recordsById ||= new Map(catalog.records.map((record) => [record.id, record]));
+        enhanceRows();
+        enhanceDetail();
+      } finally {
+        startObserver();
+      }
+    });
   }
 
   window.addEventListener("hashchange", schedule);
-  new MutationObserver(schedule).observe(main, { childList: true, subtree: true });
+  startObserver();
   schedule();
 })();
