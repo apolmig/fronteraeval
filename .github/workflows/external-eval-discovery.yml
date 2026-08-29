@@ -1,0 +1,133 @@
+name: Discover external evaluation candidates
+
+on:
+  schedule:
+    - cron: "41 3 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: external-evaluation-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Rebuild the current catalogue before deduplication
+        run: npm run build
+
+      - name: Discover recent external evaluations with retries
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DISCOVERY_WINDOW_DAYS: "21"
+          DISCOVERY_MIN_SCORE: "6"
+        run: |
+          for attempt in 1 2 3; do
+            if npm run discover:external; then
+              exit 0
+            fi
+            [[ "$attempt" -lt 3 ]] && sleep "$((attempt * 20))"
+          done
+          exit 1
+
+      - name: Validate candidate ranking, deduplication, and review boundary
+        run: npm run test:external-discovery
+
+      - name: Commit a changed review queue
+        id: commit
+        shell: bash
+        run: |
+          git config user.name "fronteraeval-bot"
+          git config user.email "fronteraeval-bot@users.noreply.github.com"
+          git add discovery/external-candidates.json discovery/external-candidates.md
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git commit -m "chore: update external evaluation candidate queue"
+          git reset --hard HEAD
+          git clean -fd
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            git reset --hard HEAD
+            git clean -fd
+            [[ "$attempt" -lt 3 ]] && sleep "$((attempt * 15))"
+          done
+          exit 1
+
+      - name: Open or update the candidate-review issue
+        if: steps.commit.outputs.changed == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          title="External evaluation candidates for review"
+          active="$(jq '[.candidates[] | select(.review_status == "candidate")] | length' discovery/external-candidates.json)"
+          new="$(jq '.new_candidate_ids | length' discovery/external-candidates.json)"
+          issue="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')"
+          if [[ "$active" == "0" ]]; then
+            if [[ -n "$issue" ]]; then
+              gh issue close "$issue" --repo "$GITHUB_REPOSITORY" --comment "The current automated discovery queue has no active candidates."
+            fi
+            exit 0
+          fi
+          body_file="discovery/external-candidates.md"
+          if [[ -n "$issue" ]]; then
+            gh issue edit "$issue" --repo "$GITHUB_REPOSITORY" --body-file "$body_file"
+            gh issue comment "$issue" --repo "$GITHUB_REPOSITORY" --body "Weekly discovery found $new new candidate(s); $active candidate(s) remain active."
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file "$body_file"
+          fi
+
+      - name: Report discovery-system failure without touching production
+        if: failure()
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="External evaluation discovery failed"
+          issue="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')"
+          body="The external-evaluation candidate scan failed. Production and the validated public catalogue were not modified.\n\nRun: $RUN_URL\nTime: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          if [[ -n "$issue" ]]; then
+            printf '%b\n' "$body" | gh issue comment "$issue" --repo "$GITHUB_REPOSITORY" --body-file -
+          else
+            printf '%b\n' "$body" | gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file -
+          fi
+
+      - name: Close stale discovery failure issue
+        if: success()
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          title="External evaluation discovery failed"
+          issue="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')"
+          if [[ -n "$issue" ]]; then
+            gh issue close "$issue" --repo "$GITHUB_REPOSITORY" --comment "The latest external-evaluation discovery scan completed successfully."
+          fi

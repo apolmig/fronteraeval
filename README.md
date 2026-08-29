@@ -88,6 +88,8 @@ Three complementary safeguards run each Sunday:
 
 The workflow retries transient dependency and source failures, audits critical links, verifies that the exact refresh marker reached production, checks public discovery surfaces, and opens a GitHub issue if the autonomous refresh fails. Production remains on the last validated deployment.
 
+A separate **03:41 UTC external-discovery job** searches recent GitHub repositories, known evaluation organisations, arXiv, and Hugging Face. New Inspect entries can be imported automatically after validation; external results enter a private-to-repository candidate queue and GitHub review issue instead of being published without human source and construct checks.
+
 Automation may extract source metadata, but it does not silently invent evaluation authorship or substantive FronteraEval judgments. Editorial-review dates remain fixed; weekly jobs update source-check dates separately.
 
 ## Open data
