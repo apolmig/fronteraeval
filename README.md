@@ -1,12 +1,16 @@
 # FronteraEval
 
+[![FronteraEval social card](https://fronteraeval.org/social-card.png)](https://fronteraeval.org/)
+
 **Find the right evaluation. Follow the original source. Read its limits.**
 
 FronteraEval is a public, evolving decision-support catalogue for frontier AI evaluation. It is designed for researchers, policy analysts, assurance teams, and technically informed general analysts. It aims to reduce discovery friction, not to provide an exhaustive or authoritative map of the field.
 
 It is not a universal leaderboard or a benchmark card wall. It separates evaluation origin, associated paper, reference implementation, Inspect implementation or registry provenance, protocol interpretation, evidence reach, model-system results, deployment claims, and downstream-effect claims.
 
-**Application:** [fronteraeval.org](https://fronteraeval.org/)
+**Application:** [fronteraeval.org](https://fronteraeval.org/)  
+**Indexable catalogue:** [fronteraeval.org/evaluations/](https://fronteraeval.org/evaluations/)  
+**Open data:** [fronteraeval.org/data-info/](https://fronteraeval.org/data-info/)
 
 ## Source resolution
 
@@ -22,7 +26,7 @@ The registry records, separately:
 - source-resolution method and confidence;
 - an explicit `not-found` or `not-applicable` paper state rather than a fabricated citation.
 
-Hosting is not authorship. A registry maintainer is not automatically the evaluation developer. For example, APE is attributed to FAR AI, its paper and original implementation are separate resources, and Inspect Evals appears only as implementation provenance.
+Hosting is not authorship. A registry maintainer is not automatically the evaluation developer. For example, APE is attributed to FAR.AI, its paper and original implementation are separate resources, and Inspect Evals appears only as implementation provenance.
 
 See [ATTRIBUTION.md](ATTRIBUTION.md) for the role model and correction policy.
 
@@ -53,17 +57,36 @@ npm run check
 The build:
 
 1. generates the base catalogue from Inspect and curated canonical sources;
-2. enriches distributed-register metadata;
-3. enriches internal Inspect metadata;
-4. resolves source papers, organisations, implementations, and provenance through the source registry;
-5. validates source coverage, reviewed-record claims, semantic-search regressions, and catalogue integrity.
+2. enriches distributed-register and internal Inspect metadata;
+3. resolves source papers, organisations, implementations, and provenance;
+4. applies bounded documentary methodological reviews;
+5. generates indexable evaluation and topic pages, structured metadata, sitemap, Atom feed, OpenSearch, and machine-readable discovery files;
+6. validates source coverage, reviewed-record claims, semantic-search regressions, social metadata, sitemap coverage, and catalogue integrity.
+
+## Search and discovery
+
+The interactive application remains the fastest way to search and filter the catalogue. Search engines and link-preview crawlers also receive stable, non-hash URLs:
+
+- one canonical HTML page per catalogue record under `/evaluations/<slug>/`;
+- indexable topic pages under `/topics/<topic>/`;
+- Open Graph and Twitter Card metadata with a 1200×630 social card;
+- Schema.org microdata on the catalogue and record pages;
+- a generated XML sitemap and Atom feed;
+- OpenSearch metadata;
+- `llms.txt` and `llms-full.txt` for machine discovery;
+- a public IndexNow key and optional post-deploy submission.
+
+The social card and discovery pages use stable wording rather than embedding catalogue counts that may change between weekly refreshes.
 
 ## Weekly operation
 
-Two complementary jobs run each Sunday:
+Three complementary safeguards run each Sunday:
 
 - **02:17 UTC — Netlify source sweep:** detects new, removed, or renamed Inspect entries and updates live freshness status.
 - **02:23 UTC — GitHub catalogue refresh:** rebuilds source metadata and the source registry, validates the complete catalogue, writes a refresh marker, and triggers the Git-linked Netlify production build.
+- **08:23 UTC — backup refresh:** runs only when the primary refresh has not been verified in production.
+
+The workflow retries transient dependency and source failures, audits critical links, verifies that the exact refresh marker reached production, checks public discovery surfaces, and opens a GitHub issue if the autonomous refresh fails. Production remains on the last validated deployment.
 
 Automation may extract source metadata, but it does not silently invent evaluation authorship or substantive FronteraEval judgments. Editorial-review dates remain fixed; weekly jobs update source-check dates separately.
 
@@ -75,6 +98,8 @@ Generated outputs include:
 - `/data/catalog.csv`
 - `/data/freshness.json`
 - `/data/source-audit.json`
+- `/data/source-link-audit.json`
+- `/data/weekly-refresh.json`
 
 The source registry and curated overrides are versioned in the repository so attribution changes are reviewable.
 
