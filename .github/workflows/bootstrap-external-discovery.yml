@@ -1,0 +1,69 @@
+name: Bootstrap external evaluation discovery
+
+on:
+  push:
+    branches: [ops/external-eval-discovery]
+    paths: [".github/workflows/bootstrap-external-discovery.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  wire-and-test:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ops/external-eval-discovery
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Wire scripts and documentation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          package=Path('package.json')
+          data=json.loads(package.read_text())
+          scripts=data['scripts']
+          scripts['discover:external']='node scripts/discover-external-evals.mjs'
+          scripts['test:external-discovery']='node scripts/test-external-discovery.mjs'
+          for script_name,file_name in [('check:syntax','scripts/discover-external-evals.mjs'),('check:syntax','scripts/test-external-discovery.mjs')]:
+              command=f'node --check {file_name}'
+              if command not in scripts[script_name]: scripts[script_name]+=f' && {command}'
+          if 'node scripts/test-external-discovery.mjs' not in scripts['check']:
+              anchor=' && node scripts/audit-source-links.mjs --dry-run'
+              scripts['check']=scripts['check'].replace(anchor,' && node scripts/test-external-discovery.mjs'+anchor)
+          package.write_text(json.dumps(data,indent=2)+'\n')
+
+          readme=Path('README.md')
+          text=readme.read_text()
+          marker='Automation may extract source metadata, but it does not silently invent evaluation authorship or substantive FronteraEval judgments.'
+          addition='''A separate **03:41 UTC external-discovery job** searches recent GitHub repositories, known evaluation organisations, arXiv, and Hugging Face. New Inspect entries can be imported automatically after validation; external results enter a private-to-repository candidate queue and GitHub review issue instead of being published without human source and construct checks.\n\n'''
+          if addition.strip() not in text:
+              if marker not in text: raise SystemExit('README weekly-operation anchor missing')
+              text=text.replace(marker,addition+marker)
+              readme.write_text(text)
+          PY
+
+      - name: Install and run deterministic gates
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
+          npm run test:external-discovery
+          npm run check
+
+      - name: Remove one-time workflow and commit verified wiring
+        run: |
+          rm .github/workflows/bootstrap-external-discovery.yml
+          git config user.name 'fronteraeval-bot'
+          git config user.email 'fronteraeval-bot@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add autonomous external evaluation discovery'
+          git push origin HEAD:ops/external-eval-discovery
