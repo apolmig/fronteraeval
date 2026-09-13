@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-09-06T07:12:48.295Z",
-  "inspect_source_commit": "ac481c7a7b4fb05d6befdfea59b47fc61b839a4f",
+  "generated_at": "2026-09-13T07:32:37.340Z",
+  "inspect_source_commit": "360484a06383f9260279938262d78ed646ddbca1",
   "policy": "Confirmed 404/410 responses are treated as missing only after a GET verification. Access restrictions, rate limits, timeouts and server errors are reported separately and do not by themselves establish that a source is broken.",
   "totals": {
     "catalogue_records": 314,
@@ -35,7 +35,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/mle-bench",
-      "elapsed_ms": 162,
+      "elapsed_ms": 48,
       "error": null
     },
     {
@@ -54,7 +54,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/paperbench",
-      "elapsed_ms": 139,
+      "elapsed_ms": 131,
       "error": null
     },
     {
@@ -71,7 +71,7 @@
       "category": "missing",
       "method": "GET",
       "final_url": "https://github.com/Mycelium-tools/manta_benchmark",
-      "elapsed_ms": 988,
+      "elapsed_ms": 1202,
       "error": null
     },
     {
@@ -87,7 +87,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://huggingface.co/datasets/livebench/%7Bmath,reasoning,coding,language,data_analysis,instruction_following%7D",
-      "elapsed_ms": 42,
+      "elapsed_ms": 73,
       "error": null
     },
     {
@@ -105,7 +105,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/browsecomp",
-      "elapsed_ms": 57,
+      "elapsed_ms": 42,
       "error": null
     },
     {
@@ -123,7 +123,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/frontierscience",
-      "elapsed_ms": 42,
+      "elapsed_ms": 51,
       "error": null
     },
     {
@@ -144,7 +144,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/healthbench",
-      "elapsed_ms": 29,
+      "elapsed_ms": 39,
       "error": null
     },
     {
@@ -160,7 +160,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openreview.net/pdf?id=2GmDdhBdDk",
-      "elapsed_ms": 181,
+      "elapsed_ms": 109,
       "error": null
     },
     {
