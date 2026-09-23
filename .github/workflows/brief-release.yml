@@ -1,0 +1,67 @@
+name: Evaluation brief release checks
+
+on:
+  pull_request:
+    paths: ['site/**', 'scripts/**', 'tests/**', '.github/workflows/brief-*.yml', 'package*.json']
+  push:
+    branches: [main]
+    paths: ['site/**', 'scripts/**', 'tests/**', '.github/workflows/brief-*.yml', 'package*.json']
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 'Optional deployed URL. Leave empty to test the built checkout.'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: brief-release-${{ github.ref }}-${{ github.event.inputs.base_url || 'local' }}
+  cancel-in-progress: true
+
+jobs:
+  release:
+    name: Release checks (${{ matrix.browser }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - run: npm run check:brief
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned test-only browser and accessibility dependencies
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps "$BROWSER"
+          npm install --prefix "$RUNNER_TEMP/brief-a11y" --no-audit --no-fund --ignore-scripts axe-core@4.10.3
+        env:
+          BROWSER: ${{ matrix.browser }}
+      - name: Exercise the workflow, exports, accessibility and original catalogue
+        run: |
+          if [ -z "$BRIEF_BASE_URL" ]; then unset BRIEF_BASE_URL; fi
+          python tests/test_brief_release.py
+        env:
+          BROWSER: ${{ matrix.browser }}
+          AXE_PATH: ${{ runner.temp }}/brief-a11y/node_modules/axe-core/axe.min.js
+          BRIEF_BASE_URL: ${{ github.event.inputs.base_url || '' }}
+      - name: Preserve reports and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brief-release-${{ matrix.browser }}-${{ github.sha }}
+          path: .test-results/release-${{ matrix.browser }}/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
