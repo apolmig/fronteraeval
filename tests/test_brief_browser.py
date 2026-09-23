@@ -198,7 +198,7 @@ try:
             blocked_page.locator('#export-json').click()
         assert info.value.suggested_filename.endswith('.json')
         passed('blocked local storage reports failure honestly and still permits export')
-        blocked_page.evaluate("Storage.prototype.removeItem = function(){throw new DOMException('Blocked','SecurityError')}")
+        blocked_page.evaluate("() => { Storage.prototype.removeItem = function(){throw new DOMException('Blocked','SecurityError')}; }")
         blocked_page.once('dialog', lambda d: d.accept())
         blocked_page.locator('#reset').click()
         expect(blocked_page.locator('#save-status')).to_contain_text('Cleared this tab only')
