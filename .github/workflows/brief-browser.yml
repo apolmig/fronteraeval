@@ -1,0 +1,58 @@
+name: Evaluation brief browser checks
+
+on:
+  pull_request:
+    paths:
+      - 'site/**'
+      - 'scripts/test-brief.mjs'
+      - 'tests/test_brief_browser.py'
+      - '.github/workflows/brief-browser.yml'
+      - 'package*.json'
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+      - 'scripts/test-brief.mjs'
+      - 'tests/test_brief_browser.py'
+      - '.github/workflows/brief-browser.yml'
+      - 'package*.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: brief-browser-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Build the catalogue-backed application
+        run: npm run build
+      - name: Run planning and import/export unit tests
+        run: npm run check:brief
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned browser-test dependency
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Test the full application with the production content security policy
+        run: python tests/test_brief_browser.py
+      - name: Preserve browser results and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evaluation-brief-browser-${{ github.sha }}
+          path: .test-results/
+          retention-days: 7

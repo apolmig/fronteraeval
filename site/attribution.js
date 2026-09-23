@@ -2,6 +2,8 @@
   "use strict";
 
   const main = document.querySelector("#main");
+  // Cache our markup per node; innerHTML serialization can normalize entities.
+  const renderedAttribution = new WeakMap();
   const catalogPromise = fetch("/data/catalog.json")
     .then(response => response.ok ? response.json() : null)
     .catch(() => null);
@@ -72,13 +74,19 @@
       const first = context?.querySelector("span:first-child");
       if (first) {
         first.classList.add("attribution-context");
-        first.innerHTML = `<small>${esc(record.organisation_role || "Source")}</small>${esc(record.organisation || "Origin not verified")}`;
+        const html = `<small>${esc(record.organisation_role || "Source")}</small>${esc(record.organisation || "Origin not verified")}`;
+        // Avoid retriggering our subtree observer when the attribution is unchanged.
+        if (renderedAttribution.get(first) !== html) {
+          renderedAttribution.set(first, html);
+          first.innerHTML = html;
+        }
       }
       const source = row.querySelector(".source-link");
       if (source && record.preferred_source?.url) {
         const label = SHORT_LABELS[record.preferred_source.kind] || record.preferred_source.label || "Source";
         source.href = record.preferred_source.url;
-        source.textContent = `${label} ↗`;
+        const text = `${label} ↗`;
+        if (source.textContent !== text) source.textContent = text;
         source.setAttribute("aria-label", `${label} for ${record.name}`);
       }
     });
@@ -110,7 +118,8 @@
 
     const recordMeta = document.querySelector(".record-meta");
     const firstMeta = recordMeta?.querySelector("span:first-child");
-    if (firstMeta) firstMeta.textContent = `${record.organisation_role || "Source"}: ${record.organisation || "Origin not verified"}`;
+    const attributionText = `${record.organisation_role || "Source"}: ${record.organisation || "Origin not verified"}`;
+    if (firstMeta && firstMeta.textContent !== attributionText) firstMeta.textContent = attributionText;
 
     const actionPanel = document.querySelector(".record-actions");
     if (actionPanel && actionPanel.dataset.sourceResolutionFor !== id) {

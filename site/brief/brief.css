@@ -1,0 +1,127 @@
+/* Shared entry point. All planner styles are scoped to its page. */
+.brief-entry{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;text-decoration:none;font-size:.75rem;font-weight:700;color:var(--ink);border:1px solid var(--line-strong);border-radius:5px;padding:.45rem .65rem}
+.brief-entry:hover{background:var(--surface-2)}
+.brief-page{--wide:1120px;font-size:15px}
+.brief-page #brief-main,.brief-page .brief-top,.brief-page .brief-footer{width:min(calc(100% - 2.5rem),1120px);margin:0 auto}
+.brief-page .brief-top{min-height:72px;display:flex;align-items:center;gap:24px;border-bottom:1px solid var(--line)}
+.brief-page .brief-top nav{display:flex;gap:22px;margin-left:auto}
+.brief-page .brief-top nav a{font-size:.82rem;text-decoration:none;color:var(--muted)}
+.brief-page .brief-top nav a[aria-current]{color:var(--ink);font-weight:700}
+.brief-page .brief-top button{font-size:.76rem;padding:.35rem .65rem}
+.brief-page button,.brief-page .brief-primary{font:inherit;cursor:pointer;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:5px;padding:.65rem .9rem;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:42px}
+.brief-page button:hover{background:var(--surface-2)}
+.brief-page button:disabled{opacity:.55;cursor:not-allowed}
+.brief-page .brief-primary{background:var(--ink);color:var(--bg);font-weight:650;border-color:var(--ink)}
+.brief-page .brief-primary:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.brief-page :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.brief-page .brief-hero{padding:46px 0 22px}
+.brief-page .brief-hero h1{font-size:clamp(1.85rem,3.6vw,2.6rem);max-width:850px;margin:.55rem 0 .8rem}
+.brief-page .brief-lede{font-family:var(--serif);font-size:1.18rem;color:var(--muted);max-width:740px;margin-bottom:1.4rem}
+.brief-page .brief-toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.brief-page .brief-toolbar button{font-size:.82rem}
+.brief-page button.quiet{border-color:transparent;background:none;color:var(--muted)}
+.brief-page .privacy-note{font-size:.78rem;color:var(--muted);max-width:850px;margin:1rem 0 .5rem}
+.brief-page .save-status{font-size:.78rem;min-height:1.3rem;color:var(--muted);margin-bottom:0}
+.brief-page #message{font-size:.83rem;color:var(--accent);margin:.6rem 0 0;min-height:1.2rem}
+.brief-page .brief-steps{display:flex;align-items:center;gap:28px;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line);padding:15px 0;background:var(--bg);position:sticky;top:0;z-index:5}
+.brief-page .brief-steps a{text-decoration:none;color:var(--accent);font-size:.8rem;font-weight:650;white-space:nowrap}
+.brief-page .brief-steps a span{color:var(--ink);margin-left:7px}
+.brief-page #brief-count{margin-left:auto;color:var(--muted);font-size:.78rem}
+.brief-page .brief-section{padding:36px 0 40px;border-bottom:1px solid var(--line);scroll-margin-top:80px}
+.brief-page .section-label{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}
+.brief-page .section-label>span{font-size:.75rem;color:var(--accent);font-weight:700}
+.brief-page h2{font-size:1.65rem}
+.brief-page h3{font-size:1.18rem;line-height:1.3}
+.brief-page .brief-section>p{max-width:860px;color:var(--muted);font-size:.9rem}
+.brief-page .brief-intro-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(220px,1fr);gap:60px;align-items:start}
+.brief-page .brief-fields{display:grid;grid-template-columns:minmax(0,1fr)}
+.brief-page label{font-size:.82rem;font-weight:650;display:block;margin:12px 0 6px}
+.brief-page label span{font-weight:400;color:var(--muted);margin-left:6px}
+.brief-page input,.brief-page textarea,.brief-page select{font:inherit;width:100%;border:1px solid var(--line-strong);border-radius:5px;background:var(--surface);color:var(--ink);padding:.68rem .75rem;min-width:0}
+.brief-page textarea{resize:vertical;min-height:72px;line-height:1.55}
+.brief-page input::placeholder,.brief-page textarea::placeholder{color:var(--muted)}
+.brief-page .brief-guide{border-left:1px solid var(--line);padding:16px 0 16px 26px;margin-top:4px}
+.brief-page .brief-guide h3{font-family:var(--serif);font-size:1.35rem;line-height:1.3;margin:.5rem 0 .8rem}
+.brief-page .brief-guide p{font-size:.87rem;color:var(--muted)}
+.brief-page .brief-guide .eyebrow{font-size:.65rem;color:var(--accent)}
+.brief-page .snapshot-label{border-top:1px solid var(--line);padding-top:1rem;margin-top:1.2rem;font-size:.76rem;overflow-wrap:anywhere}
+.brief-page .snapshot-label p{font-size:.76rem;margin-top:.3rem}
+.brief-page .brief-guide .brief-primary{font-size:.82rem;margin-top:.3rem}
+.brief-page .brief-filters{display:grid;grid-template-columns:minmax(0,2fr) minmax(170px,1fr);gap:16px}
+.brief-page .brief-filters input,.brief-page .brief-filters select{margin-top:7px;min-height:44px}
+.brief-page .brief-result-meta{display:flex;justify-content:space-between;gap:14px;font-size:.78rem;color:var(--muted);padding:12px 0 18px}
+.brief-page .candidate{display:flex;gap:22px;justify-content:space-between;align-items:flex-start;border-top:1px solid var(--line);padding:18px 0}
+.brief-page .candidate>div{min-width:0;max-width:820px}
+.brief-page .candidate h3 a{text-decoration:none}
+.brief-page .candidate h3 a:hover{text-decoration:underline}
+.brief-page .candidate p{font-size:.82rem;color:var(--muted);margin:.4rem 0 .5rem;line-height:1.5}
+.brief-page .candidate button{flex-shrink:0;min-width:100px;font-size:.8rem}
+.brief-page .candidate button[aria-pressed=true]{background:var(--surface-2);border-color:var(--ink)}
+.brief-page .record-state{font-size:.68rem;font-weight:650;letter-spacing:.02em;color:var(--muted)}
+.brief-page details{border:1px solid var(--line);border-radius:5px;padding:14px 16px;margin:16px 0}
+.brief-page summary{cursor:pointer;font-size:.87rem;font-weight:650;line-height:1.5}
+.brief-page details[open]>summary{margin-bottom:14px}
+.brief-page details.variants{border-width:1px 0 0;border-radius:0;padding:16px 0;margin:0}
+.brief-page details.variants[open]{padding-left:16px;border-left:2px solid var(--line-strong)}
+.brief-page .brief-empty{padding:25px;background:var(--surface-2);border:1px solid var(--line);border-radius:5px;color:var(--muted)}
+.brief-page .brief-notice{border-left:3px solid var(--accent);background:var(--surface-2);padding:12px 16px;font-size:.83rem;color:var(--ink);margin:12px 0;overflow-wrap:anywhere}
+.brief-page .selection{padding:22px 0;border-top:1px solid var(--line-strong)}
+.brief-page .selection-heading{display:flex;gap:15px;align-items:flex-start;justify-content:space-between}
+.brief-page .selection-heading p{font-size:.75rem;color:var(--muted);margin-top:5px}
+.brief-page .selection-heading button{font-size:.76rem}
+.brief-page .selection-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.brief-page .selection .source-limit{font-size:.84rem;color:var(--muted);background:var(--surface-2);padding:13px 15px;margin:16px 0}
+.brief-page .selection .source-limit p{margin:0 0 6px}
+.brief-page .selection .source-limit p:last-child{margin:0}
+.brief-page .selection-sources{font-size:.75rem;display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 0}
+.brief-page .selection-sources a{overflow-wrap:anywhere}
+.brief-page .brief-gap-fields{max-width:820px;margin-top:24px}
+.brief-page #comparison{overflow:auto;max-width:100%}
+.brief-page table{width:100%;border-collapse:collapse;font-size:.81rem;table-layout:fixed;min-width:600px}
+.brief-page table.comparison-wide{min-width:1200px}
+.brief-page table caption{text-align:left;font-size:.8rem;padding-bottom:10px;color:var(--muted)}
+.brief-page th,.brief-page td{text-align:left;vertical-align:top;border:1px solid var(--line);padding:12px;overflow-wrap:anywhere;min-width:240px}
+.brief-page th{background:var(--surface-2)}
+.brief-page table th:first-child{width:155px;min-width:155px}
+.brief-page .brief-comparison>p{font-size:.83rem;color:var(--muted)}
+.brief-page #issue-list{font-size:.84rem;padding-left:20px;color:var(--muted)}
+.brief-page #issue-list li{margin-bottom:7px}
+.brief-page .export-actions{margin-top:22px}
+.brief-page #preview{overflow-wrap:anywhere;font-family:var(--sans);font-size:.87rem;line-height:1.65;max-height:650px;overflow:auto;padding:12px 4px}
+.brief-page #preview h1{font-size:1.7rem;margin-bottom:16px}
+.brief-page #preview h2{font-size:1.3rem;margin:24px 0 12px}
+.brief-page #preview h3{margin:20px 0 10px}
+.brief-page #preview p{white-space:pre-wrap}
+.brief-page .brief-footer{display:flex;justify-content:space-between;gap:20px;font-size:.76rem;color:var(--muted);padding:26px 0 40px}
+.brief-page #print-view{display:none}
+.brief-page [hidden]{display:none!important}
+@media(max-width:760px){
+  .brief-page .brief-top{gap:14px;flex-wrap:wrap;padding:16px 0}
+  .brief-page .brief-top nav{gap:15px;margin-left:auto}
+  .brief-page .brief-top button{margin-left:auto}
+  .brief-page .brief-intro-grid{grid-template-columns:1fr;gap:20px}
+  .brief-page .brief-guide{padding:16px;border:1px solid var(--line)}
+  .brief-page .brief-steps{gap:18px}
+  .brief-page .brief-steps a{font-size:.73rem}
+  .brief-page .brief-steps a span{margin-left:3px}
+  .brief-page #brief-count{display:none}
+  .brief-page .selection-grid{grid-template-columns:1fr;gap:0}
+  .brief-page .brief-filters{grid-template-columns:1fr;gap:0}
+  .brief-page .candidate{gap:12px}
+  .brief-page .candidate button{min-width:78px;padding:.5rem;font-size:.76rem}
+  .brief-page .brief-hero{padding-top:30px}
+  .brief-page .brief-footer{flex-wrap:wrap}
+}
+@media(max-width:390px){.brief-page .brief-top nav{width:100%;order:3;margin:0}.brief-page .brief-steps{gap:13px}.brief-page .brief-steps a{font-size:.7rem}}
+@media(prefers-reduced-motion:reduce){.brief-page{scroll-behavior:auto}.brief-page *{scroll-behavior:auto!important}}
+@media print{
+  .brief-page{background:#fff;color:#000;font-size:11pt}
+  .brief-page>*:not(#print-view){display:none!important}
+  .brief-page #print-view{display:block;font-family:Georgia,serif}
+  .brief-page #print-view h1{font-size:24pt;margin-bottom:12pt}
+  .brief-page #print-view h2{font-size:17pt;margin:20pt 0 10pt}
+  .brief-page #print-view h3{font-size:13pt;margin:16pt 0 8pt;break-after:avoid}
+  .brief-page #print-view p,.brief-page #print-view li{white-space:pre-wrap;overflow-wrap:anywhere;margin-bottom:8pt}
+  .brief-page #print-view a{color:#000;overflow-wrap:anywhere}
+  .brief-page #print-view .print-source{font-size:9pt}
+}
