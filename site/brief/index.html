@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Build a source-linked evaluation brief: define the question, select tests, compare methods, and record the missing evidence.">
+  <meta name="color-scheme" content="light dark">
+  <title>Build an evaluation brief | FronteraEval</title>
+  <link rel="canonical" href="https://fronteraeval.org/brief/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script src="/theme-init.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/ui-controls.css">
+  <link rel="stylesheet" href="/brief/brief.css">
+  <script type="module" src="/brief/app.js"></script>
+</head>
+<body class="brief-page">
+  <a class="skip-link" href="#brief-main">Skip to brief</a>
+  <header class="brief-top">
+    <a class="wordmark" href="/">Frontera<span>Eval</span></a>
+    <nav aria-label="Primary navigation"><a href="/#/evals">Catalogue</a><a href="/method/">Method</a><a href="/brief/" aria-current="page">Build a brief</a></nav>
+    <button type="button" id="brief-theme" aria-label="Switch theme">Switch theme</button>
+  </header>
+  <main id="brief-main" tabindex="-1">
+    <header class="brief-hero">
+      <p class="eyebrow">Evaluation brief · MVP</p>
+      <h1>From a question to a testable plan.</h1>
+      <p class="brief-lede">Choose evaluations, explain their fit, and make the missing evidence visible.</p>
+      <div class="brief-toolbar">
+        <button type="button" id="example">Use an assistant-security example</button>
+        <button type="button" id="import-button">Open a saved JSON brief</button>
+        <input type="file" id="import-file" accept=".json,application/json" hidden>
+        <button type="button" id="reset" class="quiet">Start a new brief</button>
+      </div>
+      <p class="privacy-note">Drafts stay in this browser. No account, model calls or uploads. Local storage is not encrypted; do not include secrets or sensitive data.</p>
+      <p id="save-status" class="save-status" role="status" aria-live="polite">Loading local draft...</p>
+      <div id="storage-conflict" class="brief-notice" hidden>A different tab changed the saved draft. This tab will not overwrite it. Export your work before reloading. <button type="button" id="reload-draft">Reload saved draft</button></div>
+      <p id="message" role="status" aria-live="polite"></p>
+    </header>
+    <nav class="brief-steps" aria-label="Brief sections">
+      <a href="#question">01 <span>Question</span></a><a href="#select">02 <span>Select</span></a><a href="#review">03 <span>Review</span></a><a href="#export">04 <span>Export</span></a>
+      <span id="brief-count">0 selected</span>
+    </nav>
+    <section id="question" class="brief-section" aria-labelledby="question-title">
+      <div class="section-label"><span>01</span><h2 id="question-title">Start with the decision.</h2></div>
+      <div class="brief-intro-grid">
+        <div class="brief-fields">
+          <label for="title">Brief title <span>Optional</span></label><input id="title" data-field="title" maxlength="300" placeholder="For example, document assistant security review">
+          <label for="decision">What decision should the evidence inform?</label><textarea id="decision" data-field="question" rows="3" maxlength="16000" placeholder="Describe the question, not a benchmark name."></textarea>
+          <label for="system">What system are you evaluating?</label><textarea id="system" data-field="system" rows="3" maxlength="16000" placeholder="Model and version, instructions, tools, permissions, retrieval, and safeguards."></textarea>
+          <label for="context">Language, users and context</label><textarea id="context" data-field="context" rows="2" maxlength="16000" placeholder="Who uses it, in which languages, and under what conditions?"></textarea>
+          <label for="constraints">Evaluation constraints</label><textarea id="constraints" data-field="constraints" rows="2" maxlength="16000" placeholder="Budget, access, runtime, environment, human review and data restrictions. State none where appropriate."></textarea>
+        </div>
+        <aside class="brief-guide">
+          <p class="eyebrow">A planning tool, not an approval</p>
+          <h3>Keep the claim smaller than the evidence.</h3>
+          <p>A benchmark result is conditional on its protocol and system configuration. Selecting a test does not establish that it fits your use case.</p>
+          <p>Use the next sections to state why each method belongs, what it leaves untested, and what happens next.</p>
+          <div class="snapshot-label"><strong>Published catalogue snapshot</strong><p id="catalogue-date">Loading...</p></div>
+          <a class="brief-primary" href="#select">Select evaluations</a>
+        </aside>
+      </div>
+    </section>
+    <section id="select" class="brief-section" aria-labelledby="select-title">
+      <div class="section-label"><span>02</span><h2 id="select-title">Build your shortlist.</h2></div>
+      <p>Text matches are candidates, not recommendations. Read the original sources before judging fit. Variants are grouped by source family.</p>
+      <div id="catalogue-error" class="brief-notice" hidden>The catalogue could not be loaded. Saved selections and exports still work. <button type="button" id="retry">Retry catalogue</button></div>
+      <div class="brief-filters">
+        <label for="query">Filter by evaluation, method or topic<input type="search" id="query" placeholder="Try prompt injection, persuasion, or agents" autocomplete="off"></label>
+        <label for="topic">Topic<select id="topic"><option value="">All topics</option></select></label>
+      </div>
+      <div class="brief-result-meta"><span id="result-count" role="status" aria-live="polite">Loading catalogue...</span><a href="#review" id="review-link">Review your selections</a></div>
+      <div id="candidates"></div>
+      <button type="button" id="show-more" hidden>Show more families</button>
+    </section>
+    <section id="review" class="brief-section" aria-labelledby="review-title">
+      <div class="section-label"><span>03</span><h2 id="review-title">Justify the evidence.</h2></div>
+      <p>Fit and selection notes are your judgements. Documentary assessment is not independent replication. Language and deployment transfer still require verification.</p>
+      <p id="snapshot-warning" class="brief-notice" hidden></p>
+      <div id="selections"></div>
+      <details class="brief-comparison" id="comparison-details" hidden><summary>Compare methods, not scores</summary><p>Different constructs, protocols, tools, budgets and scorers can invalidate numerical comparisons. This table compares methods only.</p><div id="comparison" role="region" aria-label="Method comparison, horizontally scrollable" tabindex="0"></div></details>
+      <div class="brief-fields brief-gap-fields">
+        <label for="gaps">What evidence is still missing?</label><textarea id="gaps" data-field="gaps" rows="3" maxlength="16000" placeholder="Record untested outcomes, languages, users, attack surfaces, transfer assumptions and other material gaps."></textarea>
+        <label for="next-steps">Next action and decision owner</label><textarea id="next-steps" data-field="next_steps" rows="3" maxlength="16000" placeholder="Who verifies the protocol, prepares local tests, reviews the evidence, and makes the decision?"></textarea>
+      </div>
+    </section>
+    <section id="export" class="brief-section" aria-labelledby="export-title">
+      <div class="section-label"><span>04</span><h2 id="export-title">Take the plan into the work.</h2></div>
+      <p>The export includes your notes, captured source metadata, protocol versions and catalogue fingerprints. It is a draft plan, not an executable Inspect configuration.</p>
+      <details id="open-items" open><summary id="open-items-label">Open planning items</summary><ul id="issue-list"></ul></details>
+      <div class="brief-toolbar export-actions"><button type="button" id="export-markdown" class="brief-primary">Export Markdown</button><button type="button" id="export-json">Export JSON</button><button type="button" id="print">Print brief</button></div>
+      <p class="privacy-note">JSON can reopen this draft, including on another device. Exports contain your notes: review them before sharing. Saved source metadata is preserved when the catalogue changes. Imported JSON is user-provided metadata, not newly verified evidence.</p>
+      <details class="brief-preview"><summary>Read the brief before exporting</summary><div id="preview" role="region" aria-label="Evaluation brief preview, vertically scrollable" tabindex="0"></div></details>
+    </section>
+  </main>
+  <article id="print-view" aria-label="Printable evaluation brief"></article>
+  <footer class="brief-footer"><span>FronteraEval · Working with evidence, not certainty.</span><a href="https://miguelguerrero.eu" target="_blank" rel="noopener noreferrer">Miguel Guerrero</a></footer>
+  <noscript><p>JavaScript is required for local brief editing. <a href="/evaluations/">Browse the static catalogue</a>.</p></noscript>
+</body>
+</html>
