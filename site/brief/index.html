@@ -19,7 +19,7 @@
   <header class="brief-top">
     <a class="wordmark" href="/">Frontera<span>Eval</span></a>
     <nav aria-label="Primary navigation"><a href="/#/evals">Catalogue</a><a href="/method/">Method</a><a href="/brief/" aria-current="page">Build a brief</a></nav>
-    <button type="button" id="brief-theme" aria-label="Switch colour theme">Switch theme</button>
+    <button type="button" id="brief-theme" aria-label="Switch theme">Switch theme</button>
   </header>
   <main id="brief-main" tabindex="-1">
     <header class="brief-hero">
@@ -90,7 +90,7 @@
       <details id="open-items" open><summary id="open-items-label">Open planning items</summary><ul id="issue-list"></ul></details>
       <div class="brief-toolbar export-actions"><button type="button" id="export-markdown" class="brief-primary">Export Markdown</button><button type="button" id="export-json">Export JSON</button><button type="button" id="print">Print brief</button></div>
       <p class="privacy-note">JSON can reopen this draft, including on another device. Exports contain your notes: review them before sharing. Saved source metadata is preserved when the catalogue changes. Imported JSON is user-provided metadata, not newly verified evidence.</p>
-      <details class="brief-preview"><summary>Read the brief before exporting</summary><div id="preview"></div></details>
+      <details class="brief-preview"><summary>Read the brief before exporting</summary><div id="preview" role="region" aria-label="Evaluation brief preview, vertically scrollable" tabindex="0"></div></details>
     </section>
   </main>
   <article id="print-view" aria-label="Printable evaluation brief"></article>
