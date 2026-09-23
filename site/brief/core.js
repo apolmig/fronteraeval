@@ -1,6 +1,9 @@
 // Pure planning functions. No network access, model calls or automatic fit judgements.
 export const SCHEMA = 'fronteraeval.evaluation-brief/v1';
 export const STORAGE_KEY = 'fronteraeval-brief-v1';
+// Apply the same UTF-8 limit to local drafts, imported files and exported manifests.
+export const MAX_BRIEF_BYTES = 8_000_000;
+export const byteLength = value => new TextEncoder().encode(value).byteLength;
 export const FIT_LABELS = Object.freeze({
   unassessed: 'Not assessed',
   direct: 'Direct methodological fit (your judgement)',
@@ -86,9 +89,10 @@ export function reviewIssues(brief) {
   if (!brief.next_steps.trim()) issues.push('Record the overall next action and decision owner.');
   return issues;
 }
-const norm = value => String(value || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+const norm = value => String(value || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
 export function filterRecords(records, query, topic, topicLabels = {}) {
   const tokens = norm(query).split(' ').filter(Boolean);
+  if (String(query || '').trim() && !tokens.length) return [];
   return records.filter(record => {
     if (topic && !(record.topics || []).includes(topic)) return false;
     // Only positive descriptive fields count. A mention in a limitation is not a match.
@@ -114,7 +118,7 @@ const field = (label, value) => `**${label}:** ${md(value || 'Not recorded')}\n`
 export function toMarkdown(brief) {
   const doc = manifest(brief);
   const out = [`# ${md(brief.title || 'Evaluation brief')}`, '',
-    `Draft planning document. Revision ${brief.revision}. Updated ${brief.updated_at}.`, '', doc.boundary, '',
+    `Draft planning document. Revision ${brief.revision}. Updated ${md(brief.updated_at)}.`, '', doc.boundary, '',
     '## Decision and system', '', field('Question', brief.question), field('System', brief.system),
     field('Language, users and context', brief.context), field('Constraints', brief.constraints),
     '## Selected evaluations', '', doc.applicability, ''];
@@ -141,8 +145,14 @@ export function toMarkdown(brief) {
     'Selected record metadata is captured when added and is not silently replaced by subsequent catalogue updates.', '');
   return out.join('\n');
 }
+export function assertBriefSize(brief) {
+  // Pretty-printed exports include additional boundaries and open-item descriptions.
+  const bytes = byteLength(JSON.stringify(manifest(brief), null, 2));
+  if (bytes > MAX_BRIEF_BYTES) throw new Error('This change exceeds the 8 MB brief limit. Keep it in a separate brief. The previous draft is preserved.');
+  return bytes;
+}
 export function parseBrief(raw) {
-  if (typeof raw !== 'string' || raw.length > 2000000) throw new Error('Use a FronteraEval JSON brief smaller than 2 MB.');
+  if (typeof raw !== 'string' || raw.length > MAX_BRIEF_BYTES || byteLength(raw) > MAX_BRIEF_BYTES) throw new Error('Use a FronteraEval JSON brief no larger than 8 MB.');
   let input;
   try { input = JSON.parse(raw); } catch { throw new Error('This file is not valid JSON.'); }
   if (input?.schema !== SCHEMA || input?.kind !== 'planning-manifest' || !Array.isArray(input.selections)) {
@@ -154,7 +164,9 @@ export function parseBrief(raw) {
     if (typeof input[key] !== 'string' || input[key].length > 16000) throw new Error(`Invalid brief field: ${key}.`);
     base[key] = input[key];
   }
-  if (![base.created_at, base.updated_at].every(value => Number.isFinite(Date.parse(value)))) throw new Error('Invalid brief dates.');
+  const isISODate = value => /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value)
+    && Number.isFinite(Date.parse(value)) && new Date(value).toISOString() === value;
+  if (![base.created_at, base.updated_at].every(isISODate)) throw new Error('Invalid brief dates. Use ISO timestamps from a FronteraEval export.');
   base.revision = Number.isSafeInteger(input.revision) && input.revision > 0 ? input.revision : 1;
   const readSnapshot = source => {
     if (source == null) return null;
@@ -188,5 +200,6 @@ export function parseBrief(raw) {
     }
     return result;
   });
+  assertBriefSize(base);
   return base;
 }

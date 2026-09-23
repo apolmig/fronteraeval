@@ -12,7 +12,7 @@
     "check": "npm run check:syntax && node scripts/validate.mjs && node scripts/test-source-resolution.mjs && node scripts/test-search.mjs && node scripts/test-ui-controls.mjs && node scripts/test-product-clarity.mjs && node scripts/test-data-usefulness.mjs && node scripts/test-methodological-reviews.mjs && node scripts/test-weekly-automation.mjs && node scripts/test-discovery.mjs && node scripts/audit-source-links.mjs --dry-run && node scripts/write-refresh-marker.mjs --check && npm run check:brief",
     "audit:links": "node scripts/audit-source-links.mjs",
     "submit:indexnow": "node scripts/submit-indexnow.mjs",
-    "check:brief": "node --test scripts/test-brief.mjs"
+    "check:brief": "node --test scripts/test-brief.mjs scripts/test-brief-review.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",

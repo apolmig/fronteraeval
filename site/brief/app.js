@@ -1,10 +1,11 @@
-import {SCHEMA, STORAGE_KEY, FIT_LABELS, createBrief, snapshot, addSelection,
+import {STORAGE_KEY, MAX_BRIEF_BYTES, FIT_LABELS, assertBriefSize, createBrief, snapshot, addSelection,
   filterRecords, sourceChanged, reviewIssues, manifest, toMarkdown, parseBrief, safeURL} from './core.js';
 
 const $ = selector => document.querySelector(selector);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let brief = createBrief(), catalog = null, currentSnapshot = null, visibleFamilies = 8;
-let savedRaw = null, saveTimer = null, protectedStorage = false;
+let savedRaw = null, saveTimer = null, protectedStorage = false, dirty = false;
+let acceptedDraft = JSON.stringify(brief);
 const fields = ['title','question','system','context','constraints','gaps','next_steps'];
 const say = text => { $('#message').textContent = text; };
 const hasWork = () => brief.selections.length > 0 || fields.some(key => brief[key].trim());
@@ -33,6 +34,7 @@ function save() {
     const raw = JSON.stringify(brief);
     localStorage.setItem(STORAGE_KEY, raw);
     savedRaw = raw;
+    dirty = false;
     $('#save-status').textContent = `Saved on this device · Revision ${brief.revision}`;
   } catch {
     $('#save-status').textContent = 'Not saved locally. Storage may be blocked or full. Export JSON to keep your work.';
@@ -40,11 +42,19 @@ function save() {
 }
 function changed() {
   brief.updated_at = new Date().toISOString();
-  brief.revision += 1;
+  brief.revision = Math.min(Number.MAX_SAFE_INTEGER, brief.revision + 1);
+  try { assertBriefSize(brief); } catch (error) {
+    brief = JSON.parse(acceptedDraft);
+    fillFields(); renderSelections(); renderCandidates(); say(error.message);
+    return false;
+  }
+  dirty = true;
+  acceptedDraft = JSON.stringify(brief);
   clearTimeout(saveTimer);
   saveTimer = setTimeout(save, 250);
   if (!protectedStorage) $('#save-status').textContent = 'Saving on this device...';
   renderSummary();
+  return true;
 }
 function fillFields() {
   document.querySelectorAll('[data-field]').forEach(node => { node.value = brief[node.dataset.field] || ''; });
@@ -58,8 +68,13 @@ function renderSummary() {
   $('#issue-list').innerHTML = issues.length ? issues.map(item => `<li>${esc(item)}</li>`).join('')
     : '<li>This is a completeness check, not a safety judgement. Review all assumptions and evidence before using the plan.</li>';
   const old = brief.selections.filter(item => sourceChanged(item.catalogue_snapshot, currentSnapshot));
-  $('#snapshot-warning').hidden = !old.length;
-  $('#snapshot-warning').textContent = `${old.length} selection(s) came from a different catalogue snapshot. Their captured evidence is preserved. Adding a current record does not update earlier selections. Verify the original sources before relying on this plan.`;
+  const missing = brief.selections.filter(item => !item.catalogue_snapshot?.catalog_sha256);
+  $('#snapshot-warning').hidden = !old.length && !missing.length;
+  $('#snapshot-warning').textContent = [
+    old.length ? `${old.length} selection(s) came from a different catalogue snapshot. Captured evidence is preserved, not automatically updated.` : '',
+    missing.length ? `${missing.length} selection(s) have no catalogue fingerprint. Their source snapshot cannot be checked.` : '',
+    'Verify the original sources before relying on this plan.'
+  ].filter(Boolean).join(' ');
   if ($('.brief-preview').open) { printView(); $('#preview').innerHTML = $('#print-view').innerHTML; }
 }
 function row(record) {
@@ -136,10 +151,16 @@ function remove(index) {
   if ((item.rationale || item.gap || item.next_action) && !confirm(`Remove ${item.record.name} and its selection notes?`)) return;
   brief.selections.splice(index, 1);
   changed(); renderSelections(); renderCandidates(); say(`${item.record.name} removed.`);
+  const next = $('#selections [data-remove]') || $('#query');
+  next.focus({preventScroll:true});
+}
+function confirmReplacement(message) {
+  return !(hasWork() || protectedStorage || savedRaw !== null) || confirm(message);
 }
 function replaceDraft(next) {
+  assertBriefSize(next);
   clearTimeout(saveTimer);
-  brief = next;
+  brief = next; dirty = true; acceptedDraft = JSON.stringify(brief);
   try {
     savedRaw = localStorage.getItem(STORAGE_KEY);
     protectedStorage = false;
@@ -165,7 +186,7 @@ function printView() {
       return `<h3>${esc(r.name)}</h3>${pair('Fit',FIT_LABELS[item.fit])}${pair('Why included',item.rationale)}${pair('Construct',r.construct)}${pair('Unit',r.unit)}${pair('Outcome',r.outcome)}${pair('Scoring',r.scoring)}${pair('Can support',r.measures)}${pair('Cannot establish by itself',r.limit)}${pair('Comparability',r.comparability)}${pair('Protocol version',r.version)}${pair('Implementation commit',r.implementation_commit)}${pair('Record state',stateLabel(r))}${pair('Remaining gap',item.gap)}${pair('Next action',item.next_action)}${pair('Snapshot date',item.catalogue_snapshot?.generated_at)}${pair('Catalogue SHA-256',item.catalogue_snapshot?.catalog_sha256)}${pair('Inspect source commit',item.catalogue_snapshot?.inspect_source_commit)}${r.sources.map(s=>`<p class="print-source">${esc(s.label)}: ${esc(safeURL(s.url))}</p>`).join('')}`;
     }).join('')}<h2>Evidence gaps and next steps</h2>${pair('Gaps',brief.gaps)}${pair('Next action and owner',brief.next_steps)}<h2>Open planning items</h2><ul>${reviewIssues(brief).map(item=>`<li>${esc(item)}</li>`).join('') || '<li>No blank planning fields. This is not a safety judgement.</li>'}</ul>`;
 }
-restore(); fillFields(); renderSelections();
+restore(); acceptedDraft = JSON.stringify(brief); fillFields(); renderSelections();
 document.querySelectorAll('[data-field]').forEach(node => node.addEventListener('input', () => { brief[node.dataset.field] = node.value; changed(); }));
 $('#candidates').addEventListener('click', event => {
   const button = event.target.closest('[data-add]');
@@ -176,7 +197,8 @@ $('#candidates').addEventListener('click', event => {
   if (!record) return;
   if (brief.selections.length >= 100) { say('A brief supports up to 100 evaluations. Start a separate brief for a larger plan.'); return; }
   addSelection(brief, record, currentSnapshot);
-  changed(); renderSelections();
+  if (!changed()) return;
+  renderSelections();
   button.textContent = 'Selected'; button.setAttribute('aria-pressed','true');
   button.setAttribute('aria-label', `Remove ${record.name} from brief`);
   say(`${record.name} added. Explain its fit in section 03.`);
@@ -195,7 +217,7 @@ for (const id of ['query','topic']) $('#'+id).addEventListener(id==='query'?'inp
 $('#show-more').addEventListener('click', () => {visibleFamilies+=8;renderCandidates();});
 $('#retry').addEventListener('click', loadCatalogue);
 $('#example').addEventListener('click', () => {
-  if (hasWork() && !confirm('Replace this draft with a blank assistant-security example? Export existing work first.')) return;
+  if (!confirmReplacement('Replace the current or saved draft with an assistant-security example? Saved work, including an unreadable draft, will be replaced. Export existing work first.')) return;
   const next = createBrief(currentSnapshot);
   next.title = 'Tool-using assistant security';
   next.question = 'What evidence is needed to assess indirect prompt-injection resistance while preserving legitimate task performance?';
@@ -208,7 +230,7 @@ $('#reset').addEventListener('click', () => {
   clearTimeout(saveTimer);
   let cleared = false;
   try {localStorage.removeItem(STORAGE_KEY);savedRaw=null;cleared=true;} catch {}
-  protectedStorage=!cleared; brief=createBrief(currentSnapshot);
+  protectedStorage=!cleared; brief=createBrief(currentSnapshot); dirty=false; acceptedDraft=JSON.stringify(brief);
   $('#storage-conflict').hidden=true; fillFields();renderSelections();renderCandidates();
   $('#save-status').textContent=cleared
     ? 'Draft cleared. The new draft will be saved as you edit.'
@@ -217,16 +239,16 @@ $('#reset').addEventListener('click', () => {
 });
 $('#reload-draft').addEventListener('click', () => {
   if (!confirm('Discard changes in this tab and reload the saved draft? Export this tab first to keep its work.')) return;
-  try { const raw=localStorage.getItem(STORAGE_KEY); const next=raw?parseBrief(raw):createBrief(currentSnapshot); savedRaw=raw; brief=next; protectedStorage=false; $('#storage-conflict').hidden=true; fillFields();renderSelections();renderCandidates();$('#save-status').textContent='Reloaded the saved draft.'; }
+  try { const raw=localStorage.getItem(STORAGE_KEY); const next=raw?parseBrief(raw):createBrief(currentSnapshot); savedRaw=raw; brief=next; dirty=false; acceptedDraft=JSON.stringify(brief); protectedStorage=false; $('#storage-conflict').hidden=true; fillFields();renderSelections();renderCandidates();$('#save-status').textContent='Reloaded the saved draft.'; }
   catch {say('The saved draft could not be read. Current work was not changed.');}
 });
 $('#import-button').addEventListener('click', () => $('#import-file').click());
 $('#import-file').addEventListener('change', async event => {
   const file=event.target.files?.[0]; if(!file)return;
   try {
-    if(file.size>2000000)throw new Error('Use a JSON brief smaller than 2 MB.');
+    if(file.size>MAX_BRIEF_BYTES)throw new Error('Use a JSON brief no larger than 8 MB.');
     const next=parseBrief(await file.text());
-    if(hasWork()&&!confirm('Replace the current draft with this saved brief? Export current work first.'))return;
+    if(!confirmReplacement('Replace the current or saved draft with this JSON brief? This also replaces any unreadable saved draft. Export current work first.'))return;
     replaceDraft(next);say('Brief opened. Imported source metadata is preserved, not revalidated.');
   }catch(error){say(error.message || 'Could not open this brief. Current work was not changed.');}
   finally {event.target.value='';}
@@ -236,9 +258,17 @@ $('#export-markdown').addEventListener('click', () => exportFile(toMarkdown(brie
 $('.brief-preview').addEventListener('toggle', () => {if($('.brief-preview').open){printView();$('#preview').innerHTML=$('#print-view').innerHTML;}});
 $('#print').addEventListener('click', () => {save();printView();window.print();});
 window.addEventListener('beforeprint', printView);
-window.addEventListener('pagehide', () => {if(hasWork())save();});
+// Flush pending deletions as well as nonempty drafts; never recreate a cleared draft.
+window.addEventListener('pagehide', () => {if(dirty)save();});
+document.addEventListener('visibilitychange', () => {if(document.visibilityState === 'hidden' && dirty)save();});
+window.addEventListener('beforeunload', event => {
+  if (!dirty) return;
+  save();
+  if (dirty) {event.preventDefault(); event.returnValue='';}
+});
 window.addEventListener('storage', event => {
-  if(event.key!==STORAGE_KEY || event.newValue===savedRaw)return;
+  if(event.key!==null && event.key!==STORAGE_KEY)return;
+  if(event.newValue===savedRaw)return;
   clearTimeout(saveTimer);protectedStorage=true;$('#storage-conflict').hidden=false;
   $('#save-status').textContent='Another tab changed the saved draft. Autosave paused to protect both versions.';
 });
