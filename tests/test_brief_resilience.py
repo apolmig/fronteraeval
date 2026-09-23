@@ -84,7 +84,8 @@ class ReviewChecks(unittest.TestCase):
     def test_import_cannot_silently_replace_an_unreadable_draft(self):
         raw=self.fixture();self.corrupt();dialogs=[]
         self.page.on('dialog',lambda dialog:(dialogs.append(dialog.message),dialog.dismiss()))
-        self.import_text(raw)
+        with self.page.expect_event('dialog'):
+            self.import_text(raw)
         self.assertEqual(len(dialogs),1);self.assertEqual(self.saved(),'{bad')
     def test_explicit_confirmation_can_replace_an_unreadable_draft(self):
         self.corrupt();self.page.once('dialog',lambda dialog:dialog.accept())
@@ -143,7 +144,8 @@ class ReviewChecks(unittest.TestCase):
         self.page.screenshot(path=str(OUT/'review-desktop.png'),full_page=True)
         for width in [320,375,768,1024,1365]:
             self.page.set_viewport_size({'width':width,'height':900})
-            self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth-innerWidth'),1,f'planner {width}')
+            overflow=self.page.evaluate("() => [...document.querySelectorAll('body *')].filter(el=>{const r=el.getBoundingClientRect();return r.width && r.right>innerWidth+1}).map(el=>({tag:el.tagName,id:el.id,cls:el.className,right:el.getBoundingClientRect().right})).slice(0,20)")
+            self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth-innerWidth'),1,f'planner {width}: {overflow}')
         self.page.locator('#brief-theme').click()
         self.page.set_viewport_size({'width':375,'height':812})
         self.page.screenshot(path=str(OUT/'review-mobile-dark.png'),full_page=True)

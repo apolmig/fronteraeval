@@ -125,3 +125,22 @@
   .brief-page #print-view a{color:#000;overflow-wrap:anywhere}
   .brief-page #print-view .print-source{font-size:9pt}
 }
+
+/* Preserve visible focus and layout with long user text or narrow viewports. */
+.brief-page .selection-heading>div{min-width:0;overflow-wrap:anywhere}
+.brief-page .candidate h3,.brief-page .variants summary{overflow-wrap:anywhere}
+.brief-page .selection-heading button{flex-shrink:0}
+@media(max-width:360px){
+  .site-header .header-inner{width:calc(100% - 1rem);gap:.3rem}
+  .site-header .wordmark{font-size:1.05rem}
+  .site-header .brief-entry{font-size:.68rem;padding:.4rem .4rem}
+  .site-header .header-tools{gap:.25rem}
+}
+
+/* Keep all four step links visible on 320px screens without shrinking labels. */
+@media(max-width:360px){
+  .brief-page .brief-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+  .brief-page .brief-steps a{white-space:normal}
+  .brief-page .brief-steps a span{display:block;margin:2px 0 0}
+  .brief-page .brief-result-meta{flex-wrap:wrap}
+}
