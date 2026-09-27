@@ -1,8 +1,8 @@
 {
   "schema_version": "2.1.0",
   "status": "completed",
-  "refreshed_at": "2026-09-20T07:51:19.439Z",
-  "inspect_source_commit": "d26e7df8494d4ba8ff468bb50c11aa625f710e95",
+  "refreshed_at": "2026-09-27T08:23:06.477Z",
+  "inspect_source_commit": "dbd3dd25e81d5f5fc4d19860b496a34176da6c61",
   "records": 316,
   "source_groups": 196,
   "methodological_reviews": {
@@ -42,7 +42,7 @@
     "unresolved_records": 0
   },
   "source_links": {
-    "audited_at": "2026-09-20T07:51:18.526Z",
+    "audited_at": "2026-09-27T08:23:06.100Z",
     "unique_urls": 555,
     "reachable": 546,
     "restricted": 7,
