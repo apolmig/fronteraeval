@@ -1,13 +1,13 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-10-04T08:35:11.820Z",
-  "inspect_source_commit": "0dacad3c3bacfb50308de94eb8b8f9e368cfe30c",
+  "generated_at": "2026-10-11T09:05:39.066Z",
+  "inspect_source_commit": "eb5383efecd8ac6d23fd276757b811f3db05a1f5",
   "policy": "Confirmed 404/410 responses are treated as missing only after a GET verification. Access restrictions, rate limits, timeouts and server errors are reported separately and do not by themselves establish that a source is broken.",
   "totals": {
-    "catalogue_records": 323,
-    "unique_urls": 574,
+    "catalogue_records": 326,
+    "unique_urls": 580,
     "critical_urls": 101,
-    "reachable": 566,
+    "reachable": 572,
     "restricted": 7,
     "network-error": 1,
     "critical_missing": 0,
@@ -34,7 +34,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/mle-bench",
-      "elapsed_ms": 46,
+      "elapsed_ms": 18,
       "error": null
     },
     {
@@ -53,7 +53,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/paperbench",
-      "elapsed_ms": 52,
+      "elapsed_ms": 27,
       "error": null
     },
     {
@@ -69,7 +69,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://huggingface.co/datasets/livebench/%7Bmath,reasoning,coding,language,data_analysis,instruction_following%7D",
-      "elapsed_ms": 80,
+      "elapsed_ms": 23,
       "error": null
     },
     {
@@ -87,7 +87,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/browsecomp",
-      "elapsed_ms": 35,
+      "elapsed_ms": 25,
       "error": null
     },
     {
@@ -105,7 +105,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/frontierscience",
-      "elapsed_ms": 35,
+      "elapsed_ms": 20,
       "error": null
     },
     {
@@ -126,7 +126,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/healthbench",
-      "elapsed_ms": 44,
+      "elapsed_ms": 19,
       "error": null
     },
     {
@@ -142,7 +142,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openreview.net/pdf?id=2GmDdhBdDk",
-      "elapsed_ms": 266,
+      "elapsed_ms": 92,
       "error": null
     },
     {
@@ -159,7 +159,7 @@
       "status": null,
       "category": "network-error",
       "method": "GET",
-      "elapsed_ms": 24001,
+      "elapsed_ms": 21993,
       "error": "The operation was aborted due to timeout"
     }
   ]
