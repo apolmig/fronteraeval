@@ -1,27 +1,27 @@
 {
   "schema_version": "2.1.0",
-  "generated_at": "2026-10-11T09:04:54.170Z",
-  "inspect_source_commit": "eb5383efecd8ac6d23fd276757b811f3db05a1f5",
+  "generated_at": "2026-10-18T07:18:20.594Z",
+  "inspect_source_commit": "8ef810f09930362302fc59b10a382d96dd767171",
   "policy": "Hosting and registry stewardship are provenance, not authorship. Paper affiliations are reported separately from evaluation-developer attribution. Unknown origin remains explicit.",
   "stats": {
-    "source_groups": 206,
-    "records": 326,
+    "source_groups": 209,
+    "records": 329,
     "status": {
       "verified": 50,
       "source-derived": 2,
-      "paper-only": 154,
+      "paper-only": 157,
       "host-only": 0,
       "unresolved": 0
     },
     "paper_status": {
-      "present": 183,
+      "present": 186,
       "not-found": 14,
       "not-applicable": 9
     },
-    "papers_resolved": 214,
-    "papers_metadata_pending": 12,
-    "arxiv_papers": 155,
-    "arxiv_metadata_resolved": 155,
+    "papers_resolved": 219,
+    "papers_metadata_pending": 13,
+    "arxiv_papers": 156,
+    "arxiv_metadata_resolved": 156,
     "arxiv_metadata_pending": 0,
     "arxiv_metadata_failures": 0
   },
@@ -1490,7 +1490,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/abstention_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/abstention_bench/eval.yaml"
       },
       "datasets": [
         {
@@ -1541,7 +1541,7 @@
           "https://drive.google.com/uc?id=1q-6FIEGufKVBE3s6OdFoLWL2iHQPJh8h",
           "https://github.com/mikejqzhang/SituatedQA"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/abstention_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/abstention_bench/eval.yaml"
       }
     },
     "inspect-family:agent_bench": {
@@ -1619,7 +1619,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/agent_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/agent_bench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -1631,7 +1631,7 @@
         "implementation_candidates": [
           "https://github.com/THUDM/AgentBench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/agent_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/agent_bench/eval.yaml"
       }
     },
     "inspect-family:agent_threat_bench": {
@@ -1673,7 +1673,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/agent_threat_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/agent_threat_bench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -1683,7 +1683,7 @@
           "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/agent_threat_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/agent_threat_bench/eval.yaml"
       }
     },
     "inspect-family:agentdojo": {
@@ -1734,7 +1734,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/agentdojo/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/agentdojo/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -1744,7 +1744,7 @@
           "https://arxiv.org/abs/2406.13352"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/agentdojo/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/agentdojo/eval.yaml"
       }
     },
     "inspect-family:agentharm": {
@@ -1802,7 +1802,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/agentharm/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/agentharm/eval.yaml"
       },
       "datasets": [
         {
@@ -1819,7 +1819,7 @@
           "https://arxiv.org/abs/2410.09024"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/agentharm/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/agentharm/eval.yaml"
       }
     },
     "inspect-family:agentic_misalignment": {
@@ -1861,7 +1861,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/agentic_misalignment/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/agentic_misalignment/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -1873,7 +1873,7 @@
           "https://www.anthropic.com/research/agentic-misalignment"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/agentic_misalignment/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/agentic_misalignment/eval.yaml"
       }
     },
     "inspect-family:agieval": {
@@ -1940,7 +1940,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/agieval/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/agieval/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -1952,7 +1952,7 @@
         "implementation_candidates": [
           "https://github.com/ruixiangcui/AGIEval"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/agieval/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/agieval/eval.yaml"
       }
     },
     "inspect-family:aime2024": {
@@ -1992,7 +1992,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/aime2024/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/aime2024/eval.yaml"
       },
       "datasets": [
         {
@@ -2007,7 +2007,7 @@
           "https://huggingface.co/datasets/Maxwell-Jia/AIME_2024"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/aime2024/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/aime2024/eval.yaml"
       }
     },
     "inspect-family:aime2025": {
@@ -2047,7 +2047,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/aime2025/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/aime2025/eval.yaml"
       },
       "datasets": [
         {
@@ -2062,7 +2062,7 @@
           "https://huggingface.co/datasets/math-ai/aime25"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/aime2025/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/aime2025/eval.yaml"
       }
     },
     "inspect-family:aime2026": {
@@ -2102,7 +2102,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/aime2026/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/aime2026/eval.yaml"
       },
       "datasets": [
         {
@@ -2117,7 +2117,7 @@
           "https://huggingface.co/datasets/math-ai/aime26"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/aime2026/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/aime2026/eval.yaml"
       }
     },
     "inspect-family:air_bench": {
@@ -2202,7 +2202,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/air_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/air_bench/eval.yaml"
       },
       "datasets": [
         {
@@ -2218,7 +2218,7 @@
           "https://arxiv.org/pdf/2407.17436"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/air_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/air_bench/eval.yaml"
       }
     },
     "inspect-family:anima": {
@@ -2261,7 +2261,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/anima/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/anima/eval.yaml"
       },
       "datasets": [
         {
@@ -2276,7 +2276,7 @@
           "https://arxiv.org/abs/2604.13076"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/anima/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/anima/eval.yaml"
       }
     },
     "inspect-family:ape": {
@@ -2333,7 +2333,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/ape/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/ape/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -2347,7 +2347,7 @@
         "implementation_candidates": [
           "https://github.com/AlignmentResearch/AttemptPersuadeEval"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/ape/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/ape/eval.yaml"
       }
     },
     "inspect-family:apps": {
@@ -2436,7 +2436,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/apps/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/apps/eval.yaml"
       },
       "datasets": [
         {
@@ -2452,7 +2452,7 @@
           "https://arxiv.org/pdf/2105.09938v3"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/apps/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/apps/eval.yaml"
       }
     },
     "inspect-family:arc": {
@@ -2509,7 +2509,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/arc/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/arc/eval.yaml"
       },
       "datasets": [
         {
@@ -2524,7 +2524,7 @@
           "https://arxiv.org/abs/1803.05457"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/arc/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/arc/eval.yaml"
       }
     },
     "inspect-family:assistant_bench": {
@@ -2585,7 +2585,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/assistant_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/assistant_bench/eval.yaml"
       },
       "datasets": [
         {
@@ -2600,7 +2600,7 @@
           "https://arxiv.org/abs/2407.15711"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/assistant_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/assistant_bench/eval.yaml"
       }
     },
     "inspect-family:b3": {
@@ -2648,7 +2648,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/b3/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/b3/eval.yaml"
       },
       "datasets": [
         {
@@ -2663,7 +2663,7 @@
           "https://arxiv.org/abs/2510.22620"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/b3/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/b3/eval.yaml"
       }
     },
     "inspect-family:bbeh": {
@@ -2762,7 +2762,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/bbeh/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/bbeh/eval.yaml"
       },
       "datasets": [
         {
@@ -2778,7 +2778,7 @@
           "https://arxiv.org/pdf/2502.19187"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/bbeh/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/bbeh/eval.yaml"
       }
     },
     "inspect-family:bbh": {
@@ -2836,7 +2836,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/bbh/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/bbh/eval.yaml"
       },
       "datasets": [
         {
@@ -2851,7 +2851,7 @@
           "https://arxiv.org/abs/2210.09261"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/bbh/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/bbh/eval.yaml"
       }
     },
     "inspect-family:bbq": {
@@ -2906,7 +2906,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/bbq/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/bbq/eval.yaml"
       },
       "datasets": [
         {
@@ -2921,7 +2921,7 @@
           "https://arxiv.org/abs/2110.08193"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/bbq/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/bbq/eval.yaml"
       }
     },
     "inspect-family:bfcl": {
@@ -2978,7 +2978,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/bfcl/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/bfcl/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -2993,7 +2993,7 @@
         "implementation_candidates": [
           "https://github.com/ShishirPatil/gorilla"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/bfcl/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/bfcl/eval.yaml"
       }
     },
     "inspect-family:bigcodebench": {
@@ -3079,7 +3079,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/bigcodebench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/bigcodebench/eval.yaml"
       },
       "datasets": [
         {
@@ -3094,7 +3094,7 @@
           "https://arxiv.org/abs/2406.15877"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/bigcodebench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/bigcodebench/eval.yaml"
       }
     },
     "inspect-family:bold": {
@@ -3150,7 +3150,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/bold/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/bold/eval.yaml"
       },
       "datasets": [
         {
@@ -3165,7 +3165,7 @@
           "https://arxiv.org/abs/2101.11718"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/bold/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/bold/eval.yaml"
       }
     },
     "inspect-family:boolq": {
@@ -3216,7 +3216,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/boolq/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/boolq/eval.yaml"
       },
       "datasets": [
         {
@@ -3231,7 +3231,7 @@
           "https://arxiv.org/abs/1905.10044"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/boolq/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/boolq/eval.yaml"
       }
     },
     "inspect-family:browse_comp": {
@@ -3310,7 +3310,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/browse_comp/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/browse_comp/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -3325,7 +3325,7 @@
         "implementation_candidates": [
           "https://openaipublic.blob.core.windows.net/simple-evals/browse_comp_test_set.csv"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/browse_comp/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/browse_comp/eval.yaml"
       }
     },
     "inspect-family:chembench": {
@@ -3447,7 +3447,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/chembench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/chembench/eval.yaml"
       },
       "datasets": [
         {
@@ -3463,7 +3463,7 @@
           "https://arxiv.org/pdf/2404.01475v2"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/chembench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/chembench/eval.yaml"
       }
     },
     "inspect-family:class_eval": {
@@ -3514,7 +3514,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/class_eval/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/class_eval/eval.yaml"
       },
       "datasets": [
         {
@@ -3529,7 +3529,7 @@
           "https://arxiv.org/abs/2308.01861"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/class_eval/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/class_eval/eval.yaml"
       }
     },
     "inspect-family:coconot": {
@@ -3596,7 +3596,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/coconot/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/coconot/eval.yaml"
       },
       "datasets": [
         {
@@ -3611,7 +3611,7 @@
           "https://arxiv.org/abs/2407.12043"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/coconot/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/coconot/eval.yaml"
       }
     },
     "inspect-family:commonsense_qa": {
@@ -3662,7 +3662,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/commonsense_qa/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/commonsense_qa/eval.yaml"
       },
       "datasets": [
         {
@@ -3677,7 +3677,7 @@
           "https://arxiv.org/abs/1811.00937"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/commonsense_qa/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/commonsense_qa/eval.yaml"
       }
     },
     "inspect-family:compute_eval": {
@@ -3713,7 +3713,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/compute_eval/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/compute_eval/eval.yaml"
       },
       "datasets": [
         {
@@ -3731,7 +3731,7 @@
         "implementation_candidates": [
           "https://github.com/NVIDIA/compute-eval"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/compute_eval/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/compute_eval/eval.yaml"
       }
     },
     "inspect-family:core_bench": {
@@ -3777,7 +3777,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/core_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/core_bench/eval.yaml"
       },
       "datasets": [
         {
@@ -3792,7 +3792,7 @@
           "https://arxiv.org/abs/2409.11363"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/core_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/core_bench/eval.yaml"
       }
     },
     "inspect-family:cti_realm": {
@@ -3845,7 +3845,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cti_realm/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cti_realm/eval.yaml"
       },
       "datasets": [
         {
@@ -3862,7 +3862,7 @@
         "implementation_candidates": [
           "https://github.com/mitre/cti"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cti_realm/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cti_realm/eval.yaml"
       }
     },
     "inspect-family:cve_bench": {
@@ -3928,7 +3928,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cve_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cve_bench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -3940,7 +3940,7 @@
         "implementation_candidates": [
           "https://github.com/Scott-Simmons/cve-bench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cve_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cve_bench/eval.yaml"
       }
     },
     "inspect-family:cybench": {
@@ -4013,7 +4013,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cybench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cybench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -4027,7 +4027,7 @@
           "https://github.com/andyzorigin/cybench",
           "https://github.com/LosFuzzys/GlacierCTF2023_writeups"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cybench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cybench/eval.yaml"
       }
     },
     "inspect-family:cybergym": {
@@ -4074,7 +4074,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cybergym/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cybergym/eval.yaml"
       },
       "datasets": [
         {
@@ -4089,7 +4089,7 @@
           "https://arxiv.org/abs/2506.02548"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cybergym/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cybergym/eval.yaml"
       }
     },
     "inspect-family:cybermetric": {
@@ -4149,7 +4149,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cybermetric/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cybermetric/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -4161,7 +4161,7 @@
         "implementation_candidates": [
           "https://github.com/cybermetric/CyberMetric"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cybermetric/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cybermetric/eval.yaml"
       }
     },
     "inspect-family:cyberseceval_2": {
@@ -4246,7 +4246,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cyberseceval_2/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cyberseceval_2/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -4260,7 +4260,7 @@
           "https://nodejs.org/dist/v20.18.3/node-v20.18.3-linux-x64.tar.xz",
           "https://github.com/meta-llama/PurpleLlama"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cyberseceval_2/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cyberseceval_2/eval.yaml"
       }
     },
     "inspect-family:cyberseceval_3": {
@@ -4322,7 +4322,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cyberseceval_3/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cyberseceval_3/eval.yaml"
       },
       "datasets": [
         {
@@ -4337,7 +4337,7 @@
           "https://arxiv.org/abs/2312.04724"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cyberseceval_3/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cyberseceval_3/eval.yaml"
       }
     },
     "inspect-family:cyberseceval_4": {
@@ -4403,7 +4403,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cyberseceval_4/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cyberseceval_4/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -4417,7 +4417,7 @@
           "https://github.com/CrowdStrike/CyberSOCEval_data",
           "https://web.archive.org"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/cyberseceval_4/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/cyberseceval_4/eval.yaml"
       }
     },
     "inspect-family:docvqa": {
@@ -4461,7 +4461,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/docvqa/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/docvqa/eval.yaml"
       },
       "datasets": [
         {
@@ -4476,7 +4476,7 @@
           "https://arxiv.org/abs/2007.00398"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/docvqa/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/docvqa/eval.yaml"
       }
     },
     "inspect-family:drop": {
@@ -4535,7 +4535,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/drop/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/drop/eval.yaml"
       },
       "datasets": [
         {
@@ -4550,7 +4550,7 @@
           "https://arxiv.org/abs/1903.00161"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/drop/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/drop/eval.yaml"
       }
     },
     "inspect-family:ds1000": {
@@ -4612,7 +4612,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/ds1000/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/ds1000/eval.yaml"
       },
       "datasets": [
         {
@@ -4627,7 +4627,7 @@
           "https://arxiv.org/abs/2211.11501"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/ds1000/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/ds1000/eval.yaml"
       }
     },
     "inspect-family:fortress": {
@@ -4676,7 +4676,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/fortress/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/fortress/eval.yaml"
       },
       "datasets": [
         {
@@ -4691,7 +4691,7 @@
           "https://arxiv.org/abs/2506.14922"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/fortress/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/fortress/eval.yaml"
       }
     },
     "inspect-family:frontier_cs": {
@@ -4794,7 +4794,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/frontier_cs/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/frontier_cs/eval.yaml"
       },
       "datasets": [
         {
@@ -4813,7 +4813,7 @@
           "https://github.com/MikeMirzayanov/testlib",
           "https://julialang-s3.julialang.org/bin/linux/x64/1.11/julia-1.11.3-linux-x86_64.tar.gz"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/frontier_cs/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/frontier_cs/eval.yaml"
       }
     },
     "inspect-family:frontierscience": {
@@ -4853,7 +4853,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/frontierscience/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/frontierscience/eval.yaml"
       },
       "datasets": [
         {
@@ -4868,7 +4868,7 @@
           "https://openai.com/index/frontierscience"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/frontierscience/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/frontierscience/eval.yaml"
       }
     },
     "inspect-family:gaia": {
@@ -4918,7 +4918,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gaia/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gaia/eval.yaml"
       },
       "datasets": [
         {
@@ -4933,7 +4933,7 @@
           "https://arxiv.org/abs/2311.12983"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gaia/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gaia/eval.yaml"
       }
     },
     "inspect-family:gdm_in_house_ctf": {
@@ -5010,7 +5010,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gdm_in_house_ctf/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gdm_in_house_ctf/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -5022,7 +5022,7 @@
         "implementation_candidates": [
           "https://hub.docker.com/u/marshw"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gdm_in_house_ctf/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gdm_in_house_ctf/eval.yaml"
       }
     },
     "inspect-family:gdm_intercode_ctf": {
@@ -5076,7 +5076,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gdm_intercode_ctf/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gdm_intercode_ctf/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -5088,7 +5088,7 @@
         "implementation_candidates": [
           "https://github.com/princeton-nlp/intercode"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gdm_intercode_ctf/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gdm_intercode_ctf/eval.yaml"
       }
     },
     "inspect-family:gdm_self_proliferation": {
@@ -5224,7 +5224,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gdm_self_proliferation/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gdm_self_proliferation/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -5237,7 +5237,7 @@
         "implementation_candidates": [
           "https://files.mistral-7b-v0-1.mistral.ai/mistral-7B-v0.1.tar"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gdm_self_proliferation/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gdm_self_proliferation/eval.yaml"
       }
     },
     "inspect-family:gdm_self_reasoning": {
@@ -5299,7 +5299,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gdm_self_reasoning/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gdm_self_reasoning/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -5311,7 +5311,7 @@
           "https://arxiv.org/abs/2505.01420"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gdm_self_reasoning/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gdm_self_reasoning/eval.yaml"
       }
     },
     "inspect-family:gdm_stealth": {
@@ -5366,7 +5366,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gdm_stealth/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gdm_stealth/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -5378,7 +5378,7 @@
           "https://arxiv.org/abs/2505.01420"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gdm_stealth/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gdm_stealth/eval.yaml"
       }
     },
     "inspect-family:gdpval": {
@@ -5438,7 +5438,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gdpval/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gdpval/eval.yaml"
       },
       "datasets": [
         {
@@ -5453,7 +5453,7 @@
           "https://arxiv.org/abs/2510.04374"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gdpval/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gdpval/eval.yaml"
       }
     },
     "inspect-family:gpqa": {
@@ -5517,7 +5517,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gpqa/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gpqa/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -5529,7 +5529,7 @@
         "implementation_candidates": [
           "https://openaipublic.blob.core.windows.net/simple-evals/gpqa_diamond.csv"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gpqa/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gpqa/eval.yaml"
       }
     },
     "inspect-family:gsm8k": {
@@ -5582,7 +5582,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gsm8k/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gsm8k/eval.yaml"
       },
       "datasets": [
         {
@@ -5597,7 +5597,7 @@
           "https://arxiv.org/abs/2110.14168"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/gsm8k/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/gsm8k/eval.yaml"
       }
     },
     "inspect-family:healthbench": {
@@ -5655,7 +5655,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/healthbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/healthbench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -5667,7 +5667,7 @@
           "https://arxiv.org/abs/2505.08775"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/healthbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/healthbench/eval.yaml"
       }
     },
     "inspect-family:hellaswag": {
@@ -5719,7 +5719,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/hellaswag/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/hellaswag/eval.yaml"
       },
       "datasets": [
         {
@@ -5734,7 +5734,7 @@
           "https://arxiv.org/abs/1905.07830"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/hellaswag/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/hellaswag/eval.yaml"
       }
     },
     "inspect-family:hle": {
@@ -7020,7 +7020,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/hle/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/hle/eval.yaml"
       },
       "datasets": [
         {
@@ -7043,7 +7043,7 @@
           "https://arxiv.org/abs/2501.14249"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/hle/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/hle/eval.yaml"
       }
     },
     "inspect-family:humaneval": {
@@ -7146,7 +7146,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/humaneval/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/humaneval/eval.yaml"
       },
       "datasets": [
         {
@@ -7161,7 +7161,7 @@
           "https://arxiv.org/abs/2107.03374"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/humaneval/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/humaneval/eval.yaml"
       }
     },
     "inspect-family:ifeval": {
@@ -7221,7 +7221,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/ifeval/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/ifeval/eval.yaml"
       },
       "datasets": [
         {
@@ -7238,7 +7238,7 @@
         "implementation_candidates": [
           "https://github.com/josejg/instruction_following_eval"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/ifeval/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/ifeval/eval.yaml"
       }
     },
     "inspect-family:ifevalcode": {
@@ -7291,7 +7291,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/ifevalcode/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/ifevalcode/eval.yaml"
       },
       "datasets": [
         {
@@ -7306,7 +7306,7 @@
           "https://arxiv.org/abs/2507.22462"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/ifevalcode/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/ifevalcode/eval.yaml"
       }
     },
     "inspect-family:infinite_bench": {
@@ -7370,7 +7370,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/infinite_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/infinite_bench/eval.yaml"
       },
       "datasets": [
         {
@@ -7385,7 +7385,7 @@
           "https://arxiv.org/abs/2402.13718"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/infinite_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/infinite_bench/eval.yaml"
       }
     },
     "inspect-family:instrumentaleval": {
@@ -7437,7 +7437,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/instrumentaleval/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/instrumentaleval/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -7449,7 +7449,7 @@
         "implementation_candidates": [
           "https://github.com/yf-he/InstrumentalEval"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/instrumentaleval/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/instrumentaleval/eval.yaml"
       }
     },
     "inspect-family:ipi_coding_agent": {
@@ -7478,7 +7478,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/ipi_coding_agent/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/ipi_coding_agent/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -7488,7 +7488,7 @@
       "source_inputs": {
         "paper_urls": [],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/ipi_coding_agent/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/ipi_coding_agent/eval.yaml"
       }
     },
     "inspect-family:kernelbench": {
@@ -7534,7 +7534,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/kernelbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/kernelbench/eval.yaml"
       },
       "datasets": [
         {
@@ -7551,7 +7551,7 @@
         "implementation_candidates": [
           "https://github.com/ScalingIntelligence/KernelBench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/kernelbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/kernelbench/eval.yaml"
       }
     },
     "inspect-family:lab_bench": {
@@ -7608,7 +7608,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/lab_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/lab_bench/eval.yaml"
       },
       "datasets": [
         {
@@ -7623,7 +7623,7 @@
           "https://arxiv.org/abs/2407.10362"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/lab_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/lab_bench/eval.yaml"
       }
     },
     "inspect-family:lingoly": {
@@ -7694,7 +7694,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/lingoly/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/lingoly/eval.yaml"
       },
       "datasets": [
         {
@@ -7714,7 +7714,7 @@
           "https://arxiv.org/pdf/2406.06196,https://arxiv.org/abs/2503.02972"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/lingoly/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/lingoly/eval.yaml"
       }
     },
     "inspect-family:livebench": {
@@ -7782,7 +7782,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/livebench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/livebench/eval.yaml"
       },
       "datasets": [
         {
@@ -7799,7 +7799,7 @@
         "implementation_candidates": [
           "https://github.com/LiveBench/LiveBench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/livebench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/livebench/eval.yaml"
       }
     },
     "inspect-family:livecodebench_pro": {
@@ -7859,7 +7859,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/livecodebench_pro/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/livecodebench_pro/eval.yaml"
       },
       "datasets": [
         {
@@ -7874,7 +7874,7 @@
           "https://arxiv.org/abs/2506.11928"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/livecodebench_pro/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/livecodebench_pro/eval.yaml"
       }
     },
     "inspect-family:macbench": {
@@ -7923,7 +7923,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/macbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/macbench/eval.yaml"
       },
       "datasets": [
         {
@@ -7938,7 +7938,7 @@
           "https://arxiv.org/abs/2411.16955"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/macbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/macbench/eval.yaml"
       }
     },
     "inspect-family:make_me_pay": {
@@ -7974,7 +7974,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/make_me_pay/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/make_me_pay/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -7986,7 +7986,7 @@
         "implementation_candidates": [
           "https://github.com/openai/evals"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/make_me_pay/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/make_me_pay/eval.yaml"
       }
     },
     "inspect-family:makemesay": {
@@ -8022,7 +8022,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/makemesay/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/makemesay/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -8034,7 +8034,7 @@
         "implementation_candidates": [
           "https://github.com/openai/evals"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/makemesay/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/makemesay/eval.yaml"
       }
     },
     "inspect-family:mask": {
@@ -8101,7 +8101,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mask/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mask/eval.yaml"
       },
       "datasets": [
         {
@@ -8120,7 +8120,7 @@
         "implementation_candidates": [
           "https://github.com/centerforaisafety/mask"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mask/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mask/eval.yaml"
       }
     },
     "inspect-family:math": {
@@ -8179,7 +8179,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/math/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/math/eval.yaml"
       },
       "datasets": [
         {
@@ -8194,7 +8194,7 @@
           "https://arxiv.org/abs/2103.03874"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/math/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/math/eval.yaml"
       }
     },
     "inspect-family:mathvista": {
@@ -8253,7 +8253,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mathvista/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mathvista/eval.yaml"
       },
       "datasets": [
         {
@@ -8268,7 +8268,7 @@
           "https://arxiv.org/abs/2310.02255"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mathvista/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mathvista/eval.yaml"
       }
     },
     "inspect-family:mbpp": {
@@ -8328,7 +8328,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mbpp/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mbpp/eval.yaml"
       },
       "datasets": [
         {
@@ -8343,7 +8343,7 @@
           "https://arxiv.org/abs/2108.07732"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mbpp/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mbpp/eval.yaml"
       }
     },
     "inspect-family:medqa": {
@@ -8390,7 +8390,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/medqa/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/medqa/eval.yaml"
       },
       "datasets": [
         {
@@ -8405,7 +8405,7 @@
           "https://arxiv.org/abs/2009.13081"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/medqa/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/medqa/eval.yaml"
       }
     },
     "inspect-family:mgsm": {
@@ -8466,7 +8466,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mgsm/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mgsm/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -8476,7 +8476,7 @@
           "https://arxiv.org/abs/2210.03057"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mgsm/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mgsm/eval.yaml"
       }
     },
     "inspect-family:mind2web": {
@@ -8531,7 +8531,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mind2web/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mind2web/eval.yaml"
       },
       "datasets": [
         {
@@ -8546,7 +8546,7 @@
           "https://arxiv.org/abs/2306.06070"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mind2web/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mind2web/eval.yaml"
       }
     },
     "inspect-family:mind2web_sc": {
@@ -8599,7 +8599,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mind2web_sc/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mind2web_sc/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -8609,7 +8609,7 @@
           "https://arxiv.org/abs/2406.09187"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mind2web_sc/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mind2web_sc/eval.yaml"
       }
     },
     "inspect-family:mle_bench": {
@@ -8673,7 +8673,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mle_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mle_bench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -8687,7 +8687,7 @@
         "implementation_candidates": [
           "https://github.com/openai/mle-bench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mle_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mle_bench/eval.yaml"
       }
     },
     "inspect-family:mlrc_bench": {
@@ -8762,7 +8762,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mlrc_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mlrc_bench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -8775,7 +8775,7 @@
         "implementation_candidates": [
           "https://github.com/yunx-z/MLRC-Bench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mlrc_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mlrc_bench/eval.yaml"
       }
     },
     "inspect-family:mmiu": {
@@ -8851,7 +8851,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mmiu/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mmiu/eval.yaml"
       },
       "datasets": [
         {
@@ -8867,7 +8867,7 @@
           "https://arxiv.org/pdf/2408.02718"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mmiu/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mmiu/eval.yaml"
       }
     },
     "inspect-family:mmlu": {
@@ -8928,7 +8928,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mmlu/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mmlu/eval.yaml"
       },
       "datasets": [
         {
@@ -8947,7 +8947,7 @@
           "https://arxiv.org/abs/2009.03300"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mmlu/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mmlu/eval.yaml"
       }
     },
     "inspect-family:mmlu_pro": {
@@ -9015,7 +9015,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mmlu_pro/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mmlu_pro/eval.yaml"
       },
       "datasets": [
         {
@@ -9030,7 +9030,7 @@
           "https://arxiv.org/abs/2406.01574"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mmlu_pro/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mmlu_pro/eval.yaml"
       }
     },
     "inspect-family:mmmu": {
@@ -9110,7 +9110,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mmmu/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mmmu/eval.yaml"
       },
       "datasets": [
         {
@@ -9125,7 +9125,7 @@
           "https://arxiv.org/abs/2311.16502"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/mmmu/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/mmmu/eval.yaml"
       }
     },
     "inspect-family:moru": {
@@ -9156,7 +9156,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/moru/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/moru/eval.yaml"
       },
       "datasets": [
         {
@@ -9176,7 +9176,7 @@
       "source_inputs": {
         "paper_urls": [],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/moru/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/moru/eval.yaml"
       }
     },
     "inspect-family:musr": {
@@ -9226,7 +9226,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/musr/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/musr/eval.yaml"
       },
       "datasets": [
         {
@@ -9241,7 +9241,7 @@
           "https://arxiv.org/abs/2310.16049"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/musr/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/musr/eval.yaml"
       }
     },
     "inspect-family:niah": {
@@ -9287,7 +9287,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/niah/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/niah/eval.yaml"
       },
       "datasets": [
         {
@@ -9302,7 +9302,7 @@
           "https://arxiv.org/abs/2407.01437"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/niah/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/niah/eval.yaml"
       }
     },
     "inspect-family:novelty_bench": {
@@ -9355,7 +9355,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/novelty_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/novelty_bench/eval.yaml"
       },
       "datasets": [
         {
@@ -9370,7 +9370,7 @@
           "https://arxiv.org/abs/2504.05228"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/novelty_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/novelty_bench/eval.yaml"
       }
     },
     "inspect-family:onet": {
@@ -9401,7 +9401,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/onet/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/onet/eval.yaml"
       },
       "datasets": [
         {
@@ -9417,7 +9417,7 @@
       "source_inputs": {
         "paper_urls": [],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/onet/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/onet/eval.yaml"
       }
     },
     "inspect-family:osworld": {
@@ -9491,7 +9491,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/osworld/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/osworld/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -9503,7 +9503,7 @@
         "implementation_candidates": [
           "https://github.com/xlang-ai/OSWorld"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/osworld/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/osworld/eval.yaml"
       }
     },
     "inspect-family:paperbench": {
@@ -9561,7 +9561,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/paperbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/paperbench/eval.yaml"
       },
       "datasets": [
         {
@@ -9578,7 +9578,7 @@
           "https://arxiv.org/abs/2504.01848"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/paperbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/paperbench/eval.yaml"
       }
     },
     "inspect-family:paws": {
@@ -9622,7 +9622,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/paws/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/paws/eval.yaml"
       },
       "datasets": [
         {
@@ -9637,7 +9637,7 @@
           "https://arxiv.org/abs/1904.01130"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/paws/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/paws/eval.yaml"
       }
     },
     "inspect-family:persistbench": {
@@ -9687,7 +9687,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/persistbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/persistbench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -9697,7 +9697,7 @@
           "https://arxiv.org/abs/2602.01146"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/persistbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/persistbench/eval.yaml"
       }
     },
     "inspect-family:personality": {
@@ -9732,7 +9732,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/personality/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/personality/eval.yaml"
       },
       "datasets": [
         {
@@ -9749,7 +9749,7 @@
         "implementation_candidates": [
           "https://github.com/guiem/personality-tests"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/personality/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/personality/eval.yaml"
       }
     },
     "inspect-family:piqa": {
@@ -9808,7 +9808,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/piqa/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/piqa/eval.yaml"
       },
       "datasets": [
         {
@@ -9826,7 +9826,7 @@
           "https://storage.googleapis.com/ai2-mosaic/public/physicaliqa/physicaliqa-train-dev.zip",
           "https://yonatanbisk.com/piqa/data/tests.jsonl"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/piqa/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/piqa/eval.yaml"
       }
     },
     "inspect-family:pre_flight": {
@@ -9869,7 +9869,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/pre_flight/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/pre_flight/eval.yaml"
       },
       "datasets": [
         {
@@ -9884,7 +9884,7 @@
           "https://arxiv.org/abs/2607.01829"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/pre_flight/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/pre_flight/eval.yaml"
       }
     },
     "inspect-family:pubmedqa": {
@@ -9936,7 +9936,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/pubmedqa/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/pubmedqa/eval.yaml"
       },
       "datasets": [
         {
@@ -9951,7 +9951,7 @@
           "https://arxiv.org/abs/1909.06146"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/pubmedqa/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/pubmedqa/eval.yaml"
       }
     },
     "inspect-family:race_h": {
@@ -10001,7 +10001,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/race_h/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/race_h/eval.yaml"
       },
       "datasets": [
         {
@@ -10016,7 +10016,7 @@
           "https://arxiv.org/abs/1704.04683"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/race_h/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/race_h/eval.yaml"
       }
     },
     "inspect-family:sad": {
@@ -10075,7 +10075,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/sad/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/sad/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -10089,7 +10089,7 @@
         "implementation_candidates": [
           "https://github.com/LRudL/sad"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/sad/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/sad/eval.yaml"
       }
     },
     "inspect-family:scbench": {
@@ -10135,7 +10135,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/scbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/scbench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -10145,7 +10145,7 @@
           "https://arxiv.org/abs/2602.09063"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/scbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/scbench/eval.yaml"
       }
     },
     "inspect-family:scicode": {
@@ -10227,7 +10227,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/scicode/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/scicode/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -10240,7 +10240,7 @@
           "https://github.com/scicode-bench/SciCode",
           "https://drive.google.com/uc?id=17G_k65N_6yFFZ2O-jQH00Lh6iaw3z-AW"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/scicode/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/scicode/eval.yaml"
       }
     },
     "inspect-family:sciknoweval": {
@@ -10306,7 +10306,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/sciknoweval/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/sciknoweval/eval.yaml"
       },
       "datasets": [
         {
@@ -10322,7 +10322,7 @@
           "https://arxiv.org/abs/2406.09098v2"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/sciknoweval/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/sciknoweval/eval.yaml"
       }
     },
     "inspect-family:sec_qa": {
@@ -10371,7 +10371,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/sec_qa/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/sec_qa/eval.yaml"
       },
       "datasets": [
         {
@@ -10386,7 +10386,7 @@
           "https://arxiv.org/abs/2312.15838"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/sec_qa/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/sec_qa/eval.yaml"
       }
     },
     "inspect-family:sevenllm": {
@@ -10448,7 +10448,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/sevenllm/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/sevenllm/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -10458,7 +10458,7 @@
           "https://arxiv.org/abs/2405.03446"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/sevenllm/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/sevenllm/eval.yaml"
       }
     },
     "inspect-family:simpleqa": {
@@ -10526,7 +10526,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/simpleqa/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/simpleqa/eval.yaml"
       },
       "datasets": [
         {
@@ -10544,7 +10544,7 @@
         "implementation_candidates": [
           "https://openaipublic.blob.core.windows.net/simple-evals/simple_qa_test_set.csv"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/simpleqa/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/simpleqa/eval.yaml"
       }
     },
     "inspect-family:sosbench": {
@@ -10624,7 +10624,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/sosbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/sosbench/eval.yaml"
       },
       "datasets": [
         {
@@ -10640,7 +10640,7 @@
           "https://arxiv.org/pdf/2505.21605"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/sosbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/sosbench/eval.yaml"
       }
     },
     "inspect-family:squad": {
@@ -10685,7 +10685,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/squad/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/squad/eval.yaml"
       },
       "datasets": [
         {
@@ -10700,7 +10700,7 @@
           "https://arxiv.org/abs/1606.05250"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/squad/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/squad/eval.yaml"
       }
     },
     "inspect-family:stereoset": {
@@ -10750,7 +10750,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/stereoset/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/stereoset/eval.yaml"
       },
       "datasets": [
         {
@@ -10765,7 +10765,7 @@
           "https://arxiv.org/abs/2004.09456"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/stereoset/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/stereoset/eval.yaml"
       }
     },
     "inspect-family:strong_reject": {
@@ -10822,7 +10822,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/strong_reject/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/strong_reject/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -10834,7 +10834,7 @@
         "implementation_candidates": [
           "https://github.com/alexandrasouly/strongreject"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/strong_reject/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/strong_reject/eval.yaml"
       }
     },
     "inspect-family:swe_bench": {
@@ -10894,7 +10894,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/swe_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/swe_bench/eval.yaml"
       },
       "datasets": [
         {
@@ -10911,7 +10911,7 @@
         "implementation_candidates": [
           "https://github.com/swe-bench/experiments"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/swe_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/swe_bench/eval.yaml"
       }
     },
     "inspect-family:swe_lancer": {
@@ -10976,7 +10976,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/swe_lancer/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/swe_lancer/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -10989,7 +10989,7 @@
         "implementation_candidates": [
           "https://hub.docker.com/u/swelancer"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/swe_lancer/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/swe_lancer/eval.yaml"
       }
     },
     "inspect-family:sycophancy": {
@@ -11059,7 +11059,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/sycophancy/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/sycophancy/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -11073,7 +11073,7 @@
         "implementation_candidates": [
           "https://github.com/meg-tong/sycophancy-eval"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/sycophancy/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/sycophancy/eval.yaml"
       }
     },
     "inspect-family:tac": {
@@ -11122,7 +11122,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/tac/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/tac/eval.yaml"
       },
       "datasets": [
         {
@@ -11137,7 +11137,7 @@
           "https://arxiv.org/abs/2606.18142"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/tac/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/tac/eval.yaml"
       }
     },
     "inspect-family:tau2": {
@@ -11186,7 +11186,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/tau2/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/tau2/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -11196,7 +11196,7 @@
           "https://arxiv.org/abs/2506.07982"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/tau2/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/tau2/eval.yaml"
       }
     },
     "inspect-family:theagentcompany": {
@@ -11269,7 +11269,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/theagentcompany/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/theagentcompany/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -11281,7 +11281,7 @@
         "implementation_candidates": [
           "https://github.com/TheAgentCompany/the-agent-company-backup-data"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/theagentcompany/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/theagentcompany/eval.yaml"
       }
     },
     "inspect-family:threecb": {
@@ -11331,7 +11331,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/threecb/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/threecb/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -11341,7 +11341,7 @@
           "https://arxiv.org/abs/2410.09114"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/threecb/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/threecb/eval.yaml"
       }
     },
     "inspect-family:truthfulqa": {
@@ -11408,7 +11408,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/truthfulqa/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/truthfulqa/eval.yaml"
       },
       "datasets": [
         {
@@ -11424,7 +11424,7 @@
           "https://arxiv.org/abs/2109.07958v2"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/truthfulqa/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/truthfulqa/eval.yaml"
       }
     },
     "inspect-family:uccb": {
@@ -11464,7 +11464,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/uccb/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/uccb/eval.yaml"
       },
       "datasets": [
         {
@@ -11479,7 +11479,7 @@
           "https://huggingface.co/datasets/CraneAILabs/UCCB"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/uccb/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/uccb/eval.yaml"
       }
     },
     "inspect-family:usaco": {
@@ -11529,7 +11529,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/usaco/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/usaco/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -11541,7 +11541,7 @@
         "implementation_candidates": [
           "https://drive.usercontent.google.com/download?id=1z5ODOJMqyer1QxzYtEUZ2hbAx-7nU8Vi"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/usaco/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/usaco/eval.yaml"
       }
     },
     "inspect-family:vimgolf_challenges": {
@@ -11575,7 +11575,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/vimgolf_challenges/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/vimgolf_challenges/eval.yaml"
       },
       "datasets": [
         {
@@ -11592,7 +11592,7 @@
         "implementation_candidates": [
           "https://huggingface.co/datasets/cybergod-kevin/vimgolf-public-challenges-inspect-eval"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/vimgolf_challenges/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/vimgolf_challenges/eval.yaml"
       }
     },
     "inspect-family:vqa_rad": {
@@ -11632,7 +11632,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/vqa_rad/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/vqa_rad/eval.yaml"
       },
       "datasets": [
         {
@@ -11647,7 +11647,7 @@
           "https://doi.org/10.1038/sdata.2018.251"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/vqa_rad/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/vqa_rad/eval.yaml"
       }
     },
     "inspect-family:vstar_bench": {
@@ -11691,7 +11691,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/vstar_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/vstar_bench/eval.yaml"
       },
       "datasets": [
         {
@@ -11706,7 +11706,7 @@
           "https://arxiv.org/abs/2312.14135"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/vstar_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/vstar_bench/eval.yaml"
       }
     },
     "inspect-family:winogrande": {
@@ -11757,7 +11757,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/winogrande/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/winogrande/eval.yaml"
       },
       "datasets": [
         {
@@ -11772,7 +11772,7 @@
           "https://arxiv.org/abs/1907.10641"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/winogrande/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/winogrande/eval.yaml"
       }
     },
     "inspect-family:wmdp": {
@@ -11884,7 +11884,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/wmdp/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/wmdp/eval.yaml"
       },
       "datasets": [
         {
@@ -11899,7 +11899,7 @@
           "https://arxiv.org/abs/2403.03218"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/wmdp/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/wmdp/eval.yaml"
       }
     },
     "inspect-family:worldsense": {
@@ -11976,7 +11976,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/worldsense/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/worldsense/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -11989,7 +11989,7 @@
         "implementation_candidates": [
           "https://github.com/facebookresearch/worldsense"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/worldsense/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/worldsense/eval.yaml"
       }
     },
     "inspect-family:writingbench": {
@@ -12063,7 +12063,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/writingbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/writingbench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -12074,7 +12074,7 @@
           "https://arxiv.org/pdf/2503.05244"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/writingbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/writingbench/eval.yaml"
       }
     },
     "inspect-family:xstest": {
@@ -12133,7 +12133,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/xstest/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/xstest/eval.yaml"
       },
       "datasets": [
         {
@@ -12148,7 +12148,7 @@
           "https://arxiv.org/abs/2308.01263"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/xstest/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/xstest/eval.yaml"
       }
     },
     "inspect-family:zerobench": {
@@ -12234,7 +12234,7 @@
         "role": "maintained_implementation",
         "role_label": "Inspect implementation",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/zerobench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/zerobench/eval.yaml"
       },
       "datasets": [
         {
@@ -12249,7 +12249,7 @@
           "https://arxiv.org/abs/2502.09696"
         ],
         "implementation_candidates": [],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/src/inspect_evals/zerobench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/src/inspect_evals/zerobench/eval.yaml"
       }
     },
     "register:ahb": {
@@ -12303,7 +12303,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/ahb/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/ahb/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -12315,7 +12315,7 @@
         "implementation_candidates": [
           "https://github.com/icaro-lab/ahb"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/ahb/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/ahb/eval.yaml"
       }
     },
     "register:alignment_faking": {
@@ -12418,7 +12418,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/alignment_faking/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/alignment_faking/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -12431,7 +12431,7 @@
         "implementation_candidates": [
           "https://github.com/marliechorgan/alignment-faking-inspect"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/alignment_faking/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/alignment_faking/eval.yaml"
       }
     },
     "register:appworld": {
@@ -12512,7 +12512,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/appworld/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/appworld/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -12525,7 +12525,7 @@
         "implementation_candidates": [
           "https://github.com/anirudhvenu/appworld-inspect"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/appworld/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/appworld/eval.yaml"
       }
     },
     "register:aratrust": {
@@ -12577,7 +12577,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/aratrust/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/aratrust/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -12589,7 +12589,7 @@
         "implementation_candidates": [
           "https://github.com/Raulster24/aratrust-inspect"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/aratrust/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/aratrust/eval.yaml"
       }
     },
     "register:arxivrollbench": {
@@ -12640,7 +12640,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/arxivrollbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/arxivrollbench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -12652,7 +12652,7 @@
         "implementation_candidates": [
           "https://github.com/liangzid/ArxivRoll"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/arxivrollbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/arxivrollbench/eval.yaml"
       }
     },
     "register:bixbench": {
@@ -12707,7 +12707,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/bixbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/bixbench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -12719,7 +12719,7 @@
         "implementation_candidates": [
           "https://github.com/concordia-ai/concordia_evals"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/bixbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/bixbench/eval.yaml"
       }
     },
     "register:brokenmath": {
@@ -12782,7 +12782,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/brokenmath/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/brokenmath/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -12795,7 +12795,7 @@
         "implementation_candidates": [
           "https://github.com/Vedant-Agarwal/inspect-brokenmath"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/brokenmath/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/brokenmath/eval.yaml"
       }
     },
     "register:castle": {
@@ -12853,7 +12853,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/castle/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/castle/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -12865,7 +12865,7 @@
         "implementation_candidates": [
           "https://github.com/AI-Sec-dev/inspect-eval-castle"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/castle/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/castle/eval.yaml"
       }
     },
     "register:charxiv": {
@@ -12957,7 +12957,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/charxiv/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/charxiv/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -12970,7 +12970,7 @@
         "implementation_candidates": [
           "https://github.com/meridianlabs-ai/inspect_charxiv"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/charxiv/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/charxiv/eval.yaml"
       }
     },
     "register:chipbench_debug": {
@@ -13025,7 +13025,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/chipbench_debug/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/chipbench_debug/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -13037,7 +13037,7 @@
         "implementation_candidates": [
           "https://github.com/Plswearpants/Inspect-Eval-ChipBench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/chipbench_debug/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/chipbench_debug/eval.yaml"
       }
     },
     "register:chipbench_refmodel": {
@@ -13092,7 +13092,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/chipbench_refmodel/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/chipbench_refmodel/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -13104,7 +13104,7 @@
         "implementation_candidates": [
           "https://github.com/Plswearpants/Inspect-Eval-ChipBench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/chipbench_refmodel/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/chipbench_refmodel/eval.yaml"
       }
     },
     "register:chipbench_verilog_gen": {
@@ -13159,7 +13159,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/chipbench_verilog_gen/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/chipbench_verilog_gen/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -13171,7 +13171,7 @@
         "implementation_candidates": [
           "https://github.com/Plswearpants/Inspect-Eval-ChipBench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/chipbench_verilog_gen/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/chipbench_verilog_gen/eval.yaml"
       }
     },
     "register:contractbench": {
@@ -13227,7 +13227,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/contractbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/contractbench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -13239,7 +13239,7 @@
         "implementation_candidates": [
           "https://github.com/SecurityLab-UCD/ContractBench-inspect"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/contractbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/contractbench/eval.yaml"
       }
     },
     "register:deceptionbench": {
@@ -13298,7 +13298,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/deceptionbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/deceptionbench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -13312,7 +13312,7 @@
         "implementation_candidates": [
           "https://github.com/WatchTree-19/inspect-deceptionbench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/deceptionbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/deceptionbench/eval.yaml"
       }
     },
     "register:do_not_answer": {
@@ -13388,7 +13388,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/do_not_answer/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/do_not_answer/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -13401,7 +13401,7 @@
         "implementation_candidates": [
           "https://github.com/mkzung/inspect-evals-do-not-answer"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/do_not_answer/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/do_not_answer/eval.yaml"
       }
     },
     "register:do_not_answer_adversarial": {
@@ -13477,7 +13477,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/do_not_answer_adversarial/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/do_not_answer_adversarial/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -13490,7 +13490,7 @@
         "implementation_candidates": [
           "https://github.com/mkzung/inspect-evals-do-not-answer"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/do_not_answer_adversarial/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/do_not_answer_adversarial/eval.yaml"
       }
     },
     "register:exploitbench": {
@@ -13551,7 +13551,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/exploitbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/exploitbench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -13564,7 +13564,7 @@
         "implementation_candidates": [
           "https://github.com/ChaoticCooties/exploitbench-eval"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/exploitbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/exploitbench/eval.yaml"
       }
     },
     "register:failsafeqa": {
@@ -13633,7 +13633,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/failsafeqa/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/failsafeqa/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -13646,7 +13646,7 @@
         "implementation_candidates": [
           "https://github.com/theruviparambil/failsafeqa-inspect"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/failsafeqa/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/failsafeqa/eval.yaml"
       }
     },
     "register:frames_baseline": {
@@ -13705,7 +13705,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/frames_baseline/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/frames_baseline/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -13717,7 +13717,7 @@
         "implementation_candidates": [
           "https://github.com/sahil350/frames-eval"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/frames_baseline/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/frames_baseline/eval.yaml"
       }
     },
     "register:frames_socrates": {
@@ -13776,7 +13776,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/frames_socrates/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/frames_socrates/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -13788,7 +13788,7 @@
         "implementation_candidates": [
           "https://github.com/sahil350/frames-eval"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/frames_socrates/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/frames_socrates/eval.yaml"
       }
     },
     "register:hangman-bench": {
@@ -13822,7 +13822,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/hangman-bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/hangman-bench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -13834,7 +13834,7 @@
         "implementation_candidates": [
           "https://github.com/MattFisher/hangman-bench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/hangman-bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/hangman-bench/eval.yaml"
       }
     },
     "register:harvestbench": {
@@ -13901,7 +13901,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/harvestbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/harvestbench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -13914,7 +13914,7 @@
         "implementation_candidates": [
           "https://github.com/CompassionML/harvestbench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/harvestbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/harvestbench/eval.yaml"
       }
     },
     "register:hvtb": {
@@ -13977,7 +13977,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/hvtb/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/hvtb/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -13990,7 +13990,7 @@
         "implementation_candidates": [
           "https://github.com/Aarav500/rhob"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/hvtb/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/hvtb/eval.yaml"
       }
     },
     "register:inspect-india-bharatbbq": {
@@ -14041,7 +14041,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/inspect-india-bharatbbq/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/inspect-india-bharatbbq/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -14053,7 +14053,7 @@
         "implementation_candidates": [
           "https://github.com/MetaFazer/inspect-india-evals"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/inspect-india-bharatbbq/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/inspect-india-bharatbbq/eval.yaml"
       }
     },
     "register:inspect-india-cultural_knowledge": {
@@ -14104,7 +14104,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/inspect-india-cultural_knowledge/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/inspect-india-cultural_knowledge/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -14116,7 +14116,7 @@
         "implementation_candidates": [
           "https://github.com/MetaFazer/inspect-india-evals"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/inspect-india-cultural_knowledge/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/inspect-india-cultural_knowledge/eval.yaml"
       }
     },
     "register:inspect-india-dpi_safety": {
@@ -14167,7 +14167,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/inspect-india-dpi_safety/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/inspect-india-dpi_safety/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -14179,7 +14179,7 @@
         "implementation_candidates": [
           "https://github.com/MetaFazer/inspect-india-evals"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/inspect-india-dpi_safety/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/inspect-india-dpi_safety/eval.yaml"
       }
     },
     "register:inspect-india-jailbreak_safety": {
@@ -14230,7 +14230,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/inspect-india-jailbreak_safety/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/inspect-india-jailbreak_safety/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -14242,7 +14242,7 @@
         "implementation_candidates": [
           "https://github.com/MetaFazer/inspect-india-evals"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/inspect-india-jailbreak_safety/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/inspect-india-jailbreak_safety/eval.yaml"
       }
     },
     "register:inspect-india-multilingual": {
@@ -14293,7 +14293,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/inspect-india-multilingual/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/inspect-india-multilingual/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -14305,7 +14305,7 @@
         "implementation_candidates": [
           "https://github.com/MetaFazer/inspect-india-evals"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/inspect-india-multilingual/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/inspect-india-multilingual/eval.yaml"
       }
     },
     "register:inspect-india-multilingual_safety": {
@@ -14356,7 +14356,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/inspect-india-multilingual_safety/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/inspect-india-multilingual_safety/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -14368,7 +14368,79 @@
         "implementation_candidates": [
           "https://github.com/MetaFazer/inspect-india-evals"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/inspect-india-multilingual_safety/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/inspect-india-multilingual_safety/eval.yaml"
+      }
+    },
+    "register:instruction_order_gsm8k": {
+      "source_key": "register:instruction_order_gsm8k",
+      "record_ids": [
+        "register:instruction_order_gsm8k"
+      ],
+      "family_title": "PRISM Instruction Order",
+      "record_type": "evaluation-package",
+      "status": "paper-only",
+      "resolution_method": "associated-paper-metadata",
+      "origin": {
+        "name": "Blessings Mambwe",
+        "organization": null,
+        "organizations": [],
+        "entity_type": "authors",
+        "role": "paper_authors",
+        "role_label": "Original paper authors",
+        "confidence": "paper-metadata",
+        "evidence_url": "https://arxiv.org/abs/2608.08344"
+      },
+      "paper_status": "present",
+      "papers": [
+        {
+          "status": "present",
+          "url": "https://arxiv.org/abs/2608.08344",
+          "arxiv_id": "2608.08344",
+          "title": "PRISM: A Predictive Protocol for Permutation Optimization via Landscape Diagnostics",
+          "authors": [
+            "Blessings Mambwe"
+          ],
+          "organizations": [],
+          "source": "semantic-scholar",
+          "metadata_status": "resolved"
+        },
+        {
+          "status": "present",
+          "url": "https://arxiv.org/abs/2608.08344",
+          "arxiv_id": "2608.08344",
+          "title": "PRISM: A Predictive Protocol for Permutation Optimization via Landscape Diagnostics",
+          "authors": [
+            "Blessings Mambwe"
+          ],
+          "organizations": [],
+          "source": "semantic-scholar",
+          "metadata_status": "resolved"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/bleymambwe/PRISM",
+        "owner": "Bleymambwe",
+        "relation": "reference_or_upstream_implementation",
+        "confidence": "source-derived"
+      },
+      "inspect": {
+        "role": "registry_entry",
+        "role_label": "Inspect Evals Register entry",
+        "steward": "UK AI Security Institute",
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/instruction_order_gsm8k/eval.yaml"
+      },
+      "datasets": [],
+      "official_pages": [],
+      "note": null,
+      "source_inputs": {
+        "paper_urls": [
+          "https://arxiv.org/abs/2608.08344",
+          "https://arxiv.org/abs/2608.08344v1"
+        ],
+        "implementation_candidates": [
+          "https://github.com/bleymambwe/PRISM"
+        ],
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/instruction_order_gsm8k/eval.yaml"
       }
     },
     "register:judgebench": {
@@ -14447,7 +14519,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/judgebench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/judgebench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -14460,7 +14532,7 @@
         "implementation_candidates": [
           "https://github.com/theruviparambil/judgebench-inspect"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/judgebench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/judgebench/eval.yaml"
       }
     },
     "register:lab_bench_2": {
@@ -14518,7 +14590,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/lab_bench_2/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/lab_bench_2/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -14530,7 +14602,7 @@
         "implementation_candidates": [
           "https://github.com/Generality-Labs/lab-bench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/lab_bench_2/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/lab_bench_2/eval.yaml"
       }
     },
     "register:machiavelli": {
@@ -14592,7 +14664,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/machiavelli/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/machiavelli/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -14606,7 +14678,7 @@
         "implementation_candidates": [
           "https://github.com/Plyb/inspect-machiavelli"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/machiavelli/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/machiavelli/eval.yaml"
       }
     },
     "register:manager_coercion_benchmark": {
@@ -14671,7 +14743,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/manager_coercion_benchmark/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/manager_coercion_benchmark/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -14686,7 +14758,7 @@
         "implementation_candidates": [
           "https://github.com/CompassionML/manager-coercion-bench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/manager_coercion_benchmark/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/manager_coercion_benchmark/eval.yaml"
       }
     },
     "register:manta": {
@@ -14755,7 +14827,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/manta/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/manta/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -14768,7 +14840,7 @@
         "implementation_candidates": [
           "https://github.com/Mycelium-tools/manta_benchmark"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/manta/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/manta/eval.yaml"
       }
     },
     "register:mcptox": {
@@ -14823,7 +14895,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/mcptox/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/mcptox/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -14835,7 +14907,7 @@
         "implementation_candidates": [
           "https://github.com/stefanoamorelli/inspect-evals-mcptox"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/mcptox/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/mcptox/eval.yaml"
       }
     },
     "register:medcalc-bench": {
@@ -14898,7 +14970,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/medcalc-bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/medcalc-bench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -14910,7 +14982,99 @@
         "implementation_candidates": [
           "https://github.com/azrabano23/medcalc-bench-inspect"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/medcalc-bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/medcalc-bench/eval.yaml"
+      }
+    },
+    "register:monitor_bench-goal-sandbag-safety": {
+      "source_key": "register:monitor_bench-goal-sandbag-safety",
+      "record_ids": [
+        "register:monitor_bench-goal-sandbag-safety"
+      ],
+      "family_title": "MonitorBench (Goal sandbag Safety subset)",
+      "record_type": "evaluation-package",
+      "status": "paper-only",
+      "resolution_method": "associated-paper-metadata",
+      "origin": {
+        "name": "Han Wang, Yifan Sun, Brian Ko et al.",
+        "organization": null,
+        "organizations": [],
+        "entity_type": "authors",
+        "role": "paper_authors",
+        "role_label": "Original paper authors",
+        "confidence": "paper-metadata",
+        "evidence_url": "https://arxiv.org/abs/2603.28590"
+      },
+      "paper_status": "present",
+      "papers": [
+        {
+          "status": "present",
+          "url": "https://arxiv.org/abs/2603.28590",
+          "arxiv_id": "2603.28590",
+          "title": "MonitorBench: A Comprehensive Benchmark for Chain-of-Thought Monitorability in Large Language Models",
+          "authors": [
+            "Han Wang",
+            "Yifan Sun",
+            "Brian Ko",
+            "Mann Talati",
+            "Jiawen Gong",
+            "Zimeng Li",
+            "Naicheng Yu",
+            "Xucheng Yu",
+            "Wei Shen",
+            "Vedant Jolly",
+            "Huan Zhang"
+          ],
+          "organizations": [],
+          "source": "semantic-scholar",
+          "metadata_status": "resolved"
+        },
+        {
+          "status": "present",
+          "url": "https://arxiv.org/abs/2603.28590",
+          "arxiv_id": "2603.28590",
+          "title": "MonitorBench: A Comprehensive Benchmark for Chain-of-Thought Monitorability in Large Language Models",
+          "authors": [
+            "Han Wang",
+            "Yifan Sun",
+            "Brian Ko",
+            "Mann Talati",
+            "Jiawen Gong",
+            "Zimeng Li",
+            "Naicheng Yu",
+            "Xucheng Yu",
+            "Wei Shen",
+            "Vedant Jolly",
+            "Huan Zhang"
+          ],
+          "organizations": [],
+          "source": "semantic-scholar",
+          "metadata_status": "resolved"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/semsorock/inspect-evals-monitor-bench",
+        "owner": "Semsorock",
+        "relation": "reference_or_upstream_implementation",
+        "confidence": "source-derived"
+      },
+      "inspect": {
+        "role": "registry_entry",
+        "role_label": "Inspect Evals Register entry",
+        "steward": "UK AI Security Institute",
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/monitor_bench-goal-sandbag-safety/eval.yaml"
+      },
+      "datasets": [],
+      "official_pages": [],
+      "note": null,
+      "source_inputs": {
+        "paper_urls": [
+          "https://arxiv.org/abs/2603.28590",
+          "https://arxiv.org/abs/2603.28590v2"
+        ],
+        "implementation_candidates": [
+          "https://github.com/semsorock/inspect-evals-monitor-bench"
+        ],
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/monitor_bench-goal-sandbag-safety/eval.yaml"
       }
     },
     "register:monitorbench-dual-objectives-summarization": {
@@ -14989,7 +15153,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/monitorbench-dual-objectives-summarization/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/monitorbench-dual-objectives-summarization/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -15002,7 +15166,7 @@
         "implementation_candidates": [
           "https://github.com/semsorock/inspect-evals-monitor-bench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/monitorbench-dual-objectives-summarization/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/monitorbench-dual-objectives-summarization/eval.yaml"
       }
     },
     "register:monitorbench-goal-sandbag-math": {
@@ -15081,7 +15245,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/monitorbench-goal-sandbag-math/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/monitorbench-goal-sandbag-math/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -15094,7 +15258,7 @@
         "implementation_candidates": [
           "https://github.com/semsorock/inspect-evals-monitor-bench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/monitorbench-goal-sandbag-math/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/monitorbench-goal-sandbag-math/eval.yaml"
       }
     },
     "register:monitorbench-steganography": {
@@ -15173,7 +15337,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/monitorbench-steganography/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/monitorbench-steganography/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -15186,7 +15350,7 @@
         "implementation_candidates": [
           "https://github.com/semsorock/inspect-evals-monitor-bench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/monitorbench-steganography/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/monitorbench-steganography/eval.yaml"
       }
     },
     "register:mutox": {
@@ -15199,13 +15363,13 @@
       "status": "paper-only",
       "resolution_method": "associated-paper-metadata",
       "origin": {
-        "name": "Associated paper authors",
+        "name": "Marta R. Costa-jussà, Mariano Coria Meglioli, Pierre Andrews et al.",
         "organization": null,
         "organizations": [],
         "entity_type": "authors",
         "role": "paper_authors",
         "role_label": "Original paper authors",
-        "confidence": "paper-linked",
+        "confidence": "paper-metadata",
         "evidence_url": "https://arxiv.org/abs/2401.05060"
       },
       "paper_status": "present",
@@ -15241,7 +15405,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/mutox/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/mutox/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -15253,7 +15417,7 @@
         "implementation_candidates": [
           "https://github.com/ymerkli/inspect-evals-mutox"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/mutox/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/mutox/eval.yaml"
       }
     },
     "register:narcbench": {
@@ -15322,7 +15486,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/narcbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/narcbench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -15335,7 +15499,7 @@
         "implementation_candidates": [
           "https://github.com/shubhangithub/collusionguard"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/narcbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/narcbench/eval.yaml"
       }
     },
     "register:openbookqa": {
@@ -15409,7 +15573,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/openbookqa/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/openbookqa/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -15422,7 +15586,7 @@
         "implementation_candidates": [
           "https://github.com/Sammy-Dabbas/openbookqa-eval"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/openbookqa/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/openbookqa/eval.yaml"
       }
     },
     "register:or_bench": {
@@ -15472,7 +15636,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/or_bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/or_bench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -15484,7 +15648,7 @@
         "implementation_candidates": [
           "https://github.com/haeliotang/inspect-evals-orbench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/or_bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/or_bench/eval.yaml"
       }
     },
     "register:patcheval": {
@@ -15563,7 +15727,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/patcheval/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/patcheval/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -15576,7 +15740,7 @@
         "implementation_candidates": [
           "https://github.com/bytedance/PatchEval"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/patcheval/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/patcheval/eval.yaml"
       }
     },
     "register:perspective_gap": {
@@ -15643,7 +15807,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/perspective_gap/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/perspective_gap/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -15656,7 +15820,7 @@
         "implementation_candidates": [
           "https://github.com/WhymustIhaveaname/PerspectiveGap-inspect"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/perspective_gap/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/perspective_gap/eval.yaml"
       }
     },
     "register:pinchbench": {
@@ -15690,7 +15854,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/pinchbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/pinchbench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -15704,7 +15868,7 @@
           "https://github.com/pinchbench/skill",
           "https://github.com/zytoh0/pinch-wildclawbench-inspect"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/pinchbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/pinchbench/eval.yaml"
       }
     },
     "register:prism_instruction_order": {
@@ -15763,7 +15927,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/prism_instruction_order/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/prism_instruction_order/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -15776,7 +15940,7 @@
         "implementation_candidates": [
           "https://github.com/bleymambwe/PRISM"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/prism_instruction_order/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/prism_instruction_order/eval.yaml"
       }
     },
     "register:prism_instruction_order_gsm8k": {
@@ -15835,7 +15999,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/prism_instruction_order_gsm8k/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/prism_instruction_order_gsm8k/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -15848,7 +16012,7 @@
         "implementation_candidates": [
           "https://github.com/bleymambwe/PRISM"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/prism_instruction_order_gsm8k/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/prism_instruction_order_gsm8k/eval.yaml"
       }
     },
     "register:salad-bench": {
@@ -15902,7 +16066,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/salad-bench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/salad-bench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -15914,7 +16078,7 @@
         "implementation_candidates": [
           "https://github.com/WatchTree-19/inspect-salad-bench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/salad-bench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/salad-bench/eval.yaml"
       }
     },
     "register:sycobench-600": {
@@ -15959,7 +16123,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/sycobench-600/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/sycobench-600/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -15971,7 +16135,7 @@
         "implementation_candidates": [
           "https://github.com/debu-sinha/sycobench-600"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/sycobench-600/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/sycobench-600/eval.yaml"
       }
     },
     "register:tarantubench": {
@@ -16007,7 +16171,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/tarantubench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/tarantubench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [
@@ -16019,7 +16183,79 @@
         "implementation_candidates": [
           "https://github.com/Trivulzianus/TarantuBench"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/tarantubench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/tarantubench/eval.yaml"
+      }
+    },
+    "register:voxparity": {
+      "source_key": "register:voxparity",
+      "record_ids": [
+        "register:voxparity"
+      ],
+      "family_title": "VoxParity",
+      "record_type": "evaluation-package",
+      "status": "paper-only",
+      "resolution_method": "associated-paper-metadata",
+      "origin": {
+        "name": "Associated paper authors",
+        "organization": null,
+        "organizations": [],
+        "entity_type": "authors",
+        "role": "paper_authors",
+        "role_label": "Original paper authors",
+        "confidence": "paper-linked",
+        "evidence_url": "https://arxiv.org/abs/2609.35922"
+      },
+      "paper_status": "present",
+      "papers": [
+        {
+          "status": "present",
+          "url": "https://arxiv.org/abs/2609.35922",
+          "arxiv_id": "2609.35922",
+          "title": "Almost Human, Except When It Matters: VoxParity and the Decisions a Voice Should Change",
+          "authors": [
+            "Bhavik Mangla"
+          ],
+          "organizations": [],
+          "source": "associated-arxiv-record",
+          "metadata_status": "resolved"
+        },
+        {
+          "status": "present",
+          "url": "https://arxiv.org/abs/2609.35922",
+          "arxiv_id": "2609.35922",
+          "title": "Almost Human, Except When It Matters: VoxParity and the Decisions a Voice Should Change",
+          "authors": [
+            "Bhavik Mangla"
+          ],
+          "organizations": [],
+          "source": "associated-arxiv-record",
+          "metadata_status": "resolved"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/bhavik-mangla/voxparity-bench",
+        "owner": "Bhavik Mangla",
+        "relation": "reference_or_upstream_implementation",
+        "confidence": "source-derived"
+      },
+      "inspect": {
+        "role": "registry_entry",
+        "role_label": "Inspect Evals Register entry",
+        "steward": "UK AI Security Institute",
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/voxparity/eval.yaml"
+      },
+      "datasets": [],
+      "official_pages": [],
+      "note": null,
+      "source_inputs": {
+        "paper_urls": [
+          "https://arxiv.org/abs/2609.35922",
+          "https://arxiv.org/abs/2609.35922v1"
+        ],
+        "implementation_candidates": [
+          "https://github.com/bhavik-mangla/voxparity-bench"
+        ],
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/voxparity/eval.yaml"
       }
     },
     "register:wildclawbench": {
@@ -16128,7 +16364,7 @@
         "role": "registry_entry",
         "role_label": "Inspect Evals Register entry",
         "steward": "UK AI Security Institute",
-        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/wildclawbench/eval.yaml"
+        "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/wildclawbench/eval.yaml"
       },
       "datasets": [],
       "official_pages": [],
@@ -16141,12 +16377,12 @@
         "implementation_candidates": [
           "https://github.com/zytoh0/pinch-wildclawbench-inspect"
         ],
-        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/eb5383efecd8ac6d23fd276757b811f3db05a1f5/register/wildclawbench/eval.yaml"
+        "inspect_source": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/8ef810f09930362302fc59b10a382d96dd767171/register/wildclawbench/eval.yaml"
       }
     }
   },
   "paper_metadata": {
-    "refreshed_at": "2026-10-11T09:04:54.802Z",
+    "refreshed_at": "2026-10-18T07:18:21.255Z",
     "pending": [],
     "failures": []
   }
