@@ -1,0 +1,535 @@
+# FronteraEval catalogue
+
+Generated: 2026-08-29T03:03:45.854Z
+Records: 314
+Documentary reviews: 30
+Independent replications: 0
+
+## Reviewed records
+
+### AgentDojo
+- URL: https://fronteraeval.org/evaluations/canonical-agentdojo/
+- Origin: ETH Zurich SPY Lab and Invariant Labs
+- Can support: Utility-security tradeoffs against AgentDojo's prompt-injection scenarios under the exact agent and defense configuration.
+- Cannot support by itself: All prompt-injection vectors, live tool ecosystems, supply-chain attacks, or real-world incident frequency.
+- Primary source: https://github.com/ethz-spylab/agentdojo
+
+### Agentharm
+- URL: https://fronteraeval.org/evaluations/inspect-agentharm/
+- Origin: Gray Swan AI and the UK AI Security Institute
+- Can support: Whether an evaluated agent can be elicited to execute AgentHarm's selected harmful tasks under the published tools, environment, and jailbreak setup.
+- Cannot support by itself: Real-world misuse prevalence, operator skill, deployment access, victim impact, or the probability that a deployed agent will cause harm.
+- Primary source: https://www.aisi.gov.uk/research/agentharm-a-benchmark-for-measuring-harmfulness-of-llm-agents
+
+### Agentic Misalignment: How LLMs could be insider threats
+- URL: https://fronteraeval.org/evaluations/inspect-agentic-misalignment/
+- Origin: Anthropic
+- Can support: Harmful action selection in the benchmark's synthetic high-conflict scenarios under a specified model, prompt, tool, and opportunity configuration.
+- Cannot support by itself: The base rate of misalignment in normal deployment, spontaneous long-term goals, real organizational incidents, or the probability of autonomous insider threats.
+- Primary source: https://www.anthropic.com/research/agentic-misalignment
+
+### AILuminate
+- URL: https://fronteraeval.org/evaluations/canonical-ailuminate/
+- Origin: MLCommons
+- Can support: Response safety on AILuminate's prompt distribution, taxonomy, language, evaluator, and model-system configuration.
+- Cannot support by itself: All safety hazards, adaptive jailbreak robustness, multi-turn or tool-using misuse, deployment incidence, human harm, or a complete product safety case.
+- Primary source: https://mlcommons.org/ailuminate
+
+### APE: Attempt to Persuade Eval
+- URL: https://fronteraeval.org/evaluations/inspect-ape-eval/
+- Origin: FAR AI
+- Can support: Whether and how often the model attempts persuasion in APE's simulated dialogue distribution under the stated prompting and classification protocol.
+- Cannot support by itself: Persuasion effectiveness on humans, belief change, behavioral change, covert targeting, deployment at scale, durable agency loss, or electoral effects.
+- Primary source: https://www.far.ai/blog/attempt-to-persuade-eval
+
+### CVEBench: Benchmark for AI Agents Ability to Exploit Real-World Web Application Vulnerabilities
+- URL: https://fronteraeval.org/evaluations/inspect-cve-bench/
+- Origin: Yuxuan Zhu, Antony Kellermann, Dylan Bowman et al.
+- Can support: Exploit completion on CVE-Bench's selected vulnerabilities under its environment, information, tool, and budget conditions.
+- Cannot support by itself: Vulnerability discovery at scale, stealth, persistence, lateral movement, real target access, or end-to-end offensive campaigns.
+- Primary source: https://arxiv.org/abs/2503.17332
+
+### Cybench: Capture-The-Flag Cybersecurity Challenges
+- URL: https://fronteraeval.org/evaluations/inspect-cybench/
+- Origin: Andy K. Zhang, Neil Perry, Riya Dulepet et al.
+- Can support: Performance on CyBench's selected CTF tasks under the exact command environment, tools, scaffold, and budget.
+- Cannot support by itself: Real-world intrusion capability, stealth, persistence, target discovery, legal or organizational constraints, or operational cyber risk.
+- Primary source: https://arxiv.org/abs/2408.08926
+
+### DeceptionBench
+- URL: https://fronteraeval.org/evaluations/register-deceptionbench/
+- Origin: PKU-Alignment and the DeceptionBench paper authors
+- Can support: Deceptive response patterns under DeceptionBench's scenarios and operational definitions, conditional on the validity of its belief and reasoning proxies.
+- Cannot support by itself: A universal deception trait, private intent, spontaneous scheming, real-world deception prevalence, human susceptibility, or downstream harm.
+- Primary source: https://arxiv.org/abs/2505.18807
+
+### Frontier Cs Research
+- URL: https://fronteraeval.org/evaluations/inspect-frontier-cs-research/
+- Origin: Qiuyang Mang, Wenhao Chai, Zhifei Li et al.
+- Can support: Performance on the benchmark's selected frontier computer-science research questions under its elicitation and grading protocol.
+- Cannot support by itself: End-to-end research execution, empirical validation, research taste, durable autonomy, or general scientific productivity.
+- Primary source: https://arxiv.org/abs/2512.15699
+
+### FrontierMath
+- URL: https://fronteraeval.org/evaluations/canonical-frontiermath/
+- Origin: Epoch AI
+- Can support: Success on the evaluated FrontierMath problem set under the stated elicitation, tool, sampling, and grading conditions.
+- Cannot support by itself: General intelligence, mathematical research autonomy, theorem-proving reliability across the field, AI safety, or AI R&D capability by itself.
+- Primary source: https://epoch.ai/frontiermath
+
+### HarmBench
+- URL: https://fronteraeval.org/evaluations/canonical-harmbench/
+- Origin: Center for AI Safety and the HarmBench paper authors
+- Can support: Elicitability of HarmBench's harmful behaviors under the selected red-team methods and target configuration.
+- Cannot support by itself: Real-world harm, user intent, deployment prevalence, universal safeguard robustness, or agentic end-to-end misuse.
+- Primary source: https://github.com/centerforaisafety/HarmBench
+
+### JailbreakBench
+- URL: https://fronteraeval.org/evaluations/canonical-jailbreakbench/
+- Origin: JailbreakBench project and paper authors
+- Can support: Robustness to the included jailbreak artifacts under the exact target-model and evaluation configuration.
+- Cannot support by itself: Universal jailbreak resistance, adaptive adversary performance, agentic misuse, operational incident rates, or a complete safety case.
+- Primary source: https://jailbreakbench.github.io
+
+### MACHIAVELLI
+- URL: https://fronteraeval.org/evaluations/register-machiavelli/
+- Origin: MACHIAVELLI paper authors
+- Can support: Behavioral choices and reward-harm tradeoffs in the benchmark's selected fictional social games under the specified agent policy.
+- Cannot support by itself: Real-world political manipulation, stable model values, human victim impact, deployment intent, or the incidence of power-seeking outside simulated games.
+- Primary source: https://arxiv.org/abs/2304.03279
+
+### Make Me Pay
+- URL: https://fronteraeval.org/evaluations/inspect-make-me-pay/
+- Origin: OpenAI Evals
+- Can support: Model-to-model success at obtaining the benchmark's simulated financial outcome from the specified model counterpart under controlled dialogue conditions.
+- Cannot support by itself: Human susceptibility to fraud, actual financial loss, prevalence of scams, lawful or covert deployment, or real-world victimization.
+- Primary source: https://github.com/openai/evals
+
+### MakeMeSay
+- URL: https://fronteraeval.org/evaluations/inspect-makemesay/
+- Origin: OpenAI Evals
+- Can support: Success at a narrow strategic-steering game against the specified simulated counterpart under the benchmark's rules.
+- Cannot support by itself: Human persuasion, belief or behavior change, covert manipulation in natural conversations, durable effects, or real-world social-engineering success.
+- Primary source: https://github.com/openai/evals
+
+### MCB
+- URL: https://fronteraeval.org/evaluations/register-manager-coercion-benchmark/
+- Origin: Manager Coercion Benchmark paper authors
+- Can support: Coercive managerial behavior in the benchmark's synthetic role-play distribution under the specified models, prompts, and judge.
+- Cannot support by itself: Human experience of coercion, workplace harm, organizational incidence, stable managerial tendencies, or real deployment behavior.
+- Primary source: https://arxiv.org/abs/2607.15434
+
+### MASK: Disentangling Honesty from Accuracy in AI Systems
+- URL: https://fronteraeval.org/evaluations/inspect-mask/
+- Origin: Center for AI Safety
+- Can support: Whether model responses remain consistent with benchmark-elicited beliefs under MASK's controlled pressure scenarios and scoring rules.
+- Cannot support by itself: Private internal beliefs, privileged access to hidden cognition, persuasion effectiveness, human belief change, strategic deployment, or downstream social harm.
+- Primary source: https://github.com/centerforaisafety/mask
+
+### METR Time Horizons
+- URL: https://fronteraeval.org/evaluations/canonical-metr-time-horizons/
+- Origin: METR
+- Can support: A time-scaled summary of success on METR's selected task distribution under the stated elicitation, human-time estimates, and statistical model.
+- Cannot support by itself: Literal autonomous runtime, all economically useful work, general agent autonomy, safe long-term operation, reliability under distribution shift, or the fraction of jobs automatable.
+- Primary source: https://metr.org/time-horizons
+
+### Mle Bench
+- URL: https://fronteraeval.org/evaluations/inspect-mle-bench/
+- Origin: OpenAI
+- Can support: Ability to execute selected machine-learning engineering workflows under the MLE-Bench task, compute, and scaffold conditions.
+- Cannot support by itself: General AI research ability, production ML reliability, data acquisition, stakeholder work, long-term maintenance, or autonomous scientific discovery.
+- Primary source: https://openai.com/index/mle-bench
+
+### OSWorld
+- URL: https://fronteraeval.org/evaluations/inspect-osworld/
+- Origin: Tianbao Xie, Danyang Zhang, Jixuan Chen et al.
+- Can support: Success on selected OSWorld tasks under the specified environment image, observation/action interface, and scaffold.
+- Cannot support by itself: Safe and reliable desktop deployment, user preference satisfaction, long-term operation, privacy protection, or arbitrary computer-use competence.
+- Primary source: https://arxiv.org/abs/2404.07972
+
+### PaperBench: Evaluating AI's Ability to Replicate AI Research (Work In Progress)
+- URL: https://fronteraeval.org/evaluations/inspect-paperbench/
+- Origin: OpenAI
+- Can support: How well an evaluated agent reproduces specified AI research outputs for the selected papers under the published PaperBench protocol.
+- Cannot support by itself: Unbounded original research ability, research taste, theory generation, lab management, reliable scientific autonomy, or acceleration of AI progress in deployment.
+- Primary source: https://openai.com/index/paperbench
+
+### RE-Bench
+- URL: https://fronteraeval.org/evaluations/canonical-re-bench/
+- Origin: METR
+- Can support: Research-engineering performance on RE-Bench's seven selected tasks under the exact budget, environment, model-agent scaffold, and scoring setup.
+- Cannot support by itself: All AI R&D, research taste, agenda setting, theory development, reliable autonomous research, organizational productivity, or aggregate AI-progress acceleration.
+- Primary source: https://github.com/METR/RE-Bench
+
+### SAD Influence
+- URL: https://fronteraeval.org/evaluations/inspect-sad-influence/
+- Origin: SAD paper authors
+- Can support: Performance on SAD's influence-related situational-awareness probes under the specified prompting and scoring setup.
+- Cannot support by itself: Persuasion of humans, manipulation effectiveness, actual attempts to influence evaluators, scheming, or real-world oversight evasion.
+- Primary source: https://arxiv.org/abs/2407.04694
+
+### StrongREJECT: Measuring LLM susceptibility to jailbreak attacks
+- URL: https://fronteraeval.org/evaluations/inspect-strong-reject/
+- Origin: Alexandra Souly, Qingyuan Lu, Dillon Bowen et al.
+- Can support: How harmful and useful the target's responses are on the StrongREJECT prompt and attack distribution under the stated evaluator.
+- Cannot support by itself: Universal jailbreak robustness, real-world misuse success, adaptive agentic attacks, or downstream harm.
+- Primary source: https://arxiv.org/abs/2402.10260
+
+### Swe Bench
+- URL: https://fronteraeval.org/evaluations/inspect-swe-bench/
+- Origin: Carlos E. Jimenez, John Yang, Alexander Wettig et al.
+- Can support: Patch-generation success on the selected SWE-bench issues under the exact repository, test, scaffold, and execution setup.
+- Cannot support by itself: General software engineering productivity, requirements discovery, maintainability, security, teamwork, or reliable deployment.
+- Primary source: https://arxiv.org/abs/2310.06770
+
+### Sycophancy Eval
+- URL: https://fronteraeval.org/evaluations/inspect-sycophancy/
+- Origin: Anthropic and the paper authors
+- Can support: User-agreement or user-pleasing tendencies on the benchmark's paired prompt distribution under the stated model and prompting setup.
+- Cannot support by itself: Deliberate manipulation, strategic deception, downstream user belief change, emotional dependency, or the prevalence of sycophancy in real conversations.
+- Primary source: https://www.anthropic.com/research/towards-understanding-sycophancy-in-language-models
+
+### Terminal-Bench
+- URL: https://fronteraeval.org/evaluations/canonical-terminal-bench/
+- Origin: Stanford and the Laude Institute
+- Can support: Ability to complete the benchmark's terminal tasks under a specified agent harness, environment, and budget.
+- Cannot support by itself: General computer-use autonomy, safe production administration, open-ended planning, or reliability across arbitrary terminal workloads.
+- Primary source: https://www.tbench.ai
+
+### WebArena
+- URL: https://fronteraeval.org/evaluations/canonical-webarena/
+- Origin: Carnegie Mellon University and the WebArena paper authors
+- Can support: Web task completion on the benchmark's selected sites and tasks under the stated browser-agent setup.
+- Cannot support by itself: Performance on the open web, resilience to site changes, safe handling of real accounts, or general workplace automation.
+- Primary source: https://webarena.dev
+
+### WMDP
+- URL: https://fronteraeval.org/evaluations/canonical-wmdp/
+- Origin: Center for AI Safety and the WMDP paper authors
+- Can support: Recognition and selection of answers to WMDP's hazardous-knowledge questions under the stated prompt and model configuration.
+- Cannot support by itself: Operational CBRN or cyber capability, experimental competence, tool use, planning, intent, tacit knowledge, end-to-end harm creation, or deployment risk.
+- Primary source: https://github.com/centerforaisafety/wmdp
+
+### WorkArena
+- URL: https://fronteraeval.org/evaluations/canonical-workarena/
+- Origin: ServiceNow Research and the WorkArena paper authors
+- Can support: Performance on WorkArena's selected ServiceNow task distribution under the specified instance, agent interface, and budget.
+- Cannot support by itself: General enterprise productivity, organizational integration, safe access control, user acceptance, or performance across other business software.
+- Primary source: https://github.com/ServiceNow/WorkArena
+
+## Complete index
+
+- [AbstentionBench: Reasoning LLMs Fail on Unanswerable Questions](https://fronteraeval.org/evaluations/inspect-abstention-bench/) — Evaluation integrity
+- [AgentBench: Evaluate LLMs as Agents](https://fronteraeval.org/evaluations/inspect-agent-bench-os/) — Autonomy & agents
+- [Agent Threat Bench Autonomy Hijack](https://fronteraeval.org/evaluations/inspect-agent-threat-bench-autonomy-hijack/) — Autonomy & agents
+- [Agent Threat Bench Data Exfil](https://fronteraeval.org/evaluations/inspect-agent-threat-bench-data-exfil/) — Autonomy & agents
+- [Agent Threat Bench Memory Poison](https://fronteraeval.org/evaluations/inspect-agent-threat-bench-memory-poison/) — Autonomy & agents
+- [AgentBoard](https://fronteraeval.org/evaluations/canonical-agentboard/) — Autonomy & agents, Evaluation integrity
+- [AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents](https://fronteraeval.org/evaluations/inspect-agentdojo/) — Autonomy & agents
+- [AgentDojo](https://fronteraeval.org/evaluations/canonical-agentdojo/) — Autonomy & agents, Safeguards
+- [Agentharm](https://fronteraeval.org/evaluations/inspect-agentharm/) — Autonomy & agents, Safeguards
+- [AgentHarm](https://fronteraeval.org/evaluations/canonical-agentharm/) — Autonomy & agents, Safeguards
+- [Agentharm Benign](https://fronteraeval.org/evaluations/inspect-agentharm-benign/) — Autonomy & agents, Safeguards
+- [Agentic Misalignment: How LLMs could be insider threats](https://fronteraeval.org/evaluations/inspect-agentic-misalignment/) — Deception & misalignment, Autonomy & agents
+- [Agie Aqua Rat](https://fronteraeval.org/evaluations/inspect-agie-aqua-rat/) — General capability
+- [Agie Logiqa En](https://fronteraeval.org/evaluations/inspect-agie-logiqa-en/) — General capability
+- [Agie Lsat Ar](https://fronteraeval.org/evaluations/inspect-agie-lsat-ar/) — General capability
+- [Agie Lsat Lr](https://fronteraeval.org/evaluations/inspect-agie-lsat-lr/) — General capability
+- [Agie Lsat Rc](https://fronteraeval.org/evaluations/inspect-agie-lsat-rc/) — General capability
+- [Agie Math](https://fronteraeval.org/evaluations/inspect-agie-math/) — General capability
+- [Agie Sat En](https://fronteraeval.org/evaluations/inspect-agie-sat-en/) — General capability
+- [Agie Sat En Without Passage](https://fronteraeval.org/evaluations/inspect-agie-sat-en-without-passage/) — General capability
+- [Agie Sat Math](https://fronteraeval.org/evaluations/inspect-agie-sat-math/) — General capability
+- [AHB](https://fronteraeval.org/evaluations/register-ahb/) — General capability
+- [AILuminate](https://fronteraeval.org/evaluations/canonical-ailuminate/) — Safeguards
+- [AIME 2024: Problems from the American Invitational Mathematics Examination](https://fronteraeval.org/evaluations/inspect-aime2024/) — General capability
+- [AIME 2025: Problems from the American Invitational Mathematics Examination](https://fronteraeval.org/evaluations/inspect-aime2025/) — General capability
+- [AIME 2026: Problems from the American Invitational Mathematics Examination](https://fronteraeval.org/evaluations/inspect-aime2026/) — General capability
+- [AIR Bench: AI Risk Benchmark](https://fronteraeval.org/evaluations/inspect-air-bench/) — Safeguards
+- [Alignment Faking](https://fronteraeval.org/evaluations/register-alignment-faking/) — Deception & misalignment
+- [ANIMA: Animal Norms In Moral Assessment](https://fronteraeval.org/evaluations/inspect-anima/) — General capability
+- [APE: Attempt to Persuade Eval](https://fronteraeval.org/evaluations/inspect-ape-eval/) — Human influence & agency
+- [APPS: Automated Programming Progress Standard](https://fronteraeval.org/evaluations/inspect-apps/) — General capability
+- [AppWorld](https://fronteraeval.org/evaluations/register-appworld/) — Autonomy & agents
+- [AraTrust](https://fronteraeval.org/evaluations/register-aratrust/) — General capability
+- [ARC Challenge](https://fronteraeval.org/evaluations/inspect-arc-challenge/) — General capability
+- [ARC Easy](https://fronteraeval.org/evaluations/inspect-arc-easy/) — General capability
+- [ARC-AGI-2](https://fronteraeval.org/evaluations/canonical-arc-agi-2/) — General capability, Evaluation integrity
+- [ArxivRollBench](https://fronteraeval.org/evaluations/register-arxivrollbench/) — Evaluation integrity
+- [Assistant Bench Closed Book One Shot](https://fronteraeval.org/evaluations/inspect-assistant-bench-closed-book-one-shot/) — Autonomy & agents
+- [Assistant Bench Closed Book Zero Shot](https://fronteraeval.org/evaluations/inspect-assistant-bench-closed-book-zero-shot/) — Autonomy & agents
+- [Assistant Bench Web Browser](https://fronteraeval.org/evaluations/inspect-assistant-bench-web-browser/) — Autonomy & agents
+- [Assistant Bench Web Search One Shot](https://fronteraeval.org/evaluations/inspect-assistant-bench-web-search-one-shot/) — Autonomy & agents
+- [Assistant Bench Web Search Zero Shot](https://fronteraeval.org/evaluations/inspect-assistant-bench-web-search-zero-shot/) — Autonomy & agents
+- [b3: Backbone Breaker Benchmark](https://fronteraeval.org/evaluations/inspect-b3/) — General capability
+- [Bbeh](https://fronteraeval.org/evaluations/inspect-bbeh/) — General capability
+- [Bbeh Mini](https://fronteraeval.org/evaluations/inspect-bbeh-mini/) — General capability
+- [BBH: Challenging BIG-Bench Tasks](https://fronteraeval.org/evaluations/inspect-bbh/) — General capability
+- [BBQ: Bias Benchmark for Question Answering](https://fronteraeval.org/evaluations/inspect-bbq/) — General capability
+- [BFCL](https://fronteraeval.org/evaluations/inspect-bfcl/) — General capability
+- [BigCodeBench: Benchmarking Code Generation with Diverse Function Calls and Complex Instructions](https://fronteraeval.org/evaluations/inspect-bigcodebench/) — General capability
+- [BixBench](https://fronteraeval.org/evaluations/register-bixbench/) — Bio / CBRN
+- [BOLD: Bias in Open-ended Language Generation Dataset](https://fronteraeval.org/evaluations/inspect-bold/) — General capability
+- [BoolQ: Exploring the Surprising Difficulty of Natural Yes/No Questions](https://fronteraeval.org/evaluations/inspect-boolq/) — General capability
+- [BrokenMath](https://fronteraeval.org/evaluations/register-brokenmath/) — General capability
+- [BrowseComp: A Simple Yet Challenging Benchmark for Browsing Agents](https://fronteraeval.org/evaluations/inspect-browse-comp/) — Autonomy & agents
+- [CASTLE](https://fronteraeval.org/evaluations/register-castle/) — General capability
+- [ChemBench: Are large language models superhuman chemists?](https://fronteraeval.org/evaluations/inspect-chembench/) — Bio / CBRN
+- [ChipBench — Debugging](https://fronteraeval.org/evaluations/register-chipbench-debug/) — General capability
+- [ChipBench — Reference Model](https://fronteraeval.org/evaluations/register-chipbench-refmodel/) — General capability
+- [ChipBench — Verilog Generation](https://fronteraeval.org/evaluations/register-chipbench-verilog-gen/) — General capability
+- [ClassEval: A Manually-Crafted Benchmark for Evaluating LLMs on Class-level Code Generation](https://fronteraeval.org/evaluations/inspect-class-eval/) — General capability
+- [The Art of Saying No: Contextual Noncompliance in Language Models](https://fronteraeval.org/evaluations/inspect-coconot/) — Safeguards
+- [CommonsenseQA: A Question Answering Challenge Targeting Commonsense Knowledge](https://fronteraeval.org/evaluations/inspect-commonsense-qa/) — General capability
+- [ComputeEval: CUDA Code Generation Benchmark](https://fronteraeval.org/evaluations/inspect-compute-eval/) — General capability
+- [ContractBench](https://fronteraeval.org/evaluations/register-contractbench/) — General capability
+- [CORE-Bench](https://fronteraeval.org/evaluations/inspect-core-bench/) — General capability
+- [CTI Realm 25](https://fronteraeval.org/evaluations/inspect-cti-realm-25/) — Cyber
+- [CTI Realm 25 Minimal](https://fronteraeval.org/evaluations/inspect-cti-realm-25-minimal/) — Cyber
+- [CTI Realm 25 Seeded](https://fronteraeval.org/evaluations/inspect-cti-realm-25-seeded/) — Cyber
+- [CTI Realm 50](https://fronteraeval.org/evaluations/inspect-cti-realm-50/) — Cyber
+- [CVEBench: Benchmark for AI Agents Ability to Exploit Real-World Web Application Vulnerabilities](https://fronteraeval.org/evaluations/inspect-cve-bench/) — Cyber
+- [Cybench: Capture-The-Flag Cybersecurity Challenges](https://fronteraeval.org/evaluations/inspect-cybench/) — Cyber
+- [CyberGym: Evaluating AI Agents' Real-World Cybersecurity Capabilities at Scale](https://fronteraeval.org/evaluations/inspect-cybergym/) — Cyber
+- [Cybermetric 10000](https://fronteraeval.org/evaluations/inspect-cybermetric-10000/) — Cyber
+- [Cybermetric 2000](https://fronteraeval.org/evaluations/inspect-cybermetric-2000/) — Cyber
+- [Cybermetric 500](https://fronteraeval.org/evaluations/inspect-cybermetric-500/) — Cyber
+- [Cybermetric 80](https://fronteraeval.org/evaluations/inspect-cybermetric-80/) — Cyber
+- [CyberSecEval](https://fronteraeval.org/evaluations/canonical-cyberseceval/) — Cyber, Safeguards
+- [Cyse2 Interpreter Abuse](https://fronteraeval.org/evaluations/inspect-cyse2-interpreter-abuse/) — General capability
+- [Cyse2 Prompt Injection](https://fronteraeval.org/evaluations/inspect-cyse2-prompt-injection/) — Cyber
+- [Cyse2 Vulnerability Exploit](https://fronteraeval.org/evaluations/inspect-cyse2-vulnerability-exploit/) — Cyber
+- [CYBERSECEVAL 3: Advancing the Evaluation of Cybersecurity Risks and Capabilities in Large Language Models](https://fronteraeval.org/evaluations/inspect-cyse3-visual-prompt-injection/) — Cyber, Multimodal
+- [Cyse4 Autocomplete](https://fronteraeval.org/evaluations/inspect-cyse4-autocomplete/) — General capability
+- [Cyse4 Instruct](https://fronteraeval.org/evaluations/inspect-cyse4-instruct/) — General capability
+- [Cyse4 Malware Analysis](https://fronteraeval.org/evaluations/inspect-cyse4-malware-analysis/) — Cyber
+- [Cyse4 Mitre](https://fronteraeval.org/evaluations/inspect-cyse4-mitre/) — Cyber
+- [Cyse4 Mitre Frr](https://fronteraeval.org/evaluations/inspect-cyse4-mitre-frr/) — Cyber
+- [Cyse4 Multilingual Prompt Injection](https://fronteraeval.org/evaluations/inspect-cyse4-multilingual-prompt-injection/) — Cyber
+- [Cyse4 Multiturn Phishing](https://fronteraeval.org/evaluations/inspect-cyse4-multiturn-phishing/) — Cyber
+- [Cyse4 Threat Intelligence](https://fronteraeval.org/evaluations/inspect-cyse4-threat-intelligence/) — General capability
+- [Dangerous Capability Evaluations](https://fronteraeval.org/evaluations/canonical-deepmind-dangerous-capabilities/) — Bio / CBRN, Cyber, Autonomy & agents
+- [DeceptionBench](https://fronteraeval.org/evaluations/register-deceptionbench/) — Human influence & agency, Deception & misalignment
+- [Do-Not-Answer](https://fronteraeval.org/evaluations/register-do-not-answer/) — Safeguards
+- [Do-Not-Answer Adversarial](https://fronteraeval.org/evaluations/register-do-not-answer-adversarial/) — Safeguards
+- [DocVQA: A Dataset for VQA on Document Images](https://fronteraeval.org/evaluations/inspect-docvqa/) — Multimodal
+- [DROP: A Reading Comprehension Benchmark Requiring Discrete Reasoning Over Paragraphs](https://fronteraeval.org/evaluations/inspect-drop/) — General capability
+- [DS-1000: A Natural and Reliable Benchmark for Data Science Code Generation](https://fronteraeval.org/evaluations/inspect-ds1000/) — General capability
+- [ExploitBench](https://fronteraeval.org/evaluations/register-exploitbench/) — Cyber
+- [Fortress Adversarial](https://fronteraeval.org/evaluations/inspect-fortress-adversarial/) — Safeguards
+- [Fortress Benign](https://fronteraeval.org/evaluations/inspect-fortress-benign/) — Safeguards
+- [FRAMES](https://fronteraeval.org/evaluations/register-frames/) — General capability
+- [Frontier Cs](https://fronteraeval.org/evaluations/inspect-frontier-cs/) — General capability
+- [Frontier Cs Algorithmic](https://fronteraeval.org/evaluations/inspect-frontier-cs-algorithmic/) — General capability
+- [Frontier Cs Research](https://fronteraeval.org/evaluations/inspect-frontier-cs-research/) — AI R&D
+- [FrontierMath](https://fronteraeval.org/evaluations/canonical-frontiermath/) — General capability, AI R&D
+- [FrontierScience: Expert-Level Scientific Reasoning](https://fronteraeval.org/evaluations/inspect-frontierscience/) — General capability
+- [Gaia](https://fronteraeval.org/evaluations/inspect-gaia/) — Autonomy & agents
+- [Gaia Level1](https://fronteraeval.org/evaluations/inspect-gaia-level1/) — Autonomy & agents
+- [Gaia Level2](https://fronteraeval.org/evaluations/inspect-gaia-level2/) — Autonomy & agents
+- [Gaia Level3](https://fronteraeval.org/evaluations/inspect-gaia-level3/) — Autonomy & agents
+- [GDM Classifier Evasion](https://fronteraeval.org/evaluations/inspect-gdm-classifier-evasion/) — General capability
+- [GDM Cover Your Tracks](https://fronteraeval.org/evaluations/inspect-gdm-cover-your-tracks/) — Deception & misalignment
+- [GDM Dangerous Capabilities: Capture the Flag](https://fronteraeval.org/evaluations/inspect-gdm-in-house-ctf/) — Cyber
+- [InterCode: Security and Coding Capture-the-Flag Challenges](https://fronteraeval.org/evaluations/inspect-gdm-intercode-ctf/) — Cyber
+- [GDM Oversight Pattern](https://fronteraeval.org/evaluations/inspect-gdm-oversight-pattern/) — Deception & misalignment
+- [GDM Self Reasoning Approved Directories](https://fronteraeval.org/evaluations/inspect-gdm-self-reasoning-approved-directories/) — Deception & misalignment
+- [GDM Self Reasoning Calculator Improvement](https://fronteraeval.org/evaluations/inspect-gdm-self-reasoning-calculator-improvement/) — Deception & misalignment
+- [GDM Self Reasoning Context Length Mod Instrumental Only](https://fronteraeval.org/evaluations/inspect-gdm-self-reasoning-context-length-mod-instrumental-only/) — Deception & misalignment
+- [GDM Self Reasoning Context Length Mod Irreversibility Only](https://fronteraeval.org/evaluations/inspect-gdm-self-reasoning-context-length-mod-irreversibility-only/) — Deception & misalignment
+- [GDM Self Reasoning Database Tool](https://fronteraeval.org/evaluations/inspect-gdm-self-reasoning-database-tool/) — Deception & misalignment
+- [GDM Self Reasoning Latency Calculator](https://fronteraeval.org/evaluations/inspect-gdm-self-reasoning-latency-calculator/) — Deception & misalignment
+- [GDM Self Reasoning Max Messages Calculator](https://fronteraeval.org/evaluations/inspect-gdm-self-reasoning-max-messages-calculator/) — Deception & misalignment
+- [GDM Self Reasoning Max Tokens](https://fronteraeval.org/evaluations/inspect-gdm-self-reasoning-max-tokens/) — Deception & misalignment
+- [GDM Self Reasoning Oversight Frequency](https://fronteraeval.org/evaluations/inspect-gdm-self-reasoning-oversight-frequency/) — Deception & misalignment
+- [GDM Self Reasoning Read Logs](https://fronteraeval.org/evaluations/inspect-gdm-self-reasoning-read-logs/) — Deception & misalignment
+- [GDM Self Reasoning Turn Off Filters](https://fronteraeval.org/evaluations/inspect-gdm-self-reasoning-turn-off-filters/) — Deception & misalignment
+- [GDM Sp01 E2e](https://fronteraeval.org/evaluations/inspect-gdm-sp01-e2e/) — General capability
+- [GDM Sp01 Milestones](https://fronteraeval.org/evaluations/inspect-gdm-sp01-milestones/) — General capability
+- [GDM Sp02 E2e](https://fronteraeval.org/evaluations/inspect-gdm-sp02-e2e/) — General capability
+- [GDM Sp02 Milestones](https://fronteraeval.org/evaluations/inspect-gdm-sp02-milestones/) — General capability
+- [GDM Sp03 E2e](https://fronteraeval.org/evaluations/inspect-gdm-sp03-e2e/) — General capability
+- [GDM Sp03 Milestones](https://fronteraeval.org/evaluations/inspect-gdm-sp03-milestones/) — General capability
+- [GDM Sp04 E2e](https://fronteraeval.org/evaluations/inspect-gdm-sp04-e2e/) — General capability
+- [GDM Sp04 Milestones](https://fronteraeval.org/evaluations/inspect-gdm-sp04-milestones/) — General capability
+- [GDM Sp05 E2e](https://fronteraeval.org/evaluations/inspect-gdm-sp05-e2e/) — General capability
+- [GDM Sp05 Milestones](https://fronteraeval.org/evaluations/inspect-gdm-sp05-milestones/) — General capability
+- [GDM Sp07 E2e](https://fronteraeval.org/evaluations/inspect-gdm-sp07-e2e/) — General capability
+- [GDM Sp07 Milestones](https://fronteraeval.org/evaluations/inspect-gdm-sp07-milestones/) — General capability
+- [GDM Sp08 E2e](https://fronteraeval.org/evaluations/inspect-gdm-sp08-e2e/) — General capability
+- [GDM Sp08 Milestones](https://fronteraeval.org/evaluations/inspect-gdm-sp08-milestones/) — General capability
+- [GDM Sp09 E2e](https://fronteraeval.org/evaluations/inspect-gdm-sp09-e2e/) — General capability
+- [GDM Sp09 Milestones](https://fronteraeval.org/evaluations/inspect-gdm-sp09-milestones/) — General capability
+- [GDM Sp10 E2e](https://fronteraeval.org/evaluations/inspect-gdm-sp10-e2e/) — General capability
+- [GDM Sp10 Milestones](https://fronteraeval.org/evaluations/inspect-gdm-sp10-milestones/) — General capability
+- [GDM Sp12 E2e](https://fronteraeval.org/evaluations/inspect-gdm-sp12-e2e/) — General capability
+- [GDM Sp12 Milestones](https://fronteraeval.org/evaluations/inspect-gdm-sp12-milestones/) — General capability
+- [GDM Strategic Rule Breaking](https://fronteraeval.org/evaluations/inspect-gdm-strategic-rule-breaking/) — Deception & misalignment
+- [GDPval](https://fronteraeval.org/evaluations/inspect-gdpval/) — General capability
+- [GPQA: Graduate-Level STEM Knowledge Challenge](https://fronteraeval.org/evaluations/inspect-gpqa-diamond/) — General capability
+- [GSM8K: Grade School Math Word Problems](https://fronteraeval.org/evaluations/inspect-gsm8k/) — General capability
+- [Hangman Bench](https://fronteraeval.org/evaluations/register-hangman-bench/) — General capability
+- [HarmBench](https://fronteraeval.org/evaluations/canonical-harmbench/) — Safeguards
+- [Healthbench](https://fronteraeval.org/evaluations/inspect-healthbench/) — General capability
+- [Healthbench Consensus](https://fronteraeval.org/evaluations/inspect-healthbench-consensus/) — General capability
+- [Healthbench Hard](https://fronteraeval.org/evaluations/inspect-healthbench-hard/) — General capability
+- [Healthbench Meta Eval](https://fronteraeval.org/evaluations/inspect-healthbench-meta-eval/) — General capability
+- [HellaSwag: Commonsense Event Continuation](https://fronteraeval.org/evaluations/inspect-hellaswag/) — General capability
+- [HELM Safety](https://fronteraeval.org/evaluations/canonical-helm-safety/) — Safeguards, Evaluation integrity
+- [HumanEval: Python Function Generation from Instructions](https://fronteraeval.org/evaluations/inspect-humaneval/) — General capability
+- [Humanity's Last Exam](https://fronteraeval.org/evaluations/inspect-hle/) — General capability
+- [IFEval: Instruction-Following Evaluation](https://fronteraeval.org/evaluations/inspect-ifeval/) — General capability
+- [IFEvalCode: Controlled Code Generation](https://fronteraeval.org/evaluations/inspect-ifevalcode/) — General capability
+- [Infinite Bench Code Debug](https://fronteraeval.org/evaluations/inspect-infinite-bench-code-debug/) — General capability
+- [Infinite Bench Code Run](https://fronteraeval.org/evaluations/inspect-infinite-bench-code-run/) — General capability
+- [Infinite Bench Kv Retrieval](https://fronteraeval.org/evaluations/inspect-infinite-bench-kv-retrieval/) — General capability
+- [Infinite Bench Longbook Choice Eng](https://fronteraeval.org/evaluations/inspect-infinite-bench-longbook-choice-eng/) — General capability
+- [Infinite Bench Longdialogue QA Eng](https://fronteraeval.org/evaluations/inspect-infinite-bench-longdialogue-qa-eng/) — General capability
+- [Infinite Bench Math Calc](https://fronteraeval.org/evaluations/inspect-infinite-bench-math-calc/) — General capability
+- [Infinite Bench Math Find](https://fronteraeval.org/evaluations/inspect-infinite-bench-math-find/) — General capability
+- [Infinite Bench Number String](https://fronteraeval.org/evaluations/inspect-infinite-bench-number-string/) — General capability
+- [Infinite Bench Passkey](https://fronteraeval.org/evaluations/inspect-infinite-bench-passkey/) — General capability
+- [Inspect AI](https://fronteraeval.org/evaluations/canonical-inspect-ai/) — Evaluation integrity
+- [BharatBBQ](https://fronteraeval.org/evaluations/register-inspect-india-bharatbbq/) — General capability
+- [India Cultural Knowledge](https://fronteraeval.org/evaluations/register-inspect-india-cultural-knowledge/) — General capability
+- [India DPI Safety](https://fronteraeval.org/evaluations/register-inspect-india-dpi-safety/) — Safeguards
+- [India Jailbreak Safety](https://fronteraeval.org/evaluations/register-inspect-india-jailbreak-safety/) — Safeguards
+- [India Multilingual](https://fronteraeval.org/evaluations/register-inspect-india-multilingual/) — General capability
+- [India Multilingual Safety](https://fronteraeval.org/evaluations/register-inspect-india-multilingual-safety/) — Safeguards
+- [InstrumentalEval - Evaluating the Paperclip Maximizer: Are RL-Based Language Models More Likely to Pursue Instrumental Goals?](https://fronteraeval.org/evaluations/inspect-instrumentaleval/) — Deception & misalignment
+- [CodeIPI: Indirect Prompt Injection for Coding Agents](https://fronteraeval.org/evaluations/inspect-ipi-coding-agent/) — Autonomy & agents, Cyber
+- [JailbreakBench](https://fronteraeval.org/evaluations/canonical-jailbreakbench/) — Safeguards, Evaluation integrity
+- [KernelBench: Can LLMs Write Efficient GPU Kernels?](https://fronteraeval.org/evaluations/inspect-kernelbench/) — General capability
+- [LAB-Bench 2](https://fronteraeval.org/evaluations/register-lab-bench-2/) — Bio / CBRN
+- [Lab Bench Cloning Scenarios](https://fronteraeval.org/evaluations/inspect-lab-bench-cloning-scenarios/) — Bio / CBRN
+- [Lab Bench Dbqa](https://fronteraeval.org/evaluations/inspect-lab-bench-dbqa/) — Bio / CBRN
+- [Lab Bench Figqa](https://fronteraeval.org/evaluations/inspect-lab-bench-figqa/) — Bio / CBRN
+- [Lab Bench Litqa](https://fronteraeval.org/evaluations/inspect-lab-bench-litqa/) — Bio / CBRN
+- [Lab Bench Protocolqa](https://fronteraeval.org/evaluations/inspect-lab-bench-protocolqa/) — Bio / CBRN
+- [Lab Bench Seqqa](https://fronteraeval.org/evaluations/inspect-lab-bench-seqqa/) — Bio / CBRN
+- [Lab Bench Suppqa](https://fronteraeval.org/evaluations/inspect-lab-bench-suppqa/) — Bio / CBRN
+- [Lab Bench Tableqa](https://fronteraeval.org/evaluations/inspect-lab-bench-tableqa/) — Bio / CBRN
+- [Lingoly](https://fronteraeval.org/evaluations/inspect-lingoly/) — General capability
+- [Lingoly Too](https://fronteraeval.org/evaluations/inspect-lingoly-too/) — General capability
+- [LiveBench: A Challenging, Contamination-Free LLM Benchmark](https://fronteraeval.org/evaluations/inspect-livebench/) — Evaluation integrity
+- [LiveCodeBench-Pro: Competitive Programming Benchmark](https://fronteraeval.org/evaluations/inspect-livecodebench-pro/) — General capability
+- [lm-evaluation-harness](https://fronteraeval.org/evaluations/canonical-lm-evaluation-harness/) — Evaluation integrity, General capability
+- [MaCBench: Probing the limitations of multimodal language models for chemistry and materials research](https://fronteraeval.org/evaluations/inspect-macbench/) — General capability
+- [MACHIAVELLI](https://fronteraeval.org/evaluations/register-machiavelli/) — Human influence & agency
+- [Make Me Pay](https://fronteraeval.org/evaluations/inspect-make-me-pay/) — Human influence & agency
+- [MakeMeSay](https://fronteraeval.org/evaluations/inspect-makemesay/) — Human influence & agency
+- [MCB](https://fronteraeval.org/evaluations/register-manager-coercion-benchmark/) — Human influence & agency
+- [MANTA](https://fronteraeval.org/evaluations/register-manta/) — Autonomy & agents
+- [MASK: Disentangling Honesty from Accuracy in AI Systems](https://fronteraeval.org/evaluations/inspect-mask/) — Human influence & agency
+- [MATH: Measuring Mathematical Problem Solving](https://fronteraeval.org/evaluations/inspect-math/) — General capability
+- [MathVista: Visual Math Problem-Solving](https://fronteraeval.org/evaluations/inspect-mathvista/) — Multimodal
+- [MBPP: Basic Python Coding Challenges](https://fronteraeval.org/evaluations/inspect-mbpp/) — General capability
+- [MCPTox](https://fronteraeval.org/evaluations/register-mcptox/) — Safeguards
+- [MedCalc-Bench](https://fronteraeval.org/evaluations/register-medcalc-bench/) — General capability
+- [MedQA: Medical exam Q&A benchmark](https://fronteraeval.org/evaluations/inspect-medqa/) — General capability
+- [METR Time Horizons](https://fronteraeval.org/evaluations/canonical-metr-time-horizons/) — Autonomy & agents, AI R&D
+- [MGSM: Multilingual Grade School Math](https://fronteraeval.org/evaluations/inspect-mgsm/) — General capability
+- [Mind2Web: Towards a Generalist Agent for the Web](https://fronteraeval.org/evaluations/inspect-mind2web/) — Autonomy & agents
+- [Mind2Web-SC](https://fronteraeval.org/evaluations/inspect-mind2web-sc/) — Autonomy & agents
+- [Mle Bench](https://fronteraeval.org/evaluations/inspect-mle-bench/) — AI R&D
+- [Mle Bench Full](https://fronteraeval.org/evaluations/inspect-mle-bench-full/) — AI R&D
+- [Mle Bench Lite](https://fronteraeval.org/evaluations/inspect-mle-bench-lite/) — AI R&D
+- [MLRC-Bench: Can Language Agents Solve Machine Learning Research Challenges?](https://fronteraeval.org/evaluations/inspect-mlrc-bench/) — AI R&D
+- [MM-SafetyBench](https://fronteraeval.org/evaluations/canonical-mm-safetybench/) — Safeguards, Multimodal
+- [MMIU: Multimodal Multi-image Understanding for Evaluating Large Vision-Language Models](https://fronteraeval.org/evaluations/inspect-mmiu/) — General capability
+- [MMLU 0 Shot](https://fronteraeval.org/evaluations/inspect-mmlu-0-shot/) — General capability
+- [MMLU 5 Shot](https://fronteraeval.org/evaluations/inspect-mmlu-5-shot/) — General capability
+- [MMLU-Pro: Advanced Multitask Knowledge and Reasoning Evaluation](https://fronteraeval.org/evaluations/inspect-mmlu-pro/) — General capability
+- [Mmmu Multiple Choice](https://fronteraeval.org/evaluations/inspect-mmmu-multiple-choice/) — Multimodal
+- [Mmmu Open](https://fronteraeval.org/evaluations/inspect-mmmu-open/) — Multimodal
+- [MonitorBench (Goal sandbag math subset)](https://fronteraeval.org/evaluations/register-monitorbench-goal-sandbag-math/) — Deception & misalignment, Evaluation integrity
+- [MonitorBench (Steganography subset)](https://fronteraeval.org/evaluations/register-monitorbench-steganography/) — Evaluation integrity
+- [MORU: Moral Reasoning under Uncertainty](https://fronteraeval.org/evaluations/inspect-moru/) — General capability
+- [MuSR: Testing the Limits of Chain-of-thought with Multistep Soft Reasoning](https://fronteraeval.org/evaluations/inspect-musr/) — General capability
+- [NARCBench](https://fronteraeval.org/evaluations/register-narcbench/) — Safeguards
+- [Needle in a Haystack (NIAH): In-Context Retrieval Benchmark for Long Context LLMs](https://fronteraeval.org/evaluations/inspect-niah/) — General capability
+- [NoveltyBench: Evaluating Language Models for Humanlike Diversity](https://fronteraeval.org/evaluations/inspect-novelty-bench/) — General capability
+- [O-NET: A high-school student knowledge test](https://fronteraeval.org/evaluations/inspect-onet-m6/) — General capability
+- [OpenAI Evals](https://fronteraeval.org/evaluations/canonical-openai-evals/) — Evaluation integrity, General capability
+- [OpenBookQA](https://fronteraeval.org/evaluations/register-openbookqa/) — General capability
+- [OR-Bench](https://fronteraeval.org/evaluations/register-or-bench/) — General capability
+- [OSWorld](https://fronteraeval.org/evaluations/inspect-osworld/) — Autonomy & agents
+- [Osworld Small](https://fronteraeval.org/evaluations/inspect-osworld-small/) — Autonomy & agents
+- [PaperBench: Evaluating AI's Ability to Replicate AI Research (Work In Progress)](https://fronteraeval.org/evaluations/inspect-paperbench/) — Human influence & agency, Autonomy & agents, AI R&D
+- [PatchEval](https://fronteraeval.org/evaluations/register-patcheval/) — General capability
+- [PAWS: Paraphrase Adversaries from Word Scrambling](https://fronteraeval.org/evaluations/inspect-paws/) — General capability
+- [Persistbench Beneficial Memory](https://fronteraeval.org/evaluations/inspect-persistbench-beneficial-memory/) — General capability
+- [Persistbench Cross Domain](https://fronteraeval.org/evaluations/inspect-persistbench-cross-domain/) — General capability
+- [Persistbench Judge](https://fronteraeval.org/evaluations/inspect-persistbench-judge/) — Evaluation integrity
+- [Persistbench Sycophancy](https://fronteraeval.org/evaluations/inspect-persistbench-sycophancy/) — Human influence & agency
+- [Personality BFI](https://fronteraeval.org/evaluations/inspect-personality-bfi/) — General capability
+- [Personality TRAIT](https://fronteraeval.org/evaluations/inspect-personality-trait/) — General capability
+- [PerspectiveGap](https://fronteraeval.org/evaluations/register-perspective-gap/) — Cyber
+- [PinchBench](https://fronteraeval.org/evaluations/register-pinchbench/) — General capability
+- [PIQA: Physical Commonsense Reasoning Test](https://fronteraeval.org/evaluations/inspect-piqa/) — General capability
+- [Pre-Flight: Aviation Operations Knowledge Evaluation](https://fronteraeval.org/evaluations/inspect-pre-flight/) — Evaluation integrity
+- [PubMedQA: A Dataset for Biomedical Research Question Answering](https://fronteraeval.org/evaluations/inspect-pubmedqa/) — General capability
+- [RACE-H: A benchmark for testing reading comprehension and reasoning abilities of neural models](https://fronteraeval.org/evaluations/inspect-race-h/) — General capability
+- [RE-Bench](https://fronteraeval.org/evaluations/canonical-re-bench/) — Autonomy & agents, AI R&D
+- [Sabotage Evaluations](https://fronteraeval.org/evaluations/canonical-anthropic-sabotage/) — Deception & misalignment, AI R&D
+- [Sad Facts Human Defaults](https://fronteraeval.org/evaluations/inspect-sad-facts-human-defaults/) — General capability
+- [Sad Facts Llms](https://fronteraeval.org/evaluations/inspect-sad-facts-llms/) — General capability
+- [SAD Influence](https://fronteraeval.org/evaluations/inspect-sad-influence/) — Human influence & agency
+- [Sad Stages Full](https://fronteraeval.org/evaluations/inspect-sad-stages-full/) — General capability
+- [Sad Stages Oversight](https://fronteraeval.org/evaluations/inspect-sad-stages-oversight/) — General capability
+- [SafetyBench](https://fronteraeval.org/evaluations/canonical-safetybench/) — Safeguards
+- [SALAD-Bench](https://fronteraeval.org/evaluations/register-salad-bench/) — Safeguards
+- [scBench: A Benchmark for Single-Cell RNA-seq Analysis](https://fronteraeval.org/evaluations/inspect-scbench/) — General capability
+- [SciCode: A Research Coding Benchmark Curated by Scientists](https://fronteraeval.org/evaluations/inspect-scicode/) — General capability
+- [SciKnowEval: Evaluating Multi-level Scientific Knowledge of Large Language Models](https://fronteraeval.org/evaluations/inspect-sciknoweval/) — General capability
+- [Sec QA V1](https://fronteraeval.org/evaluations/inspect-sec-qa-v1/) — General capability
+- [Sec QA V1 5 Shot](https://fronteraeval.org/evaluations/inspect-sec-qa-v1-5-shot/) — General capability
+- [Sec QA V2](https://fronteraeval.org/evaluations/inspect-sec-qa-v2/) — General capability
+- [Sec QA V2 5 Shot](https://fronteraeval.org/evaluations/inspect-sec-qa-v2-5-shot/) — General capability
+- [Sevenllm Mcq En](https://fronteraeval.org/evaluations/inspect-sevenllm-mcq-en/) — General capability
+- [Sevenllm Mcq Zh](https://fronteraeval.org/evaluations/inspect-sevenllm-mcq-zh/) — General capability
+- [Sevenllm QA En](https://fronteraeval.org/evaluations/inspect-sevenllm-qa-en/) — General capability
+- [Sevenllm QA Zh](https://fronteraeval.org/evaluations/inspect-sevenllm-qa-zh/) — General capability
+- [Simpleqa](https://fronteraeval.org/evaluations/inspect-simpleqa/) — General capability
+- [Simpleqa Verified](https://fronteraeval.org/evaluations/inspect-simpleqa-verified/) — General capability
+- [SOS BENCH: Benchmarking Safety Alignment on Scientific Knowledge](https://fronteraeval.org/evaluations/inspect-sosbench/) — General capability
+- [SQuAD: A Reading Comprehension Benchmark requiring reasoning over Wikipedia articles](https://fronteraeval.org/evaluations/inspect-squad/) — General capability
+- [StereoSet: Measuring stereotypical bias in pretrained language models](https://fronteraeval.org/evaluations/inspect-stereoset/) — General capability
+- [StrongREJECT: Measuring LLM susceptibility to jailbreak attacks](https://fronteraeval.org/evaluations/inspect-strong-reject/) — Safeguards
+- [Swe Bench](https://fronteraeval.org/evaluations/inspect-swe-bench/) — General capability
+- [Swe Bench Verified Mini](https://fronteraeval.org/evaluations/inspect-swe-bench-verified-mini/) — General capability
+- [SWE-Lancer: Can Frontier LLMs Earn $1 Million from Real-World Freelance Software Engineering?](https://fronteraeval.org/evaluations/inspect-swe-lancer/) — General capability
+- [SycoBench-600](https://fronteraeval.org/evaluations/register-sycobench-600/) — General capability
+- [Sycophancy Eval](https://fronteraeval.org/evaluations/inspect-sycophancy/) — Human influence & agency
+- [Tac](https://fronteraeval.org/evaluations/inspect-tac/) — General capability
+- [Tac Welfare](https://fronteraeval.org/evaluations/inspect-tac-welfare/) — General capability
+- [TarantuBench](https://fronteraeval.org/evaluations/register-tarantubench/) — General capability
+- [Tau2 Airline](https://fronteraeval.org/evaluations/inspect-tau2-airline/) — Autonomy & agents
+- [Tau2 Banking](https://fronteraeval.org/evaluations/inspect-tau2-banking/) — Autonomy & agents
+- [Tau2 Retail](https://fronteraeval.org/evaluations/inspect-tau2-retail/) — Autonomy & agents
+- [Tau2 Telecom](https://fronteraeval.org/evaluations/inspect-tau2-telecom/) — Autonomy & agents
+- [Terminal-Bench](https://fronteraeval.org/evaluations/canonical-terminal-bench/) — Autonomy & agents, Cyber
+- [The Agent Company: Evaluating multi-tool autonomous agents in a synthetic company](https://fronteraeval.org/evaluations/inspect-theagentcompany/) — Autonomy & agents
+- [Catastrophic Cyber Capabilities Benchmark (3CB): Robustly Evaluating LLM Agent Cyber Offense Capabilities](https://fronteraeval.org/evaluations/inspect-threecb/) — General capability
+- [TruthfulQA: Measuring How Models Mimic Human Falsehoods](https://fronteraeval.org/evaluations/inspect-truthfulqa/) — Evaluation integrity
+- [Uganda Cultural and Cognitive Benchmark (UCCB)](https://fronteraeval.org/evaluations/inspect-uccb/) — General capability
+- [USACO: USA Computing Olympiad](https://fronteraeval.org/evaluations/inspect-usaco/) — General capability
+- [VimGolf: Evaluating LLMs in Vim Editing Proficiency](https://fronteraeval.org/evaluations/inspect-vimgolf-single-turn/) — General capability
+- [VisualWebArena](https://fronteraeval.org/evaluations/canonical-visualwebarena/) — Autonomy & agents, Multimodal
+- [VQA-RAD: Visual Question Answering for Radiology](https://fronteraeval.org/evaluations/inspect-vqa-rad/) — Multimodal
+- [Vstar Bench Attribute Recognition](https://fronteraeval.org/evaluations/inspect-vstar-bench-attribute-recognition/) — General capability
+- [Vstar Bench Spatial Relationship Reasoning](https://fronteraeval.org/evaluations/inspect-vstar-bench-spatial-relationship-reasoning/) — General capability
+- [WebArena](https://fronteraeval.org/evaluations/canonical-webarena/) — Autonomy & agents
+- [WildClawBench](https://fronteraeval.org/evaluations/register-wildclawbench/) — Autonomy & agents
+- [WINOGRANDE: An Adversarial Winograd Schema Challenge at Scale](https://fronteraeval.org/evaluations/inspect-winogrande/) — General capability
+- [WMDP](https://fronteraeval.org/evaluations/canonical-wmdp/) — Bio / CBRN, Cyber
+- [WMDP Bio](https://fronteraeval.org/evaluations/inspect-wmdp-bio/) — Bio / CBRN
+- [WMDP Chem](https://fronteraeval.org/evaluations/inspect-wmdp-chem/) — Bio / CBRN
+- [WMDP Cyber](https://fronteraeval.org/evaluations/inspect-wmdp-cyber/) — Cyber
+- [WorkArena](https://fronteraeval.org/evaluations/canonical-workarena/) — Autonomy & agents
+- [WorldSense: Grounded Reasoning Benchmark](https://fronteraeval.org/evaluations/inspect-worldsense/) — General capability
+- [WritingBench: A Comprehensive Benchmark for Generative Writing](https://fronteraeval.org/evaluations/inspect-writingbench/) — General capability
+- [XSTest: A benchmark for identifying exaggerated safety behaviours in LLM's](https://fronteraeval.org/evaluations/inspect-xstest/) — Safeguards
+- [Zerobench](https://fronteraeval.org/evaluations/inspect-zerobench/) — Evaluation integrity
+- [Zerobench Subquestions](https://fronteraeval.org/evaluations/inspect-zerobench-subquestions/) — Evaluation integrity
+- [τ-bench](https://fronteraeval.org/evaluations/canonical-tau-bench/) — Autonomy & agents

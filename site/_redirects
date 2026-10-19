@@ -1,4 +1,6 @@
 https://fronteraeval.netlify.app/* https://fronteraeval.org/:splat 301!
+https://main--fronteraeval.netlify.app/* https://fronteraeval.org/:splat 301!
+https://www.fronteraeval.org/* https://fronteraeval.org/:splat 301!
 /evals /evaluations/ 301
 /methodology /method/ 301
 /data-info /data-info/ 301
