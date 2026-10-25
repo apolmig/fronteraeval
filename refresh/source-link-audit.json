@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-10-18T07:19:10.055Z",
-  "inspect_source_commit": "8ef810f09930362302fc59b10a382d96dd767171",
+  "generated_at": "2026-10-25T07:41:42.961Z",
+  "inspect_source_commit": "cac63f6d942ff63c9a0ac1185a026123e62970f4",
   "policy": "Confirmed 404/410 responses are treated as missing only after a GET verification. Access restrictions, rate limits, timeouts and server errors are reported separately and do not by themselves establish that a source is broken.",
   "totals": {
     "catalogue_records": 329,
@@ -34,7 +34,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/mle-bench",
-      "elapsed_ms": 99,
+      "elapsed_ms": 223,
       "error": null
     },
     {
@@ -53,7 +53,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/paperbench",
-      "elapsed_ms": 16,
+      "elapsed_ms": 165,
       "error": null
     },
     {
@@ -69,7 +69,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://huggingface.co/datasets/livebench/%7Bmath,reasoning,coding,language,data_analysis,instruction_following%7D",
-      "elapsed_ms": 43,
+      "elapsed_ms": 73,
       "error": null
     },
     {
@@ -87,7 +87,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/browsecomp",
-      "elapsed_ms": 29,
+      "elapsed_ms": 37,
       "error": null
     },
     {
@@ -105,7 +105,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/frontierscience",
-      "elapsed_ms": 23,
+      "elapsed_ms": 43,
       "error": null
     },
     {
@@ -126,7 +126,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openai.com/index/healthbench",
-      "elapsed_ms": 21,
+      "elapsed_ms": 52,
       "error": null
     },
     {
@@ -142,7 +142,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openreview.net/pdf?id=2GmDdhBdDk",
-      "elapsed_ms": 108,
+      "elapsed_ms": 99,
       "error": null
     },
     {
@@ -159,8 +159,8 @@
       "status": null,
       "category": "network-error",
       "method": "GET",
-      "elapsed_ms": 24001,
-      "error": "The operation was aborted due to timeout"
+      "elapsed_ms": 20864,
+      "error": "fetch failed"
     }
   ]
 }
