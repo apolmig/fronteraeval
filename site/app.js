@@ -60,63 +60,11 @@
       .then((live) => {
         if (!live) return;
         state.live = live;
-        const previousCount = state.records.length;
-        if (live?.inspect?.entries?.length) mergeLive(live.inspect.entries);
-        if (state.records.length !== previousCount) route({ preserveScroll: true, preserveInteraction: true });
-        else hydrateLiveStatus();
+        // Sweep entries are observations, not editorial admissions. Only the
+        // validated catalogue determines public records and search results.
+        hydrateLiveStatus();
       })
       .catch(() => {});
-  }
-
-  function mergeLive(entries) {
-    const existing = new Set(state.records.map((record) => record.id));
-    for (const entry of entries) {
-      if (existing.has(entry.id)) continue;
-      state.records.push({
-        id: entry.id,
-        name: entry.name,
-        organisation: "Origin pending review",
-        organisation_role: "Live source discovery",
-        attribution_status: "unresolved",
-        record_type: "unreviewed-live-entry",
-        source_resolution: {
-          status: "unresolved",
-          note: "Detected after the last validated catalogue build; origin and methodology have not yet been reviewed."
-        },
-        source_type: entry.source_type,
-        source_url: entry.source_url,
-        links: [{ label: "Inspect source", kind: "implementation", url: entry.source_url }],
-        topics: inferTopics(entry.name),
-        description: "New Inspect entry detected after the last validated catalogue build. Source identity and methodology remain pending review.",
-        review_status: "imported",
-        code_available: true,
-        inspect_compatible: true,
-        last_source_check: state.live?.checked_at ? String(state.live.checked_at).slice(0, 10) : null,
-        editorial_reviewed_at: null,
-        measures: "Not independently assessed by FronteraEval yet.",
-        does_not_measure: "No inference beyond the upstream source should be made until the protocol is reviewed.",
-        best_for: "Discovery and source navigation.",
-        not_sufficient_for: "Substantive capability, safety, or policy claims without reading the underlying protocol.",
-        evidence_reach: [],
-        provenance: { source_sha: state.live?.inspect?.sha, method: "live weekly import" }
-      });
-    }
-  }
-
-  function inferTopics(name) {
-    const text = String(name).toLowerCase();
-    const topics = [];
-    const rules = [
-      ["human-influence", ["persua", "influence", "coerc", "sycoph", "machiav", "deception"]],
-      ["deception-misalignment", ["misalign", "stealth", "sandbag", "alignment"]],
-      ["autonomy-agents", ["agent", "osworld", "gaia", "web", "terminal"]],
-      ["cyber", ["cyber", "cve", "ctf", "exploit", "phish"]],
-      ["bio-cbrn", ["bio", "chem", "cbrn"]],
-      ["safeguards", ["safety", "jailbreak", "reject", "harm"]],
-      ["evaluation-integrity", ["judge", "monitor", "eval"]]
-    ];
-    for (const [topic, needles] of rules) if (needles.some((needle) => text.includes(needle))) topics.push(topic);
-    return topics.length ? topics : ["general-capability"];
   }
 
   function parseHash() {
@@ -129,15 +77,9 @@
     queueMicrotask(() => document.dispatchEvent(new CustomEvent("fronteraeval:rendered", { detail: { path } })));
   }
 
-  function route(options = {}) {
+  function route() {
     const { path, params } = parseHash();
-    const active = options.preserveInteraction ? document.activeElement : null;
-    const controls = options.preserveInteraction
-      ? [...main.querySelectorAll("input[id], select[id], textarea[id]")].map((node) => ({
-        id: node.id, value: node.value,
-        start: node.selectionStart, end: node.selectionEnd
-      })) : [];
-    if (!options.preserveScroll) window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
     updateNavigation(path);
     if (path === "/") renderHome();
     else if (path === "/evals") {
@@ -160,15 +102,8 @@
     else if (path === "/updates") renderUpdates();
     else if (path === "/data") renderData();
     else renderNotFound();
-    for (const control of controls) {
-      const node = document.getElementById(control.id);
-      if (!node) continue;
-      node.value = control.value;
-      if (control.start != null) node.setSelectionRange(control.start, control.end);
-    }
-    if (active && !active.isConnected && active.id) document.getElementById(active.id)?.focus({ preventScroll: true });
     notifyRendered(path);
-    if (!options.preserveInteraction) setTimeout(() => main.focus(), 0);
+    setTimeout(() => main.focus(), 0);
   }
 
   function updateNavigation(path) {

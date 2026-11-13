@@ -34,6 +34,8 @@ try {
     assert.equal(await page.locator('#home-query').inputValue(), 'harmful manipulation');
     assert.equal(await page.evaluate(() => document.activeElement.id), 'home-query');
     assert.equal(catalogRequests, 1, 'The app and enhancers must share one catalogue request');
+    const admittedCount = await page.evaluate(async () => (await globalThis.FronteraEvalCatalogPromise).records.length);
+    assert.ok((await page.locator('.catalogue-meta').textContent()).includes(`${admittedCount} catalogue records`), 'Sweep observations must not change admitted catalogue counts');
     await page.screenshot({ path: `${screenshots}/${device}-home.png`, fullPage: true });
     await page.locator('#home-query').press('Enter');
     await page.locator('#filter-q').waitFor();
@@ -99,6 +101,8 @@ try {
       assert.equal(await page.locator('.methodological-grid').count(), 0);
       await page.screenshot({ path: `${screenshots}/${device}-pending-review.png`, fullPage: true });
     }
+    await page.evaluate(() => { location.hash = '/eval/qa%3Aunreviewed-live-entry'; });
+    await page.locator('h1').filter({ hasText: 'Not found' }).waitFor();
     await page.evaluate(() => { location.hash = '/eval/%'; });
     await page.locator('h1').filter({ hasText: 'Not found' }).waitFor();
     await page.evaluate(() => { location.hash = '/about'; });

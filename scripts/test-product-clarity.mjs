@@ -17,7 +17,7 @@ assert.ok(!index.includes('data-nav="collection"'), "Collections navigation rema
 assert.ok(!app.includes('class="collection-strip"'), "Homepage collection strip remains");
 assert.ok(!app.includes("function renderAgencyTransfer"), "Collection page renderer remains");
 assert.match(app, /location\.replace\("#\/evals\?q=harmful%20manipulation"\)/, "Legacy collection URL should redirect to a useful search");
-assert.match(app, /Origin pending review/, "Live entries must not attribute authorship to the Inspect host");
+assert.doesNotMatch(app, /mergeLive|state\.records\.push/, "Sweep observations must not be admitted as public catalogue records");
 assert.doesNotMatch(app, /UK AI Security Institute \/ upstream authors/, "Ambiguous live-entry attribution remains");
 assert.doesNotMatch(buildSource, /UK AI Security Institute \/ upstream authors/, "Build seed still conflates host with origin");
 assert.doesNotMatch(buildSource, /agencyTransfer|collections:/, "Obsolete collection metadata remains in the build");
