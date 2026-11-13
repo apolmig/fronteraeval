@@ -31,7 +31,7 @@ await Promise.all(Array.from({ length: 8 }, async () => {
     } catch (error) { failures.push({ url, problem: error.message }); }
   }
 }));
-const png = Buffer.from(await (await request('/social-card.png')).arrayBuffer());
+const png = Buffer.from(await (await request('/social-card-v2.png')).arrayBuffer());
 const image = { width: png.readUInt32BE(16), height: png.readUInt32BE(20) };
 if (png.toString('ascii', 1, 4) !== 'PNG' || image.width !== 1200 || image.height !== 630) failures.push({ problem: 'invalid social card', image });
 const report = { audited_at: new Date().toISOString(), origin, records: catalog.records.length, catalog_generated_at: catalog.generated_at, sitemap_urls: urls.length, checked_pages: checked, social_image: image, failures };

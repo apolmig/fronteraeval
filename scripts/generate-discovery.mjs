@@ -2,7 +2,7 @@ import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 
 const SITE = 'site';
 const BASE = 'https://fronteraeval.org';
-const CARD = `${BASE}/social-card.png`;
+const CARD = `${BASE}/social-card-v2.png`;
 const catalog = JSON.parse(await readFile(`${SITE}/data/catalog.json`, 'utf8'));
 const generatedAt = catalog.generated_at || new Date().toISOString();
 const records = Array.isArray(catalog.records) ? catalog.records : [];
@@ -78,13 +78,13 @@ function head({title, description, canonical, type='website'}) {
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="FronteraEval - a source-linked map of frontier AI evaluations">
+  <meta property="og:image:alt" content="FronteraEval. Frontier AI evaluations. Evidence in context.">
   <meta property="og:locale" content="en_GB">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(title)}">
   <meta name="twitter:description" content="${esc(trim(description, 200))}">
   <meta name="twitter:image" content="${CARD}">
-  <meta name="twitter:image:alt" content="FronteraEval - a source-linked map of frontier AI evaluations">
+  <meta name="twitter:image:alt" content="FronteraEval. Frontier AI evaluations. Evidence in context.">
   <meta name="twitter:creator" content="@apolmig">
   <script src="/theme-init.js"></script>
   <link rel="stylesheet" href="/styles.css">
