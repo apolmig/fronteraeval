@@ -17,7 +17,7 @@
   let lastFocused = null;
   let renderingAbout = false;
 
-  const catalogPromise = fetch("/data/catalog.json")
+  const catalogPromise = globalThis.FronteraEvalCatalogPromise ||= fetch("/data/catalog.json")
     .then((response) => response.ok ? response.json() : null)
     .catch(() => null);
 

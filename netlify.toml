@@ -1,7 +1,7 @@
 [build]
   base = "/"
   publish = "site"
-  command = "npm run build"
+  command = "npm run build && npm run check && node --test scripts/test-runtime-recovery.mjs scripts/test-freshness.mjs"
 
 [functions]
   directory = "netlify/functions"
@@ -14,4 +14,5 @@
 [[headers]]
   for = "/api/*"
   [headers.values]
-    Cache-Control = "public, max-age=300, stale-while-revalidate=3600"
+    Cache-Control = "no-store"
+    X-Robots-Tag = "noindex"

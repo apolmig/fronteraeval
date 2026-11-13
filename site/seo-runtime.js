@@ -2,7 +2,7 @@
   const BASE='https://fronteraeval.org';
   const CARD=`${BASE}/social-card.png`;
   let catalog=null;
-  fetch('/data/catalog.json').then((r)=>r.ok?r.json():null).then((data)=>{catalog=data;update()}).catch(()=>{});
+  (globalThis.FronteraEvalCatalogPromise ||= fetch('/data/catalog.json').then((r)=>r.ok?r.json():null).catch(()=>null)).then((data)=>{catalog=data;update()});
   const ensure=(selector,tag,attrs={})=>{let node=document.head.querySelector(selector);if(!node){node=document.createElement(tag);Object.entries(attrs).forEach(([k,v])=>node.setAttribute(k,v));document.head.append(node)}return node};
   const setMeta=(selector,kind,value)=>{if(!value)return;const key=selector.match(/"([^"]+)/)?.[1]||'';const node=ensure(selector,'meta',{[kind]:key});node.setAttribute('content',value)};
   const slug=(record)=>String(record?.slug||record?.id||'evaluation').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,100);
@@ -20,5 +20,5 @@
     setMeta('meta[name="description"]','name',description);setMeta('meta[property="og:title"]','property',title);setMeta('meta[property="og:description"]','property',description);setMeta('meta[property="og:url"]','property',canonical);setMeta('meta[property="og:image"]','property',CARD);setMeta('meta[name="twitter:title"]','name',title);setMeta('meta[name="twitter:description"]','name',description);setMeta('meta[name="twitter:image"]','name',CARD);
   }
   function replaceCopy(record,canonical){const old=document.querySelector('#copy-record-link');if(!old||old.dataset.seoBound)return;const clone=old.cloneNode(true);clone.dataset.seoBound='true';clone.textContent='Copy share link';old.replaceWith(clone);clone.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(canonical);clone.textContent='Copied';setTimeout(()=>clone.textContent='Copy share link',1500)}catch{}});if(!document.querySelector('[data-native-share]')){const share=document.createElement('button');share.type='button';share.className='copy-link';share.dataset.nativeShare='true';share.textContent='Share';share.addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:record.name,url:canonical});else await navigator.clipboard.writeText(canonical)}catch{}});clone.after(share)}}
-  addEventListener('hashchange',update);new MutationObserver(()=>{if(location.hash.includes('/eval/'))update()}).observe(document.querySelector('#main'),{childList:true,subtree:true});update();
+  addEventListener('hashchange',update);document.addEventListener('fronteraeval:rendered',update);update();
 })();

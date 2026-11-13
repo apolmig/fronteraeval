@@ -2,7 +2,7 @@
   "use strict";
 
   const main = document.querySelector("#main");
-  const catalogPromise = fetch("/data/catalog.json")
+  const catalogPromise = globalThis.FronteraEvalCatalogPromise ||= fetch("/data/catalog.json")
     .then((response) => response.ok ? response.json() : null)
     .catch(() => null);
 
@@ -65,8 +65,13 @@
     else content.insertAdjacentHTML("afterbegin", markup(review));
   }
 
-  const schedule = () => window.setTimeout(render, 0);
+  let scheduled = false;
+  const schedule = () => {
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(() => { scheduled = false; render(); });
+  };
+  document.addEventListener("fronteraeval:rendered", schedule);
   window.addEventListener("hashchange", schedule);
-  new MutationObserver(schedule).observe(main, { childList: true, subtree: true });
   schedule();
 })();
