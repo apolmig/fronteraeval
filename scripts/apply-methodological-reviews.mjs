@@ -1,3 +1,4 @@
+import { assessReviewValidity } from "../lib/review-validity.mjs";
 import { readdir, readFile, writeFile } from "node:fs/promises";
 
 const CATALOG_PATH = "site/data/catalog.json";
@@ -5,11 +6,12 @@ const CSV_PATH = "site/data/catalog.csv";
 const AUDIT_PATH = "site/data/source-audit.json";
 const REVIEWS_DIR = "data/methodological-reviews";
 
-const [catalog, policy, audit, filenames] = await Promise.all([
+const [catalog, policy, audit, filenames, baseline] = await Promise.all([
   readFile(CATALOG_PATH, "utf8").then(JSON.parse),
   readFile(`${REVIEWS_DIR}/_policy.json`, "utf8").then(JSON.parse),
   readFile(AUDIT_PATH, "utf8").then(JSON.parse).catch(() => null),
-  readdir(REVIEWS_DIR)
+  readdir(REVIEWS_DIR),
+  readFile(`${REVIEWS_DIR}/_source-baseline.json`, "utf8").then(JSON.parse)
 ]);
 
 const reviews = [];
@@ -40,8 +42,9 @@ for (const review of reviews) {
     }
   }
 
-  const reviewedAt = review.reviewed_at || record.editorial_reviewed_at || policy.reviewed_at;
-  record.review_status = "reviewed";
+  const reviewedAt = review.reviewed_at || baseline.records[review.id]?.reviewed_at || policy.reviewed_at;
+  const validity = assessReviewValidity(record, baseline.records[review.id]);
+  record.review_status = validity.status === "reviewed" ? "reviewed" : "catalogued";
   record.editorial_reviewed_at = reviewedAt;
   record.measures = review.measures;
   record.does_not_measure = review.does_not_measure;
@@ -49,7 +52,8 @@ for (const review of reviews) {
   record.not_sufficient_for = review.not_sufficient_for;
   record.evidence_reach = review.evidence_reach || ["controlled-model-behaviour"];
   record.methodological_review = {
-    status: "reviewed",
+    ...validity,
+    baseline_inspect_source_commit: baseline.baseline_inspect_source_commit,
     review_type: review.review_type || policy.review_type,
     replication_status: review.replication_status || policy.replication_status,
     reviewed_at: reviewedAt,
@@ -70,6 +74,13 @@ for (const review of reviews) {
     review_scope: policy.scope,
     review_limit: policy.limit
   };
+  if (validity.status !== "reviewed") {
+    record.measures = "Current source or protocol differs from the recorded documentary-review baseline. Reassessment is pending.";
+    record.does_not_measure = "Historical review conclusions cannot be transferred to this version without checking the changed sources and protocol.";
+    record.best_for = "Discovery and source navigation while documentary reassessment is pending.";
+    record.not_sufficient_for = "Capability, safety or policy claims about the changed version.";
+    record.evidence_reach = [];
+  }
   applied.push(review.id);
 }
 
@@ -81,6 +92,7 @@ for (const record of catalog.records) reviewStatus[record.review_status] = (revi
 catalog.stats.review_status = reviewStatus;
 catalog.stats.methodological_reviews = {
   documentary: catalog.records.filter((record) => record.methodological_review?.review_type === "documentary").length,
+  needs_reevaluation: catalog.records.filter((record) => record.methodological_review?.status === "needs-reevaluation").length,
   independently_replicated: catalog.records.filter((record) => record.methodological_review?.replication_status === "independently-replicated").length,
   added_by_registry: applied.length,
   registry_schema_version: policy.schema_version,

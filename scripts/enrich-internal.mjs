@@ -9,7 +9,8 @@ const FRESHNESS_PATH = "site/data/freshness.json";
 
 const catalog = JSON.parse(await readFile(CATALOG_PATH, "utf8"));
 const freshness = JSON.parse(await readFile(FRESHNESS_PATH, "utf8"));
-const commitSha = String(catalog.inspect_source_commit || "main");
+const commitSha = String(catalog.inspect_source_commit || "");
+if (!/^[a-f0-9]{40}$/.test(commitSha)) throw new Error("Catalogue must pin an immutable Inspect commit");
 const enrichedAt = new Date().toISOString();
 
 const assessmentCorrections = {
@@ -263,7 +264,7 @@ await writeFile(CSV_PATH, `${[header, ...rows].map((row) => row.map(quote).join(
 
 await writeFile(FRESHNESS_PATH, `${JSON.stringify({
   ...freshness,
-  checked_at: enrichedAt,
+  generated_at: enrichedAt,
   internal_modules_enriched: modulesEnriched,
   internal_entries_enriched: internalEntriesEnriched,
   internal_metadata_failures: metadataFailures,

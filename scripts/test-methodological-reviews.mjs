@@ -1,3 +1,4 @@
+import { assessReviewValidity } from "../lib/review-validity.mjs";
 import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
 
@@ -11,6 +12,7 @@ const [catalog, policy, filenames, methodUi, index] = await Promise.all([
 ]);
 const reviewFiles = filenames.filter((name) => name.endsWith(".json") && !name.startsWith("_"));
 const reviews = await Promise.all(reviewFiles.map((name) => readFile(`${REVIEWS_DIR}/${name}`, "utf8").then(JSON.parse)));
+const baseline = JSON.parse(await readFile(`${REVIEWS_DIR}/_source-baseline.json`, "utf8"));
 const records = new Map(catalog.records.map((record) => [record.id, record]));
 const requiredIds = [
   "inspect:paperbench", "inspect:mle_bench", "inspect:frontier_cs_research", "canonical:terminal-bench", "inspect:swe_bench", "inspect:osworld", "canonical:webarena", "canonical:workarena", "canonical:jailbreakbench", "canonical:harmbench", "inspect:strong_reject", "canonical:agentdojo", "inspect:agentharm", "inspect:cybench", "inspect:cve_bench",
@@ -27,14 +29,23 @@ const requiredFields = ["construct", "unit_of_analysis", "interaction_type", "ta
 for (const id of requiredIds) {
   const record = records.get(id);
   assert.ok(record, `${id}: record missing`);
-  assert.equal(record.review_status, "reviewed", `${id}: review status not applied`);
+  const validity = assessReviewValidity(record, baseline.records[id]);
+  assert.equal(record.review_status, validity.status === "reviewed" ? "reviewed" : "catalogued", `${id}: review applicability is inconsistent with source changes`);
   const review = record.methodological_review;
   assert.ok(review, `${id}: structured methodological review missing`);
+  assert.equal(review.status, validity.status, `${id}: review status must flag changed protocols`);
+  assert.deepEqual(review.reassessment_reasons, validity.reassessment_reasons);
+  const original = reviews.find(item => item.id === id);
+  assert.equal(review.reviewed_at, original.reviewed_at || baseline.records[id]?.reviewed_at || policy.reviewed_at, `${id}: source refresh changed review date`);
   assert.equal(review.review_type, "documentary", `${id}: review type must be documentary`);
   assert.equal(review.replication_status, "not-replicated", `${id}: replication status must be explicit`);
   for (const field of requiredFields) assert.ok(review[field] && (!Array.isArray(review[field]) || review[field].length), `${id}: missing ${field}`);
   assert.ok(review.source_basis.every((source) => /^https:\/\//.test(source.url)), `${id}: invalid review source`);
-  assert.ok(record.evidence_reach.length > 0, `${id}: bounded evidence reach missing`);
+  if (validity.status === "reviewed") assert.ok(record.evidence_reach.length > 0, `${id}: bounded evidence reach missing`);
+  else {
+    assert.deepEqual(record.evidence_reach, [], `${id}: changed version inherited historical evidence reach`);
+    assert.match(record.measures, /reassessment is pending/i);
+  }
   assert.doesNotMatch(`${record.measures} ${record.best_for}`, /universal safety|complete safety|replace.*(engineer|researcher)|electoral effect|real-world incident rate/i, `${id}: overclaim in positive interpretation`);
 }
 assert.deepEqual(records.get("inspect:ape_eval").evidence_reach, ["controlled-model-behaviour"]);
@@ -52,4 +63,5 @@ assert.match(records.get("canonical:frontiermath").does_not_measure, /AI safety|
 assert.match(methodUi, /Documentary review, not an independent replication/i);
 assert.ok(index.includes('src="/methodological-reviews.js"'));
 assert.ok(index.includes('href="/methodological-reviews.css"'));
+assert.equal(catalog.stats.methodological_reviews.needs_reevaluation, catalog.records.filter(record => record.methodological_review?.status === "needs-reevaluation").length);
 console.log(`Validated ${requiredIds.length} documentary methodological reviews and 0 claimed independent replications.`);

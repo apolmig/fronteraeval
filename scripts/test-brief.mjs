@@ -54,6 +54,29 @@ test('unreviewed source records are not silently upgraded', () => {
   const b=createBrief(source);addSelection(b,{...agent,review_status:'imported'},source);
   assert.ok(reviewIssues(b).some(s=>s.includes('no FronteraEval documentary assessment')));
 });
+test('pending reassessment excludes historical conclusions from selection and exports while preserving provenance', () => {
+  const pending = {...agent, review_status: 'catalogued',
+    measures: 'Current protocol needs reassessment.', does_not_measure: 'No current assessment.',
+    best_for: 'Source navigation.', not_sufficient_for: 'Claims about this version.',
+    methodological_review: {...agent.methodological_review, status: 'needs-reevaluation',
+      construct: 'OLD_CONSTRUCT', unit_of_analysis: 'OLD_UNIT', target_outcome: 'OLD_OUTCOME',
+      scoring: 'OLD_SCORING', comparability: 'OLD_COMPARABILITY', decision_relevance: 'OLD_RELEVANCE',
+      source_basis: [{kind: 'paper', url: 'https://example.org/historical-protocol'}]}};
+  const b=createBrief(source); addSelection(b,pending,source);
+  const r=b.selections[0].record;
+  assert.equal(r.construct,pending.measures);
+  for(const field of ['unit','outcome','scoring','comparability']) assert.equal(r[field],'');
+  assert.equal(r.decision_relevance,pending.best_for);
+  assert.equal(r.review_date,pending.editorial_reviewed_at);
+  assert.equal(r.review_status,'catalogued');
+  assert.ok(r.sources.some(s=>s.url==='https://example.org/historical-protocol' && s.label.startsWith('Historical review source:')));
+  assert.ok(r.sources.some(s=>s.url===agent.preferred_source.url));
+  assert.doesNotMatch(JSON.stringify(manifest(b)),/OLD/);
+  assert.doesNotMatch(toMarkdown(b),/OLD/);
+  assert.deepEqual(parseBrief(JSON.stringify(manifest(b))),b);
+  assert.equal(filterRecords([pending],'OLD_CONSTRUCT','').length,0);
+  assert.ok(reviewIssues(b).some(s=>s.includes('no FronteraEval documentary assessment')));
+});
 test('completion is not a safety approval', () => {
   const b=plan();for(const key of ['question','system','context','constraints','gaps','next_steps'])b[key]='Explicit user entry';
   Object.assign(b.selections[0],{fit:'direct',rationale:'Test the identified threat surface',next_action:'Verify protocol and permissions'});

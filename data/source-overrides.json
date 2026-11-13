@@ -748,7 +748,7 @@
     },
     "canonical:tau-bench": {
       "origin": {
-        "name": "Sierra Research and the \u03c4-bench paper authors",
+        "name": "Sierra Research and the τ-bench paper authors",
         "organization": "Sierra Research",
         "entity_type": "research_collaboration",
         "role": "evaluation_developer",
@@ -804,6 +804,102 @@
         "https://www.tbench.ai/"
       ],
       "note": "Terminal-Bench is now presented through its official tbench.ai site and versioned benchmark registry. No dedicated academic paper was identified; the project provides a citable software/benchmark reference."
+    },
+    "register:case_bench": {
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2501.14940",
+          "status": "present",
+          "arxiv_id": "2501.14940",
+          "title": "CASE-Bench: Context-Aware SafEty Benchmark for Large Language Models",
+          "authors": [
+            "Guangzhi Sun",
+            "Xiao Zhan",
+            "Shutong Feng",
+            "Philip C. Woodland",
+            "Jose Such"
+          ],
+          "organizations": [],
+          "source": "arxiv-abstract-metadata",
+          "metadata_status": "resolved"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/BriansIDP/CASEBench",
+        "owner": "BriansIDP",
+        "relation": "reference_implementation",
+        "confidence": "source-derived"
+      },
+      "note": "The Inspect registry points to a maintained port. Its README identifies BriansIDP/CASEBench as the reference code. Paper authors verified from arXiv citation metadata on 2026-11-13; no institutional authorship is inferred.",
+      "source_checked_at": "2026-11-13"
+    },
+    "register:mt_bench": {
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2306.05685",
+          "status": "present",
+          "arxiv_id": "2306.05685",
+          "title": "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+          "authors": [
+            "Lianmin Zheng",
+            "Wei-Lin Chiang",
+            "Ying Sheng",
+            "Siyuan Zhuang",
+            "Zhanghao Wu",
+            "Yonghao Zhuang",
+            "Zi Lin",
+            "Zhuohan Li",
+            "Dacheng Li",
+            "Eric P. Xing",
+            "Hao Zhang",
+            "Joseph E. Gonzalez",
+            "Ion Stoica"
+          ],
+          "organizations": [],
+          "source": "arxiv-abstract-metadata",
+          "metadata_status": "resolved"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/lm-sys/FastChat/tree/main/fastchat/llm_judge",
+        "owner": "LMSYS",
+        "relation": "reference_implementation",
+        "confidence": "source-derived"
+      },
+      "note": "Original reference implementation linked in the paper abstract; the jurayh repository is an Inspect port. Paper authors verified from arXiv citation metadata on 2026-11-13; no institutional authorship is inferred.",
+      "source_checked_at": "2026-11-13"
+    },
+    "register:collaborative_intelligence": {
+      "papers": [
+        {
+          "url": "https://arxiv.org/abs/2611.02633",
+          "status": "present",
+          "arxiv_id": "2611.02633",
+          "title": "Measuring AI Agents as Teammates with Collaborative Intelligence",
+          "authors": [
+            "Sean Wu",
+            "Aneesh Pappu",
+            "Jiaru Zou",
+            "Yubin Kim",
+            "Yuncong Mao",
+            "Hongjian Zhou",
+            "Junchi Yu",
+            "Jieneng Chen",
+            "James Zou"
+          ],
+          "organizations": [],
+          "source": "arxiv-abstract-metadata",
+          "metadata_status": "resolved"
+        }
+      ],
+      "implementation": {
+        "url": "https://github.com/zou-group/collaborative-intelligence",
+        "owner": "zou-group",
+        "relation": "reference_implementation",
+        "confidence": "source-derived"
+      },
+      "note": "The paper distinguishes 240 total tasks from the 160 public tasks in the implementation and 80 held-out tasks. Paper authors verified from arXiv citation metadata on 2026-11-13; no institutional authorship is inferred.",
+      "source_checked_at": "2026-11-13"
     }
   }
 }

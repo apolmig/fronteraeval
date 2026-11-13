@@ -1,3 +1,5 @@
+import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 await mkdir("site/data", { recursive: true });
@@ -27,3 +29,25 @@ await publish("refresh/source-link-audit.json", "site/data/source-link-audit.jso
 });
 
 console.log("Published refresh metadata to site/data.");
+
+const catalogText = await readFile("site/data/catalog.json", "utf8");
+const catalogue = JSON.parse(catalogText);
+const markerText = await readFile("site/data/weekly-refresh.json", "utf8");
+const marker = JSON.parse(markerText);
+let commit = process.env.COMMIT_REF || null;
+if (!commit) {
+  try { commit = execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(); } catch {}
+}
+await writeFile("site/data/deployment.json", JSON.stringify({
+  schema_version: "1.0.0",
+  commit,
+  deploy_id: process.env.DEPLOY_ID || null,
+  context: process.env.CONTEXT || "local",
+  generated_at: catalogue.generated_at,
+  source_observed_at: catalogue.source_observed_at || null,
+  inspect_source_commit: catalogue.inspect_source_commit,
+  records: catalogue.records.length,
+  refreshed_at: marker.refreshed_at || null,
+  catalogue_sha256: createHash("sha256").update(catalogText).digest("hex"),
+  marker_sha256: createHash("sha256").update(markerText).digest("hex")
+}, null, 2) + "\n");

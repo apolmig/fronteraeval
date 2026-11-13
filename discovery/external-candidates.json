@@ -1,0 +1,4527 @@
+{
+  "schema_version": "2.0.0",
+  "checked_at": "2026-11-13T19:23:57.952Z",
+  "window_days": 21,
+  "min_score": 6,
+  "coverage": "partial",
+  "catalogue_source_commit": "a68dade7efb803ef50c8442d3f16264b293d1414",
+  "sources": [
+    {
+      "name": "github-search:\"llm benchmark\" in:name,description,readme",
+      "status": "partial",
+      "items": 50,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 50,
+      "note": "Results capped; source coverage is partial."
+    },
+    {
+      "name": "github-search:\"ai agent benchmark\" in:name,description,readme",
+      "status": "partial",
+      "items": 50,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 50,
+      "note": "Results capped; source coverage is partial."
+    },
+    {
+      "name": "github-search:\"ai safety benchmark\" in:name,description,readme",
+      "status": "ok",
+      "items": 13,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 50
+    },
+    {
+      "name": "github-search:\"frontier model evaluation\" in:name,description,readme",
+      "status": "ok",
+      "items": 22,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 50
+    },
+    {
+      "name": "github-search:\"language model evaluation\" in:name,description",
+      "status": "ok",
+      "items": 11,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 50
+    },
+    {
+      "name": "official-github:ukgovernmentbeis",
+      "status": "ok",
+      "items": 31,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:metr",
+      "status": "ok",
+      "items": 8,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:openai",
+      "status": "partial",
+      "items": 76,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100,
+      "note": "Results capped; source coverage is partial."
+    },
+    {
+      "name": "official-github:anthropics",
+      "status": "ok",
+      "items": 72,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:google-deepmind",
+      "status": "partial",
+      "items": 94,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100,
+      "note": "Results capped; source coverage is partial."
+    },
+    {
+      "name": "official-github:mlcommons",
+      "status": "ok",
+      "items": 34,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:centerforaisafety",
+      "status": "ok",
+      "items": 10,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:stanford-crfm",
+      "status": "ok",
+      "items": 6,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:sierra-research",
+      "status": "ok",
+      "items": 4,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:laude-institute",
+      "status": "ok",
+      "items": 2,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:servicenow",
+      "status": "ok",
+      "items": 35,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:epoch-research",
+      "status": "ok",
+      "items": 13,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:arcprize",
+      "status": "ok",
+      "items": 8,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:grayswanai",
+      "status": "ok",
+      "items": 3,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:meta-llama",
+      "status": "ok",
+      "items": 8,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:eleutherai",
+      "status": "ok",
+      "items": 20,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:alignmentresearch",
+      "status": "ok",
+      "items": 5,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:farai",
+      "status": "ok",
+      "items": 0,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:farama-foundation",
+      "status": "ok",
+      "items": 26,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:thu-coai",
+      "status": "ok",
+      "items": 26,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "official-github:hkust-nlp",
+      "status": "ok",
+      "items": 13,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100
+    },
+    {
+      "name": "arxiv",
+      "status": "partial",
+      "items": 24,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100,
+      "note": "Results capped; source coverage is partial."
+    },
+    {
+      "name": "huggingface",
+      "status": "partial",
+      "items": 100,
+      "checked_at": "2026-11-13T19:23:57.952Z",
+      "limit": 100,
+      "note": "Results capped; source coverage is partial."
+    }
+  ],
+  "candidates": [
+    {
+      "title": "helm",
+      "canonical_url": "https://github.com/stanford-crfm/helm",
+      "source_type": "official-github",
+      "source_name": "GitHub: stanford-crfm",
+      "source_owner": "stanford-crfm",
+      "origin_status": "unresolved",
+      "summary": "Holistic Evaluation of Language Models (HELM) is an open source Python framework created by the Center for Research on Foundation Models (CRFM) at Stanford for holistic, reproducible and transparent evaluation of foundation models, including large language models (LLMs) and multimodal models.",
+      "repository_url": "https://github.com/stanford-crfm/helm",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "helm"
+      ],
+      "family": null,
+      "published_at": "2021-11-29T08:53:17Z",
+      "updated_at": "2026-11-13T06:13:52Z",
+      "score": 11,
+      "reasons": [
+        "evaluation signal: evaluation",
+        "AI-system signal: llm, language model",
+        "risk/capability topic: multimodal",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "multimodal"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/stanford-crfm/helm"
+      ],
+      "id": "14e47294ff85fbc7",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: stanford-crfm"
+      ]
+    },
+    {
+      "title": "Safety-Prompts",
+      "canonical_url": "https://github.com/thu-coai/safety-prompts",
+      "source_type": "official-github",
+      "source_name": "GitHub: thu-coai",
+      "source_owner": "thu-coai",
+      "origin_status": "unresolved",
+      "summary": "Chinese safety prompts for evaluating and improving the safety of LLMs. 中文安全prompts，用于评估和提升大模型的安全性。",
+      "repository_url": "https://github.com/thu-coai/safety-prompts",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "Safety-Prompts"
+      ],
+      "family": null,
+      "published_at": "2023-04-18T14:10:26Z",
+      "updated_at": "2026-11-10T02:05:01Z",
+      "score": 11,
+      "reasons": [
+        "evaluation signal: evaluating",
+        "AI-system signal: llm",
+        "risk/capability topic: safeguards",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "safeguards"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/thu-coai/safety-prompts",
+        "https://github.com/thu-coai/Safety-Prompts"
+      ],
+      "id": "62d04ae46ff09aef",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: thu-coai"
+      ]
+    },
+    {
+      "title": "scone-bench",
+      "canonical_url": "https://github.com/anthropics/scone-bench",
+      "source_type": "official-github",
+      "source_name": "GitHub: anthropics",
+      "source_owner": "anthropics",
+      "origin_status": "unresolved",
+      "summary": "Benchmark for evaluating LLM agents on smart-contract vulnerability discovery and exploitation",
+      "repository_url": "https://github.com/anthropics/scone-bench",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "scone-bench"
+      ],
+      "family": null,
+      "published_at": "2026-05-12T22:17:19Z",
+      "updated_at": "2026-11-13T08:42:29Z",
+      "score": 11,
+      "reasons": [
+        "evaluation signal: benchmark, evaluating",
+        "AI-system signal: llm",
+        "risk/capability topic: autonomy-agents, cyber",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "autonomy-agents",
+        "cyber"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/anthropics/scone-bench"
+      ],
+      "id": "cdf62c153e2116a4",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: anthropics"
+      ]
+    },
+    {
+      "title": "AgentArch",
+      "canonical_url": "https://github.com/servicenow/agentarch",
+      "source_type": "official-github",
+      "source_name": "GitHub: ServiceNow",
+      "source_owner": "ServiceNow",
+      "origin_status": "unresolved",
+      "summary": "Code for AgentArch: A Comprehensive Benchmark to Evaluate Agent Architectures in Enterprise",
+      "repository_url": "https://github.com/servicenow/agentarch",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-09-12T20:18:26Z",
+      "updated_at": "2026-11-05T18:40:39Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark,  eval ",
+        "risk/capability topic: autonomy-agents",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/ServiceNow/AgentArch",
+        "https://github.com/ServiceNow/AgentArch"
+      ],
+      "id": "70b0443bdb4cd0c0",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "AgentLab",
+      "canonical_url": "https://github.com/servicenow/agentlab",
+      "source_type": "official-github",
+      "source_name": "GitHub: ServiceNow",
+      "source_owner": "ServiceNow",
+      "origin_status": "unresolved",
+      "summary": "AgentLab: An open-source framework for developing, testing, and benchmarking web agents on diverse tasks, designed for scalability and reproducibility.",
+      "repository_url": "https://github.com/servicenow/agentlab",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2024-05-21T17:17:20Z",
+      "updated_at": "2026-11-12T19:37:44Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "risk/capability topic: autonomy-agents",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/ServiceNow/AgentLab",
+        "https://github.com/ServiceNow/AgentLab"
+      ],
+      "id": "0659c293cc2bd1e0",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "AgentVista",
+      "canonical_url": "https://github.com/hkust-nlp/agentvista",
+      "source_type": "official-github",
+      "source_name": "GitHub: hkust-nlp",
+      "source_owner": "hkust-nlp",
+      "origin_status": "unresolved",
+      "summary": "Benchmarking multimodal agents on realistic, ultra-challenging visual scenarios requiring long-horizon hybrid tool use.",
+      "repository_url": "https://github.com/hkust-nlp/agentvista",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-02-26T15:58:50Z",
+      "updated_at": "2026-11-10T14:41:50Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "risk/capability topic: autonomy-agents, multimodal",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "autonomy-agents",
+        "multimodal"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/hkust-nlp/AgentVista",
+        "https://github.com/hkust-nlp/AgentVista"
+      ],
+      "id": "5ee05b8c4e0a5382",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "air-bench-2024",
+      "canonical_url": "https://github.com/stanford-crfm/air-bench-2024",
+      "source_type": "official-github",
+      "source_name": "GitHub: stanford-crfm",
+      "source_owner": "stanford-crfm",
+      "origin_status": "unresolved",
+      "summary": "AIR-Bench 2024 is a safety benchmark that aligns with emerging government regulations and company policies",
+      "repository_url": "https://github.com/stanford-crfm/air-bench-2024",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2024-06-07T17:50:00Z",
+      "updated_at": "2026-10-30T06:42:29Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "risk/capability topic: safeguards",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "safeguards"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/stanford-crfm/air-bench-2024",
+        "https://github.com/stanford-crfm/air-bench-2024"
+      ],
+      "id": "7858104cdca0634c",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "AISafetyLab",
+      "canonical_url": "https://github.com/thu-coai/aisafetylab",
+      "source_type": "official-github",
+      "source_name": "GitHub: thu-coai",
+      "source_owner": "thu-coai",
+      "origin_status": "unresolved",
+      "summary": "AISafetyLab: A comprehensive framework covering safety attack, defense, evaluation and paper list.",
+      "repository_url": "https://github.com/thu-coai/aisafetylab",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2024-10-25T11:16:38Z",
+      "updated_at": "2026-11-08T06:55:20Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: evaluation,  eval ",
+        "risk/capability topic: safeguards",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "safeguards"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/thu-coai/AISafetyLab",
+        "https://github.com/thu-coai/AISafetyLab"
+      ],
+      "id": "ea791c161f69ae08",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "aisi-sandboxing",
+      "canonical_url": "https://github.com/ukgovernmentbeis/aisi-sandboxing",
+      "source_type": "official-github",
+      "source_name": "GitHub: UKGovernmentBEIS",
+      "source_owner": "UKGovernmentBEIS",
+      "origin_status": "unresolved",
+      "summary": "The open-source AISI toolkit for sandboxing agentic evaluations",
+      "repository_url": "https://github.com/ukgovernmentbeis/aisi-sandboxing",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-07-30T08:42:10Z",
+      "updated_at": "2026-11-04T18:26:14Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: evaluation,  eval ",
+        "risk/capability topic: autonomy-agents",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/UKGovernmentBEIS/aisi-sandboxing",
+        "https://github.com/UKGovernmentBEIS/aisi-sandboxing"
+      ],
+      "id": "c5e91a79bec4088f",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "arc-agi-benchmarking",
+      "canonical_url": "https://github.com/arcprize/arc-agi-benchmarking",
+      "source_type": "official-github",
+      "source_name": "GitHub: arcprize",
+      "source_owner": "arcprize",
+      "origin_status": "unresolved",
+      "summary": "Testing baseline LLMs performance across various models",
+      "repository_url": "https://github.com/arcprize/arc-agi-benchmarking",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2024-10-23T15:47:15Z",
+      "updated_at": "2026-11-09T22:18:21Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: llm",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/arcprize/arc-agi-benchmarking",
+        "https://github.com/arcprize/arc-agi-benchmarking"
+      ],
+      "id": "819d4033d793049d",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "ceval",
+      "canonical_url": "https://github.com/hkust-nlp/ceval",
+      "source_type": "official-github",
+      "source_name": "GitHub: hkust-nlp",
+      "source_owner": "hkust-nlp",
+      "origin_status": "unresolved",
+      "summary": "Official github repo for C-Eval, a Chinese evaluation suite for foundation models [NeurIPS 2023]",
+      "repository_url": "https://github.com/hkust-nlp/ceval",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "ceval"
+      ],
+      "family": null,
+      "published_at": "2023-05-12T03:08:24Z",
+      "updated_at": "2026-11-12T01:37:29Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: evaluation,  eval ",
+        "AI-system signal: foundation model",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/hkust-nlp/ceval"
+      ],
+      "id": "db8c830670155e10",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: hkust-nlp"
+      ]
+    },
+    {
+      "title": "CharacterBench",
+      "canonical_url": "https://github.com/thu-coai/characterbench",
+      "source_type": "official-github",
+      "source_name": "GitHub: thu-coai",
+      "source_owner": "thu-coai",
+      "origin_status": "unresolved",
+      "summary": "[AAAI'25] CharacterBench: Benchmarking Character Customization of Large Language Models",
+      "repository_url": "https://github.com/thu-coai/characterbench",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-03-22T14:11:39Z",
+      "updated_at": "2026-11-11T20:28:53Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: language model",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/thu-coai/CharacterBench",
+        "https://github.com/thu-coai/CharacterBench"
+      ],
+      "id": "7d8c5cf11acadcb1",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "eva",
+      "canonical_url": "https://github.com/servicenow/eva",
+      "source_type": "official-github",
+      "source_name": "GitHub: ServiceNow",
+      "source_owner": "ServiceNow",
+      "origin_status": "unresolved",
+      "summary": "A New End-to-end Framework for Evaluating Voice Agents",
+      "repository_url": "https://github.com/servicenow/eva",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-03-24T01:23:35Z",
+      "updated_at": "2026-11-13T07:35:12Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: evaluating,  eval ",
+        "risk/capability topic: autonomy-agents",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/ServiceNow/eva",
+        "https://github.com/ServiceNow/eva"
+      ],
+      "id": "6281615a6a53cd1d",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "evals",
+      "canonical_url": "https://github.com/openai/evals",
+      "source_type": "official-github",
+      "source_name": "GitHub: openai",
+      "source_owner": "openai",
+      "origin_status": "unresolved",
+      "summary": "Evals is a framework for evaluating LLMs and LLM systems, and an open-source registry of benchmarks.",
+      "repository_url": "https://github.com/openai/evals",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "evals"
+      ],
+      "family": null,
+      "published_at": "2023-01-23T20:51:04Z",
+      "updated_at": "2026-11-13T18:48:04Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark, evaluating",
+        "AI-system signal: llm",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/anthropics/evals",
+        "https://github.com/openai/evals"
+      ],
+      "id": "49b1f862554d23d1",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: anthropics",
+        "GitHub: openai"
+      ],
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "gbench",
+      "canonical_url": "https://github.com/google-deepmind/gbench",
+      "source_type": "official-github",
+      "source_name": "GitHub: google-deepmind",
+      "source_owner": "google-deepmind",
+      "origin_status": "unresolved",
+      "summary": "Evaluation, serving performance, and release-readiness benchmark harness for Gemma and open-weights LLMs.",
+      "repository_url": "https://github.com/google-deepmind/gbench",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "gbench"
+      ],
+      "family": null,
+      "published_at": "2026-10-30T00:44:55Z",
+      "updated_at": "2026-11-11T16:24:08Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: llm",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/google-deepmind/gbench"
+      ],
+      "id": "e932065502cc7bf6",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: google-deepmind"
+      ]
+    },
+    {
+      "title": "HPSS",
+      "canonical_url": "https://github.com/thu-coai/hpss",
+      "source_type": "official-github",
+      "source_name": "GitHub: thu-coai",
+      "source_owner": "thu-coai",
+      "origin_status": "unresolved",
+      "summary": "HPSS: Heuristic Prompting Strategy Search for LLM Evaluators (ACL 2025 Findings)",
+      "repository_url": "https://github.com/thu-coai/hpss",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-05-23T08:36:51Z",
+      "updated_at": "2026-11-02T13:59:11Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal:  eval ",
+        "AI-system signal: llm",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/thu-coai/HPSS",
+        "https://github.com/thu-coai/HPSS"
+      ],
+      "id": "9d6eff10b1f44526",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "human-eval",
+      "canonical_url": "https://github.com/openai/human-eval",
+      "source_type": "official-github",
+      "source_name": "GitHub: openai",
+      "source_owner": "openai",
+      "origin_status": "unresolved",
+      "summary": "Code for the paper \"Evaluating Large Language Models Trained on Code\"",
+      "repository_url": "https://github.com/openai/human-eval",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "human-eval"
+      ],
+      "family": null,
+      "published_at": "2021-07-06T21:23:45Z",
+      "updated_at": "2026-11-13T06:23:10Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: evaluating,  eval ",
+        "AI-system signal: language model",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/openai/human-eval"
+      ],
+      "id": "9edbbd4ae30cd1f8",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: openai"
+      ]
+    },
+    {
+      "title": "IF-RewardBench",
+      "canonical_url": "https://github.com/thu-coai/if-rewardbench",
+      "source_type": "official-github",
+      "source_name": "GitHub: thu-coai",
+      "source_owner": "thu-coai",
+      "origin_status": "unresolved",
+      "summary": "IF-RewardBench: Benchmarking Judge Models for Instruction-Following Evaluation (ACL 2026)",
+      "repository_url": "https://github.com/thu-coai/if-rewardbench",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-02-28T13:19:27Z",
+      "updated_at": "2026-10-24T08:04:09Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "risk/capability topic: evaluation-integrity",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "evaluation-integrity"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/thu-coai/IF-RewardBench",
+        "https://github.com/thu-coai/IF-RewardBench"
+      ],
+      "id": "5516dd0114561c63",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "inspect_cyber",
+      "canonical_url": "https://github.com/ukgovernmentbeis/inspect_cyber",
+      "source_type": "official-github",
+      "source_name": "GitHub: UKGovernmentBEIS",
+      "source_owner": "UKGovernmentBEIS",
+      "origin_status": "unresolved",
+      "summary": "An Inspect extension for agentic cyber evaluations",
+      "repository_url": "https://github.com/ukgovernmentbeis/inspect_cyber",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-01-23T16:41:19Z",
+      "updated_at": "2026-11-11T20:37:19Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: evaluation,  eval ",
+        "risk/capability topic: autonomy-agents, cyber",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "autonomy-agents",
+        "cyber"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/UKGovernmentBEIS/inspect_cyber",
+        "https://github.com/UKGovernmentBEIS/inspect_cyber"
+      ],
+      "id": "d20d3ec98f0528e2",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "LOCA-bench",
+      "canonical_url": "https://github.com/hkust-nlp/loca-bench",
+      "source_type": "official-github",
+      "source_name": "GitHub: hkust-nlp",
+      "source_owner": "hkust-nlp",
+      "origin_status": "unresolved",
+      "summary": "Benchmarking Language Agents Under Controllable and Extreme Context Growth",
+      "repository_url": "https://github.com/hkust-nlp/loca-bench",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-02-01T15:58:50Z",
+      "updated_at": "2026-11-09T06:16:07Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "risk/capability topic: autonomy-agents",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/hkust-nlp/LOCA-bench",
+        "https://github.com/hkust-nlp/LOCA-bench"
+      ],
+      "id": "16106af34401c666",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "medperf",
+      "canonical_url": "https://github.com/mlcommons/medperf",
+      "source_type": "official-github",
+      "source_name": "GitHub: mlcommons",
+      "source_owner": "mlcommons",
+      "origin_status": "unresolved",
+      "summary": "An open benchmarking platform for medical artificial intelligence using Federated Evaluation.",
+      "repository_url": "https://github.com/mlcommons/medperf",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "medperf"
+      ],
+      "family": null,
+      "published_at": "2021-10-13T15:33:22Z",
+      "updated_at": "2026-11-07T20:57:19Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: evaluation",
+        "AI-system signal: artificial intelligence",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/mlcommons/medperf"
+      ],
+      "id": "df6092d1dcb4b60d",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: mlcommons"
+      ]
+    },
+    {
+      "title": "modelbench",
+      "canonical_url": "https://github.com/mlcommons/modelbench",
+      "source_type": "official-github",
+      "source_name": "GitHub: mlcommons",
+      "source_owner": "mlcommons",
+      "origin_status": "unresolved",
+      "summary": "Run safety benchmarks against AI models and view detailed reports showing how well they performed.",
+      "repository_url": "https://github.com/mlcommons/modelbench",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2023-11-10T18:03:49Z",
+      "updated_at": "2026-11-03T20:32:50Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "risk/capability topic: safeguards",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "safeguards"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/mlcommons/modelbench",
+        "https://github.com/mlcommons/modelbench"
+      ],
+      "id": "8f6689a879b3bd25",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "optstop",
+      "canonical_url": "https://github.com/ukgovernmentbeis/optstop",
+      "source_type": "official-github",
+      "source_name": "GitHub: UKGovernmentBEIS",
+      "source_owner": "UKGovernmentBEIS",
+      "origin_status": "unresolved",
+      "summary": "Optimal stopping package for LLM evaluations",
+      "repository_url": "https://github.com/ukgovernmentbeis/optstop",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "optstop"
+      ],
+      "family": null,
+      "published_at": "2025-12-12T11:43:09Z",
+      "updated_at": "2026-10-24T07:51:18Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: evaluation",
+        "AI-system signal: llm",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/ukgovernmentbeis/optstop",
+        "https://github.com/UKGovernmentBEIS/optstop"
+      ],
+      "id": "ef61e0fe6a1fdfe7",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: UKGovernmentBEIS"
+      ]
+    },
+    {
+      "title": "PiSAs",
+      "canonical_url": "https://github.com/servicenow/pisas",
+      "source_type": "official-github",
+      "source_name": "GitHub: ServiceNow",
+      "source_owner": "ServiceNow",
+      "origin_status": "unresolved",
+      "summary": "Benchmarking Contextual Integrity in Multi-User Agentic Systems",
+      "repository_url": "https://github.com/servicenow/pisas",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-05-29T18:41:12Z",
+      "updated_at": "2026-11-02T21:44:57Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "risk/capability topic: autonomy-agents",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/ServiceNow/PiSAs",
+        "https://github.com/ServiceNow/PiSAs"
+      ],
+      "id": "cafd566a760831e2",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "reward-hacking-misalignment",
+      "canonical_url": "https://github.com/ukgovernmentbeis/reward-hacking-misalignment",
+      "source_type": "official-github",
+      "source_name": "GitHub: UKGovernmentBEIS",
+      "source_owner": "UKGovernmentBEIS",
+      "origin_status": "unresolved",
+      "summary": "Reproducing \"Natural Emergent Misalignment from Reward Hacking\" (MacDiarmid et al., Anthropic 2025) with open-source models. Includes reward-hackable RL environments, misalignment evaluations, training configs, and evaluation scripts. Models trained on OLMo (7B, 32B) and GPT-OSS (20B, 120B).",
+      "repository_url": "https://github.com/ukgovernmentbeis/reward-hacking-misalignment",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-03-27T14:40:06Z",
+      "updated_at": "2026-11-11T06:08:54Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: evaluation,  eval ",
+        "risk/capability topic: deception-misalignment",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "deception-misalignment"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/UKGovernmentBEIS/reward-hacking-misalignment",
+        "https://github.com/UKGovernmentBEIS/reward-hacking-misalignment"
+      ],
+      "id": "d1b15ee717e1426f",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "tau2-bench",
+      "canonical_url": "https://github.com/sierra-research/tau2-bench",
+      "source_type": "official-github",
+      "source_name": "GitHub: sierra-research",
+      "source_owner": "sierra-research",
+      "origin_status": "unresolved",
+      "summary": "τ-Bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+      "repository_url": "https://github.com/sierra-research/tau2-bench",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-06-09T23:46:17Z",
+      "updated_at": "2026-11-13T19:09:57Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "risk/capability topic: autonomy-agents",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/sierra-research/tau2-bench",
+        "https://github.com/sierra-research/tau2-bench"
+      ],
+      "id": "02654a6c71943adf",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "Toolathlon",
+      "canonical_url": "https://github.com/hkust-nlp/toolathlon",
+      "source_type": "official-github",
+      "source_name": "GitHub: hkust-nlp",
+      "source_owner": "hkust-nlp",
+      "origin_status": "unresolved",
+      "summary": "[ICLR 2026] The Tool Decathlon: Benchmarking Language Agents for Diverse, Realistic, and Long-Horizon Task Execution",
+      "repository_url": "https://github.com/hkust-nlp/toolathlon",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-10-24T09:41:48Z",
+      "updated_at": "2026-11-13T06:45:33Z",
+      "score": 9,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "risk/capability topic: autonomy-agents",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/hkust-nlp/Toolathlon",
+        "https://github.com/hkust-nlp/Toolathlon"
+      ],
+      "id": "db57c8132955f9ae",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "AI evaluators favor job applications written by certain AI models, independent of candidate quality",
+      "canonical_url": "https://arxiv.org/abs/2610.41866",
+      "source_type": "arxiv",
+      "source_name": "arXiv",
+      "source_owner": null,
+      "origin_status": "unresolved",
+      "summary": "Job applicants increasingly use large language models (LLMs) to write cover letters, while employers deploy LLMs to screen them. In this all-AI setting, we ask whether the \\emph{choice of model} affects hiring outcomes independently of candidate qualifications. We introduce a multi-model auditing framework pairing eleven LLM writer agents with nine API-hosted evaluator agents across ten job descriptions and fifty candidates per job. Four findings emerge. First, we identify a generative preference hierarchy: a consistent global ranking of writer models by evaluator acceptance, in which locally hosted models are systematically disadvantaged regardless of their license, compounded by self-prefe",
+      "repository_url": null,
+      "paper_url": "https://arxiv.org/abs/2610.41866",
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-10-30T15:18:29Z",
+      "updated_at": "2026-10-30T15:18:29Z",
+      "score": 8,
+      "reasons": [
+        "evaluation signal:  eval ",
+        "AI-system signal: llm, language model",
+        "risk/capability topic: autonomy-agents",
+        "research-paper source"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "possible-new-evaluation",
+      "review_status": "filtered",
+      "observed_urls": [
+        "http://arxiv.org/abs/2610.41866v1",
+        "http://arxiv.org/abs/2610.41866v1"
+      ],
+      "id": "c90be6738b7ca372",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "Beyond Proxy Metrics: MLLMs as Human Surrogates for Explainable AI Evaluation",
+      "canonical_url": "https://arxiv.org/abs/2611.13926",
+      "source_type": "arxiv",
+      "source_name": "arXiv",
+      "source_owner": null,
+      "origin_status": "unresolved",
+      "summary": "Explainable AI (XAI) has expanded into a broad and impactful research area, but the fundamental question of how best to evaluate explanation techniques has proven frustratingly elusive. Methodologies typically revolve around either proxy metrics which tell us little about the utility of an explanation, or human evaluation which---while generally considered the gold standard---is expensive, difficult to scale, and challenging to reproduce. In this paper, we investigate if Multimodal Large Language Models (MLLMs) can act as surrogate human participants to automate the evaluation of XAI. To do this, we first propose a ``purpose-grounded'' evaluation framework with metrics applicable to both MLL",
+      "repository_url": null,
+      "paper_url": "https://arxiv.org/abs/2611.13926",
+      "doi": null,
+      "aliases": [
+        "Beyond Proxy Metrics: MLLMs as Human Surrogates for Explainable AI Evaluation"
+      ],
+      "family": null,
+      "published_at": "2026-11-10T11:15:28Z",
+      "updated_at": "2026-11-10T11:15:28Z",
+      "score": 8,
+      "reasons": [
+        "evaluation signal: evaluation",
+        "AI-system signal: llm, language model",
+        "risk/capability topic: cyber, multimodal",
+        "research-paper source"
+      ],
+      "topics": [
+        "cyber",
+        "multimodal"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://arxiv.org/abs/2611.13926",
+        "http://arxiv.org/abs/2611.13926v1"
+      ],
+      "id": "8d09935956ea6393",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "arXiv"
+      ]
+    },
+    {
+      "title": "Beyond the Transcript: Measuring and Improving the Use of Acoustic Information in Audio Language Models",
+      "canonical_url": "https://arxiv.org/abs/2611.11573",
+      "source_type": "arxiv",
+      "source_name": "arXiv",
+      "source_owner": null,
+      "origin_status": "unresolved",
+      "summary": "Audio language model benchmarks provide comprehensive evaluation across diverse tasks. However, some tasks can be answered from the transcript or even the question alone, and benchmark scores can therefore confound acoustic understanding with language modeling ability. We distinguish lexical tasks, for which the transcript usually suffices, from global-attribute and within-recording-structure tasks, which require the model to analyse the recording beyond its words, either as a whole, for properties such as the speaker and emotion, or within it, for patterns such as stress and intonation. We evaluated 19 open models and Gemini 3.1 Pro on 92 tasks from 6 benchmarks and estimated the recording ",
+      "repository_url": null,
+      "paper_url": "https://arxiv.org/abs/2611.11573",
+      "doi": null,
+      "aliases": [
+        "Beyond the Transcript: Measuring and Improving the Use of Acoustic Information in Audio Language Models"
+      ],
+      "family": null,
+      "published_at": "2026-11-08T19:37:55Z",
+      "updated_at": "2026-11-08T19:37:55Z",
+      "score": 8,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: language model, language-model",
+        "risk/capability topic: multimodal",
+        "research-paper source"
+      ],
+      "topics": [
+        "multimodal"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://arxiv.org/abs/2611.11573",
+        "http://arxiv.org/abs/2611.11573v1"
+      ],
+      "id": "0682ebce6d7b8259",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "arXiv"
+      ]
+    },
+    {
+      "title": "Conditional Values: The Contingent Foundations of Attitudes toward Artificial Intelligence",
+      "canonical_url": "https://arxiv.org/abs/2610.37197",
+      "source_type": "arxiv",
+      "source_name": "arXiv",
+      "source_owner": null,
+      "origin_status": "unresolved",
+      "summary": "How do broader values shape whether people judge artificial intelligence (AI) as good or bad for humanity? This article analyzes provisional World Values Survey Wave 8 data from 40,960 respondents in 24 country samples using pooled and national prediction models, outcome-independent respondent profiles, and groups of countries. The analysis reveals a cross-country anchor: general optimism about science and technology is the strongest pooled predictor of favorable AI evaluation and recurs among the leading predictors in every national sample. Expert authority, education and information access, selected forms of trust, openness, and demographic position provide nationally distinctive patterns.",
+      "repository_url": null,
+      "paper_url": "https://arxiv.org/abs/2610.37197",
+      "doi": null,
+      "aliases": [
+        "Conditional Values: The Contingent Foundations of Attitudes toward Artificial Intelligence"
+      ],
+      "family": null,
+      "published_at": "2026-10-27T13:18:13Z",
+      "updated_at": "2026-10-27T13:18:13Z",
+      "score": 8,
+      "reasons": [
+        "evaluation signal: evaluation",
+        "AI-system signal: artificial intelligence",
+        "risk/capability topic: evaluation-integrity",
+        "research-paper source"
+      ],
+      "topics": [
+        "evaluation-integrity",
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://arxiv.org/abs/2610.37197",
+        "http://arxiv.org/abs/2610.37197v1"
+      ],
+      "id": "82fe52b73d648351",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "arXiv"
+      ]
+    },
+    {
+      "title": "DeepResearch RewardBench: Evaluating Reward Models for Deep Research Report",
+      "canonical_url": "https://arxiv.org/abs/2611.10156",
+      "source_type": "arxiv",
+      "source_name": "arXiv",
+      "source_owner": null,
+      "origin_status": "unresolved",
+      "summary": "Empowered by Large Language Models (LLMs), deep research systems integrate online information into research reports through multi-step web searching and information synthesis. Evaluating these reports presents a significant challenge due to their long context, high information density, and domain specificity, necessitating the use of AI evaluation as a substitute for prohibitively expensive human assessment. However, few studies have examined the effectiveness of existing reward models or LLMs in understanding and evaluating such research reports. To bridge this gap, we introduce DeepResearch RewardBench, the first benchmark dedicated to evaluating reward modeling for research reports. We co",
+      "repository_url": null,
+      "paper_url": "https://arxiv.org/abs/2611.10156",
+      "doi": null,
+      "aliases": [
+        "DeepResearch RewardBench: Evaluating Reward Models for Deep Research Report"
+      ],
+      "family": null,
+      "published_at": "2026-11-06T19:23:48Z",
+      "updated_at": "2026-11-06T19:23:48Z",
+      "score": 8,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: llm, language model",
+        "risk/capability topic: autonomy-agents, evaluation-integrity",
+        "research-paper source"
+      ],
+      "topics": [
+        "autonomy-agents",
+        "evaluation-integrity"
+      ],
+      "discovery_kind": "possible-new-evaluation",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://arxiv.org/abs/2611.10156",
+        "http://arxiv.org/abs/2611.10156v1"
+      ],
+      "id": "b1ac92ed400922f7",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "arXiv"
+      ]
+    },
+    {
+      "title": "Diagnosing Model--Item Interactions in Language Model Benchmarks with LSIRM",
+      "canonical_url": "https://arxiv.org/abs/2611.02432",
+      "source_type": "arxiv",
+      "source_name": "arXiv",
+      "source_owner": null,
+      "origin_status": "unresolved",
+      "summary": "Language models with similar benchmark accuracy can succeed on different items. Overall scores do not show where their performance differs or which item properties might explain those differences. We demonstrate how the latent space item response model (LSIRM) can help evaluators investigate these patterns and their consequences for model comparison. We analyze 1,348 language models on 5,761 BBH items and compare ways of presenting and scoring answers across BBH, GPQA, MMLU-Pro, and MuSR. We examine LSIRM maps, which summarize differences in performance across models and items, alongside item properties and records of correct and incorrect responses. In BBH, nearby items on these maps often ",
+      "repository_url": null,
+      "paper_url": "https://arxiv.org/abs/2611.02432",
+      "doi": null,
+      "aliases": [
+        "Diagnosing Model--Item Interactions in Language Model Benchmarks with LSIRM"
+      ],
+      "family": null,
+      "published_at": "2026-11-02T02:54:28Z",
+      "updated_at": "2026-11-02T02:54:28Z",
+      "score": 8,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: language model",
+        "risk/capability topic: evaluation-integrity",
+        "research-paper source"
+      ],
+      "topics": [
+        "evaluation-integrity"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://arxiv.org/abs/2611.02432",
+        "http://arxiv.org/abs/2611.02432v1"
+      ],
+      "id": "897f5e8e5b68517a",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "arXiv"
+      ]
+    },
+    {
+      "title": "EEFA: A Framework for the Ethical Evaluation of AI Agents",
+      "canonical_url": "https://arxiv.org/abs/2611.02561",
+      "source_type": "arxiv",
+      "source_name": "arXiv",
+      "source_owner": null,
+      "origin_status": "unresolved",
+      "summary": "The rapid deployment of autonomous AI agents across consequential domains including healthcare, legal services, nancial management, and enterprise workows has created an urgent governance challenge. While the eld of AI evaluation has produced sophisticated benchmarks for measuring agent capability, these frameworks measure exclusively what agents can do rather than how they do it. The ethical dimensions most critical to responsible agent deployment, in- cluding respect for human autonomy, harm avoidance, transparency and non-deception, privacy compliance, and accountability, are systematically absent from current evaluation practice. This paper addresses that gap through three contributions.",
+      "repository_url": null,
+      "paper_url": "https://arxiv.org/abs/2611.02561",
+      "doi": null,
+      "aliases": [
+        "EEFA: A Framework for the Ethical Evaluation of AI Agents"
+      ],
+      "family": null,
+      "published_at": "2026-11-02T05:38:45Z",
+      "updated_at": "2026-11-02T05:38:45Z",
+      "score": 8,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: ai agent, agent benchmark",
+        "risk/capability topic: autonomy-agents, deception-misalignment",
+        "research-paper source"
+      ],
+      "topics": [
+        "autonomy-agents",
+        "deception-misalignment"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://arxiv.org/abs/2611.02561",
+        "http://arxiv.org/abs/2611.02561v1"
+      ],
+      "id": "1c489d6ee80237af",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "arXiv"
+      ]
+    },
+    {
+      "title": "Few Trials, Many Metrics: Beta Mixtures for Low-Budget AI Evaluation",
+      "canonical_url": "https://arxiv.org/abs/2611.00474",
+      "source_type": "arxiv",
+      "source_name": "arXiv",
+      "source_owner": null,
+      "origin_status": "unresolved",
+      "summary": "Evaluating a stochastic AI system often requires many repeated samples per instance, especially for metrics defined over long horizons. Recent work has shown that modeling instance-level success probabilities with a Beta distribution recovers Pass@$k$ from far fewer samples than direct estimation. We show that this framework supports a broader range of evaluation targets. We fit a mixture of Beta distributions by marginal maximum likelihood, with the number of components chosen by BIC. From that one fit, we compute Pass$^k$ and AUC@$k$ at any horizon in closed form. We also derive delta-method confidence intervals for these metrics and for Pass@$k$, which require no additional model calls. T",
+      "repository_url": null,
+      "paper_url": "https://arxiv.org/abs/2611.00474",
+      "doi": null,
+      "aliases": [
+        "Few Trials, Many Metrics: Beta Mixtures for Low-Budget AI Evaluation"
+      ],
+      "family": null,
+      "published_at": "2026-10-31T00:00:53Z",
+      "updated_at": "2026-10-31T00:00:53Z",
+      "score": 8,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: ai system",
+        "risk/capability topic: autonomy-agents",
+        "research-paper source"
+      ],
+      "topics": [
+        "autonomy-agents",
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://arxiv.org/abs/2611.00474",
+        "http://arxiv.org/abs/2611.00474v1"
+      ],
+      "id": "8f485580258c3cab",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:22:07.567Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "arXiv"
+      ]
+    },
+    {
+      "title": "From Data to Wisdom: Rethinking AI Through an Epistemic Lens",
+      "canonical_url": "https://arxiv.org/abs/2611.16726",
+      "source_type": "arxiv",
+      "source_name": "arXiv",
+      "source_owner": null,
+      "origin_status": "unresolved",
+      "summary": "This paper proposes the Data-to-Wisdom Epistemic Architecture for AI (EAAI), a conceptual framework treating Data, Information, Knowledge, Understanding and Wisdom as five distinct but recursively interacting epistemic functions: observation, contextual interpretation, modeling and prediction, critical evaluation and informed judgment. Two observations motivate it: sequential readings of the Knowledge Pyramid obscure how these functions interact, and a targeted review of ten Bayesian reference books finds that prior distributions are defined mathematically while \"prior information\" and \"prior knowledge\" are not consistently distinguished as epistemic categories. A Bayesian interpretation rel",
+      "repository_url": null,
+      "paper_url": "https://arxiv.org/abs/2611.16726",
+      "doi": null,
+      "aliases": [
+        "From Data to Wisdom: Rethinking AI Through an Epistemic Lens"
+      ],
+      "family": null,
+      "published_at": "2026-11-12T12:38:36Z",
+      "updated_at": "2026-11-12T12:38:36Z",
+      "score": 8,
+      "reasons": [
+        "evaluation signal: evaluation",
+        "AI-system signal: agentic ai",
+        "risk/capability topic: autonomy-agents",
+        "research-paper source"
+      ],
+      "topics": [
+        "autonomy-agents",
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://arxiv.org/abs/2611.16726",
+        "http://arxiv.org/abs/2611.16726v1"
+      ],
+      "id": "cf9f1529b926d309",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "arXiv"
+      ]
+    },
+    {
+      "title": "R-BED: A Consequence-Aware Framework for System-Level AI Evaluation and Continuous Assurance",
+      "canonical_url": "https://arxiv.org/abs/2611.10704",
+      "source_type": "arxiv",
+      "source_name": "arXiv",
+      "source_owner": null,
+      "origin_status": "unresolved",
+      "summary": "Evaluations of AI systems usually report properties of a model, while decisions to deploy concern a configured system: a model together with prompts, tools, permissions, data, safeguards and an operating context. We ask how evidence about technical failures, deployment-control effectiveness and real-world consequences can be connected to defensible authorization decisions throughout the lifecycle of a deployed system. We present R-BED (Risk-Based Evaluability Design), a specification-level methodology with a fixed 6+4+3 architecture of thirteen diagnostic dimensions (technical failure, deployment controls, consequence and impact); a failure-mediated expected-loss identity that is kept separa",
+      "repository_url": null,
+      "paper_url": "https://arxiv.org/abs/2611.10704",
+      "doi": null,
+      "aliases": [
+        "R-BED: A Consequence-Aware Framework for System-Level AI Evaluation and Continuous Assurance"
+      ],
+      "family": null,
+      "published_at": "2026-11-07T12:50:03Z",
+      "updated_at": "2026-11-07T12:50:03Z",
+      "score": 8,
+      "reasons": [
+        "evaluation signal: evaluation",
+        "AI-system signal: ai system",
+        "risk/capability topic: autonomy-agents",
+        "research-paper source"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://arxiv.org/abs/2611.10704",
+        "http://arxiv.org/abs/2611.10704v1"
+      ],
+      "id": "df1d334896240f32",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:22:07.567Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "arXiv"
+      ]
+    },
+    {
+      "title": "Who Can Evaluate AI Independently? A Framework for Analysing Evaluation Infrastructure",
+      "canonical_url": "https://arxiv.org/abs/2611.08134",
+      "source_type": "arxiv",
+      "source_name": "arXiv",
+      "source_owner": null,
+      "origin_status": "unresolved",
+      "summary": "AI evaluation is increasingly central to AI safety and governance, yet taking part in an evaluation does not by itself confer authority over its design, its execution or the resources it depends on. This paper examines how infrastructure arrangements distribute that authority, and so shape who can evaluate AI systems independently. Drawing on Science and Technology Studies, political economy and applied evaluation standards, we introduce PAAI (Power, Access, Adequacy, Independence), a framework for examining who controls evaluation infrastructure, the terms on which it is available, whether it is adequate to the evaluation's purpose and what autonomy it supports. We apply PAAI to twelve Afri",
+      "repository_url": null,
+      "paper_url": "https://arxiv.org/abs/2611.08134",
+      "doi": null,
+      "aliases": [
+        "Who Can Evaluate AI Independently? A Framework for Analysing Evaluation Infrastructure"
+      ],
+      "family": null,
+      "published_at": "2026-11-05T15:00:51Z",
+      "updated_at": "2026-11-05T15:00:51Z",
+      "score": 8,
+      "reasons": [
+        "evaluation signal: evaluation",
+        "AI-system signal: ai system",
+        "risk/capability topic: safeguards",
+        "research-paper source"
+      ],
+      "topics": [
+        "safeguards"
+      ],
+      "discovery_kind": "possible-new-evaluation",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://arxiv.org/abs/2611.08134",
+        "http://arxiv.org/abs/2611.08134v1"
+      ],
+      "id": "29e0a9cad31f3554",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:22:07.567Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "arXiv"
+      ]
+    },
+    {
+      "title": "agent-bench",
+      "canonical_url": "https://github.com/ezealfaro/agent-bench",
+      "source_type": "github-search",
+      "source_name": "GitHub: EzeAlfaro",
+      "source_owner": "EzeAlfaro",
+      "origin_status": "unresolved",
+      "summary": "Adversarial benchmark arena & RL trajectory training data engine for AI agent labs and whales",
+      "repository_url": "https://github.com/ezealfaro/agent-bench",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "agent-bench"
+      ],
+      "family": null,
+      "published_at": "2026-11-04T05:23:04Z",
+      "updated_at": "2026-11-04T07:38:57Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: ai agent",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/ezealfaro/agent-bench",
+        "https://github.com/EzeAlfaro/agent-bench"
+      ],
+      "id": "d4dfdeb01f3bcd91",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: EzeAlfaro"
+      ]
+    },
+    {
+      "title": "agent-evaluation-evidence-review",
+      "canonical_url": "https://github.com/kunikuni0402-lab/agent-evaluation-evidence-review",
+      "source_type": "github-search",
+      "source_name": "GitHub: kunikuni0402-lab",
+      "source_owner": "kunikuni0402-lab",
+      "origin_status": "unresolved",
+      "summary": "Independent review of AI agent benchmark evidence, reproducibility, and verification practices.",
+      "repository_url": "https://github.com/kunikuni0402-lab/agent-evaluation-evidence-review",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "agent-evaluation-evidence-review"
+      ],
+      "family": null,
+      "published_at": "2026-11-03T06:58:48Z",
+      "updated_at": "2026-11-03T07:02:44Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: ai agent, agent benchmark",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/kunikuni0402-lab/agent-evaluation-evidence-review"
+      ],
+      "id": "b5f7da44069dcdc9",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: kunikuni0402-lab"
+      ]
+    },
+    {
+      "title": "agent-pal4",
+      "canonical_url": "https://github.com/jianmliu/agent-pal4",
+      "source_type": "github-search",
+      "source_name": "GitHub: jianmliu",
+      "source_owner": "jianmliu",
+      "origin_status": "unresolved",
+      "summary": "Headless C++20 & WebAssembly AI Agent Benchmark for Chinese Paladin 4 (OpenPAL4)",
+      "repository_url": "https://github.com/jianmliu/agent-pal4",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "agent-pal4"
+      ],
+      "family": null,
+      "published_at": "2026-11-03T22:39:17Z",
+      "updated_at": "2026-11-06T00:30:43Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: ai agent, agent benchmark",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/jianmliu/agent-pal4"
+      ],
+      "id": "e1062157fbfd104c",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: jianmliu"
+      ]
+    },
+    {
+      "title": "AgentArena",
+      "canonical_url": "https://github.com/psp-yn/agentarena",
+      "source_type": "github-search",
+      "source_name": "GitHub: PSP-YN",
+      "source_owner": "PSP-YN",
+      "origin_status": "unresolved",
+      "summary": "Framework-independent AI agent benchmarking platform for reproducible task success, cost, latency, tool usage, failure recovery, and execution traces.",
+      "repository_url": "https://github.com/psp-yn/agentarena",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-11-06T02:17:39Z",
+      "updated_at": "2026-11-06T19:01:49Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: ai agent",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/PSP-YN/AgentArena",
+        "https://github.com/PSP-YN/AgentArena"
+      ],
+      "id": "7471a81abea96726",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "AgentGauge-AI",
+      "canonical_url": "https://github.com/bhagyashree747/agentgauge-ai",
+      "source_type": "github-search",
+      "source_name": "GitHub: bhagyashree747",
+      "source_owner": "bhagyashree747",
+      "origin_status": "unresolved",
+      "summary": "Java-powered coding agent benchmarking and evaluation platform",
+      "repository_url": "https://github.com/bhagyashree747/agentgauge-ai",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "AgentGauge-AI"
+      ],
+      "family": null,
+      "published_at": "2026-11-11T05:06:29Z",
+      "updated_at": "2026-11-12T15:16:42Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: evaluation",
+        "AI-system signal: agent benchmark",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents",
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/bhagyashree747/agentgauge-ai",
+        "https://github.com/bhagyashree747/AgentGauge-AI"
+      ],
+      "id": "32b4508c23eb397a",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:22:07.567Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: bhagyashree747"
+      ]
+    },
+    {
+      "title": "Agnuxo/P2PCLAW-Innovative-Benchmark",
+      "canonical_url": "https://huggingface.co/datasets/Agnuxo/P2PCLAW-Innovative-Benchmark",
+      "source_type": "huggingface",
+      "source_name": "Hugging Face datasets",
+      "source_owner": "Agnuxo",
+      "origin_status": "unresolved",
+      "summary": "P2PCLAW Innovative Benchmark The first benchmark for AI scientific paper writing quality — multi-dimensional evaluation with formal verification. View Live Leaderboard | Platform | API What Makes This Benchmark Unique Feature Description Multi-LLM Granular Scoring 17 independent LLM judges score each paper across 10 quality dimensions Lean4 Formal Verification Machine-verified proofs — no hand-waving Tribunal Examination 8-question cognitive exam… See the full description on the dataset page: https://huggingface.co/datasets/Agnuxo/P2PCLAW-Innovative-Benchmark. task_categories:other language:en license:mit size_categories:n<1K region:us benchmark scientific-writing formal-verification lean4 a",
+      "repository_url": null,
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "Agnuxo/P2PCLAW-Innovative-Benchmark"
+      ],
+      "family": null,
+      "published_at": "2026-04-03T10:01:29.000Z",
+      "updated_at": "2026-11-13T19:01:43.000Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: llm",
+        "risk/capability topic: autonomy-agents, evaluation-integrity"
+      ],
+      "topics": [
+        "autonomy-agents",
+        "evaluation-integrity"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://huggingface.co/datasets/Agnuxo/P2PCLAW-Innovative-Benchmark"
+      ],
+      "id": "64303a49108b5bc1",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "Hugging Face datasets"
+      ]
+    },
+    {
+      "title": "Ai-performance_and_bench-marking",
+      "canonical_url": "https://github.com/doijodevenkateshwara-oss/ai-performance_and_bench-marking",
+      "source_type": "github-search",
+      "source_name": "GitHub: doijodevenkateshwara-oss",
+      "source_owner": "doijodevenkateshwara-oss",
+      "origin_status": "unresolved",
+      "summary": "A multi-layer performance testing and benchmarking platform for AI applications, LLMs, RAG pipelines and intelligent agents.",
+      "repository_url": "https://github.com/doijodevenkateshwara-oss/ai-performance_and_bench-marking",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-11-12T10:32:24Z",
+      "updated_at": "2026-11-12T16:50:44Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: llm",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/doijodevenkateshwara-oss/Ai-performance_and_bench-marking",
+        "https://github.com/doijodevenkateshwara-oss/Ai-performance_and_bench-marking"
+      ],
+      "id": "9fdedfc003f2a3a3",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "akhet-models",
+      "canonical_url": "https://github.com/alwkala/akhet-models",
+      "source_type": "github-search",
+      "source_name": "GitHub: alwkala",
+      "source_owner": "alwkala",
+      "origin_status": "unresolved",
+      "summary": "Building Local First , SLMs , LLMS, AI Native applications & Agentic AI frameworks. local-first language models, evaluation harnesses, and inference tools by Alwkala Digital Labs. Home of the AkhetRa model family.",
+      "repository_url": "https://github.com/alwkala/akhet-models",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "akhet-models"
+      ],
+      "family": null,
+      "published_at": "2026-10-24T11:53:58Z",
+      "updated_at": "2026-11-05T21:46:16Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: evaluation",
+        "AI-system signal: llm, language model",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/alwkala/akhet-models"
+      ],
+      "id": "e7932b4c25af4252",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: alwkala"
+      ]
+    },
+    {
+      "title": "antd-admin-enhanced",
+      "canonical_url": "https://github.com/nakisisageorge/antd-admin-enhanced",
+      "source_type": "github-search",
+      "source_name": "GitHub: nakisisageorge",
+      "source_owner": "nakisisageorge",
+      "origin_status": "unresolved",
+      "summary": "Enhanced enterprise admin template with African domain components, MCP server for AI agents, benchmark suite with regression detection, and comprehensive documentation.",
+      "repository_url": "https://github.com/nakisisageorge/antd-admin-enhanced",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "antd-admin-enhanced"
+      ],
+      "family": null,
+      "published_at": "2026-11-04T06:12:41Z",
+      "updated_at": "2026-11-04T06:14:43Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: ai agent",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/nakisisageorge/antd-admin-enhanced"
+      ],
+      "id": "915fc8b0b712cdaf",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: nakisisageorge"
+      ]
+    },
+    {
+      "title": "anthro-benchmark",
+      "canonical_url": "https://github.com/google-deepmind/anthro-benchmark",
+      "source_type": "official-github",
+      "source_name": "GitHub: google-deepmind",
+      "source_owner": "google-deepmind",
+      "origin_status": "unresolved",
+      "summary": "",
+      "repository_url": "https://github.com/google-deepmind/anthro-benchmark",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-05-06T16:13:15Z",
+      "updated_at": "2026-11-12T12:29:12Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/google-deepmind/anthro-benchmark",
+        "https://github.com/google-deepmind/anthro-benchmark"
+      ],
+      "id": "f0f32cefc4a42e59",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "arc-agi-3-benchmarking",
+      "canonical_url": "https://github.com/arcprize/arc-agi-3-benchmarking",
+      "source_type": "official-github",
+      "source_name": "GitHub: arcprize",
+      "source_owner": "arcprize",
+      "origin_status": "unresolved",
+      "summary": "",
+      "repository_url": "https://github.com/arcprize/arc-agi-3-benchmarking",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-12-08T15:32:22Z",
+      "updated_at": "2026-11-09T22:01:59Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/arcprize/arc-agi-3-benchmarking",
+        "https://github.com/arcprize/arc-agi-3-benchmarking"
+      ],
+      "id": "bc8566de6c7b752e",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "artin_code",
+      "canonical_url": "https://github.com/epoch-research/artin_code",
+      "source_type": "official-github",
+      "source_name": "GitHub: epoch-research",
+      "source_owner": "epoch-research",
+      "origin_status": "unresolved",
+      "summary": "Artin code for benchmark",
+      "repository_url": "https://github.com/epoch-research/artin_code",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2024-11-07T09:43:12Z",
+      "updated_at": "2026-11-01T10:06:18Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/epoch-research/artin_code",
+        "https://github.com/epoch-research/artin_code"
+      ],
+      "id": "4d83a08ce5d67610",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "BeyondNaturalnessProbe",
+      "canonical_url": "https://github.com/servicenow/beyondnaturalnessprobe",
+      "source_type": "official-github",
+      "source_name": "GitHub: ServiceNow",
+      "source_owner": "ServiceNow",
+      "origin_status": "unresolved",
+      "summary": "Controlled synthetic speech probes for evaluating TTS quality beyond naturalness",
+      "repository_url": "https://github.com/servicenow/beyondnaturalnessprobe",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-10-22T17:51:50Z",
+      "updated_at": "2026-11-05T00:36:51Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: evaluating,  eval ",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/ServiceNow/BeyondNaturalnessProbe",
+        "https://github.com/ServiceNow/BeyondNaturalnessProbe"
+      ],
+      "id": "e6ce79e9757be971",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "biocrust-benchmark-data",
+      "canonical_url": "https://github.com/abarrons/biocrust-benchmark-data",
+      "source_type": "github-search",
+      "source_name": "GitHub: abarrons",
+      "source_owner": "abarrons",
+      "origin_status": "unresolved",
+      "summary": "Data snapshot for two AI-agent benchmark tasks in microbial community analysis.",
+      "repository_url": "https://github.com/abarrons/biocrust-benchmark-data",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "biocrust-benchmark-data"
+      ],
+      "family": null,
+      "published_at": "2026-11-04T08:57:35Z",
+      "updated_at": "2026-11-04T09:21:30Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: agent benchmark",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/abarrons/biocrust-benchmark-data"
+      ],
+      "id": "1f08477e296f90f7",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:22:07.567Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: abarrons"
+      ]
+    },
+    {
+      "title": "chess-puzzles-mirror",
+      "canonical_url": "https://github.com/epoch-research/chess-puzzles-mirror",
+      "source_type": "official-github",
+      "source_name": "GitHub: epoch-research",
+      "source_owner": "epoch-research",
+      "origin_status": "unresolved",
+      "summary": "Epoch AI's Chess Puzzles benchmark (snapshot extracted from internal benchmarks repo)",
+      "repository_url": "https://github.com/epoch-research/chess-puzzles-mirror",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-10-09T14:28:02Z",
+      "updated_at": "2026-11-05T09:25:22Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/epoch-research/chess-puzzles-mirror",
+        "https://github.com/epoch-research/chess-puzzles-mirror"
+      ],
+      "id": "5be1295fe1c65db3",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "ck",
+      "canonical_url": "https://github.com/mlcommons/ck",
+      "source_type": "official-github",
+      "source_name": "GitHub: mlcommons",
+      "source_owner": "mlcommons",
+      "origin_status": "unresolved",
+      "summary": "Collective Knowledge (CK), Collective Mind (CM/CMX) and MLPerf automations: community-driven projects to learn how to run AI, ML, and other emerging workloads more efficiently and cost-effectively across diverse models, datasets, software, and hardware using MLPerf methodology and benchmarks.",
+      "repository_url": "https://github.com/mlcommons/ck",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2014-11-05T17:14:43Z",
+      "updated_at": "2026-11-11T11:04:18Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/mlcommons/ck",
+        "https://github.com/mlcommons/ck"
+      ],
+      "id": "f3f4e63bf12a46fa",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "COLDataset",
+      "canonical_url": "https://github.com/thu-coai/coldataset",
+      "source_type": "official-github",
+      "source_name": "GitHub: thu-coai",
+      "source_owner": "thu-coai",
+      "origin_status": "unresolved",
+      "summary": "The official repository of the paper: COLD: A Benchmark for Chinese Offensive Language Detection",
+      "repository_url": "https://github.com/thu-coai/coldataset",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2022-10-18T06:46:59Z",
+      "updated_at": "2026-11-10T17:41:05Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/thu-coai/COLDataset",
+        "https://github.com/thu-coai/COLDataset"
+      ],
+      "id": "ab5d0c9c04765782",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "ComplexBench",
+      "canonical_url": "https://github.com/thu-coai/complexbench",
+      "source_type": "official-github",
+      "source_name": "GitHub: thu-coai",
+      "source_owner": "thu-coai",
+      "origin_status": "unresolved",
+      "summary": "Benchmarking Complex Instruction-Following with Multiple Constraints Composition (NeurIPS 2024 Datasets and Benchmarks Track)",
+      "repository_url": "https://github.com/thu-coai/complexbench",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2024-07-04T03:39:22Z",
+      "updated_at": "2026-11-11T04:51:50Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/thu-coai/ComplexBench",
+        "https://github.com/thu-coai/ComplexBench"
+      ],
+      "id": "6990b61ac2dd3643",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "ConvLab-2",
+      "canonical_url": "https://github.com/thu-coai/convlab-2",
+      "source_type": "official-github",
+      "source_name": "GitHub: thu-coai",
+      "source_owner": "thu-coai",
+      "origin_status": "unresolved",
+      "summary": "ConvLab-2: An Open-Source Toolkit for Building, Evaluating, and Diagnosing Dialogue Systems",
+      "repository_url": "https://github.com/thu-coai/convlab-2",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2020-02-09T03:48:25Z",
+      "updated_at": "2026-11-04T15:45:49Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: evaluating,  eval ",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/thu-coai/ConvLab-2",
+        "https://github.com/thu-coai/ConvLab-2"
+      ],
+      "id": "e39cef84413a7a1c",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "cotk",
+      "canonical_url": "https://github.com/thu-coai/cotk",
+      "source_type": "official-github",
+      "source_name": "GitHub: thu-coai",
+      "source_owner": "thu-coai",
+      "origin_status": "unresolved",
+      "summary": "Conversational Toolkit. An Open-Source Toolkit for Fast Development and Fair Evaluation of Text Generation",
+      "repository_url": "https://github.com/thu-coai/cotk",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2018-11-25T15:32:38Z",
+      "updated_at": "2026-11-10T10:14:13Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: evaluation,  eval ",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/thu-coai/cotk",
+        "https://github.com/thu-coai/cotk"
+      ],
+      "id": "8772e941366e4c2a",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "cranfield-lucene-search",
+      "canonical_url": "https://github.com/inamsyed/cranfield-lucene-search",
+      "source_type": "github-search",
+      "source_name": "GitHub: Inamsyed",
+      "source_owner": "Inamsyed",
+      "origin_status": "unresolved",
+      "summary": "A search engine for the Cranfield collection built with Apache Lucene 10. Compares analyzers and scoring models (BM25, VSM, language model), evaluated with trec_eval.",
+      "repository_url": "https://github.com/inamsyed/cranfield-lucene-search",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-10-30T22:50:33Z",
+      "updated_at": "2026-10-30T22:51:30Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal:  eval ",
+        "AI-system signal: language model",
+        "risk/capability topic: evaluation-integrity"
+      ],
+      "topics": [
+        "evaluation-integrity"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/Inamsyed/cranfield-lucene-search",
+        "https://github.com/Inamsyed/cranfield-lucene-search"
+      ],
+      "id": "112679afc0db2fc4",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "crawlcheck/agent-safety-benchmark",
+      "canonical_url": "https://huggingface.co/datasets/crawlcheck/agent-safety-benchmark",
+      "source_type": "huggingface",
+      "source_name": "Hugging Face datasets",
+      "source_owner": "crawlcheck",
+      "origin_status": "unresolved",
+      "summary": "CrawlCheck: Agent safety benchmark A frozen suite of cases that tests whether an AI agent stops before it signs in on a lookalike domain, connects to a poisoned tool, pays on a revoked receipt, acts on a stale answer, or fetches a page whose robots.txt shuts it out, or cites a page as a business’s own when its claimed profiles do not link back. Each case carries its truth and the signed CrawlCheck answer it came from, so it can score an agent or serve as a checkable reward when… See the full description on the dataset page: https://huggingface.co/datasets/crawlcheck/agent-safety-benchmark. language:en license:cc-by-4.0 region:us agent-safety ai-agents evaluation benchmark reward-signal crawl",
+      "repository_url": null,
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "crawlcheck/agent-safety-benchmark"
+      ],
+      "family": null,
+      "published_at": "2026-10-22T06:20:36.000Z",
+      "updated_at": "2026-11-13T19:18:08.000Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: ai agent",
+        "risk/capability topic: autonomy-agents, safeguards"
+      ],
+      "topics": [
+        "autonomy-agents",
+        "safeguards"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://huggingface.co/datasets/crawlcheck/agent-safety-benchmark"
+      ],
+      "id": "eccdfb9c14f8e795",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "Hugging Face datasets"
+      ]
+    },
+    {
+      "title": "crf-benchmark",
+      "canonical_url": "https://github.com/grayswanai/crf-benchmark",
+      "source_type": "official-github",
+      "source_name": "GitHub: GraySwanAI",
+      "source_owner": "GraySwanAI",
+      "origin_status": "unresolved",
+      "summary": "",
+      "repository_url": "https://github.com/grayswanai/crf-benchmark",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-01-30T17:54:12Z",
+      "updated_at": "2026-10-28T11:50:50Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/GraySwanAI/crf-benchmark",
+        "https://github.com/GraySwanAI/crf-benchmark"
+      ],
+      "id": "29621038b08f9664",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "dataperf",
+      "canonical_url": "https://github.com/mlcommons/dataperf",
+      "source_type": "official-github",
+      "source_name": "GitHub: mlcommons",
+      "source_owner": "mlcommons",
+      "origin_status": "unresolved",
+      "summary": "Data Benchmarking",
+      "repository_url": "https://github.com/mlcommons/dataperf",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2021-12-09T21:48:09Z",
+      "updated_at": "2026-11-12T08:29:00Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/mlcommons/dataperf",
+        "https://github.com/mlcommons/dataperf"
+      ],
+      "id": "5305b7422d4ac7db",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "drbench",
+      "canonical_url": "https://github.com/servicenow/drbench",
+      "source_type": "official-github",
+      "source_name": "GitHub: ServiceNow",
+      "source_owner": "ServiceNow",
+      "origin_status": "unresolved",
+      "summary": "An enterprise deep research benchmark",
+      "repository_url": "https://github.com/servicenow/drbench",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-07-16T14:19:07Z",
+      "updated_at": "2026-11-07T13:11:17Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/ServiceNow/drbench",
+        "https://github.com/ServiceNow/drbench"
+      ],
+      "id": "e6e9a174e9e6466c",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "dwdm-fault-localisation",
+      "canonical_url": "https://github.com/olatunji-ogundiran/dwdm-fault-localisation",
+      "source_type": "github-search",
+      "source_name": "GitHub: olatunji-ogundiran",
+      "source_owner": "olatunji-ogundiran",
+      "origin_status": "unresolved",
+      "summary": "AI-agent benchmark task: locate and classify fibre faults on a DWDM line from OCM and amplifier data (Harbor format)",
+      "repository_url": "https://github.com/olatunji-ogundiran/dwdm-fault-localisation",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "dwdm-fault-localisation"
+      ],
+      "family": null,
+      "published_at": "2026-11-04T12:45:20Z",
+      "updated_at": "2026-11-04T12:51:29Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: agent benchmark",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/olatunji-ogundiran/dwdm-fault-localisation"
+      ],
+      "id": "4408da558bcbfdeb",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:22:07.567Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: olatunji-ogundiran"
+      ]
+    },
+    {
+      "title": "elichen-skymizer/vlm-benchmark-questions",
+      "canonical_url": "https://huggingface.co/datasets/elichen-skymizer/vlm-benchmark-questions",
+      "source_type": "huggingface",
+      "source_name": "Hugging Face datasets",
+      "source_owner": "elichen-skymizer",
+      "origin_status": "unresolved",
+      "summary": "VLM Benchmark Questions 1,800 questions and 2,105 image entries across six subsets, each containing the first 300 rows of the corresponding *-subsample-500 subset in elichen-skymizer/vlm-prepared-dataset, pinned at 6cb6a4d65fcb2c8d788f68aaa0aa92c5ceca408b. Selection is exactly source.select(range(300)), using the original row order. No reshuffling or resampling is performed. Each subset includes the first 100 pilot questions and the next 200 questions from the collection… See the full description on the dataset page: https://huggingface.co/datasets/elichen-skymizer/vlm-benchmark-questions. task_categories:visual-question-answering source_datasets:elichen-skymizer/vlm-prepared-dataset source_",
+      "repository_url": null,
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "elichen-skymizer/vlm-benchmark-questions"
+      ],
+      "family": null,
+      "published_at": "2026-11-11T19:18:24.000Z",
+      "updated_at": "2026-11-11T19:57:25.000Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: llm",
+        "risk/capability topic: multimodal"
+      ],
+      "topics": [
+        "multimodal"
+      ],
+      "discovery_kind": "possible-new-version",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://huggingface.co/datasets/elichen-skymizer/vlm-benchmark-questions"
+      ],
+      "id": "fa0c2f71880a7953",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "Hugging Face datasets"
+      ]
+    },
+    {
+      "title": "endpoints-submission-docs",
+      "canonical_url": "https://github.com/mlcommons/endpoints-submission-docs",
+      "source_type": "official-github",
+      "source_name": "GitHub: mlcommons",
+      "source_owner": "mlcommons",
+      "origin_status": "unresolved",
+      "summary": "Submitter documentation for MLPerf Endpoints: how to prepare, validate and submit a benchmark result.",
+      "repository_url": "https://github.com/mlcommons/endpoints-submission-docs",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-09-18T19:50:42Z",
+      "updated_at": "2026-10-30T09:50:34Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/mlcommons/endpoints-submission-docs",
+        "https://github.com/mlcommons/endpoints-submission-docs"
+      ],
+      "id": "73b4a1e4d11868c3",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "etb-harness",
+      "canonical_url": "https://github.com/authensor/etb-harness",
+      "source_type": "github-search",
+      "source_name": "GitHub: AUTHENSOR",
+      "source_owner": "AUTHENSOR",
+      "origin_status": "unresolved",
+      "summary": "Measures how gameable an AI agent benchmark is, before and after hardening: deterministic capability probes, LLM attacker policies, verifier, hardening profiles",
+      "repository_url": "https://github.com/authensor/etb-harness",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "etb-harness"
+      ],
+      "family": null,
+      "published_at": "2026-11-02T06:09:10Z",
+      "updated_at": "2026-11-02T17:40:29Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: llm, ai agent",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/authensor/etb-harness",
+        "https://github.com/AUTHENSOR/etb-harness"
+      ],
+      "id": "8d52eb757cb7280e",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: AUTHENSOR"
+      ]
+    },
+    {
+      "title": "eval-analysis-public",
+      "canonical_url": "https://github.com/metr/eval-analysis-public",
+      "source_type": "official-github",
+      "source_name": "GitHub: METR",
+      "source_owner": "METR",
+      "origin_status": "unresolved",
+      "summary": "Public repository containing METR's DVC pipeline for eval data analysis",
+      "repository_url": "https://github.com/metr/eval-analysis-public",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-01-11T01:18:42Z",
+      "updated_at": "2026-11-09T19:59:53Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal:  eval ",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/METR/eval-analysis-public",
+        "https://github.com/METR/eval-analysis-public"
+      ],
+      "id": "78bdac4916f767c9",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "frontier-eval-playground",
+      "canonical_url": "https://github.com/hari131415/frontier-eval-playground",
+      "source_type": "github-search",
+      "source_name": "GitHub: hari131415",
+      "source_owner": "hari131415",
+      "origin_status": "unresolved",
+      "summary": "Side-by-side LLM evaluation playground (React + FastAPI): latency, cost, and truncation across models, eval suites with bias-guarded LLM-as-judge, and a weekly AI Radar digest.",
+      "repository_url": "https://github.com/hari131415/frontier-eval-playground",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "frontier-eval-playground"
+      ],
+      "family": null,
+      "published_at": "2026-11-07T15:45:52Z",
+      "updated_at": "2026-11-07T15:50:09Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: evaluation,  eval ",
+        "AI-system signal: llm",
+        "risk/capability topic: evaluation-integrity"
+      ],
+      "topics": [
+        "evaluation-integrity"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/hari131415/frontier-eval-playground"
+      ],
+      "id": "fc3baf86f22f1c3c",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: hari131415"
+      ]
+    },
+    {
+      "title": "frontier-evals",
+      "canonical_url": "https://github.com/openai/frontier-evals",
+      "source_type": "official-github",
+      "source_name": "GitHub: openai",
+      "source_owner": "openai",
+      "origin_status": "unresolved",
+      "summary": "OpenAI Frontier Evals",
+      "repository_url": "https://github.com/openai/frontier-evals",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-03-28T15:45:01Z",
+      "updated_at": "2026-11-13T15:29:25Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal:  eval , evals",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/openai/frontier-evals",
+        "https://github.com/openai/frontier-evals"
+      ],
+      "id": "d8d68dd5b7645092",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "gabrielireland/GeoNatureAgent_Benchmark",
+      "canonical_url": "https://huggingface.co/datasets/gabrielireland/GeoNatureAgent_Benchmark",
+      "source_type": "huggingface",
+      "source_name": "Hugging Face datasets",
+      "source_owner": "gabrielireland",
+      "origin_status": "unresolved",
+      "summary": "GeoNatureAgent Benchmark Tasks and per-run evaluation results from GeoNatureAgent Benchmark: Benchmarking LLM Agents for Environmental Geospatial Analysis Across Frontier and Open-Weight Foundation Models (ACM SIGSPATIAL '26, doi:10.1145/3841645.3844198). Code, harness and agent: github.com/gabrielireland/GeoNatureAgent_Benchmark Data archive (rasters, raw conversation traces, compiled results): Zenodo doi:10.5281/zenodo.20450995 (concept DOI, resolves to the latest version)… See the full description on the dataset page: https://huggingface.co/datasets/gabrielireland/GeoNatureAgent_Benchmark. task_categories:question-answering language:en language:es language:gl language:eu license:cc-by-4.0",
+      "repository_url": null,
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "gabrielireland/GeoNatureAgent_Benchmark"
+      ],
+      "family": null,
+      "published_at": "2026-04-29T20:57:59.000Z",
+      "updated_at": "2026-11-13T03:27:21.000Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: llm, foundation model",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://huggingface.co/datasets/gabrielireland/GeoNatureAgent_Benchmark"
+      ],
+      "id": "e6eb3f90c3b55de1",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "Hugging Face datasets"
+      ]
+    },
+    {
+      "title": "hack-ignition-benchmark",
+      "canonical_url": "https://github.com/eleutherai/hack-ignition-benchmark",
+      "source_type": "official-github",
+      "source_name": "GitHub: EleutherAI",
+      "source_owner": "EleutherAI",
+      "origin_status": "unresolved",
+      "summary": "Build library for the hack-ignition benchmark: regenerate, run, extract and audit its GRPO reward-hacking runs",
+      "repository_url": "https://github.com/eleutherai/hack-ignition-benchmark",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-10-20T01:38:40Z",
+      "updated_at": "2026-10-26T01:30:34Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/EleutherAI/hack-ignition-benchmark",
+        "https://github.com/EleutherAI/hack-ignition-benchmark"
+      ],
+      "id": "37cf9fa92e7dd5ef",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "hawk",
+      "canonical_url": "https://github.com/metr/hawk",
+      "source_type": "official-github",
+      "source_name": "GitHub: METR",
+      "source_owner": "METR",
+      "origin_status": "unresolved",
+      "summary": "Run Inspect AI evals in the cloud",
+      "repository_url": "https://github.com/metr/hawk",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-03-23T22:14:25Z",
+      "updated_at": "2026-11-13T14:39:18Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal:  eval , evals",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/METR/hawk",
+        "https://github.com/METR/hawk"
+      ],
+      "id": "200405423e7e739b",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "healthcare-biomedical-ai/Pediatric-Dental-Medication-Safety-Constraint-Verification-Benchmark",
+      "canonical_url": "https://huggingface.co/datasets/healthcare-biomedical-ai/Pediatric-Dental-Medication-Safety-Constraint-Verification-Benchmark",
+      "source_type": "huggingface",
+      "source_name": "Hugging Face datasets",
+      "source_owner": "healthcare-biomedical-ai",
+      "origin_status": "unresolved",
+      "summary": "Pediatric Dental Medication Safety Constraint Verification Benchmark This JSON benchmark records patient age, weight, allergy history, current medications, and proposed prescriptions in pediatric dental scenarios, with labels indicating whether medication safety constraints are violated. Each record includes an assessment status, specific violated constraints, and a rationale, supporting evaluation of a model's ability to identify dosing issues, contraindications, and other… See the full description on the dataset page: https://huggingface.co/datasets/healthcare-biomedical-ai/Pediatric-Dental-Medication-Safety-Constraint-Verification-Benchmark. language:en size_categories:n<1K format:json mo",
+      "repository_url": null,
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "healthcare-biomedical-ai/Pediatric-Dental-Medication-Safety-Constraint-Verification-Benchmark"
+      ],
+      "family": null,
+      "published_at": "2026-11-13T11:12:30.000Z",
+      "updated_at": "2026-11-13T11:12:42.000Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: model evaluation",
+        "risk/capability topic: safeguards"
+      ],
+      "topics": [
+        "safeguards"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://huggingface.co/datasets/healthcare-biomedical-ai/Pediatric-Dental-Medication-Safety-Constraint-Verification-Benchmark"
+      ],
+      "id": "50f34225ec42cc59",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:22:07.567Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "Hugging Face datasets"
+      ]
+    },
+    {
+      "title": "hlido-eu/agent-benchmark",
+      "canonical_url": "https://huggingface.co/datasets/hlido-eu/agent-benchmark",
+      "source_type": "huggingface",
+      "source_name": "Hugging Face datasets",
+      "source_owner": "hlido-eu",
+      "origin_status": "unresolved",
+      "summary": "configs: - config_name: default data_files: - path: run-log.json split: train language: - en license: cc-by-nc-4.0 tags: - ai-agents - benchmark - evaluation - agent-evaluation - llm-agents - trustworthy-ai - product-review - c2pa pretty_name: Hlido AI Agent Benchmark size_categories: - n<1K task_categories: - other Hlido AI Agent Benchmark Independent, cryptographically-attested evaluations of AI agents and products. Hlido reviews AI… See the full description on the dataset page: https://huggingface.co/datasets/hlido-eu/agent-benchmark. region:us",
+      "repository_url": null,
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "hlido-eu/agent-benchmark"
+      ],
+      "family": null,
+      "published_at": "2026-04-10T21:29:00.000Z",
+      "updated_at": "2026-11-12T13:51:34.000Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: llm, ai agent",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://huggingface.co/datasets/hlido-eu/agent-benchmark"
+      ],
+      "id": "6c913e23c1c651cf",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "Hugging Face datasets"
+      ]
+    },
+    {
+      "title": "inference",
+      "canonical_url": "https://github.com/mlcommons/inference",
+      "source_type": "official-github",
+      "source_name": "GitHub: mlcommons",
+      "source_owner": "mlcommons",
+      "origin_status": "unresolved",
+      "summary": "Reference implementations of MLPerf® inference benchmarks",
+      "repository_url": "https://github.com/mlcommons/inference",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2018-09-13T01:53:57Z",
+      "updated_at": "2026-11-13T01:19:12Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/mlcommons/inference",
+        "https://github.com/mlcommons/inference"
+      ],
+      "id": "e4e2dd00bb5b73e3",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "inspect_evals",
+      "canonical_url": "https://github.com/ukgovernmentbeis/inspect_evals",
+      "source_type": "official-github",
+      "source_name": "GitHub: UKGovernmentBEIS",
+      "source_owner": "UKGovernmentBEIS",
+      "origin_status": "unresolved",
+      "summary": "Collection of evals for Inspect AI",
+      "repository_url": "https://github.com/ukgovernmentbeis/inspect_evals",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2024-10-02T08:10:35Z",
+      "updated_at": "2026-11-11T18:09:49Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal:  eval , evals",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/UKGovernmentBEIS/inspect_evals",
+        "https://github.com/UKGovernmentBEIS/inspect_evals"
+      ],
+      "id": "15d7bc74fdd66be0",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "k12-teacher-skills",
+      "canonical_url": "https://github.com/anthropics/k12-teacher-skills",
+      "source_type": "official-github",
+      "source_name": "GitHub: anthropics",
+      "source_owner": "anthropics",
+      "origin_status": "unresolved",
+      "summary": "Skills and eval rubrics for K-12 teachers, co-developed with Learning Commons",
+      "repository_url": "https://github.com/anthropics/k12-teacher-skills",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-07-10T23:00:03Z",
+      "updated_at": "2026-11-13T14:28:53Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal:  eval ",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/anthropics/k12-teacher-skills",
+        "https://github.com/anthropics/k12-teacher-skills"
+      ],
+      "id": "eefa2626d0355287",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "krush420/sovereign-g4-benchmarks",
+      "canonical_url": "https://huggingface.co/datasets/krush420/sovereign-g4-benchmarks",
+      "source_type": "huggingface",
+      "source_name": "Hugging Face datasets",
+      "source_owner": "krush420",
+      "origin_status": "unresolved",
+      "summary": "Sovereign G4 Hermetic Benchmark Audit Logs & Scorecards (krusch-stack — 333,000+ Queries/Traces, 12 External Suites, 49 Audit Logs, 75/75 Gates) Core Thesis — \"Databases are the memory state and models are ephemeral compute.\"Read Paper #27 (Return on Memory: #1 Overall (91.17%), Model-Matched GPT 5.6 Luna (81.50% @ $1.35, 71.1x Cheaper) & #1 Open-Weights (57.33% @ $0.00) on Official DolphinBench), Paper #26 (DolphinBench Sovereign Memory & Wave-4 Ablation), and the… See the full description on the dataset page: https://huggingface.co/datasets/krush420/sovereign-g4-benchmarks. task_categories:text-retrieval task_categories:question-answering task_categories:text-generation language:en license",
+      "repository_url": null,
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "krush420/sovereign-g4-benchmarks"
+      ],
+      "family": null,
+      "published_at": "2026-10-28T17:17:49.000Z",
+      "updated_at": "2026-11-11T22:14:32.000Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: llm",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://huggingface.co/datasets/krush420/sovereign-g4-benchmarks"
+      ],
+      "id": "b8db8e98606bcaa2",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "Hugging Face datasets"
+      ]
+    },
+    {
+      "title": "ktwu01/benchmark-radar",
+      "canonical_url": "https://huggingface.co/datasets/ktwu01/benchmark-radar",
+      "source_type": "huggingface",
+      "source_name": "Hugging Face datasets",
+      "source_owner": "ktwu01",
+      "origin_status": "unresolved",
+      "summary": "Benchmark Radar: AI Benchmarks and Evaluation Scores Find AI benchmarks for LLMs, agents, and multimodal models. Benchmark Radar brings benchmark metadata, reported model scores, and daily discoveries together, with links to original sources where available. Search benchmarks or load the four dataset subsets below. Overview Benchmark Radar is a living database and search engine for AI benchmarks and evaluation, described in the technical report… See the full description on the dataset page: https://huggingface.co/datasets/ktwu01/benchmark-radar. task_categories:text-generation task_categories:question-answering task_categories:tabular-classification language:en language:zh license:other size",
+      "repository_url": null,
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "ktwu01/benchmark-radar"
+      ],
+      "family": null,
+      "published_at": "2026-09-16T06:40:40.000Z",
+      "updated_at": "2026-11-13T13:13:22.000Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: llm, multimodal model",
+        "risk/capability topic: autonomy-agents, multimodal"
+      ],
+      "topics": [
+        "autonomy-agents",
+        "multimodal"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://huggingface.co/datasets/ktwu01/benchmark-radar"
+      ],
+      "id": "58b2e0db55d0a52c",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "Hugging Face datasets"
+      ]
+    },
+    {
+      "title": "LiverSWAT-Bench",
+      "canonical_url": "https://github.com/taranrai/liverswat-bench",
+      "source_type": "github-search",
+      "source_name": "GitHub: taranrai",
+      "source_owner": "taranrai",
+      "origin_status": "unresolved",
+      "summary": "An evidence-grounded AI safety benchmark for evaluating open-weight LLMs on UK liver health advice.",
+      "repository_url": "https://github.com/taranrai/liverswat-bench",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "LiverSWAT-Bench"
+      ],
+      "family": null,
+      "published_at": "2026-11-12T19:39:17Z",
+      "updated_at": "2026-11-13T02:05:28Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark, evaluating",
+        "AI-system signal: llm",
+        "risk/capability topic: safeguards"
+      ],
+      "topics": [
+        "safeguards"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/taranrai/liverswat-bench",
+        "https://github.com/taranrai/LiverSWAT-Bench"
+      ],
+      "id": "744155856dcde2a5",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: taranrai"
+      ]
+    },
+    {
+      "title": "london-planscope",
+      "canonical_url": "https://github.com/samaddmirzaa/london-planscope",
+      "source_type": "github-search",
+      "source_name": "GitHub: samaddmirzaa",
+      "source_owner": "samaddmirzaa",
+      "origin_status": "unresolved",
+      "summary": "Machine learning over 1.3M London planning applications: a fine-tuned DistilBERT classifier, a calibrated refusal risk model with explanations, similar case search, and an LLM benchmark (Amazon Nova). Live on Hugging Face + AWS Lambda.",
+      "repository_url": "https://github.com/samaddmirzaa/london-planscope",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "london-planscope"
+      ],
+      "family": null,
+      "published_at": "2026-10-29T15:13:16Z",
+      "updated_at": "2026-11-12T23:47:24Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: llm",
+        "risk/capability topic: safeguards"
+      ],
+      "topics": [
+        "safeguards"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/samaddmirzaa/london-planscope"
+      ],
+      "id": "d9f1fefc2c145b95",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: samaddmirzaa"
+      ]
+    },
+    {
+      "title": "Metaworld",
+      "canonical_url": "https://github.com/farama-foundation/metaworld",
+      "source_type": "official-github",
+      "source_name": "GitHub: Farama-Foundation",
+      "source_owner": "Farama-Foundation",
+      "origin_status": "unresolved",
+      "summary": "Collections of robotics environments geared towards benchmarking multi-task and meta reinforcement learning",
+      "repository_url": "https://github.com/farama-foundation/metaworld",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2019-09-09T19:00:02Z",
+      "updated_at": "2026-11-12T08:53:58Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/Farama-Foundation/Metaworld",
+        "https://github.com/Farama-Foundation/Metaworld"
+      ],
+      "id": "df0f5b8d2a3580db",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "Mihai-LeanZero/leanzero-agentic-benchmarks",
+      "canonical_url": "https://huggingface.co/datasets/Mihai-LeanZero/leanzero-agentic-benchmarks",
+      "source_type": "huggingface",
+      "source_name": "Hugging Face datasets",
+      "source_owner": "Mihai-LeanZero",
+      "origin_status": "unresolved",
+      "summary": "LeanZero Agentic Benchmarks Aggregated results of LeanZero's agentic coding benchmarks, exactly as ranked on leanzero.net/agentic-benchmarks. One row per model per published benchmark run (a Forge 2.0 cloud baseline row covers its independent builds). Synced automatically from the site's data; the site is the source of truth and every row links back to its run page there, with the checks, screenshots, video and cost. Leaderboard view: Mihai-LeanZero/leanzero-agentic-leaderboard.… See the full description on the dataset page: https://huggingface.co/datasets/Mihai-LeanZero/leanzero-agentic-benchmarks. language:en license:cc-by-4.0 size_categories:n<1K format:json modality:tabular modality:text",
+      "repository_url": null,
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "Mihai-LeanZero/leanzero-agentic-benchmarks"
+      ],
+      "family": null,
+      "published_at": "2026-10-17T19:22:36.000Z",
+      "updated_at": "2026-11-13T07:54:14.000Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: llm",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents",
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://huggingface.co/datasets/Mihai-LeanZero/leanzero-agentic-benchmarks"
+      ],
+      "id": "5bcfac612aa43ec0",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "Hugging Face datasets"
+      ]
+    },
+    {
+      "title": "mlperf_client",
+      "canonical_url": "https://github.com/mlcommons/mlperf_client",
+      "source_type": "official-github",
+      "source_name": "GitHub: mlcommons",
+      "source_owner": "mlcommons",
+      "origin_status": "unresolved",
+      "summary": "MLPerf Client is a benchmark for Windows, Linux and macOS, focusing on client form factors in ML inference scenarios.",
+      "repository_url": "https://github.com/mlcommons/mlperf_client",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2024-12-10T23:29:41Z",
+      "updated_at": "2026-11-06T11:23:31Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/mlcommons/mlperf_client",
+        "https://github.com/mlcommons/mlperf_client"
+      ],
+      "id": "a0340bd282cf8241",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "mlperf-automations",
+      "canonical_url": "https://github.com/mlcommons/mlperf-automations",
+      "source_type": "official-github",
+      "source_name": "GitHub: mlcommons",
+      "source_owner": "mlcommons",
+      "origin_status": "unresolved",
+      "summary": "This repository contains automation scripts designed to run MLPerf Inference benchmarks. Originally developed for the Collective Mind (CM) automation framework, these scripts have been adapted to leverage the MLC automation framework, maintained by the MLCommons Benchmark Infrastructure Working Group.",
+      "repository_url": "https://github.com/mlcommons/mlperf-automations",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2024-12-11T06:19:37Z",
+      "updated_at": "2026-11-12T07:59:47Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/mlcommons/mlperf-automations",
+        "https://github.com/mlcommons/mlperf-automations"
+      ],
+      "id": "9ad510522c673538",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "ollama-uncensored-llm-benchmarks",
+      "canonical_url": "https://github.com/eriktonon/ollama-uncensored-llm-benchmarks",
+      "source_type": "github-search",
+      "source_name": "GitHub: eriktonon",
+      "source_owner": "eriktonon",
+      "origin_status": "unresolved",
+      "summary": "Empirical Precision, Token Speed (Decode/Prefill tok/s), Hallucination Rate (%), Context Window (32K-262K), and Zero-Refusal Benchmarks of 17 Uncensored LLMs (Bonsai-2 Q2_0, IBM Granite 4.2 8B/30B, Qwen 3.8, Qwen 3.6 MoE, DeepSeek V4.1, Gemma 4) on 80GB Datacenter GPU.",
+      "repository_url": "https://github.com/eriktonon/ollama-uncensored-llm-benchmarks",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "ollama-uncensored-llm-benchmarks"
+      ],
+      "family": null,
+      "published_at": "2026-10-25T12:57:00Z",
+      "updated_at": "2026-11-13T11:58:52Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: llm",
+        "risk/capability topic: safeguards"
+      ],
+      "topics": [
+        "safeguards"
+      ],
+      "discovery_kind": "possible-new-version",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/eriktonon/ollama-uncensored-llm-benchmarks"
+      ],
+      "id": "6c6d65eba01a508d",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: eriktonon"
+      ]
+    },
+    {
+      "title": "open-agent-evals",
+      "canonical_url": "https://github.com/musicalscorpio/open-agent-evals",
+      "source_type": "github-search",
+      "source_name": "GitHub: musicalScorpio",
+      "source_owner": "musicalScorpio",
+      "origin_status": "unresolved",
+      "summary": "Open-source, local-first reliability lab for AI agents—benchmark task success, tool use, recovery, safety, voice decisions, cost, latency, and repeatability with OpenCode, Ollama, and pluggable evals.",
+      "repository_url": "https://github.com/musicalscorpio/open-agent-evals",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "open-agent-evals"
+      ],
+      "family": null,
+      "published_at": "2026-11-03T01:36:31Z",
+      "updated_at": "2026-11-11T21:25:16Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark,  eval ",
+        "AI-system signal: ai agent",
+        "risk/capability topic: autonomy-agents, safeguards"
+      ],
+      "topics": [
+        "autonomy-agents",
+        "safeguards"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/musicalscorpio/open-agent-evals",
+        "https://github.com/musicalScorpio/open-agent-evals"
+      ],
+      "id": "8c1c86b0ebdd9c44",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: musicalScorpio"
+      ]
+    },
+    {
+      "title": "opportunitypilot",
+      "canonical_url": "https://github.com/snidhireddy-eng/opportunitypilot",
+      "source_type": "github-search",
+      "source_name": "GitHub: snidhireddy-eng",
+      "source_owner": "snidhireddy-eng",
+      "origin_status": "unresolved",
+      "summary": "A pre-meeting briefing agent and AI agent benchmarking platform that researches companies and people, generates source-backed meeting briefings, and evaluates AI agents for accuracy, relevance, completeness, speed, cost, and reliability.",
+      "repository_url": "https://github.com/snidhireddy-eng/opportunitypilot",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-11-03T14:08:27Z",
+      "updated_at": "2026-11-12T16:18:49Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark,  eval ",
+        "AI-system signal: ai agent",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/snidhireddy-eng/opportunitypilot",
+        "https://github.com/snidhireddy-eng/opportunitypilot"
+      ],
+      "id": "49493f9a9fbbd705",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "physics-IQ-benchmark",
+      "canonical_url": "https://github.com/google-deepmind/physics-iq-benchmark",
+      "source_type": "official-github",
+      "source_name": "GitHub: google-deepmind",
+      "source_owner": "google-deepmind",
+      "origin_status": "unresolved",
+      "summary": "Benchmarking physical understanding in generative video models",
+      "repository_url": "https://github.com/google-deepmind/physics-iq-benchmark",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2024-12-14T05:07:19Z",
+      "updated_at": "2026-11-12T08:04:37Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/google-deepmind/physics-IQ-benchmark",
+        "https://github.com/google-deepmind/physics-IQ-benchmark"
+      ],
+      "id": "404253891d3d2c50",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "policies",
+      "canonical_url": "https://github.com/mlcommons/policies",
+      "source_type": "official-github",
+      "source_name": "GitHub: mlcommons",
+      "source_owner": "mlcommons",
+      "origin_status": "unresolved",
+      "summary": "General policies for MLPerf® benchmarks including submission rules, coding standards, etc.",
+      "repository_url": "https://github.com/mlcommons/policies",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2019-06-21T20:42:16Z",
+      "updated_at": "2026-11-11T11:51:10Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/mlcommons/policies",
+        "https://github.com/mlcommons/policies"
+      ],
+      "id": "e9f2c11b72048803",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "political-neutrality-eval",
+      "canonical_url": "https://github.com/anthropics/political-neutrality-eval",
+      "source_type": "official-github",
+      "source_name": "GitHub: anthropics",
+      "source_owner": "anthropics",
+      "origin_status": "unresolved",
+      "summary": "This repo contains detailed implementation information about Anthropic's paired prompts approach for evaluating political neutrality.",
+      "repository_url": "https://github.com/anthropics/political-neutrality-eval",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-11-12T00:30:40Z",
+      "updated_at": "2026-11-10T22:05:14Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: evaluating,  eval ",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "possible-implementation",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/anthropics/political-neutrality-eval",
+        "https://github.com/anthropics/political-neutrality-eval"
+      ],
+      "id": "1963a729b1bda771",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "powerbi-translytical-ai-benchmark",
+      "canonical_url": "https://github.com/aliceaguiaraac/powerbi-translytical-ai-benchmark",
+      "source_type": "github-search",
+      "source_name": "GitHub: aliceaguiaraac",
+      "source_owner": "aliceaguiaraac",
+      "origin_status": "unresolved",
+      "summary": "AI agent benchmark comparing OpenAI Codex and GitHub Copilot for Power BI report authoring and Microsoft Fabric Translytical write-back.",
+      "repository_url": "https://github.com/aliceaguiaraac/powerbi-translytical-ai-benchmark",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "powerbi-translytical-ai-benchmark"
+      ],
+      "family": null,
+      "published_at": "2026-11-02T23:30:36Z",
+      "updated_at": "2026-11-08T22:44:54Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: ai agent, agent benchmark",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/aliceaguiaraac/powerbi-translytical-ai-benchmark"
+      ],
+      "id": "570898fa26c1c234",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: aliceaguiaraac"
+      ]
+    },
+    {
+      "title": "Pranay7427/ortho-fastdtr-hades-benchmark",
+      "canonical_url": "https://huggingface.co/datasets/Pranay7427/ortho-fastdtr-hades-benchmark",
+      "source_type": "huggingface",
+      "source_name": "Hugging Face datasets",
+      "source_owner": "Pranay7427",
+      "origin_status": "unresolved",
+      "summary": "🛡️ Ortho-FastDTR: Subspace Attribution & Single-Step Visual Token Eviction for Robust VLMs Submission for the Lexsi AI Safety & Alignment Hackathon (Track 2: AI Red Teaming, Safety & Alignment) 1. Executive Summary & Problem Statement Vision-Language Models (VLMs) such as LLaVA-Llama-2-7B exhibit a critical Modality Refusal Gap: while harmful text instructions trigger internal refusal circuits, embedding the harmful keyword visually via typography and… See the full description on the dataset page: https://huggingface.co/datasets/Pranay7427/ortho-fastdtr-hades-benchmark. region:us",
+      "repository_url": null,
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "Pranay7427/ortho-fastdtr-hades-benchmark"
+      ],
+      "family": null,
+      "published_at": "2026-11-12T19:01:28.000Z",
+      "updated_at": "2026-11-13T12:15:20.000Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: language model",
+        "risk/capability topic: safeguards, multimodal"
+      ],
+      "topics": [
+        "safeguards",
+        "multimodal"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://huggingface.co/datasets/Pranay7427/ortho-fastdtr-hades-benchmark"
+      ],
+      "id": "505d7ff1e45872a3",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "Hugging Face datasets"
+      ]
+    },
+    {
+      "title": "procgen",
+      "canonical_url": "https://github.com/openai/procgen",
+      "source_type": "official-github",
+      "source_name": "GitHub: openai",
+      "source_owner": "openai",
+      "origin_status": "unresolved",
+      "summary": "Procgen Benchmark: Procedurally-Generated Game-Like Gym-Environments",
+      "repository_url": "https://github.com/openai/procgen",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2019-11-22T01:17:42Z",
+      "updated_at": "2026-11-13T09:07:15Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/openai/procgen",
+        "https://github.com/openai/procgen"
+      ],
+      "id": "55f4fbc60000b0b8",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "reality-test-eval",
+      "canonical_url": "https://github.com/ukgovernmentbeis/reality-test-eval",
+      "source_type": "official-github",
+      "source_name": "GitHub: UKGovernmentBEIS",
+      "source_owner": "UKGovernmentBEIS",
+      "origin_status": "unresolved",
+      "summary": "",
+      "repository_url": "https://github.com/ukgovernmentbeis/reality-test-eval",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-03-20T09:04:42Z",
+      "updated_at": "2026-10-24T07:50:36Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal:  eval ",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/UKGovernmentBEIS/reality-test-eval",
+        "https://github.com/UKGovernmentBEIS/reality-test-eval"
+      ],
+      "id": "0d4569ca958e5c84",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "rediscover",
+      "canonical_url": "https://github.com/shyamolkonwar/rediscover",
+      "source_type": "github-search",
+      "source_name": "GitHub: shyamolkonwar",
+      "source_owner": "shyamolkonwar",
+      "origin_status": "unresolved",
+      "summary": "Rediscover gravitational waves in real LIGO data. Evidence-first physics CLI, MCP tools, and bounded AI-agent benchmarks.",
+      "repository_url": "https://github.com/shyamolkonwar/rediscover",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "rediscover"
+      ],
+      "family": null,
+      "published_at": "2026-11-06T18:45:55Z",
+      "updated_at": "2026-11-06T18:47:03Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: agent benchmark",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/shyamolkonwar/rediscover"
+      ],
+      "id": "b3f589bf44c6ec01",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:22:07.567Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: shyamolkonwar"
+      ]
+    },
+    {
+      "title": "redrouter/abliterated-benchmarks",
+      "canonical_url": "https://huggingface.co/datasets/redrouter/abliterated-benchmarks",
+      "source_type": "huggingface",
+      "source_name": "Hugging Face datasets",
+      "source_owner": "redrouter",
+      "origin_status": "unresolved",
+      "summary": "Abliterated Model API Benchmarks Customer-observed API latency, output speed, reliability and catalogue prices for abliterated and uncensored open-weight models, with standard-model controls. Data and charts: benchmarks.redrouter.org. These measurements do not assess model quality, refusal rates or worldwide uptime. Generated: 2026-11-13T18:40:39.636354Z. Methodology: 1.0.0. Current routes by model Fastest means highest pooled 72-hour p50 output speed; cheapest… See the full description on the dataset page: https://huggingface.co/datasets/redrouter/abliterated-benchmarks. task_categories:text-generation license:cc-by-4.0 size_categories:n<1K format:csv modality:tabular modality:text library:",
+      "repository_url": null,
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "redrouter/abliterated-benchmarks"
+      ],
+      "family": null,
+      "published_at": "2026-11-09T03:48:46.000Z",
+      "updated_at": "2026-11-13T18:40:54.000Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: llm",
+        "risk/capability topic: safeguards"
+      ],
+      "topics": [
+        "safeguards"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://huggingface.co/datasets/redrouter/abliterated-benchmarks"
+      ],
+      "id": "d5f17b95f1d45835",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "Hugging Face datasets"
+      ]
+    },
+    {
+      "title": "renal-dosing-task",
+      "canonical_url": "https://github.com/teesmile/renal-dosing-task",
+      "source_type": "github-search",
+      "source_name": "GitHub: teesmile",
+      "source_owner": "teesmile",
+      "origin_status": "unresolved",
+      "summary": "Sample AI-agent benchmark: an agent checks synthetic patients' doses against renal rules in a mixed-unit chart, with evidence the grading is sound. Fictional drugs; not clinical guidance.",
+      "repository_url": "https://github.com/teesmile/renal-dosing-task",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "renal-dosing-task"
+      ],
+      "family": null,
+      "published_at": "2026-11-07T16:34:24Z",
+      "updated_at": "2026-11-09T10:42:24Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: agent benchmark",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/teesmile/renal-dosing-task"
+      ],
+      "id": "6c2aa9dbacd7abba",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:22:07.567Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: teesmile"
+      ]
+    },
+    {
+      "title": "rli_evaluation_platform",
+      "canonical_url": "https://github.com/centerforaisafety/rli_evaluation_platform",
+      "source_type": "official-github",
+      "source_name": "GitHub: centerforaisafety",
+      "source_owner": "centerforaisafety",
+      "origin_status": "unresolved",
+      "summary": "Public repository for the Remote Labor Index (RLI)",
+      "repository_url": "https://github.com/centerforaisafety/rli_evaluation_platform",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-10-29T22:33:24Z",
+      "updated_at": "2026-11-12T16:36:36Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: evaluation,  eval ",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/centerforaisafety/rli_evaluation_platform",
+        "https://github.com/centerforaisafety/rli_evaluation_platform"
+      ],
+      "id": "be1112764c7f1144",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "simple-evals",
+      "canonical_url": "https://github.com/openai/simple-evals",
+      "source_type": "official-github",
+      "source_name": "GitHub: openai",
+      "source_owner": "openai",
+      "origin_status": "unresolved",
+      "summary": "",
+      "repository_url": "https://github.com/openai/simple-evals",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2024-04-11T22:38:17Z",
+      "updated_at": "2026-11-13T08:24:45Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal:  eval , evals",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/openai/simple-evals",
+        "https://github.com/centerforaisafety/simple-evals"
+      ],
+      "id": "ad724b6d82e63f18",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "discovery_sources": [
+        "GitHub: openai",
+        "GitHub: centerforaisafety"
+      ],
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "storage",
+      "canonical_url": "https://github.com/mlcommons/storage",
+      "source_type": "official-github",
+      "source_name": "GitHub: mlcommons",
+      "source_owner": "mlcommons",
+      "origin_status": "unresolved",
+      "summary": "MLPerf® Storage Benchmark Suite",
+      "repository_url": "https://github.com/mlcommons/storage",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2022-02-15T21:59:07Z",
+      "updated_at": "2026-11-09T16:43:44Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/mlcommons/storage",
+        "https://github.com/mlcommons/storage"
+      ],
+      "id": "cc29b6724de4b2d7",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "SuperEval",
+      "canonical_url": "https://github.com/sheerwolff/supereval",
+      "source_type": "github-search",
+      "source_name": "GitHub: Sheerwolff",
+      "source_owner": "Sheerwolff",
+      "origin_status": "unresolved",
+      "summary": "Production-grade evals for an AI agent answering questions about Israeli supermarket prices.",
+      "repository_url": "https://github.com/sheerwolff/supereval",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "SuperEval"
+      ],
+      "family": null,
+      "published_at": "2026-10-26T09:47:46Z",
+      "updated_at": "2026-11-12T14:57:23Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal:  eval , evals",
+        "AI-system signal: ai agent",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/sheerwolff/supereval",
+        "https://github.com/Sheerwolff/SuperEval"
+      ],
+      "id": "912d8d53013b7013",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: Sheerwolff"
+      ]
+    },
+    {
+      "title": "tiny",
+      "canonical_url": "https://github.com/mlcommons/tiny",
+      "source_type": "official-github",
+      "source_name": "GitHub: mlcommons",
+      "source_owner": "mlcommons",
+      "origin_status": "unresolved",
+      "summary": "MLPerf® Tiny is an ML benchmark suite for extremely low-power systems such as microcontrollers",
+      "repository_url": "https://github.com/mlcommons/tiny",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2020-06-01T21:57:58Z",
+      "updated_at": "2026-10-29T10:12:40Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/mlcommons/tiny",
+        "https://github.com/mlcommons/tiny"
+      ],
+      "id": "f6cf2be1564f47bd",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "training",
+      "canonical_url": "https://github.com/mlcommons/training",
+      "source_type": "official-github",
+      "source_name": "GitHub: mlcommons",
+      "source_owner": "mlcommons",
+      "origin_status": "unresolved",
+      "summary": "Reference implementations of MLPerf® training benchmarks",
+      "repository_url": "https://github.com/mlcommons/training",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2018-03-29T21:56:06Z",
+      "updated_at": "2026-11-10T19:29:34Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/mlcommons/training",
+        "https://github.com/mlcommons/training"
+      ],
+      "id": "e8ce2a241a52f54f",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "unwritten-world-civbench",
+      "canonical_url": "https://github.com/assangejulian/unwritten-world-civbench",
+      "source_type": "github-search",
+      "source_name": "GitHub: Assangejulian",
+      "source_owner": "Assangejulian",
+      "origin_status": "unresolved",
+      "summary": "An open-source civilization strategy game and AI-agent benchmark environment. Apache-2.0.",
+      "repository_url": "https://github.com/assangejulian/unwritten-world-civbench",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "unwritten-world-civbench"
+      ],
+      "family": null,
+      "published_at": "2026-10-30T14:32:34Z",
+      "updated_at": "2026-10-31T18:56:21Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: agent benchmark",
+        "risk/capability topic: autonomy-agents"
+      ],
+      "topics": [
+        "autonomy-agents"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://github.com/assangejulian/unwritten-world-civbench",
+        "https://github.com/Assangejulian/unwritten-world-civbench"
+      ],
+      "id": "6dfd3c960ea94bcb",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:22:07.567Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "GitHub: Assangejulian"
+      ]
+    },
+    {
+      "title": "variant-effect",
+      "canonical_url": "https://github.com/lukbio/variant-effect",
+      "source_type": "github-search",
+      "source_name": "GitHub: lukbio",
+      "source_owner": "lukbio",
+      "origin_status": "unresolved",
+      "summary": "Pathogenic vs. benign missense variant prediction with the ESM-2 protein language model, evaluated on held-out genes",
+      "repository_url": "https://github.com/lukbio/variant-effect",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-11-11T01:25:14Z",
+      "updated_at": "2026-11-11T02:30:11Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal:  eval ",
+        "AI-system signal: language model",
+        "risk/capability topic: bio-cbrn"
+      ],
+      "topics": [
+        "bio-cbrn"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/lukbio/variant-effect",
+        "https://github.com/lukbio/variant-effect"
+      ],
+      "id": "487a78d16979ec37",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "Vignesh19/purplebench-benchmarks",
+      "canonical_url": "https://huggingface.co/datasets/Vignesh19/purplebench-benchmarks",
+      "source_type": "huggingface",
+      "source_name": "Hugging Face datasets",
+      "source_owner": "Vignesh19",
+      "origin_status": "unresolved",
+      "summary": "purplebench-benchmarks Frozen evaluation sets: holdout_v2 (templated), ood_v1 (hand-written development set), ood_v2 (hand-written, frozen before Phase 4 training), big_v1 (LLM-generated, 320 attacks + 320 benign, hash-frozen) with manifests and the big_v1 generation log. Companion to the PurpleBench project (GitHub repo linked from the model collection). All prompts target a fictional bank with fictional accounts; no real personal data. Some rows are attack prompts (prompt… See the full description on the dataset page: https://huggingface.co/datasets/Vignesh19/purplebench-benchmarks. language:en language:ta license:cc-by-nc-4.0 region:us ai-safety red-teaming tool-calling tamil tanglish pur",
+      "repository_url": null,
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "Vignesh19/purplebench-benchmarks"
+      ],
+      "family": null,
+      "published_at": "2026-11-13T09:56:41.000Z",
+      "updated_at": "2026-11-13T18:37:53.000Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: llm",
+        "risk/capability topic: safeguards"
+      ],
+      "topics": [
+        "safeguards"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://huggingface.co/datasets/Vignesh19/purplebench-benchmarks"
+      ],
+      "id": "7f011eed9ac7ce66",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "Hugging Face datasets"
+      ]
+    },
+    {
+      "title": "Viraj0112/akcr-cage4-ablation-benchmarks",
+      "canonical_url": "https://huggingface.co/datasets/Viraj0112/akcr-cage4-ablation-benchmarks",
+      "source_type": "huggingface",
+      "source_name": "Hugging Face datasets",
+      "source_owner": "Viraj0112",
+      "origin_status": "unresolved",
+      "summary": "AKCR CybORG CAGE-4 Ablation Benchmarks, Traces & Logs 4-quadrant ablation outputs, provenance manifests, evaluation charts, and LLM routing audit logs across 30 CybORG CAGE-4 random seeds (120-step horizon) on NVIDIA L4 GPUs. Contents results/: Ablation summaries, checkpoints, provenance manifests, comparative markdown reports, and kill-chain transition charts (killchain_*_chart.png). logs/raw_llm_audit.jsonl: Per-turn LLM inference & routing audit trail.… See the full description on the dataset page: https://huggingface.co/datasets/Viraj0112/akcr-cage4-ablation-benchmarks. license:mit region:us cybersecurity red-teaming cyborg cage-4 benchmark ablation",
+      "repository_url": null,
+      "paper_url": null,
+      "doi": null,
+      "aliases": [
+        "Viraj0112/akcr-cage4-ablation-benchmarks"
+      ],
+      "family": null,
+      "published_at": "2026-11-13T15:12:05.000Z",
+      "updated_at": "2026-11-13T15:12:12.000Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark, evaluation",
+        "AI-system signal: llm",
+        "risk/capability topic: cyber"
+      ],
+      "topics": [
+        "cyber"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://huggingface.co/datasets/Viraj0112/akcr-cage4-ablation-benchmarks"
+      ],
+      "id": "2908d6cd19f2b0b7",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "Hugging Face datasets"
+      ]
+    },
+    {
+      "title": "webarena-verified",
+      "canonical_url": "https://github.com/servicenow/webarena-verified",
+      "source_type": "official-github",
+      "source_name": "GitHub: ServiceNow",
+      "source_owner": "ServiceNow",
+      "origin_status": "unresolved",
+      "summary": "A verified version of the WebArena Benchmark",
+      "repository_url": "https://github.com/servicenow/webarena-verified",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2025-12-02T16:47:23Z",
+      "updated_at": "2026-11-11T02:25:09Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/ServiceNow/webarena-verified",
+        "https://github.com/ServiceNow/webarena-verified"
+      ],
+      "id": "9342957a3afd24b1",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "xyeval",
+      "canonical_url": "https://github.com/google-deepmind/xyeval",
+      "source_type": "official-github",
+      "source_name": "GitHub: google-deepmind",
+      "source_owner": "google-deepmind",
+      "origin_status": "unresolved",
+      "summary": "",
+      "repository_url": "https://github.com/google-deepmind/xyeval",
+      "paper_url": null,
+      "doi": null,
+      "aliases": [],
+      "family": null,
+      "published_at": "2026-11-09T17:40:58Z",
+      "updated_at": "2026-11-10T05:02:31Z",
+      "score": 7,
+      "reasons": [
+        "evaluation signal:  eval ",
+        "known evaluation organisation",
+        "official organisation repository"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "filtered",
+      "observed_urls": [
+        "https://github.com/google-deepmind/xyeval",
+        "https://github.com/google-deepmind/xyeval"
+      ],
+      "id": "5b6ec8c7680724c0",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:22:07.567Z",
+      "filter_reason": "Current source metadata does not meet discovery relevance criteria."
+    },
+    {
+      "title": "An Information Bottleneck for Post-hoc Memorization Mitigation in LLMs",
+      "canonical_url": "https://arxiv.org/abs/2611.07669",
+      "source_type": "arxiv",
+      "source_name": "arXiv",
+      "source_owner": null,
+      "origin_status": "unresolved",
+      "summary": "Recent studies have shown that large language models (LLMs) can memorize and reproduce copyrighted training data, raising serious privacy and intellectual property concerns. In this work, we investigate whether memorization can be mitigated without modifying or retraining the underlying model through an information bottleneck. We propose a modular plug-and-play framework that inserts a nonparametric variational information bottleneck (NVIB) between a frozen LLM backbone and its language modeling head. By compressing the final hidden representations before token prediction, the proposed bottleneck aims to preserve general linguistic knowledge while filtering out highly specific memorized sequ",
+      "repository_url": null,
+      "paper_url": "https://arxiv.org/abs/2611.07669",
+      "doi": null,
+      "aliases": [
+        "An Information Bottleneck for Post-hoc Memorization Mitigation in LLMs"
+      ],
+      "family": null,
+      "published_at": "2026-11-05T08:54:26Z",
+      "updated_at": "2026-11-05T08:54:26Z",
+      "score": 6,
+      "reasons": [
+        "evaluation signal: benchmark",
+        "AI-system signal: llm, language model",
+        "research-paper source"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "possible-new-evaluation",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://arxiv.org/abs/2611.07669",
+        "http://arxiv.org/abs/2611.07669v1"
+      ],
+      "id": "3d828a8f9cb74a46",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "arXiv"
+      ]
+    },
+    {
+      "title": "Pairing Expert Critique with LLM-Driven Refinement: An Iterative Approach for Curating Quality AI Evaluation Datasets",
+      "canonical_url": "https://arxiv.org/abs/2611.05749",
+      "source_type": "arxiv",
+      "source_name": "arXiv",
+      "source_owner": null,
+      "origin_status": "unresolved",
+      "summary": "Evaluating and improving domain-specific LLM responses requires high-quality reference data and rubrics, yet expert authoring is slow and expensive, and synthetic datasets may fail to capture practitioner preferences unless they are grounded in expert judgment. We present SME-C (Subject Matter Expert Critique), a human-AI workflow that captures expertise through lightweight critiques of candidate responses and complements it with LLM-driven analysis and refinement to iteratively curate response datasets and evaluation rubrics. We validate SME-C in the domain of financial business briefs, collecting 3,853 critiques from 411 finance professionals on 520 queries across two survey rounds. We eva",
+      "repository_url": null,
+      "paper_url": "https://arxiv.org/abs/2611.05749",
+      "doi": null,
+      "aliases": [
+        "Pairing Expert Critique with LLM-Driven Refinement: An Iterative Approach for Curating Quality AI Evaluation Datasets"
+      ],
+      "family": null,
+      "published_at": "2026-11-03T23:38:56Z",
+      "updated_at": "2026-11-03T23:38:56Z",
+      "score": 6,
+      "reasons": [
+        "evaluation signal: evaluation, evaluating",
+        "AI-system signal: llm",
+        "research-paper source"
+      ],
+      "topics": [
+        "general-capability"
+      ],
+      "discovery_kind": "unclassified",
+      "review_status": "candidate",
+      "observed_urls": [
+        "https://arxiv.org/abs/2611.05749",
+        "http://arxiv.org/abs/2611.05749v1"
+      ],
+      "id": "ce5c5cdfa947c585",
+      "related_catalogue_ids": [],
+      "first_seen_at": "2026-11-13T19:20:38.279Z",
+      "last_seen_at": "2026-11-13T19:23:57.952Z",
+      "discovery_sources": [
+        "arXiv"
+      ]
+    }
+  ],
+  "new_candidate_ids": []
+}

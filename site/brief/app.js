@@ -79,8 +79,9 @@ function renderSummary() {
 }
 function row(record) {
   const selected = brief.selections.some(item => item.record.id === record.id);
+  const construct = record.methodological_review?.status === 'needs-reevaluation' ? '' : record.methodological_review?.construct;
   return `<article class="candidate"><div><h3><a href="/#/eval/${encodeURIComponent(record.id)}" target="_blank" rel="noopener noreferrer">${esc(record.name)} ↗</a></h3>
-    <p>${esc((record.methodological_review?.construct || record.measures || record.description || 'Read the source before assessing fit.').slice(0, 250))}</p>
+    <p>${esc((construct || record.measures || record.description || 'Read the source before assessing fit.').slice(0, 250))}</p>
     <span class="record-state">${esc(stateLabel(record))}</span></div>
     <button type="button" data-add="${esc(record.id)}" aria-pressed="${selected}" aria-label="${selected ? 'Remove' : 'Add'} ${esc(record.name)} ${selected ? 'from' : 'to'} brief">${selected ? 'Selected' : 'Add to brief'}</button></article>`;
 }

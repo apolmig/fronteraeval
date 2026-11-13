@@ -25,11 +25,8 @@ jobs:
           cache: npm
       - name: Install locked dependencies
         run: npm ci --no-audit --no-fund
-      - name: Regenerate upstream catalogue and source registry
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REFRESH_INSPECT: "1"
-        run: npm run refresh:sources
+      - name: Reproduce the pinned catalogue used by Netlify
+        run: npm run build
       - name: Run structural, source-resolution, construct, search, and usefulness gates
         run: npm run check
       - name: Audit primary-source links on pull requests
@@ -52,6 +49,7 @@ jobs:
             package-lock.json
             data
             scripts
+            lib
             netlify
             refresh
             site

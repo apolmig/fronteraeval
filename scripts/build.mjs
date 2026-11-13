@@ -1,8 +1,7 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const REPO = "UKGovernmentBEIS/inspect_evals";
-const registryURL = `https://raw.githubusercontent.com/${REPO}/main/src/inspect_evals/_registry.py`;
-const treeURL = `https://api.github.com/repos/${REPO}/git/trees/main?recursive=1`;
+
 const checkedAt = new Date().toISOString();
 
 const topics = {
@@ -102,17 +101,27 @@ function parseRegistry(text, sha) {
 }
 
 function record(id,name,organisation,source_type,source_url,topicList,description,review_status,sha=null) {
-  const r={id,name,slug:id.replace(":","--").replaceAll("_","-"),organisation,source_type,source_url,topics:topicList,description,review_status,code_available:source_type!=="canonical-source",inspect_compatible:source_type.startsWith("inspect-"),last_source_check:checkedAt.slice(0,10),editorial_reviewed_at:null,measures:"Not independently assessed by FronteraEval yet.",does_not_measure:"No inference beyond the upstream source should be made until the protocol is reviewed.",best_for:"Discovery and source navigation.",not_sufficient_for:"Substantive capability, safety or policy claims without reading the underlying protocol.",evidence_reach:[],provenance:{source_sha:sha,method:"official-source import"}};
+  const r={id,name,slug:id.replace(":","--").replaceAll("_","-"),organisation,source_type,source_url,topics:topicList,description,review_status,code_available:source_type!=="canonical-source",inspect_compatible:source_type.startsWith("inspect-"),last_source_check:observedAt?.slice(0,10) || null,editorial_reviewed_at:null,measures:"Not independently assessed by FronteraEval yet.",does_not_measure:"No inference beyond the upstream source should be made until the protocol is reviewed.",best_for:"Discovery and source navigation.",not_sufficient_for:"Substantive capability, safety or policy claims without reading the underlying protocol.",evidence_reach:[],provenance:{source_sha:sha,method:"official-source import"}};
   const ed=reviewed[id];
-  if (ed) { r.name=ed[0]; r.measures=ed[1]; r.does_not_measure=ed[2]; r.best_for=ed[3]; r.not_sufficient_for=ed[4]; r.evidence_reach=ed[5]; r.review_status="reviewed"; r.editorial_reviewed_at=checkedAt.slice(0,10); }
+  if (ed) { r.name=ed[0]; r.measures=ed[1]; r.does_not_measure=ed[2]; r.best_for=ed[3]; r.not_sufficient_for=ed[4]; r.evidence_reach=ed[5]; r.review_status="reviewed"; r.editorial_reviewed_at="2026-08-27"; }
   return r;
 }
 
 async function fetchText(url) { const r=await fetch(url,{headers:{"user-agent":"FronteraEval/0.1"}}); if(!r.ok) throw new Error(`${r.status} ${url}`); return r.text(); }
 async function fetchJSON(url) { const r=await fetch(url,{headers:{accept:"application/vnd.github+json","user-agent":"FronteraEval/0.1"}}); if(!r.ok) throw new Error(`${r.status} ${url}`); return r.json(); }
 
+// Resolve the moving branch once. Ordinary deploys reproduce the validated source.
+const marker = JSON.parse(await readFile("refresh/last-run.json", "utf8"));
+const refresh = process.env.REFRESH_INSPECT === "1";
+const sha = refresh
+  ? String((await fetchJSON(`https://api.github.com/repos/${REPO}/commits/main`)).sha)
+  : String(marker.inspect_source_commit || "");
+if (!/^[a-f0-9]{40}$/.test(sha)) throw new Error("Missing immutable Inspect commit; perform a real refresh first");
+const registryURL = `https://raw.githubusercontent.com/${REPO}/${sha}/src/inspect_evals/_registry.py`;
+const treeURL = `https://api.github.com/repos/${REPO}/git/trees/${sha}?recursive=1`;
 const [registryText, tree] = await Promise.all([fetchText(registryURL), fetchJSON(treeURL)]);
-const sha=String(tree.sha);
+if (tree.truncated || !Array.isArray(tree.tree)) throw new Error("Incomplete Inspect source tree");
+const observedAt = refresh ? checkedAt : marker.source_observed_at || marker.refreshed_at || null;
 const internal=parseRegistry(registryText,sha);
 const registerNames=(tree.tree||[]).map(x=>String(x.path||"").match(/^register\/([^/]+)\/eval\.yaml$/)?.[1]).filter(Boolean).filter(x=>x!=="example_eval").sort();
 const registerRecords=registerNames.map(name=>record(`register:${name}`,prettify(name),"Upstream authors / Inspect Evals Register","inspect-register",`https://github.com/${REPO}/blob/${sha}/register/${name}/eval.yaml`,classify(name),"Externally maintained evaluation registered for discovery and execution through Inspect.","catalogued",sha));
@@ -120,12 +129,12 @@ const canonicalRecords=canonical.map(([slug,name,org,url,t,description])=>record
 const records=[...internal,...registerRecords,...canonicalRecords].sort((a,b)=>a.name.localeCompare(b.name)||a.id.localeCompare(b.id));
 if (new Set(records.map(r=>r.id)).size!==records.length) throw new Error("Duplicate stable IDs");
 const sourceCounts={}, statusCounts={}; for(const r of records){sourceCounts[r.source_type]=(sourceCounts[r.source_type]||0)+1;statusCounts[r.review_status]=(statusCounts[r.review_status]||0)+1;}
-const catalog={schema_version:"0.1.0",generated_at:checkedAt,inspect_source_sha:sha,title:"FronteraEval evaluation catalogue",scope_note:"Discovery metadata is not independent validation. Only records marked reviewed contain a bounded FronteraEval assessment.",topics,stats:{records:records.length,sources:sourceCounts,review_status:statusCounts},records};
+const catalog={schema_version:"0.1.0",generated_at:checkedAt,inspect_source_sha:sha,inspect_source_commit:sha,source_observed_at:observedAt,title:"FronteraEval evaluation catalogue",scope_note:"Discovery metadata is not independent validation. Only records marked reviewed contain a bounded FronteraEval assessment.",topics,stats:{records:records.length,sources:sourceCounts,review_status:statusCounts},records};
 await mkdir("site/data",{recursive:true});
 await writeFile("site/data/catalog.json",JSON.stringify(catalog,null,2)+"\n");
 const quote=v=>`"${String(v??"").replaceAll('"','""')}"`;
 const header=["id","name","organisation","source_type","topics","review_status","code_available","inspect_compatible","source_url","last_source_check"];
 const csv=[header,...records.map(r=>[r.id,r.name,r.organisation,r.source_type,r.topics.join("|"),r.review_status,r.code_available,r.inspect_compatible,r.source_url,r.last_source_check])].map(row=>row.map(quote).join(",")).join("\n")+"\n";
 await writeFile("site/data/catalog.csv",csv);
-await writeFile("site/data/freshness.json",JSON.stringify({status:"current-build",checked_at:checkedAt,inspect_source_sha:sha,internal_tasks:internal.length,external_register_entries:registerRecords.length,canonical_sources:canonicalRecords.length},null,2)+"\n");
+await writeFile("site/data/freshness.json",JSON.stringify({status:"build-snapshot",checked_at:observedAt,generated_at:checkedAt,inspect_source_sha:sha,internal_tasks:internal.length,external_register_entries:registerRecords.length,canonical_sources:canonicalRecords.length},null,2)+"\n");
 console.log(JSON.stringify(catalog.stats));

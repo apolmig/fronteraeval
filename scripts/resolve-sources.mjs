@@ -381,7 +381,7 @@ function paperMetadata(url, overridePaper = {}) {
     arxiv_id: id,
     title: clean(overridePaper.title || resolved?.title) || null,
     authors: dedupeStrings(asArray(overridePaper.authors).length ? overridePaper.authors : asArray(resolved?.authors)),
-    organizations: dedupeStrings(asArray(overridePaper.organizations).length ? overridePaper.organizations : asArray(resolved?.organizations)),
+    organizations: dedupeStrings(Array.isArray(overridePaper.organizations) ? overridePaper.organizations : asArray(resolved?.organizations)),
     source: clean(overridePaper.source || resolved?.source || (id ? "associated-arxiv-record" : "upstream-metadata")),
     metadata_status: resolved || overridePaper.title || overridePaper.authors?.length ? "resolved" : "pending"
   };

@@ -1,0 +1,80 @@
+name: Discover external evaluation candidates
+
+on:
+  schedule:
+    - cron: "41 3 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: external-evaluation-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Reproduce the admitted catalogue for deduplication
+        run: npm run build
+      - name: Test candidate identity and editorial boundaries
+        run: node --test scripts/test-external-discovery.mjs
+      - name: Discover candidates and retain partial-source evidence
+        id: scan
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "started_at=$(date -u +%s000)" >> "$GITHUB_OUTPUT"
+          node scripts/discover-external-evals.mjs
+      - name: Preserve the observed queue even if publication conflicts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: external-candidates-${{ github.run_id }}
+          path: discovery/external-candidates.*
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Persist only the review queue
+        if: steps.scan.outcome == 'success' || steps.scan.outcome == 'failure'
+        env:
+          SCAN_STARTED_AT: ${{ steps.scan.outputs.started_at }}
+        run: |
+          test -f discovery/external-candidates.json
+          node --input-type=module -e 'import fs from "node:fs"; const queue=JSON.parse(fs.readFileSync("discovery/external-candidates.json")); if (!queue.checked_at || Date.parse(queue.checked_at) < Number(process.env.SCAN_STARTED_AT) || !Array.isArray(queue.sources)) process.exit(1)'
+          git config user.name "fronteraeval-bot"
+          git config user.email "fronteraeval-bot@users.noreply.github.com"
+          git add discovery/external-candidates.json discovery/external-candidates.md
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update external candidate review queue"
+            # Reject concurrent changes. Never rebase or overwrite editorial decisions.
+            git push origin HEAD:main
+          fi
+      - name: Update one review issue without repeated weekly comments
+        if: steps.scan.outcome == 'success' || steps.scan.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          title="External evaluation candidates for review"
+          issue="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "\"$title\" in:title" --json number,title --jq '.[] | select(.title == "External evaluation candidates for review") | .number' | head -n 1)"
+          if [[ -n "$issue" ]]; then
+            gh issue edit "$issue" --repo "$GITHUB_REPOSITORY" --body-file discovery/external-candidates.md
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file discovery/external-candidates.md
+          fi
+      - name: Keep source errors visible in the run conclusion
+        if: steps.scan.outcome == 'failure'
+        run: |
+          echo "External discovery had source failures. The queue and coverage evidence were retained; no candidate was admitted automatically."
+          exit 1

@@ -2,8 +2,6 @@ import { getStore } from "@netlify/blobs";
 import catalog from "../../../site/data/catalog.json";
 
 const repo="UKGovernmentBEIS/inspect_evals";
-const registryURL=`https://raw.githubusercontent.com/${repo}/main/src/inspect_evals/_registry.py`;
-const treeURL=`https://api.github.com/repos/${repo}/git/trees/main?recursive=1`;
 const checks=[
   ["METR Time Horizons","https://metr.org/time-horizons/"],["RE-Bench","https://github.com/METR/RE-Bench"],["ARC-AGI-2","https://arcprize.org/arc-agi/2/"],["Terminal-Bench","https://github.com/laude-institute/terminal-bench"],["FrontierMath","https://epoch.ai/frontiermath"],["AILuminate","https://mlcommons.org/ailuminate/"],["HarmBench","https://www.harmbench.org/"],["JailbreakBench","https://jailbreakbench.github.io/"],["HELM","https://crfm.stanford.edu/helm/"],["WebArena","https://webarena.dev/"],["Inspect AI","https://inspect.aisi.org.uk/"],["CyberSecEval","https://github.com/meta-llama/PurpleLlama/tree/main/CybersecurityBenchmarks"]
 ] as const;
@@ -13,4 +11,33 @@ function title(value:string){const fixed:Record<string,string>={ape_eval:"APE",m
 function parse(text:string,sha:string){const out:Entry[]=[];let module="",collecting=false;for(const raw of text.split(/\r?\n/)){const line=raw.trim(),multi=line.match(/^from inspect_evals\.([A-Za-z0-9_]+) import \($/),single=line.match(/^from inspect_evals\.([A-Za-z0-9_]+) import (.+)$/);if(multi){module=multi[1];collecting=true;continue}if(single){for(const task of single[2].split(",").map(x=>x.trim()).filter(Boolean))out.push({id:`inspect:${task}`,name:title(task),source_type:"inspect-internal",source_url:`https://github.com/${repo}/tree/${sha}/src/inspect_evals/${single[1]}`});continue}if(collecting&&line===")"){module="";collecting=false;continue}if(collecting&&/^[A-Za-z0-9_]+,?$/.test(line)){const task=line.replace(/,$/,"");out.push({id:`inspect:${task}`,name:title(task),source_type:"inspect-internal",source_url:`https://github.com/${repo}/tree/${sha}/src/inspect_evals/${module}`})}}return out}
 async function json(url:string){const r=await fetch(url,{headers:{accept:"application/vnd.github+json","user-agent":"FronteraEval/0.1"},signal:AbortSignal.timeout(12000)});if(!r.ok)throw new Error(`${r.status} ${url}`);return r.json()}
 async function sourceCheck(name:string,url:string){const start=Date.now();try{const r=await fetch(url,{method:"HEAD",redirect:"follow",headers:{"user-agent":"FronteraEval/0.1"},signal:AbortSignal.timeout(5500)});return{name,url,ok:r.ok,status:r.status,elapsed_ms:Date.now()-start,etag:r.headers.get("etag"),last_modified:r.headers.get("last-modified")}}catch(error){return{name,url,ok:false,status:null,elapsed_ms:Date.now()-start,error:error instanceof Error?error.message:String(error)}}}
-export async function performSweep(){const [rr,tree]=await Promise.all([fetch(registryURL,{headers:{"user-agent":"FronteraEval/0.1"},signal:AbortSignal.timeout(12000)}),json(treeURL)]);if(!rr.ok)throw new Error(`Inspect registry fetch failed: ${rr.status}`);const sha=String(tree.sha||"unknown"),internal=parse(await rr.text(),sha);const names=(tree.tree||[]).map((x:any)=>String(x.path||"").match(/^register\/([^/]+)\/eval\.yaml$/)?.[1]).filter(Boolean).filter((x:string)=>x!=="example_eval").sort();const external:Entry[]=names.map((name:string)=>({id:`register:${name}`,name:title(name),source_type:"inspect-register",source_url:`https://github.com/${repo}/blob/${sha}/register/${name}/eval.yaml`}));const entries=[...internal,...external].sort((a,b)=>a.name.localeCompare(b.name));const baseline=new Set<string>((catalog as any).records.filter((r:any)=>String(r.source_type).startsWith("inspect-")).map((r:any)=>String(r.id))),live=new Set(entries.map(e=>e.id));const newInternal=internal.filter(e=>!baseline.has(e.id)).map(e=>e.id),newRegister=external.filter(e=>!baseline.has(e.id)).map(e=>e.id),missing=[...baseline].filter(id=>!live.has(id));const sourceChecks=await Promise.all(checks.map(([name,url])=>sourceCheck(name,url)));const result={schema_version:"0.1.0",status:"current",checked_at:new Date().toISOString(),inspect:{sha,internal_tasks:internal.length,register_entries:external.length,entries},changes:{new_internal:newInternal.length,new_register:newRegister.length,missing_internal:missing.length,new_internal_ids:newInternal,new_register_ids:newRegister,missing_ids:missing},source_checks:sourceChecks};await getStore("fronteraeval-live",{consistency:"strong"}).setJSON("weekly-status",result);return result}
+export async function performSweep() {
+  const store = getStore("fronteraeval-live", { consistency: "strong" });
+  try {
+    const commit = await json(`https://api.github.com/repos/${repo}/commits/main`);
+    const sha = String(commit.sha || "");
+    if (!/^[a-f0-9]{40}$/.test(sha)) throw new Error("Inspect returned no immutable source commit");
+    const [rr, tree] = await Promise.all([
+      fetch(`https://raw.githubusercontent.com/${repo}/${sha}/src/inspect_evals/_registry.py`, { headers: { "user-agent": "FronteraEval/0.1" }, signal: AbortSignal.timeout(10000) }),
+      json(`https://api.github.com/repos/${repo}/git/trees/${sha}?recursive=1`)
+    ]);
+    if (!rr.ok) throw new Error(`Inspect registry fetch failed: ${rr.status}`);
+    if (tree.truncated || !Array.isArray(tree.tree)) throw new Error("Incomplete Inspect source tree");
+    const internal = parse(await rr.text(), sha);
+    const names = tree.tree.map((x: any) => String(x.path || "").match(/^register\/([^/]+)\/eval\.yaml$/)?.[1]).filter(Boolean).filter((x: string) => x !== "example_eval").sort();
+    const external: Entry[] = names.map((name: string) => ({ id: `register:${name}`, name: title(name), source_type: "inspect-register", source_url: `https://github.com/${repo}/blob/${sha}/register/${name}/eval.yaml` }));
+    const entries = [...internal, ...external].sort((a, b) => a.name.localeCompare(b.name));
+    const baseline = new Set<string>((catalog as any).records.filter((r: any) => String(r.source_type).startsWith("inspect-")).map((r: any) => String(r.id)));
+    const live = new Set(entries.map(e => e.id));
+    const newInternal = internal.filter(e => !baseline.has(e.id)).map(e => e.id);
+    const newRegister = external.filter(e => !baseline.has(e.id)).map(e => e.id);
+    const missing = [...baseline].filter(id => !live.has(id));
+    const sourceChecks = await Promise.all(checks.map(([name, url]) => sourceCheck(name, url)));
+    const result = { schema_version: "0.1.0", status: sourceChecks.some(check => !check.ok) ? "degraded" : "current", checked_at: new Date().toISOString(), inspect: { sha, internal_tasks: internal.length, register_entries: external.length, entries }, changes: { new_internal: newInternal.length, new_register: newRegister.length, missing_internal: missing.length, new_internal_ids: newInternal, new_register_ids: newRegister, missing_ids: missing }, source_checks: sourceChecks };
+    await store.setJSON("weekly-status", result);
+    return result;
+  } catch (error) {
+    await store.setJSON("weekly-status", { status: "failed", checked_at: new Date().toISOString(), error: error instanceof Error ? error.message : String(error) });
+    throw error;
+  }
+}

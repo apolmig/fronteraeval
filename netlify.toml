@@ -1,7 +1,7 @@
 [build]
   base = "/"
   publish = "site"
-  command = "npm run build && npm run check && node --test scripts/test-runtime-recovery.mjs scripts/test-freshness.mjs"
+  command = "npm run build && npm run check"
 
 [functions]
   directory = "netlify/functions"

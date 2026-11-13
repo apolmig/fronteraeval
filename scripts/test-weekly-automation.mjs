@@ -21,7 +21,8 @@ assert.equal(parsedWorkflow?.concurrency?.["cancel-in-progress"], false, "overla
 assert.match(workflow, /Install locked dependencies with retries/, "dependency retries missing");
 assert.match(workflow, /for attempt in 1 2 3/, "three-attempt retry loop missing");
 assert.match(workflow, /npm run audit:links -- --fail-critical/, "critical source audit is not fail-closed");
-assert.match(workflow, /git reset --hard HEAD[\s\S]*git clean -fd[\s\S]*git pull --rebase origin main/, "generated outputs are not cleaned before rebase");
+assert.doesNotMatch(workflow, /git reset --hard|git clean -fd|git pull --rebase/, "validated inputs must not be rebased or broadly discarded after checks");
+assert.match(workflow, /git push origin HEAD:main/, "validated update must use a normal fast-forward push");
 assert.match(workflow, /Verify the production deployment contains this refresh/, "production verification missing");
 assert.match(workflow, /Automated weekly refresh failed/, "failure issue alert missing");
 assert.match(workflow, /Production remains on the last validated deployment/, "failure message must state the fail-safe behaviour");
@@ -32,7 +33,7 @@ assert.match(packageJson.scripts.check, /test-methodological-reviews\.mjs/, "rev
 assert.match(packageJson.scripts.check, /test-weekly-automation\.mjs/, "automation regression gate is not self-enforcing");
 assert.match(packageJson.scripts["check:syntax"], /site\/methodological-reviews\.js/, "methodological review UI syntax is not checked");
 
-assert.match(marker, /reviewed_records < 30/, "refresh marker does not protect reviewed-record coverage");
+assert.match(marker, /reviewed_records \+ marker\.methodological_reviews\.needs_reevaluation < 30/, "refresh marker does not protect reviewed-record coverage");
 assert.match(marker, /documentary < 30/, "refresh marker does not protect documentary-review coverage");
 assert.match(marker, /registry_entries < 30/, "refresh marker does not protect the review registry");
 assert.match(marker, /independently_replicated !== 0/, "replication-claim boundary is not fail-closed");
@@ -42,4 +43,4 @@ assert.ok(index.includes('href="/methodological-reviews.css"'), "methodological 
 assert.ok(index.includes('src="/methodological-reviews.js"'), "methodological review interface is not loaded");
 assert.match(netlifySweep, /schedule:"17 2 \* \* 0"/, "independent Netlify discovery sweep missing");
 
-console.log("Validated primary and backup schedules, retries, clean-tree rebasing, fail-closed gates, alerts, production verification, and last-known-good deployment behaviour.");
+console.log("Validated primary and backup schedules, retries, race-safe publication, fail-closed gates, alerts, production verification, and last-known-good deployment behaviour.");

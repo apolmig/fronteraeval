@@ -32,7 +32,7 @@
 
   function currentRecordID() {
     const raw = currentPath();
-    return raw.startsWith("/eval/") ? decodeURIComponent(raw.slice(6)) : null;
+    try { return raw.startsWith("/eval/") ? decodeURIComponent(raw.slice(6)) : null; } catch { return null; }
   }
 
   function taskSummary(record) {

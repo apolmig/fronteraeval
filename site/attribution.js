@@ -36,14 +36,14 @@
 
   function currentRecordID() {
     const path = (location.hash || "#/").slice(1).split("?")[0];
-    return path.startsWith("/eval/") ? decodeURIComponent(path.slice(6)) : null;
+    try { return path.startsWith("/eval/") ? decodeURIComponent(path.slice(6)) : null; } catch { return null; }
   }
 
   function rowRecordID(row) {
     const href = row.querySelector(".eval-main")?.getAttribute("href") || "";
     const marker = "#/eval/";
     const index = href.indexOf(marker);
-    return index < 0 ? null : decodeURIComponent(href.slice(index + marker.length));
+    try { return index < 0 ? null : decodeURIComponent(href.slice(index + marker.length)); } catch { return null; }
   }
 
   function addCandidate(list, seen, label, url, kind) {

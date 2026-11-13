@@ -1,15 +1,16 @@
 {
-  "schema_version": "1.1.0",
-  "generated_at": "2026-08-27T14:28:04.053Z",
-  "inspect_source_commit": "979bf44681dfdb148021676f9b2be964150bb5ed",
-  "policy": "Confirmed 404/410 responses are treated as missing. Access restrictions, rate limits, timeouts and server errors are reported separately and do not by themselves establish that a source is broken.",
+  "schema_version": "1.2.0",
+  "generated_at": "2026-11-13T19:21:15.725Z",
+  "inspect_source_commit": "a68dade7efb803ef50c8442d3f16264b293d1414",
+  "policy": "Confirmed 404/410 responses are treated as missing only after a GET verification. Access restrictions, rate limits, timeouts and server errors are reported separately and do not by themselves establish that a source is broken.",
   "totals": {
-    "catalogue_records": 314,
-    "unique_urls": 534,
-    "critical_urls": 62,
-    "reachable": 526,
-    "restricted": 7,
-    "network-error": 1,
+    "catalogue_records": 333,
+    "unique_urls": 598,
+    "critical_urls": 101,
+    "reachable": 592,
+    "restricted": 2,
+    "network-error": 3,
+    "transient": 1,
     "critical_missing": 0,
     "reviewed_missing": 0
   },
@@ -29,103 +30,57 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://huggingface.co/datasets/livebench/%7Bmath,reasoning,coding,language,data_analysis,instruction_following%7D",
-      "elapsed_ms": 85,
+      "elapsed_ms": 91,
       "error": null
     },
     {
-      "url": "https://openai.com/index/browsecomp",
+      "url": "https://openaipublic.blob.core.windows.net/simple-evals/browse_comp_test_set.csv",
       "roles": [
-        "evaluation_developer",
-        "official",
-        "preferred-source"
+        "implementation",
+        "reference-implementation"
       ],
       "records": [
         "inspect:browse_comp"
       ],
       "critical": false,
-      "status": 403,
-      "category": "restricted",
-      "method": "HEAD",
-      "final_url": "https://openai.com/index/browsecomp",
-      "elapsed_ms": 52,
-      "error": null
+      "status": null,
+      "category": "network-error",
+      "method": "GET",
+      "elapsed_ms": 25,
+      "error": "fetch failed"
     },
     {
-      "url": "https://openai.com/index/frontierscience",
+      "url": "https://openaipublic.blob.core.windows.net/simple-evals/gpqa_diamond.csv",
       "roles": [
-        "paper",
-        "paper_authors",
-        "preferred-source"
+        "implementation",
+        "reference-implementation"
       ],
       "records": [
-        "inspect:frontierscience"
+        "inspect:gpqa_diamond"
       ],
       "critical": false,
-      "status": 403,
-      "category": "restricted",
-      "method": "HEAD",
-      "final_url": "https://openai.com/index/frontierscience",
-      "elapsed_ms": 31,
-      "error": null
+      "status": null,
+      "category": "network-error",
+      "method": "GET",
+      "elapsed_ms": 34,
+      "error": "fetch failed"
     },
     {
-      "url": "https://openai.com/index/healthbench",
+      "url": "https://openaipublic.blob.core.windows.net/simple-evals/simple_qa_test_set.csv",
       "roles": [
-        "evaluation_developer",
-        "official",
-        "preferred-source"
+        "implementation",
+        "reference-implementation"
       ],
       "records": [
-        "inspect:healthbench",
-        "inspect:healthbench_consensus",
-        "inspect:healthbench_hard",
-        "inspect:healthbench_meta_eval"
+        "inspect:simpleqa",
+        "inspect:simpleqa_verified"
       ],
       "critical": false,
-      "status": 403,
-      "category": "restricted",
-      "method": "HEAD",
-      "final_url": "https://openai.com/index/healthbench",
-      "elapsed_ms": 39,
-      "error": null
-    },
-    {
-      "url": "https://openai.com/index/mle-bench",
-      "roles": [
-        "evaluation_developer",
-        "official",
-        "preferred-source"
-      ],
-      "records": [
-        "inspect:mle_bench",
-        "inspect:mle_bench_full",
-        "inspect:mle_bench_lite"
-      ],
-      "critical": false,
-      "status": 403,
-      "category": "restricted",
-      "method": "HEAD",
-      "final_url": "https://openai.com/index/mle-bench",
-      "elapsed_ms": 51,
-      "error": null
-    },
-    {
-      "url": "https://openai.com/index/paperbench",
-      "roles": [
-        "evaluation_developer",
-        "official",
-        "preferred-source"
-      ],
-      "records": [
-        "inspect:paperbench"
-      ],
-      "critical": false,
-      "status": 403,
-      "category": "restricted",
-      "method": "HEAD",
-      "final_url": "https://openai.com/index/paperbench",
-      "elapsed_ms": 47,
-      "error": null
+      "status": null,
+      "category": "network-error",
+      "method": "GET",
+      "elapsed_ms": 25,
+      "error": "fetch failed"
     },
     {
       "url": "https://openreview.net/pdf?id=2GmDdhBdDk",
@@ -140,7 +95,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openreview.net/pdf?id=2GmDdhBdDk",
-      "elapsed_ms": 98,
+      "elapsed_ms": 180,
       "error": null
     },
     {
@@ -154,11 +109,12 @@
         "inspect:onet_m6"
       ],
       "critical": false,
-      "status": null,
-      "category": "network-error",
-      "method": "GET",
-      "elapsed_ms": 23806,
-      "error": "fetch failed"
+      "status": 503,
+      "category": "transient",
+      "method": "HEAD",
+      "final_url": "https://www.niets.or.th/en",
+      "elapsed_ms": 7145,
+      "error": null
     }
   ]
 }

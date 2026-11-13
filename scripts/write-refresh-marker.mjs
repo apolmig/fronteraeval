@@ -21,11 +21,14 @@ const marker = {
   schema_version: "2.1.0",
   status: sourceProblems === 0 ? "completed" : "completed-with-source-problems",
   refreshed_at: new Date().toISOString(),
+  source_observed_at: catalog.source_observed_at || null,
+  generated_at: catalog.generated_at || null,
   inspect_source_commit: catalog.inspect_source_commit,
   records: catalog.stats.records,
   source_groups: registry.stats.source_groups,
   methodological_reviews: {
     reviewed_records: reviewStatus.reviewed || 0,
+    needs_reevaluation: methodologicalReviews.needs_reevaluation || 0,
     documentary: methodologicalReviews.documentary || 0,
     independently_replicated: methodologicalReviews.independently_replicated || 0,
     registry_entries: methodologicalReviews.added_by_registry || 0,
@@ -73,9 +76,17 @@ const marker = {
 
 const errors = [];
 if (!marker.inspect_source_commit) errors.push("missing Inspect source commit");
+if (registry.inspect_source_commit !== catalog.inspect_source_commit) errors.push("source registry and catalogue refer to different Inspect commits");
+if (enrichment.register_parse_failures > 0 || enrichment.internal_metadata_failures > 0) errors.push("upstream enrichment has partial failures");
+if (!CHECK_ONLY) {
+  const observed = Date.parse(marker.source_observed_at);
+  const audited = Date.parse(linkAudit?.generated_at);
+  if (!Number.isFinite(observed) || observed > Date.now() || Date.now() - observed > 6 * 60 * 60 * 1000) errors.push("refresh requires a real recent source observation (REFRESH_INSPECT=1)");
+  if (!Number.isFinite(audited) || audited < observed || audited > Date.now() || !marker.source_links.unique_urls) errors.push("refresh requires a completed link audit after source observation");
+}
 if (marker.records < 250) errors.push(`catalogue unexpectedly small: ${marker.records}`);
 if (marker.source_groups < 190) errors.push(`source registry unexpectedly small: ${marker.source_groups}`);
-if (marker.methodological_reviews.reviewed_records < 30) errors.push(`reviewed record regression: ${marker.methodological_reviews.reviewed_records}`);
+if (marker.methodological_reviews.reviewed_records + marker.methodological_reviews.needs_reevaluation < 30) errors.push(`documented review coverage regression: ${marker.methodological_reviews.reviewed_records} current + ${marker.methodological_reviews.needs_reevaluation} requiring reevaluation`);
 if (marker.methodological_reviews.documentary < 30) errors.push(`documentary review regression: ${marker.methodological_reviews.documentary}`);
 if (marker.methodological_reviews.registry_entries < 30) errors.push(`methodological review registry regression: ${marker.methodological_reviews.registry_entries}`);
 if (marker.methodological_reviews.independently_replicated !== 0) errors.push("documentary reviews are being represented as independent replications");

@@ -9,7 +9,7 @@
   function update(){
     const raw=(location.hash||'#/').slice(1),path=raw.split('?')[0];let title='FronteraEval — Frontier AI evaluations, mapped';let description='Find frontier AI evaluations, follow their original sources, and understand what each result can and cannot establish.';let canonical=`${BASE}/`;
     if(path==='/evals'){title='Frontier AI evaluations — FronteraEval';canonical=`${BASE}/evaluations/`}
-    else if(path.startsWith('/eval/')&&catalog){const id=decodeURIComponent(path.slice(6));const record=catalog.records?.find((item)=>item.id===id);if(record){title=`${record.name} — FronteraEval`;description=record.measures||record.description||description;canonical=`${BASE}/evaluations/${slug(record)}/`;setTimeout(()=>replaceCopy(record,canonical),0)}}
+    else if(path.startsWith('/eval/')&&catalog){let id;try{id=decodeURIComponent(path.slice(6))}catch{return}const record=catalog.records?.find((item)=>item.id===id);if(record){title=`${record.name} — FronteraEval`;description=record.measures||record.description||description;canonical=`${BASE}/evaluations/${slug(record)}/`;setTimeout(()=>{let currentId;try{currentId=decodeURIComponent((location.hash||'').slice(1).split('?')[0].slice(6))}catch{return}if(currentId===record.id)replaceCopy(record,canonical)},0)}}
     else if(path==='/topics'){title='Frontier AI evaluation topics — FronteraEval';canonical=`${BASE}/topics/`}
     else if(path.startsWith('/topic/')&&catalog){const id=path.slice(7);const topic=catalog.topics?.[id];if(topic){title=`${topic.label} evaluations — FronteraEval`;description=topic.definition||description;canonical=`${BASE}/topics/${id}/`}}
     else if(path==='/about'){title='About FronteraEval';canonical=`${BASE}/about/`}

@@ -62,7 +62,7 @@
         state.live = live;
         const previousCount = state.records.length;
         if (live?.inspect?.entries?.length) mergeLive(live.inspect.entries);
-        if (state.records.length !== previousCount) route({ preserveScroll: true });
+        if (state.records.length !== previousCount) route({ preserveScroll: true, preserveInteraction: true });
         else hydrateLiveStatus();
       })
       .catch(() => {});
@@ -131,6 +131,12 @@
 
   function route(options = {}) {
     const { path, params } = parseHash();
+    const active = options.preserveInteraction ? document.activeElement : null;
+    const controls = options.preserveInteraction
+      ? [...main.querySelectorAll("input[id], select[id], textarea[id]")].map((node) => ({
+        id: node.id, value: node.value,
+        start: node.selectionStart, end: node.selectionEnd
+      })) : [];
     if (!options.preserveScroll) window.scrollTo(0, 0);
     updateNavigation(path);
     if (path === "/") renderHome();
@@ -138,7 +144,12 @@
       readFilters(params);
       renderBrowse();
     }
-    else if (path.startsWith("/eval/")) renderDetail(decodeURIComponent(path.slice(6)));
+    else if (path.startsWith("/eval/")) {
+      let id;
+      try { id = decodeURIComponent(path.slice(6)); } catch { id = null; }
+      if (id) renderDetail(id);
+      else renderNotFound();
+    }
     else if (path === "/topics") renderTopics();
     else if (path.startsWith("/topic/")) renderTopic(path.slice(7));
     else if (path === "/collection/agency-transfer") {
@@ -149,8 +160,15 @@
     else if (path === "/updates") renderUpdates();
     else if (path === "/data") renderData();
     else renderNotFound();
+    for (const control of controls) {
+      const node = document.getElementById(control.id);
+      if (!node) continue;
+      node.value = control.value;
+      if (control.start != null) node.setSelectionRange(control.start, control.end);
+    }
+    if (active && !active.isConnected && active.id) document.getElementById(active.id)?.focus({ preventScroll: true });
     notifyRendered(path);
-    setTimeout(() => main.focus(), 0);
+    if (!options.preserveInteraction) setTimeout(() => main.focus(), 0);
   }
 
   function updateNavigation(path) {
@@ -169,7 +187,8 @@
       source: params.get("source") || "",
       sort: params.get("sort") || "review"
     };
-    state.page = Math.max(1, Number(params.get("page") || 1));
+    const page = Number(params.get("page") || 1);
+    state.page = Number.isSafeInteger(page) && page > 0 ? page : 1;
   }
 
   function writeFilters({ replace = true } = {}) {

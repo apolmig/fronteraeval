@@ -7,3 +7,15 @@ site/data/catalog.json
 site/data/catalog.csv
 site/data/freshness.json
 site/data/source-audit.json
+site/data/deployment.json
+site/about/
+site/data-info/
+site/evaluations/
+site/method/
+site/topics/
+site/feed.xml
+site/indexnow-urls.json
+site/llms-full.txt
+site/llms.txt
+site/opensearch.xml
+site/site.webmanifest

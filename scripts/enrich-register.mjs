@@ -106,8 +106,8 @@ async function mapLimit(items, limit, mapper) {
   return output;
 }
 
-const commit = await fetchJSON(`https://api.github.com/repos/${REPO}/commits/main`);
-const commitSha = String(commit.sha);
+const commitSha = String(catalog.inspect_source_commit || "");
+if (!/^[a-f0-9]{40}$/.test(commitSha)) throw new Error("Catalogue must pin an immutable Inspect commit");
 const enrichedAt = new Date().toISOString();
 
 let enrichedRegisterEntries = 0;
@@ -265,7 +265,7 @@ await writeFile(CSV_PATH, `${[header, ...rows].map((row) => row.map(quote).join(
 
 await writeFile(FRESHNESS_PATH, `${JSON.stringify({
   ...freshness,
-  checked_at: enrichedAt,
+  generated_at: enrichedAt,
   inspect_source_commit: commitSha,
   register_entries_enriched: enrichedRegisterEntries,
   register_parse_failures: registerParseFailures,

@@ -1,12 +1,15 @@
 {
   "schema_version": "2.1.0",
   "status": "completed",
-  "refreshed_at": "2026-11-01T09:25:52.983Z",
-  "inspect_source_commit": "969e4b2078292a2429274bd3524c64c27f9e0c72",
-  "records": 330,
-  "source_groups": 210,
+  "refreshed_at": "2026-11-13T19:22:25.577Z",
+  "source_observed_at": "2026-11-13T19:16:09.308Z",
+  "generated_at": "2026-11-13T19:16:09.308Z",
+  "inspect_source_commit": "a68dade7efb803ef50c8442d3f16264b293d1414",
+  "records": 333,
+  "source_groups": 213,
   "methodological_reviews": {
-    "reviewed_records": 30,
+    "reviewed_records": 27,
+    "needs_reevaluation": 3,
     "documentary": 30,
     "independently_replicated": 0,
     "registry_entries": 30,
@@ -15,24 +18,24 @@
   "source_resolution": {
     "verified": 73,
     "source_derived": 3,
-    "paper_only": 254,
+    "paper_only": 257,
     "host_only": 0,
     "unresolved": 0
   },
   "papers": {
-    "present_records": 306,
+    "present_records": 309,
     "not_found_records": 15,
     "not_applicable_records": 9,
-    "unique_arxiv_papers": 157,
-    "arxiv_metadata_resolved": 157,
+    "unique_arxiv_papers": 160,
+    "arxiv_metadata_resolved": 160,
     "arxiv_metadata_pending": 0,
-    "metadata_request_failures": 0
+    "metadata_request_failures": 1
   },
   "upstream_enrichment": {
     "internal_entries": 250,
-    "register_entries": 56,
+    "register_entries": 59,
     "reported_result_entries": 10,
-    "linked_resources": 1482
+    "linked_resources": 1494
   },
   "quality": {
     "source_resolution_problems": 0,
@@ -42,11 +45,11 @@
     "unresolved_records": 0
   },
   "source_links": {
-    "audited_at": "2026-11-01T09:25:52.917Z",
-    "unique_urls": 589,
-    "reachable": 581,
-    "restricted": 7,
-    "transient": 1,
+    "audited_at": "2026-11-13T19:21:15.725Z",
+    "unique_urls": 598,
+    "reachable": 592,
+    "restricted": 2,
+    "transient": 4,
     "critical_missing": 0,
     "reviewed_missing": 0
   }

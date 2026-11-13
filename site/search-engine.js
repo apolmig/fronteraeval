@@ -345,11 +345,15 @@
       .slice(0, 2);
   }
 
-  function bestTokenMatch(queryToken, fields) {
+  function bestTokenMatch(queryToken, fields, similarities) {
     let best = { score: 0, reason: null };
     for (const field of fields) {
       for (const token of field.tokens) {
-        const similarity = tokenSimilarity(queryToken, token);
+        // A query compares the same vocabulary across many records and fields.
+        // Cache only for this search so changed records never leave a stale index.
+        const key = `${queryToken}\0${token}`;
+        if (!similarities.has(key)) similarities.set(key, tokenSimilarity(queryToken, token));
+        const similarity = similarities.get(key);
         const score = similarity * field.weight;
         if (score > best.score) best = { score, reason: field.label };
       }
@@ -357,10 +361,9 @@
     return best;
   }
 
-  function lexicalScore(record, query, topicLabels) {
+  function lexicalScore(fields, query, similarities) {
     const normalizedQuery = normalize(query);
     const queryTokens = tokenize(query);
-    const fields = recordFields(record, topicLabels);
     let score = 0;
     let matched = 0;
     const reasons = [];
@@ -373,7 +376,7 @@
     }
 
     for (const token of queryTokens) {
-      const best = bestTokenMatch(token, fields);
+      const best = bestTokenMatch(token, fields, similarities);
       if (best.score > 0) {
         score += best.score;
         matched += 1;
@@ -390,10 +393,9 @@
     return { score, reasons };
   }
 
-  function intentScore(record, detectedIntents, topicLabels) {
+  function intentScore(record, detectedIntents, topicLabels, fields) {
     let score = 0;
     const reasons = [];
-    const fields = recordFields(record, topicLabels);
     const allText = fields.map((field) => field.normalized).join(" ");
 
     for (const { intent, confidence } of detectedIntents) {
@@ -453,9 +455,11 @@
       };
     }
 
+    const similarities = new Map();
     const scored = filtered.map((record) => {
-      const lexical = lexicalScore(record, query, topicLabels);
-      const semantic = intentScore(record, detectedIntents, topicLabels);
+      const fields = recordFields(record, topicLabels);
+      const lexical = lexicalScore(fields, query, similarities);
+      const semantic = intentScore(record, detectedIntents, topicLabels, fields);
       const reviewBonus = record.review_status === "reviewed" ? 0.8 : record.review_status === "catalogued" ? 0.25 : 0;
       const sourceBonus = Math.min(0.5, ((record.links || []).length - 1) * 0.08);
       return {

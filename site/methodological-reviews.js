@@ -12,10 +12,20 @@
 
   function currentRecordId() {
     const path = (location.hash || "#/").slice(1).split("?")[0];
-    return path.startsWith("/eval/") ? decodeURIComponent(path.slice(6)) : null;
+    try { return path.startsWith("/eval/") ? decodeURIComponent(path.slice(6)) : null; } catch { return null; }
   }
 
   function markup(review) {
+    if (review.status === "needs-reevaluation") {
+      const reasons = (review.reassessment_reasons || []).map((reason) => `<li>${esc(reason)}</li>`).join("");
+      return `<section class="record-section methodological-assessment" data-methodological-assessment>
+        <div class="eyebrow">Documentary review status</div><h2>Review needs reassessment</h2>
+        <div class="methodological-notice"><strong>Sources or protocol changed after the recorded review.</strong> Historical conclusions are not presented as an assessment of this version.</div>
+        <p>The previous documentary review was recorded on ${esc(review.reviewed_at || "an unspecified date")}. It was not an independent replication.</p>
+        ${reasons ? `<ul>${reasons}</ul>` : ""}
+        <p>Follow the current primary sources and check the changed protocol before drawing substantive conclusions.</p>
+      </section>`;
+    }
     const limitations = (review.limitations || []).map((item) => `<li>${esc(item)}</li>`).join("");
     const sources = (review.source_basis || []).map((source) =>
       `<a href="${esc(source.url)}" target="_blank" rel="noopener">${esc(source.kind || "Source")} ↗</a>`
@@ -54,7 +64,7 @@
     const catalog = await catalogPromise;
     const record = catalog?.records?.find((item) => item.id === id);
     const review = record?.methodological_review;
-    if (!review || currentRecordId() !== id) return;
+    if (!review || currentRecordId() !== id || main.querySelector("[data-methodological-assessment]")) return;
 
     const content = main.querySelector(".record-content");
     if (!content) return;

@@ -1,0 +1,621 @@
+{
+  "schema_version": "1.0.0",
+  "baseline_catalogue_generated_at": "2026-11-01T09:26:10.527Z",
+  "baseline_inspect_source_commit": "969e4b2078292a2429274bd3524c64c27f9e0c72",
+  "note": "Source and protocol snapshot of the previously published, validated catalogue. This detects subsequent metadata changes; it does not prove that historical documentary reviews validated every implementation revision before this baseline.",
+  "records": {
+    "canonical:agentdojo": {
+      "version": null,
+      "protocol": null,
+      "tasks": [],
+      "paper_urls": [
+        "https://openreview.net/forum?id=m1YYAQjO3w"
+      ],
+      "reference_implementation": "https://github.com/ethz-spylab/agentdojo",
+      "reviewed_at": "2026-08-27"
+    },
+    "inspect:agentharm": {
+      "version": "8-B",
+      "protocol": {
+        "version": "8-B",
+        "dataset_samples": 176,
+        "dependency": null,
+        "requires_internet": false,
+        "sandbox": []
+      },
+      "tasks": [
+        {
+          "name": "agentharm",
+          "dataset_samples": 176,
+          "comment": null,
+          "support_only": false
+        },
+        {
+          "name": "agentharm_benign",
+          "dataset_samples": 176,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2410.09024"
+      ],
+      "reference_implementation": null,
+      "reviewed_at": "2026-08-27"
+    },
+    "inspect:agentic_misalignment": {
+      "version": "4-A",
+      "protocol": {
+        "version": "4-A",
+        "dataset_samples": 1,
+        "dependency": "agentic_misalignment",
+        "requires_internet": false,
+        "sandbox": []
+      },
+      "tasks": [
+        {
+          "name": "agentic_misalignment",
+          "dataset_samples": 1,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://www.anthropic.com/research/agentic-misalignment"
+      ],
+      "reference_implementation": null,
+      "reviewed_at": "2026-08-24"
+    },
+    "canonical:ailuminate": {
+      "version": null,
+      "protocol": null,
+      "tasks": [],
+      "paper_urls": [],
+      "reference_implementation": null,
+      "reviewed_at": "2026-08-24"
+    },
+    "inspect:ape_eval": {
+      "version": "3-A",
+      "protocol": {
+        "version": "3-A",
+        "dataset_samples": 600,
+        "dependency": null,
+        "requires_internet": false,
+        "sandbox": []
+      },
+      "tasks": [
+        {
+          "name": "ape_eval",
+          "dataset_samples": 600,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2506.02873"
+      ],
+      "reference_implementation": "https://github.com/AlignmentResearch/AttemptPersuadeEval",
+      "reviewed_at": "2026-08-24"
+    },
+    "inspect:cve_bench": {
+      "version": "2-A",
+      "protocol": {
+        "version": "2-A",
+        "dataset_samples": 40,
+        "dependency": null,
+        "requires_internet": false,
+        "sandbox": [
+          "solver"
+        ]
+      },
+      "tasks": [
+        {
+          "name": "cve_bench",
+          "dataset_samples": 40,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2503.17332"
+      ],
+      "reference_implementation": "https://github.com/Scott-Simmons/cve-bench",
+      "reviewed_at": "2026-08-27"
+    },
+    "inspect:cybench": {
+      "version": "4-C",
+      "protocol": {
+        "version": "4-C",
+        "dataset_samples": 39,
+        "dependency": "cybench",
+        "requires_internet": false,
+        "sandbox": [
+          "solver"
+        ]
+      },
+      "tasks": [
+        {
+          "name": "cybench",
+          "dataset_samples": 39,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2408.08926"
+      ],
+      "reference_implementation": "https://www.haproxy.org/download/2.8/src/haproxy-2.8.1.tar.gz",
+      "reviewed_at": "2026-08-27"
+    },
+    "register:deceptionbench": {
+      "version": null,
+      "protocol": {
+        "implementation_commit": "8683bf5a480f938b812aa5078fb0ee7d12a74483",
+        "report_commit": null,
+        "report_timestamp": null,
+        "command": null,
+        "source_comment": "Dataset PKU-Alignment/DeceptionBench is associated with arXiv:2505.18807 (not [DeceptionBench: A Comprehensive Benchmark for AI Deception Behaviors in Real-world Scenarios](https://arxiv.org/abs/2510.15501) (Huang et al., 2025) arXiv:2510.15501 which has the same name but is a different benchmark)."
+      },
+      "tasks": [
+        {
+          "name": "deceptionbench",
+          "path": "src/inspect_deceptionbench/deceptionbench.py"
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2505.18807"
+      ],
+      "reference_implementation": "https://github.com/WatchTree-19/inspect-deceptionbench",
+      "reviewed_at": "2026-08-24"
+    },
+    "inspect:frontier_cs_research": {
+      "version": "2-A",
+      "protocol": {
+        "version": "2-A",
+        "dataset_samples": 66,
+        "dependency": null,
+        "requires_internet": false,
+        "sandbox": [
+          "solver",
+          "scorer"
+        ]
+      },
+      "tasks": [
+        {
+          "name": "frontier_cs",
+          "dataset_samples": 238,
+          "comment": null,
+          "support_only": false
+        },
+        {
+          "name": "frontier_cs_algorithmic",
+          "dataset_samples": 172,
+          "comment": null,
+          "support_only": false
+        },
+        {
+          "name": "frontier_cs_research",
+          "dataset_samples": 66,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2512.15699"
+      ],
+      "reference_implementation": "https://github.com/FrontierCS/Frontier-CS",
+      "reviewed_at": "2026-08-27"
+    },
+    "canonical:frontiermath": {
+      "version": null,
+      "protocol": null,
+      "tasks": [],
+      "paper_urls": [],
+      "reference_implementation": null,
+      "reviewed_at": "2026-08-24"
+    },
+    "canonical:harmbench": {
+      "version": null,
+      "protocol": null,
+      "tasks": [],
+      "paper_urls": [
+        "https://arxiv.org/abs/2402.04249"
+      ],
+      "reference_implementation": "https://github.com/centerforaisafety/HarmBench",
+      "reviewed_at": "2026-08-27"
+    },
+    "canonical:jailbreakbench": {
+      "version": null,
+      "protocol": null,
+      "tasks": [],
+      "paper_urls": [
+        "https://arxiv.org/abs/2404.01318"
+      ],
+      "reference_implementation": "https://github.com/JailbreakBench/jailbreakbench",
+      "reviewed_at": "2026-08-27"
+    },
+    "register:machiavelli": {
+      "version": null,
+      "protocol": {
+        "implementation_commit": "6c6149488e7d6ecc02df8ca0b14c7ba783f16715",
+        "report_commit": "6c6149488e7d6ecc02df8ca0b14c7ba783f16715",
+        "report_timestamp": "June 2026",
+        "command": "uv run inspect eval src/machiavelli_task.py@machiavelli --model <model>",
+        "source_comment": null
+      },
+      "tasks": [
+        {
+          "name": "machiavelli",
+          "path": "src/machiavelli_task.py"
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2304.03279"
+      ],
+      "reference_implementation": "https://github.com/Plyb/inspect-machiavelli",
+      "reviewed_at": "2026-08-24"
+    },
+    "inspect:make_me_pay": {
+      "version": "2-A",
+      "protocol": {
+        "version": "2-A",
+        "dataset_samples": 20,
+        "dependency": null,
+        "requires_internet": false,
+        "sandbox": []
+      },
+      "tasks": [
+        {
+          "name": "make_me_pay",
+          "dataset_samples": 20,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [],
+      "reference_implementation": "https://github.com/openai/evals",
+      "reviewed_at": "2026-08-24"
+    },
+    "inspect:makemesay": {
+      "version": "3-A",
+      "protocol": {
+        "version": "3-A",
+        "dataset_samples": 189,
+        "dependency": "makemesay",
+        "requires_internet": false,
+        "sandbox": []
+      },
+      "tasks": [
+        {
+          "name": "makemesay",
+          "dataset_samples": 189,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [],
+      "reference_implementation": "https://github.com/openai/evals",
+      "reviewed_at": "2026-08-24"
+    },
+    "register:manager_coercion_benchmark": {
+      "version": null,
+      "protocol": {
+        "implementation_commit": "48d6185a8fd1642cb6fb47fc6c30edcfdd31d8bb",
+        "report_commit": null,
+        "report_timestamp": null,
+        "command": null,
+        "source_comment": null
+      },
+      "tasks": [
+        {
+          "name": "manager_coercion",
+          "path": "manager_coercion.py"
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2607.15434"
+      ],
+      "reference_implementation": "https://github.com/CompassionML/manager-coercion-bench",
+      "reviewed_at": "2026-08-24"
+    },
+    "inspect:mask": {
+      "version": "5-E",
+      "protocol": {
+        "version": "5-E",
+        "dataset_samples": 1000,
+        "dependency": null,
+        "requires_internet": false,
+        "sandbox": []
+      },
+      "tasks": [
+        {
+          "name": "mask",
+          "dataset_samples": 1000,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2503.03750"
+      ],
+      "reference_implementation": "https://github.com/centerforaisafety/mask",
+      "reviewed_at": "2026-08-24"
+    },
+    "canonical:metr-time-horizons": {
+      "version": null,
+      "protocol": null,
+      "tasks": [],
+      "paper_urls": [],
+      "reference_implementation": null,
+      "reviewed_at": "2026-08-24"
+    },
+    "inspect:mle_bench": {
+      "version": "7-G",
+      "protocol": {
+        "version": "7-G",
+        "dataset_samples": 1,
+        "dependency": null,
+        "requires_internet": false,
+        "sandbox": [
+          "solver"
+        ]
+      },
+      "tasks": [
+        {
+          "name": "mle_bench",
+          "dataset_samples": 1,
+          "comment": null,
+          "support_only": false
+        },
+        {
+          "name": "mle_bench_full",
+          "dataset_samples": 75,
+          "comment": null,
+          "support_only": false
+        },
+        {
+          "name": "mle_bench_lite",
+          "dataset_samples": 22,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2410.07095"
+      ],
+      "reference_implementation": "https://github.com/openai/mle-bench",
+      "reviewed_at": "2026-08-27"
+    },
+    "inspect:osworld": {
+      "version": "5-A",
+      "protocol": {
+        "version": "5-A",
+        "dataset_samples": 369,
+        "dependency": "osworld",
+        "requires_internet": false,
+        "sandbox": [
+          "scorer",
+          "solver"
+        ]
+      },
+      "tasks": [
+        {
+          "name": "osworld",
+          "dataset_samples": 369,
+          "comment": null,
+          "support_only": false
+        },
+        {
+          "name": "osworld_small",
+          "dataset_samples": 39,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2404.07972"
+      ],
+      "reference_implementation": "https://github.com/xlang-ai/OSWorld",
+      "reviewed_at": "2026-08-27"
+    },
+    "inspect:paperbench": {
+      "version": "7-C",
+      "protocol": {
+        "version": "7-C",
+        "dataset_samples": 23,
+        "dependency": "paperbench",
+        "requires_internet": false,
+        "sandbox": [
+          "solver",
+          "scorer"
+        ]
+      },
+      "tasks": [
+        {
+          "name": "paperbench",
+          "dataset_samples": 23,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2504.01848"
+      ],
+      "reference_implementation": null,
+      "reviewed_at": "2026-08-27"
+    },
+    "canonical:re-bench": {
+      "version": null,
+      "protocol": null,
+      "tasks": [],
+      "paper_urls": [
+        "https://arxiv.org/abs/2411.15114"
+      ],
+      "reference_implementation": "https://github.com/METR/RE-Bench",
+      "reviewed_at": "2026-08-24"
+    },
+    "inspect:sad_influence": {
+      "version": "4-A",
+      "protocol": {
+        "version": "4-A",
+        "dataset_samples": 255,
+        "dependency": null,
+        "requires_internet": false,
+        "sandbox": []
+      },
+      "tasks": [
+        {
+          "name": "sad_stages_full",
+          "dataset_samples": 800,
+          "comment": null,
+          "support_only": false
+        },
+        {
+          "name": "sad_stages_oversight",
+          "dataset_samples": 400,
+          "comment": null,
+          "support_only": false
+        },
+        {
+          "name": "sad_influence",
+          "dataset_samples": 255,
+          "comment": null,
+          "support_only": false
+        },
+        {
+          "name": "sad_facts_llms",
+          "dataset_samples": 249,
+          "comment": null,
+          "support_only": false
+        },
+        {
+          "name": "sad_facts_human_defaults",
+          "dataset_samples": 1200,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2407.04694"
+      ],
+      "reference_implementation": "https://github.com/LRudL/sad",
+      "reviewed_at": "2026-08-24"
+    },
+    "inspect:strong_reject": {
+      "version": "3-B",
+      "protocol": {
+        "version": "3-B",
+        "dataset_samples": 324,
+        "dependency": null,
+        "requires_internet": false,
+        "sandbox": []
+      },
+      "tasks": [
+        {
+          "name": "strong_reject",
+          "dataset_samples": 324,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2402.10260"
+      ],
+      "reference_implementation": "https://github.com/alexandrasouly/strongreject",
+      "reviewed_at": "2026-08-27"
+    },
+    "inspect:swe_bench": {
+      "version": "6-D",
+      "protocol": {
+        "version": "6-D",
+        "dataset_samples": 500,
+        "dependency": "swe_bench",
+        "requires_internet": false,
+        "sandbox": [
+          "solver"
+        ]
+      },
+      "tasks": [
+        {
+          "name": "swe_bench",
+          "dataset_samples": 500,
+          "comment": null,
+          "support_only": false
+        },
+        {
+          "name": "swe_bench_verified_mini",
+          "dataset_samples": 50,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2310.06770"
+      ],
+      "reference_implementation": "https://github.com/swe-bench/experiments",
+      "reviewed_at": "2026-08-27"
+    },
+    "inspect:sycophancy": {
+      "version": "4-A",
+      "protocol": {
+        "version": "4-A",
+        "dataset_samples": 4882,
+        "dependency": null,
+        "requires_internet": false,
+        "sandbox": []
+      },
+      "tasks": [
+        {
+          "name": "sycophancy",
+          "dataset_samples": 4882,
+          "comment": null,
+          "support_only": false
+        }
+      ],
+      "paper_urls": [
+        "https://arxiv.org/abs/2310.13548"
+      ],
+      "reference_implementation": "https://github.com/meg-tong/sycophancy-eval",
+      "reviewed_at": "2026-08-24"
+    },
+    "canonical:terminal-bench": {
+      "version": null,
+      "protocol": null,
+      "tasks": [],
+      "paper_urls": [],
+      "reference_implementation": null,
+      "reviewed_at": "2026-08-27"
+    },
+    "canonical:webarena": {
+      "version": null,
+      "protocol": null,
+      "tasks": [],
+      "paper_urls": [
+        "https://arxiv.org/abs/2307.13854"
+      ],
+      "reference_implementation": "https://github.com/web-arena-x/webarena",
+      "reviewed_at": "2026-08-27"
+    },
+    "canonical:wmdp": {
+      "version": null,
+      "protocol": null,
+      "tasks": [],
+      "paper_urls": [
+        "https://arxiv.org/abs/2403.03218"
+      ],
+      "reference_implementation": "https://github.com/centerforaisafety/wmdp",
+      "reviewed_at": "2026-08-24"
+    },
+    "canonical:workarena": {
+      "version": null,
+      "protocol": null,
+      "tasks": [],
+      "paper_urls": [
+        "https://arxiv.org/abs/2403.07718",
+        "https://arxiv.org/abs/2407.05291"
+      ],
+      "reference_implementation": "https://github.com/ServiceNow/WorkArena",
+      "reviewed_at": "2026-08-27"
+    }
+  }
+}

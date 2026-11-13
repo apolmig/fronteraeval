@@ -34,12 +34,15 @@ export function createBrief(source = null, now = new Date().toISOString()) {
   };
 }
 export function captureRecord(record) {
-  const review = record.methodological_review || {};
+  const recordedReview = record.methodological_review || {};
+  const pending = recordedReview.status === 'needs-reevaluation';
+  const review = pending ? {} : recordedReview;
   const refs = [
     {label: 'Original source', url: record.preferred_source?.url},
     {label: 'Paper', url: record.paper?.url},
     {label: 'Reference implementation', url: record.reference_implementation?.url},
-    ...(record.links || []), ...(review.source_basis || [])
+    ...(record.links || []), ...(recordedReview.source_basis || []).map(ref => pending
+      ? {...ref, label: `Historical review source: ${ref.label || ref.kind || 'Source'}`} : ref)
   ];
   const seen = new Set();
   const sources = refs.filter(ref => {
@@ -50,7 +53,7 @@ export function captureRecord(record) {
   return {
     id: clean(record.id, 300), name: clean(record.name, 500),
     family: clean(record.family_title || record.group || record.source_key || record.name, 500),
-    review_status: clean(record.review_status, 100),
+    review_status: clean(pending ? 'catalogued' : record.review_status, 100),
     review_date: clean(record.editorial_reviewed_at, 100),
     construct: clean(review.construct || record.measures || record.description),
     unit: clean(review.unit_of_analysis), outcome: clean(review.target_outcome),
@@ -97,7 +100,8 @@ export function filterRecords(records, query, topic, topicLabels = {}) {
     if (topic && !(record.topics || []).includes(topic)) return false;
     // Only positive descriptive fields count. A mention in a limitation is not a match.
     const text = norm([record.name, record.family_title, record.description, record.measures,
-      record.methodological_review?.construct, ...(record.topics || []).map(id => topicLabels[id] || id)].join(' '));
+      record.methodological_review?.status === 'needs-reevaluation' ? '' : record.methodological_review?.construct,
+      ...(record.topics || []).map(id => topicLabels[id] || id)].join(' '));
     return tokens.every(token => text.includes(token));
   }).sort((a, b) => Number(b.review_status === 'reviewed') - Number(a.review_status === 'reviewed') || a.name.localeCompare(b.name));
 }

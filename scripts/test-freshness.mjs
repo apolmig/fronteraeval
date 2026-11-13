@@ -17,6 +17,7 @@ test('a fresh sweep cannot hide a stale validated catalogue', () => {
 test('missing, invalid and future timestamps cannot become current', () => {
   for (const value of [null, undefined, '', 'not-a-date', 1]) assert.equal(assessTimestamp(value, now).status, 'unknown');
   assert.equal(assessTimestamp(iso(3600000), now).status, 'invalid-future');
+  assert.equal(assessTimestamp(iso(1), now).status, 'invalid-future');
   assert.notEqual(assessSweep(null, recent, now).status, 'current');
   assert.equal(assessRefresh({ ...recent, status: 'failed' }, now).status, 'unknown');
 });

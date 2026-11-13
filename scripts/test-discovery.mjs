@@ -4,6 +4,8 @@ const catalog=JSON.parse(await readFile('site/data/catalog.json','utf8'));
 const index=await readFile('site/index.html','utf8');
 const sitemap=await readFile('site/sitemap.xml','utf8');
 const robots=await readFile('site/robots.txt','utf8');
+const redirects=await readFile('site/_redirects','utf8');
+const brief=await readFile('site/brief/index.html','utf8');
 const llms=await readFile('site/llms.txt','utf8');
 const png=await readFile('site/social-card.png');
 assert.equal(png.toString('ascii',1,4),'PNG','social card is not PNG');
@@ -11,18 +13,25 @@ assert.equal(png.readUInt32BE(16),1200,'social card width');
 assert.equal(png.readUInt32BE(20),630,'social card height');
 for(const needle of ['rel="canonical"','property="og:image"','name="twitter:card"','rel="manifest"','opensearch.xml','feed.xml','social-card.png']) assert.ok(index.includes(needle),`root metadata missing ${needle}`);
 assert.ok(robots.includes('https://fronteraeval.org/sitemap.xml'));
+assert.ok(redirects.includes('https://main--fronteraeval.netlify.app/* https://fronteraeval.org/:splat 301!'));
+assert.ok(redirects.includes('https://www.fronteraeval.org/* https://fronteraeval.org/:splat 301!'));
+assert.ok(!redirects.includes('https://*--fronteraeval.netlify.app'), 'previews must not redirect to production');
+for (const needle of ['property="og:url"', 'property="og:image"', 'name="twitter:card"']) assert.ok(brief.includes(needle), `Brief sharing metadata missing ${needle}`);
 assert.ok(llms.toLowerCase().includes('documentary'));
 const evalDirs=await readdir('site/evaluations',{withFileTypes:true});
 assert.equal(evalDirs.filter((d)=>d.isDirectory()).length,catalog.records.length,'static evaluation page count mismatch');
 const locs=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m)=>m[1]);
 assert.equal(new Set(locs).size,locs.length,'duplicate sitemap URLs');
-assert.ok(locs.length>=catalog.records.length+Object.keys(catalog.topics||{}).length+6,'sitemap coverage too small');
+assert.ok(locs.length>=catalog.records.length+Object.keys(catalog.topics||{}).length+7,'sitemap coverage too small');
 assert.ok(!locs.some((url)=>url.includes('#')),'hash URL leaked into sitemap');
-for(const record of catalog.records.slice(0,20)){
+assert.ok(locs.includes('https://fronteraeval.org/brief/'), 'Brief missing from sitemap');
+for(const record of catalog.records){
  const slug=String(record.slug||record.id||record.name).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,100)||'evaluation';
  const html=await readFile(`site/evaluations/${slug}/index.html`,'utf8');
  assert.ok(html.includes(`<link rel="canonical" href="https://fronteraeval.org/evaluations/${slug}/">`));
  assert.ok(html.includes('Original sources'));
+ assert.ok(locs.includes(`https://fronteraeval.org/evaluations/${slug}/`), `record missing from sitemap: ${record.id}`);
+ assert.ok(html.includes(`href="https://fronteraeval.org/#/eval/${encodeURIComponent(record.id)}"`), `interactive record mismatch: ${record.id}`);
 }
 for(const file of ['feed.xml','opensearch.xml','llms-full.txt','site.webmanifest','indexnow-urls.json']) assert.ok((await stat(`site/${file}`)).size>40,`${file} missing`);
 console.log(`Validated SEO and discovery outputs for ${catalog.records.length} records and ${Object.keys(catalog.topics||{}).length} topics.`);

@@ -51,7 +51,9 @@
     const next = theme === "dark" ? "dark" : "light";
     document.documentElement.dataset.theme = next;
     document.documentElement.style.colorScheme = next;
-    if (persist) localStorage.setItem(THEME_KEY, next);
+    if (persist) {
+      try { localStorage.setItem(THEME_KEY, next); } catch { /* Theme still works when storage is unavailable. */ }
+    }
     updateThemeControl();
   }
 
@@ -63,7 +65,9 @@
 
     const media = globalThis.matchMedia?.("(prefers-color-scheme: dark)");
     media?.addEventListener?.("change", (event) => {
-      if (!localStorage.getItem(THEME_KEY)) applyTheme(event.matches ? "dark" : "light", false);
+      let saved = null;
+      try { saved = localStorage.getItem(THEME_KEY); } catch { /* Use the system preference. */ }
+      if (!saved) applyTheme(event.matches ? "dark" : "light", false);
     });
   }
 
@@ -243,7 +247,10 @@
         return;
       }
       if (!dialog?.open) return;
-      if (event.key === "ArrowDown") {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closePalette();
+      } else if (event.key === "ArrowDown") {
         event.preventDefault();
         setActive((activeIndex + 1) % Math.max(resultItems.length, 1));
       } else if (event.key === "ArrowUp") {
@@ -301,9 +308,7 @@
   function installAboutRoute() {
     const sync = () => window.setTimeout(renderAbout, 0);
     window.addEventListener("hashchange", sync);
-    new MutationObserver(() => {
-      if (currentPath() === "/about" && !main.querySelector("[data-ui-about]")) sync();
-    }).observe(main, { childList: true, subtree: false });
+    document.addEventListener("fronteraeval:rendered", sync);
     sync();
   }
 
