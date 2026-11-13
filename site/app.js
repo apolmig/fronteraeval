@@ -623,7 +623,7 @@
   function renderUpdates() {
     document.title = "Freshness - FronteraEval";
     main.innerHTML = `
-      <header class="page-head"><div class="wide page-head-inner"><div><div class="eyebrow">Freshness</div><h1>Updates</h1></div><p>The catalogue watches official sources. Editorial judgments remain human-reviewed.</p></div></header>
+      <header class="page-head"><div class="wide page-head-inner"><div><div class="eyebrow">Freshness</div><h1>Updates</h1></div><p>The catalogue watches official sources. Editorial assessments require a separate documentary review.</p></div></header>
       <article class="prose"><div data-update-status>${updateStatusMarkup()}</div><h2>What changes automatically</h2><p>FronteraEval observes official sources and compares them with the admitted catalogue. New records appear only after source resolution and catalogue checks pass.</p><div class="notice"><strong>Editorial boundary.</strong> Automated observations do not supply a documentary review, an experimental replication, or claims about human effects.</div></article>`;
   }
 
