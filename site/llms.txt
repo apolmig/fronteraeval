@@ -1,0 +1,13 @@
+# FronteraEval
+
+> A source-linked, evolving catalogue of frontier AI evaluations, designed to clarify what each evaluation can and cannot establish.
+
+- Website: https://fronteraeval.org/
+- Indexable catalogue: https://fronteraeval.org/evaluations/
+- Topics: https://fronteraeval.org/topics/
+- Method: https://fronteraeval.org/method/
+- About and epistemic limits: https://fronteraeval.org/about/
+- JSON data: https://fronteraeval.org/data/catalog.json
+- Source code: https://github.com/apolmig/fronteraeval
+
+The catalogue contains 314 records and 30 documentary methodological reviews. Documentary review is not independent experimental replication.

@@ -49,6 +49,8 @@ function head({title, description, canonical, type='website', modified=generated
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(trim(description, 165))}">
   <meta name="author" content="Miguel Guerrero">
+  <meta name="apple-mobile-web-app-title" content="FronteraEval">
+  <meta name="format-detection" content="telephone=no">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f7f5ef" media="(prefers-color-scheme: light)">
@@ -65,6 +67,7 @@ function head({title, description, canonical, type='website', modified=generated
   <meta property="og:description" content="${esc(trim(description, 200))}">
   <meta property="og:url" content="${esc(canonical)}">
   <meta property="og:image" content="${CARD}">
+  <meta property="og:image:url" content="${CARD}">
   <meta property="og:image:secure_url" content="${CARD}">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
