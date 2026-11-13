@@ -13,7 +13,7 @@
 /feed.xml
   Cache-Control: public, max-age=1800, stale-while-revalidate=86400
 
-/social-card.png
+/social-card*.png
   Cache-Control: public, max-age=31536000, immutable
 
 /icon-*.png
