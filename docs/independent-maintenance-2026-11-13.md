@@ -1,6 +1,6 @@
 # Independent maintenance and catalogue freshness
 
-The website remains on Netlify. Maintenance can run on a Linux VPS through ordinary Git and systemd, independently of GitHub Actions. No billing, Actions configuration, hosting plan, DNS or server access has been changed. The user confirmed that a VPS exists; connection details and installation remain pending.
+The website remains on Netlify. Maintenance can run on a Linux VPS through ordinary Git and systemd, independently of GitHub Actions. No billing, Actions configuration, hosting plan, DNS or server access has been changed. The user confirmed that a VPS exists but explicitly deferred connection and installation; the operational files remain inactive.
 
 ## Product changes
 
