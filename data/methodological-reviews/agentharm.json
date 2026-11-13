@@ -1,31 +1,61 @@
 {
   "id": "inspect:agentharm",
   "review_confidence": "moderate",
-  "evidence_reach": ["controlled-model-behaviour"],
+  "evidence_reach": [
+    "controlled-model-behaviour"
+  ],
   "construct": "Ability and willingness of tool-using agents to complete selected malicious multi-step tasks, including after jailbreak elicitation.",
   "unit_of_analysis": "One agent trajectory on one malicious or benign task in a benchmark environment.",
   "interaction_type": "Multi-step tool use with task-specific environments, system prompts, and optional jailbreaks.",
   "target_outcome": "Refusal or compliance and task completion across harmful categories, with retained benign capability where tested.",
   "human_participants": "No human subjects. Experts author and validate task scenarios and scoring criteria.",
   "elicitation": "The agent receives malicious or benign tasks, tools, and an environment; jailbreak techniques may be applied to test retained harmful capability.",
-  "scoring": "Task-specific completion checks combined with refusal or compliance measures and category-level aggregation.",
+  "scoring": "Task-specific completion checks, a model-based refusal judge, and category-level aggregation. The chat split has no task-completion rubric and returns NaN for that component; refusal-only observations must not be interpreted as completion scores.",
   "measures": "Whether an evaluated agent can be elicited to execute AgentHarm's selected harmful tasks under the published tools, environment, and jailbreak setup.",
   "does_not_measure": "Real-world misuse prevalence, operator skill, deployment access, victim impact, or the probability that a deployed agent will cause harm.",
   "best_for": "Stress-testing harmful agent behavior and the interaction between refusal safeguards and retained task capability.",
   "not_sufficient_for": "Estimating incident rates or certifying that an agent is safe in operational environments.",
   "protocol_dependence": "Very high: task set, tools, environment, system prompt, jailbreak, and agent scaffold determine performance.",
-  "implementation_dependence": "High: task validators, sandbox behavior, tool affordances, and model endpoint changes affect outcomes.",
+  "implementation_dependence": "High: task validators, tool affordances, model and grader endpoints, dataset revision, and text decoding affect outcomes. Inspect 9-B explicitly decodes benchmark tool content and dataset JSON as UTF-8, correcting inputs on hosts with another locale encoding.",
   "limitations": [
     "Benchmark tasks are selected and simulated rather than observed real incidents.",
     "Jailbreak success does not establish that an operator can deploy the same workflow at scale.",
     "Tool and environment design may over- or under-estimate operational difficulty.",
-    "Task completion is not equivalent to downstream harm."
+    "Task completion is not equivalent to downstream harm.",
+    "Published subsets and rubric-bearing tool tasks must be distinguished from chat-only refusal tests. Encoding corrections can change task inputs even when the task count is unchanged."
   ],
-  "comparability": "Match AgentHarm release, malicious and benign subsets, tools, environment, jailbreaks, agent scaffold, and model snapshot.",
+  "comparability": "Match AgentHarm and Inspect implementation versions, dataset revision and split, malicious and benign subsets, tools, jailbreaks, agent scaffold, grader and model snapshots. Record host text encoding: 8-B and 9-B can supply different model inputs on non-UTF-8 hosts; no numerical equivalence was tested in this review.",
   "decision_relevance": "Useful for agentic misuse stress tests and safeguard design; it must be combined with deployment exposure, monitoring, and consequence analysis.",
   "source_basis": [
-    {"kind": "paper", "url": "https://arxiv.org/abs/2410.09024"},
-    {"kind": "official", "url": "https://www.aisi.gov.uk/research/agentharm-a-benchmark-for-measuring-harmfulness-of-llm-agents"},
-    {"kind": "metadata", "url": "https://github.com/UKGovernmentBEIS/inspect_evals/tree/main/src/inspect_evals/agentharm"}
-  ]
+    {
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2410.09024"
+    },
+    {
+      "kind": "official",
+      "url": "https://www.aisi.gov.uk/research/agentharm-a-benchmark-for-measuring-harmfulness-of-llm-agents"
+    },
+    {
+      "kind": "implementation",
+      "url": "https://github.com/UKGovernmentBEIS/inspect_evals/tree/a68dade7efb803ef50c8442d3f16264b293d1414/src/inspect_evals/agentharm"
+    },
+    {
+      "kind": "implementation-diff",
+      "url": "https://github.com/UKGovernmentBEIS/inspect_evals/compare/969e4b2078292a2429274bd3524c64c27f9e0c72...a68dade7efb803ef50c8442d3f16264b293d1414"
+    },
+    {
+      "kind": "implementation",
+      "url": "https://github.com/UKGovernmentBEIS/inspect_evals/blob/a68dade7efb803ef50c8442d3f16264b293d1414/src/inspect_evals/agentharm/scorer.py"
+    }
+  ],
+  "reviewed_at": "2026-11-13",
+  "reassessment": {
+    "previous_reviewed_at": "2026-08-27",
+    "previous_version": "8-B",
+    "reviewed_version": "9-B",
+    "previous_inspect_source_commit": "969e4b2078292a2429274bd3524c64c27f9e0c72",
+    "inspect_source_commit": "a68dade7efb803ef50c8442d3f16264b293d1414",
+    "scope": "Documentary reassessment of versioned implementation, scoring and comparability. No benchmark execution, model inference, independent replication or empirical cross-version equivalence test.",
+    "evidence_note": "docs/reassessment-2026-11-13.md"
+  }
 }

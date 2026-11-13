@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "baseline_catalogue_generated_at": "2026-11-01T09:26:10.527Z",
   "baseline_inspect_source_commit": "969e4b2078292a2429274bd3524c64c27f9e0c72",
-  "note": "Source and protocol snapshot of the previously published, validated catalogue. This detects subsequent metadata changes; it does not prove that historical documentary reviews validated every implementation revision before this baseline.",
+  "note": "Source and protocol snapshot of the previously published, validated catalogue. This detects subsequent metadata changes; it does not prove that historical documentary reviews validated every implementation revision before this baseline. AgentHarm 9-B, Agentic Misalignment 5-A and PaperBench 8-C were documentarily reassessed on 2026-11-13; their per-record inspect_source_commit and reviewed_at identify the newer baseline. See docs/reassessment-2026-11-13.md. Other records retain the historical baseline and review dates.",
   "records": {
     "canonical:agentdojo": {
       "version": null,
@@ -15,9 +15,9 @@
       "reviewed_at": "2026-08-27"
     },
     "inspect:agentharm": {
-      "version": "8-B",
+      "version": "9-B",
       "protocol": {
-        "version": "8-B",
+        "version": "9-B",
         "dataset_samples": 176,
         "dependency": null,
         "requires_internet": false,
@@ -41,12 +41,13 @@
         "https://arxiv.org/abs/2410.09024"
       ],
       "reference_implementation": null,
-      "reviewed_at": "2026-08-27"
+      "reviewed_at": "2026-11-13",
+      "inspect_source_commit": "a68dade7efb803ef50c8442d3f16264b293d1414"
     },
     "inspect:agentic_misalignment": {
-      "version": "4-A",
+      "version": "5-A",
       "protocol": {
-        "version": "4-A",
+        "version": "5-A",
         "dataset_samples": 1,
         "dependency": "agentic_misalignment",
         "requires_internet": false,
@@ -64,7 +65,8 @@
         "https://www.anthropic.com/research/agentic-misalignment"
       ],
       "reference_implementation": null,
-      "reviewed_at": "2026-08-24"
+      "reviewed_at": "2026-11-13",
+      "inspect_source_commit": "a68dade7efb803ef50c8442d3f16264b293d1414"
     },
     "canonical:ailuminate": {
       "version": null,
@@ -419,9 +421,9 @@
       "reviewed_at": "2026-08-27"
     },
     "inspect:paperbench": {
-      "version": "7-C",
+      "version": "8-C",
       "protocol": {
-        "version": "7-C",
+        "version": "8-C",
         "dataset_samples": 23,
         "dependency": "paperbench",
         "requires_internet": false,
@@ -442,7 +444,8 @@
         "https://arxiv.org/abs/2504.01848"
       ],
       "reference_implementation": null,
-      "reviewed_at": "2026-08-27"
+      "reviewed_at": "2026-11-13",
+      "inspect_source_commit": "a68dade7efb803ef50c8442d3f16264b293d1414"
     },
     "canonical:re-bench": {
       "version": null,

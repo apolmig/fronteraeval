@@ -1,11 +1,19 @@
 import assert from "node:assert/strict";
-import { readFile, access } from "node:fs/promises";
+import { readFile, readdir, access } from "node:fs/promises";
 
-const [catalog, registry, audit] = await Promise.all([
+const reviewsDirectory = "data/methodological-reviews";
+const [catalog, registry, audit, reviewFiles, reviewBaseline, reviewPolicy] = await Promise.all([
   readFile("site/data/catalog.json", "utf8").then(JSON.parse),
   readFile("data/source-registry.json", "utf8").then(JSON.parse),
-  readFile("site/data/source-audit.json", "utf8").then(JSON.parse)
+  readFile("site/data/source-audit.json", "utf8").then(JSON.parse),
+  readdir(reviewsDirectory),
+  readFile(`${reviewsDirectory}/_source-baseline.json`, "utf8").then(JSON.parse),
+  readFile(`${reviewsDirectory}/_policy.json`, "utf8").then(JSON.parse)
 ]);
+const versionedReviews = await Promise.all(reviewFiles
+  .filter(name => name.endsWith(".json") && !name.startsWith("_"))
+  .map(name => readFile(`${reviewsDirectory}/${name}`, "utf8").then(JSON.parse)));
+const reviewsById = new Map(versionedReviews.map(review => [review.id, review]));
 
 const byID = new Map(catalog.records.map(record => [record.id, record]));
 const allowedInspectOrigins = new Set(["inspect:agentharm"]);
@@ -41,7 +49,11 @@ for (const record of catalog.records) {
 
   if (record.review_status === "reviewed") {
     assert.ok(!["host-only", "unresolved"].includes(record.attribution_status), `${record.id}: reviewed record has unresolved origin`);
-    assert.match(record.editorial_reviewed_at || "", /^2026-08-(24|27)$/, `${record.id}: reviewed date is not versioned`);
+    const versionedReview = reviewsById.get(record.id);
+    assert.ok(versionedReview, `${record.id}: reviewed record has no versioned documentary review`);
+    const expectedReviewDate = versionedReview.reviewed_at || reviewBaseline.records[record.id]?.reviewed_at || reviewPolicy.reviewed_at;
+    assert.match(expectedReviewDate || "", /^\d{4}-\d{2}-\d{2}$/, `${record.id}: versioned review date missing or malformed`);
+    assert.equal(record.editorial_reviewed_at, expectedReviewDate, `${record.id}: reviewed date differs from its versioned review or baseline`);
     if (record.methodological_review?.reviewed_at) {
       assert.equal(record.editorial_reviewed_at, record.methodological_review.reviewed_at, `${record.id}: review dates disagree`);
     }

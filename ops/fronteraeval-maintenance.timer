@@ -1,0 +1,11 @@
+[Unit]
+Description=Weekly FronteraEval refresh
+
+[Timer]
+OnCalendar=Sun *-*-* 02:23:00 UTC
+Persistent=true
+RandomizedDelaySec=120
+Unit=fronteraeval-maintenance.service
+
+[Install]
+WantedBy=timers.target

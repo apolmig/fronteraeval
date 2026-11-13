@@ -55,7 +55,26 @@
     state.records = [...state.catalog.records];
     route();
 
-    fetch("/api/weekly-status", { signal: AbortSignal.timeout(12000) })
+    readLiveStatus();
+    setInterval(() => {
+      hydrateLiveStatus();
+      if (!document.hidden && Date.now() - lastStatusRead > 300000) readLiveStatus();
+    }, 60000);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) {
+        hydrateLiveStatus();
+        if (Date.now() - lastStatusRead > 300000) readLiveStatus();
+      }
+    });
+  }
+
+  let lastStatusRead = 0;
+  let statusRequestPending = false;
+  function readLiveStatus() {
+    if (statusRequestPending) return;
+    statusRequestPending = true;
+    lastStatusRead = Date.now();
+    fetch("/api/weekly-status", { cache: "no-store", signal: AbortSignal.timeout(12000) })
       .then((liveResponse) => liveResponse.ok ? liveResponse.json() : null)
       .then((live) => {
         if (!live) return;
@@ -64,7 +83,8 @@
         // validated catalogue determines public records and search results.
         hydrateLiveStatus();
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => { statusRequestPending = false; });
   }
 
   function parseHash() {
@@ -137,19 +157,40 @@
   }
 
   function freshnessText() {
-    if (state.live?.status === "current" && state.live?.checked_at) {
-      const checked = new Date(state.live.checked_at).toLocaleString("en-GB", {
-        dateStyle: "medium", timeStyle: "short", timeZone: "UTC"
-      });
-      return `<span class="status-dot live"></span>Sources checked ${esc(checked)} UTC`;
-    }
-    return `<span class="status-dot"></span>Build snapshot ${esc(formatDate(state.catalog.generated_at))}`;
+    const summary = globalThis.FronteraFreshness.summarize(state.catalog, state.live);
+    return `<span class="status-dot${summary.current ? " live" : ""}"></span>${esc(summary.label)}`;
   }
 
   function hydrateLiveStatus() {
     document.querySelectorAll("[data-live-freshness]").forEach((node) => {
-      node.innerHTML = freshnessText();
+      const markup = freshnessText();
+      if (node.innerHTML !== markup) node.innerHTML = markup;
     });
+    document.querySelectorAll("[data-update-status]").forEach((node) => {
+      const markup = updateStatusMarkup();
+      if (node.innerHTML !== markup) node.innerHTML = markup;
+    });
+  }
+
+  function updateStatusMarkup() {
+    const differentCatalogue = globalThis.FronteraFreshness.summarize(state.catalog, state.live).status === "new-version";
+    const clocks = differentCatalogue ? {} : state.live?.publication_health?.clocks || {};
+    const date = value => esc(globalThis.FronteraFreshness.date(value));
+    const checks = state.live?.source_checks;
+    const changes = state.live?.changes;
+    const failing = Array.isArray(checks) ? checks.filter(check => !check.ok).length : null;
+    const count = value => Number.isInteger(value) ? value : "Not checked";
+    const olderSweep = Date.parse(state.live?.checked_at) < Date.parse(state.catalog?.source_observed_at);
+    return `<div class="freshness-line">${freshnessText()}</div>
+      <h2>Catalogue freshness</h2><dl class="data-dl">
+        <dt>Sources observed</dt><dd>${date(state.catalog?.source_observed_at)}</dd>
+        <dt>Pages generated</dt><dd>${date(state.catalog?.generated_at)}</dd>
+        <dt>Catalogue validated</dt><dd>${date(clocks.validated_at)}</dd>
+        <dt>Publication checked</dt><dd>${date(clocks.publication_verified_at)}</dd>
+      </dl><p>A page rebuild does not renew the source observation or documentary review dates. A source check does not validate a new catalogue.</p>
+      <h2>Separate source sweep</h2><p>Last observation: ${date(state.live?.checked_at)}.</p>
+      ${olderSweep ? '<p>This sweep predates the catalogue source observation. Its differences describe an earlier snapshot, not changes pending in the current catalogue.</p>' : ''}
+      <div class="metric-list"><div><strong>${count(changes?.new_internal)}</strong><span>New Inspect tasks observed</span></div><div><strong>${count(changes?.new_register)}</strong><span>New register entries observed</span></div><div><strong>${count(changes?.missing_internal)}</strong><span>Missing or renamed</span></div><div><strong>${count(failing)}</strong><span>Source checks failing</span></div></div>`;
   }
 
   function topicCounts() {
@@ -580,12 +621,10 @@
   }
 
   function renderUpdates() {
-    document.title = "Freshness — FronteraEval";
-    const changes = state.live?.changes || {};
-    const failing = state.live?.source_checks?.filter((check) => !check.ok) || [];
+    document.title = "Freshness - FronteraEval";
     main.innerHTML = `
       <header class="page-head"><div class="wide page-head-inner"><div><div class="eyebrow">Freshness</div><h1>Updates</h1></div><p>The catalogue watches official sources. Editorial judgments remain human-reviewed.</p></div></header>
-      <article class="prose"><div class="freshness-line">${freshnessText()}</div><h2>Latest sweep</h2><div class="metric-list"><div><strong>${changes.new_internal || 0}</strong><span>New Inspect tasks</span></div><div><strong>${changes.new_register || 0}</strong><span>New register entries</span></div><div><strong>${changes.missing_internal || 0}</strong><span>Missing or renamed</span></div><div><strong>${failing.length}</strong><span>Source checks failing</span></div></div><h2>What changes automatically</h2><p>FronteraEval fetches the official Inspect registry and repository tree, compares stable IDs with the published snapshot, checks selected canonical sources, and publishes a live freshness record.</p><div class="notice"><strong>Editorial boundary.</strong> Automation does not write “measures”, “does not measure”, evidence reach, comparability, or policy relevance into the public catalogue.</div></article>`;
+      <article class="prose"><div data-update-status>${updateStatusMarkup()}</div><h2>What changes automatically</h2><p>FronteraEval observes official sources and compares them with the admitted catalogue. New records appear only after source resolution and catalogue checks pass.</p><div class="notice"><strong>Editorial boundary.</strong> Automated observations do not supply a documentary review, an experimental replication, or claims about human effects.</div></article>`;
   }
 
   function renderData() {

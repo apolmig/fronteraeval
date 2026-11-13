@@ -53,7 +53,7 @@ for (const review of reviews) {
   record.evidence_reach = review.evidence_reach || ["controlled-model-behaviour"];
   record.methodological_review = {
     ...validity,
-    baseline_inspect_source_commit: baseline.baseline_inspect_source_commit,
+    baseline_inspect_source_commit: baseline.records[review.id]?.inspect_source_commit || baseline.baseline_inspect_source_commit,
     review_type: review.review_type || policy.review_type,
     replication_status: review.replication_status || policy.replication_status,
     reviewed_at: reviewedAt,

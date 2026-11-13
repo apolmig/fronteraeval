@@ -1,0 +1,11 @@
+[Unit]
+Description=Weekly external evaluation discovery
+
+[Timer]
+OnCalendar=Sun *-*-* 04:23:00 UTC
+Persistent=true
+RandomizedDelaySec=120
+Unit=fronteraeval-discovery.service
+
+[Install]
+WantedBy=timers.target

@@ -1,13 +1,13 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-11-13T19:21:15.725Z",
+  "generated_at": "2026-11-13T19:55:04.810Z",
   "inspect_source_commit": "a68dade7efb803ef50c8442d3f16264b293d1414",
   "policy": "Confirmed 404/410 responses are treated as missing only after a GET verification. Access restrictions, rate limits, timeouts and server errors are reported separately and do not by themselves establish that a source is broken.",
   "totals": {
     "catalogue_records": 333,
-    "unique_urls": 598,
-    "critical_urls": 101,
-    "reachable": 592,
+    "unique_urls": 605,
+    "critical_urls": 108,
+    "reachable": 599,
     "restricted": 2,
     "network-error": 3,
     "transient": 1,
@@ -30,7 +30,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://huggingface.co/datasets/livebench/%7Bmath,reasoning,coding,language,data_analysis,instruction_following%7D",
-      "elapsed_ms": 91,
+      "elapsed_ms": 88,
       "error": null
     },
     {
@@ -46,7 +46,7 @@
       "status": null,
       "category": "network-error",
       "method": "GET",
-      "elapsed_ms": 25,
+      "elapsed_ms": 23,
       "error": "fetch failed"
     },
     {
@@ -62,7 +62,7 @@
       "status": null,
       "category": "network-error",
       "method": "GET",
-      "elapsed_ms": 34,
+      "elapsed_ms": 39,
       "error": "fetch failed"
     },
     {
@@ -79,7 +79,7 @@
       "status": null,
       "category": "network-error",
       "method": "GET",
-      "elapsed_ms": 25,
+      "elapsed_ms": 38,
       "error": "fetch failed"
     },
     {
@@ -95,7 +95,7 @@
       "category": "restricted",
       "method": "HEAD",
       "final_url": "https://openreview.net/pdf?id=2GmDdhBdDk",
-      "elapsed_ms": 180,
+      "elapsed_ms": 135,
       "error": null
     },
     {
@@ -113,7 +113,7 @@
       "category": "transient",
       "method": "HEAD",
       "final_url": "https://www.niets.or.th/en",
-      "elapsed_ms": 7145,
+      "elapsed_ms": 8574,
       "error": null
     }
   ]

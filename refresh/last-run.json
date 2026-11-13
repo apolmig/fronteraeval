@@ -1,15 +1,15 @@
 {
   "schema_version": "2.1.0",
   "status": "completed",
-  "refreshed_at": "2026-11-13T19:22:25.577Z",
+  "refreshed_at": "2026-11-13T19:56:20.170Z",
   "source_observed_at": "2026-11-13T19:16:09.308Z",
-  "generated_at": "2026-11-13T19:16:09.308Z",
+  "generated_at": "2026-11-13T19:53:27.315Z",
   "inspect_source_commit": "a68dade7efb803ef50c8442d3f16264b293d1414",
   "records": 333,
   "source_groups": 213,
   "methodological_reviews": {
-    "reviewed_records": 27,
-    "needs_reevaluation": 3,
+    "reviewed_records": 30,
+    "needs_reevaluation": 0,
     "documentary": 30,
     "independently_replicated": 0,
     "registry_entries": 30,
@@ -45,9 +45,9 @@
     "unresolved_records": 0
   },
   "source_links": {
-    "audited_at": "2026-11-13T19:21:15.725Z",
-    "unique_urls": 598,
-    "reachable": 592,
+    "audited_at": "2026-11-13T19:55:04.810Z",
+    "unique_urls": 605,
+    "reachable": 599,
     "restricted": 2,
     "transient": 4,
     "critical_missing": 0,

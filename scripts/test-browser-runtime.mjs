@@ -22,7 +22,12 @@ try {
     if (catalogue) await page.route('**/data/catalog.json', route => route.fulfill({ json: catalogue }));
     await page.route('**/api/weekly-status', async route => {
       await new Promise(resolve => { releaseStatus = resolve; });
-      await route.fulfill({ json: { status: 'current', checked_at: new Date().toISOString(), inspect: { entries: [{
+      const admitted = await page.evaluate(async () => await globalThis.FronteraEvalCatalogPromise);
+      await route.fulfill({ json: { status: 'current', checked_at: new Date().toISOString(), publication_health: {
+        status: 'current', catalogue: { source_commit: admitted.inspect_source_commit, records: admitted.records.length },
+        clocks: { generated_at: admitted.generated_at, source_observed_at: admitted.source_observed_at,
+          validated_at: new Date().toISOString(), publication_verified_at: new Date().toISOString() }
+      }, inspect: { entries: [{
         id: 'qa:unreviewed-live-entry', name: 'QA live entry', source_type: 'inspect-internal', source_url: 'https://example.com/qa'
       }] } } });
     });
@@ -30,7 +35,7 @@ try {
     await page.locator('#home-query').fill('harmful manipulation');
     await page.waitForFunction(() => document.querySelector('#home-query') === document.activeElement);
     releaseStatus();
-    await page.waitForFunction(() => document.querySelector('[data-live-freshness]')?.textContent.includes('Sources checked'));
+    await page.waitForFunction(() => document.querySelector('[data-live-freshness]')?.textContent.includes('Catalogue validated'));
     assert.equal(await page.locator('#home-query').inputValue(), 'harmful manipulation');
     assert.equal(await page.evaluate(() => document.activeElement.id), 'home-query');
     assert.equal(catalogRequests, 1, 'The app and enhancers must share one catalogue request');
@@ -109,6 +114,13 @@ try {
     await page.locator('[data-ui-about]').waitFor();
     assert.match(await page.locator('[data-ui-about]').textContent(), /not an independent replication/);
     assert.equal(await page.locator('[data-nav="collection"]').count(), 0);
+    await page.evaluate(() => { location.hash = '/updates'; });
+    await page.locator('[data-update-status]').waitFor();
+    assert.deepEqual(await page.locator('[data-update-status] dt').allTextContents(), ['Sources observed', 'Pages generated', 'Catalogue validated', 'Publication checked']);
+    assert.equal(await page.locator('[data-update-status] .metric-list strong').filter({ hasText: 'Not checked' }).count(), 4);
+    await page.screenshot({ path: `${screenshots}/${device}-updates.png`, fullPage: true });
+    await page.evaluate(() => { location.hash = '/about'; });
+    await page.locator('[data-ui-about]').waitFor();
     const oldTheme = await page.locator('html').getAttribute('data-theme');
     await page.locator('#theme-toggle').click();
     const theme = await page.locator('html').getAttribute('data-theme');

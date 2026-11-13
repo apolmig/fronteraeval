@@ -1,0 +1,31 @@
+[Unit]
+Description=Collect FronteraEval external candidates without admitting them
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=6h
+StartLimitBurst=2
+
+[Service]
+Type=oneshot
+User=fronteraeval
+Group=fronteraeval
+WorkingDirectory=/opt/fronteraeval
+EnvironmentFile=-/etc/fronteraeval/maintenance.env
+Environment=FRONTERAEVAL_STATE_DIR=/var/lib/fronteraeval
+Environment=PATH=/opt/node22/bin:/usr/bin:/bin
+Environment=NPM_CONFIG_CACHE=/var/lib/fronteraeval/npm-cache
+StateDirectory=fronteraeval
+UMask=0077
+ExecStart=/usr/bin/flock --nonblock /var/lib/fronteraeval/maintenance.lock /opt/node22/bin/node /opt/fronteraeval/scripts/run-maintenance.mjs --publish --job discovery
+TimeoutStartSec=90min
+Restart=on-failure
+RestartSec=30min
+RestartPreventExitStatus=2
+KillMode=control-group
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/fronteraeval
+StandardOutput=journal
+StandardError=journal
